@@ -13,6 +13,11 @@
 		8C7DE796284E0F34001F9D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE794284E0F34001F9D9B /* Main.storyboard */; };
 		8C7DE798284E0F35001F9D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE797284E0F35001F9D9B /* Assets.xcassets */; };
 		8C7DE79B284E0F35001F9D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */; };
+		8C7DE7B028509949001F9D9B /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */; };
+		8C7DE7B92850B313001F9D9B /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE7B82850B313001F9D9B /* SignIn.storyboard */; };
+		8C7DE7BB2850B32B001F9D9B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */; };
+		8C7DE7BD2850B350001F9D9B /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BC2850B350001F9D9B /* SignInController.swift */; };
+		8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		8C7DE797284E0F35001F9D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C7DE79A284E0F35001F9D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C7DE79C284E0F35001F9D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
+		8C7DE7B82850B313001F9D9B /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		8C7DE7BC2850B350001F9D9B /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
+		8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,42 @@
 			children = (
 				8C7DE78E284E0F34001F9D9B /* AppDelegate.swift */,
 				8C7DE790284E0F34001F9D9B /* SceneDelegate.swift */,
-				8C7DE792284E0F34001F9D9B /* ViewController.swift */,
-				8C7DE794284E0F34001F9D9B /* Main.storyboard */,
+				8C7DE7AC2850987E001F9D9B /* Extensions */,
+				8C7DE7B12850A785001F9D9B /* Controllers */,
+				8C7DE7B32850A7E4001F9D9B /* Scenes */,
 				8C7DE797284E0F35001F9D9B /* Assets.xcassets */,
 				8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */,
 				8C7DE79C284E0F35001F9D9B /* Info.plist */,
 			);
 			path = WebAntApp;
+			sourceTree = "<group>";
+		};
+		8C7DE7AC2850987E001F9D9B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C7DE7B12850A785001F9D9B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C7DE792284E0F34001F9D9B /* ViewController.swift */,
+				8C7DE7BC2850B350001F9D9B /* SignInController.swift */,
+				8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8C7DE7B32850A7E4001F9D9B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8C7DE794284E0F34001F9D9B /* Main.storyboard */,
+				8C7DE7B82850B313001F9D9B /* SignIn.storyboard */,
+				8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +164,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7DE7B92850B313001F9D9B /* SignIn.storyboard in Resources */,
 				8C7DE79B284E0F35001F9D9B /* LaunchScreen.storyboard in Resources */,
 				8C7DE798284E0F35001F9D9B /* Assets.xcassets in Resources */,
 				8C7DE796284E0F34001F9D9B /* Main.storyboard in Resources */,
+				8C7DE7BB2850B32B001F9D9B /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */,
+				8C7DE7B028509949001F9D9B /* DesignableUITextField.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* ViewController.swift in Sources */,
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
+				8C7DE7BD2850B350001F9D9B /* SignInController.swift in Sources */,
 				8C7DE791284E0F34001F9D9B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +348,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -332,7 +376,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
