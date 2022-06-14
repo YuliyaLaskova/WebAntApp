@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SignInController: UIViewController {
+class SignInViewController: UIViewController {
+    
+    internal var presenter: SignInPresenter?
+    
+    // MARK: IB Outlets
 
     @IBOutlet var signInBtn: UIButton!
     @IBOutlet var signUpBtn: UIButton!
@@ -60,8 +64,6 @@ class SignInController: UIViewController {
         signUpBtn.layer.cornerRadius = 4
         signUpBtn.layer.borderWidth = 1
 
-        emailTextField.becomeFirstResponder()
-
         emailIconImageView = UIImageView(image: UIImage(named: "emailIcon.png"))
         emailIconImageView.contentMode = UIView.ContentMode.center
         emailIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: emailIconImageView.image!.size.width + 20, height: emailIconImageView.image!.size.height)
@@ -79,10 +81,22 @@ class SignInController: UIViewController {
 
 // MARK: - Work with keyboard
 
-extension SignInController: UITextFieldDelegate {
+extension SignInViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            signInBtnPressed()
+        }
+        return true
+    }
 }
 
+extension SignInViewController: SignInView {
+
+}
