@@ -1,0 +1,48 @@
+PODS:
+  - DBDebugToolkit (0.6.0)
+  - DITranquillity (4.3.4):
+    - SwiftLazy (>= 1.1.6)
+  - Kingfisher (7.2.4)
+  - R.swift (6.1.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - RxNetworkApiClient (0.1.4):
+    - RxSwift
+    - SwiftyJSON
+  - RxSwift (6.5.0)
+  - SwiftLazy (1.1.9)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - DBDebugToolkit (~> 0.6.0)
+  - DITranquillity
+  - Kingfisher
+  - R.swift
+  - RxNetworkApiClient
+
+SPEC REPOS:
+  trunk:
+    - DBDebugToolkit
+    - DITranquillity
+    - Kingfisher
+    - R.swift
+    - R.swift.Library
+    - RxNetworkApiClient
+    - RxSwift
+    - SwiftLazy
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  DBDebugToolkit: 03eb3483da4daf03b853b83ade5a8da9c8b7aff4
+  DITranquillity: 8d0c74e5e0cdb64d467dd6aba7480817f8b86c27
+  Kingfisher: 2457be2121734e69e54a2312ecc0150eb9ae70b3
+  R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RxNetworkApiClient: f45056395be3d62388b8344441331aad5ff60a68
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SwiftLazy: 1657354f43dbd6a0a79e00ad67558d655c77bdc9
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 5a5c176330bfd9cf692f37135fa419528110ed98
+
+COCOAPODS: 1.11.3

@@ -14,7 +14,6 @@ class WelcomePresenterImp: WelcomePresenter {
 
     func signInBtnPressed() {
         router.openSignInScene()
-        print("presenter")
     }
 
     func signUpBtnPressed() {

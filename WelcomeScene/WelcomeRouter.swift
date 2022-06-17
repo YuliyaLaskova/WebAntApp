@@ -22,8 +22,7 @@ class WelcomeRouter: BaseRouter {
         guard let navController = self.view?.navigationController else {
             return
         }
-        //  SomeSceneConfigurator.open(navigationController: navController)
-        print("router")
+
         SignInConfigurator.open(navigationController: navController)
     }
 
@@ -31,8 +30,7 @@ class WelcomeRouter: BaseRouter {
         guard let navController = self.view?.navigationController else {
             return
         }
-        //  SomeSceneConfigurator.open(navigationController: navController)
-        print("router")
+
         SignUpConfigurator.open(navigationController: navController)
     }
 }

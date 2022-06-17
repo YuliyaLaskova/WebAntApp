@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        DI.initDependencies(appDelegate: self)
         // Override point for customization after application launch.
         return true
     }
@@ -20,15 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+
     }
 
 
@@ -51,34 +50,4 @@ extension AppDelegate {
             window.rootViewController = rootView
         }
     }
-//
-//    func openSignInScene() {
-//        guard let window = self.window else {
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//            return openSignInScene()
-//        }
-//        DispatchQueue.main.async {
-//            let navController = UINavigationController()
-//            window.rootViewController = navController
-//            SignInSceneConfigurator.open(navigationController: navController)
-//            window.makeKeyAndVisible()
-//        }
-//    }
-//
-//    func openRegistrationScene(window: UIWindow?) {
-//        if let window = window {
-//            self.window = window
-//        }
-//
-//        guard let window = self.window else {
-//            self.window = UIWindow(frame: UIScreen.main.bounds)
-//            return openRegistrationScene(window: nil)
-//        }
-//        DispatchQueue.main.async {
-//            let rootView = R.storyboard.registrationStoryboard.instantiateInitialViewController()
-//            window.backgroundColor = .smartBackground
-//            window.makeKeyAndVisible()
-//            window.rootViewController = rootView
-//        }
-//    }
 }

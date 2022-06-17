@@ -17,8 +17,6 @@ class SignInViewController: UIViewController {
     @IBOutlet var signUpBtn: UIButton!
     @IBOutlet var emailTextField: DesignableUITextField!
     @IBOutlet var passwordTextField: DesignableUITextField!
-    @IBOutlet var emailIconImageView: UIImageView!
-    @IBOutlet var eyeIconImageView: UIImageView!
     
     @IBOutlet var signInLabelTopCnstr: NSLayoutConstraint!
     @IBOutlet var loginStackTopCnstr: NSLayoutConstraint!
@@ -32,9 +30,16 @@ class SignInViewController: UIViewController {
     // MARK: IB Actions
 
     @IBAction func signInBtnPressed() {
+        if isNoteEmpty() {
+            showAlert(with: "Error", and: "You didn't fill all fields")
+        }
+        signInBtnTapped()
+        print("button TTTT")
     }
 
     @IBAction func signUpBtnPressed() {
+        signUpBtnTapped()
+        print("button")
     }
 
     // MARK: Constraints
@@ -64,17 +69,10 @@ class SignInViewController: UIViewController {
         signUpBtn.layer.cornerRadius = 4
         signUpBtn.layer.borderWidth = 1
 
-        emailIconImageView = UIImageView(image: UIImage(named: "emailIcon.png"))
-        emailIconImageView.contentMode = UIView.ContentMode.center
-        emailIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: emailIconImageView.image!.size.width + 20, height: emailIconImageView.image!.size.height)
-        emailTextField.rightViewMode = UITextField.ViewMode.always
-        emailTextField.rightView = emailIconImageView
+        guard let emailIconImage = UIImage(resource: R.image.emailIcon) else { return }
+        emailTextField.rightImage = emailIconImage
 
-        eyeIconImageView = UIImageView(image: UIImage(named: "eyeIcon.png"))
-        eyeIconImageView.contentMode = UIView.ContentMode.center
-        eyeIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: eyeIconImageView.image!.size.width + 20, height: eyeIconImageView.image!.size.height)
-        passwordTextField.rightViewMode = UITextField.ViewMode.always
-        passwordTextField.rightView = eyeIconImageView
+        passwordTextField.rightButton = UIButton()
 
     }
 }
@@ -95,8 +93,45 @@ extension SignInViewController: UITextFieldDelegate {
         }
         return true
     }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = textField.text?.removingWhitespaces()
+    }
 }
+
+// MARK: Validation extension
 
 extension SignInViewController: SignInView {
 
+    func signUpBtnTapped() {
+        presenter?.signUpBtnPressed()
+    }
+
+    func signInBtnTapped() {
+        if Validator.isStringValid(stringValue: emailTextField.text!, validationType: .email) && Validator.isStringValid(stringValue: passwordTextField.text!, validationType: .password) {
+            print("validation OK")
+        } else {
+            print("validation BAAAAD")
+        }
+    }
+}
+
+// MARK: alert extension
+
+extension SignInViewController {
+    private func showAlert(with title: String, and message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func isNoteEmpty() -> Bool {
+        var isEmailTTextEmpty: Bool {
+            emailTextField.text == ""
+        }
+        var isPasswordTitleEmpty: Bool {
+            passwordTextField.text == ""
+        }
+        return isEmailTTextEmpty || isPasswordTitleEmpty
+    }
 }

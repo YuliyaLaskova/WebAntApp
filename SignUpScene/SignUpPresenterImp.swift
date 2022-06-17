@@ -11,14 +11,24 @@
 import Foundation
 
 class SignUpPresenterImp: SignUpPresenter {
-    
+
     private weak var view: SignUpView?
     private let router: SignUpRouter
+    private let signUpUseCase: SignInUseCase
     
     init(_ view: SignUpView,
-         _ router: SignUpRouter) {
+         _ router: SignUpRouter, _ signUpUseCase: SignInUseCase) {
         self.view = view
         self.router = router
+        self.signUpUseCase = signUpUseCase
     }
-    
+
+
+    func signInBtnPressed() {
+        router.openSignInScene()
+    }
+    func signUpBtnPressed(user: UserEntity) {
+        signUpUseCase.signIn("", "")
+            .subscribe()
+    }
 }

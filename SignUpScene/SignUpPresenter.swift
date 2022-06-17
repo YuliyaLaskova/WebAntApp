@@ -11,5 +11,6 @@
 import Foundation
 
 protocol SignUpPresenter {
-    
+    func signInBtnPressed()
+    func signUpBtnPressed(user: UserEntity)
 }

@@ -11,6 +11,13 @@
 import Foundation
 
 class SignInPresenterImp: SignInPresenter {
+    func signInBtnPressed() {
+    
+    }
+
+    func signUpBtnPressed() {
+        router.openSignUpScene()
+    }
     
     private weak var view: SignInView?
     private let router: SignInRouter

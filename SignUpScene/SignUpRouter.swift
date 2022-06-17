@@ -18,10 +18,24 @@ class SignUpRouter: BaseRouter {
         self.view = view
     }
     
-    func openSomeScene() {
+    func openSignInScene() {
         guard let navController = self.view?.navigationController else {
             return
         }
-        //  SomeSceneConfigurator.open(navigationController: navController)
+
+        var isSignInViewControllerAlreadyExists:Bool = false
+
+        let viewControllers:[UIViewController] = navController.viewControllers
+
+        for vc in viewControllers where vc is SignInViewController {
+            navController.popToViewController(vc, animated: true)
+            isSignInViewControllerAlreadyExists = true
+        }
+
+        if !isSignInViewControllerAlreadyExists {
+            SignInConfigurator.open(navigationController: navController)
+        }
     }
 }
+
+

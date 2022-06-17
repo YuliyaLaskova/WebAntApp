@@ -14,7 +14,7 @@ enum SignUpConfigurator {
     
     static func configure(view: SignUpViewController) {
         let router = SignUpRouter(view)
-        let presenter = SignUpPresenterImp(view, router)
+        let presenter = SignUpPresenterImp(view, router, DI.resolve())
         view.presenter = presenter
     }
 

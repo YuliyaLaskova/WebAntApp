@@ -11,5 +11,7 @@
 import UIKit
 
 protocol SignInView: AnyObject {
+    func signUpBtnPressed()
+    func signInBtnPressed()
     
 }

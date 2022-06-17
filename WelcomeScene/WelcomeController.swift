@@ -8,8 +8,8 @@
 import UIKit
 
 
-class WelcomeController: UIViewController {
 
+class WelcomeController: UIViewController {
 
     internal var presenter: WelcomePresenter?
 
@@ -62,7 +62,7 @@ class WelcomeController: UIViewController {
 
     @IBAction func createAccountBtnPressed(_ sender: Any) {
         signUpBtnPressed()
-            }
+    }
 
 
     @IBAction func haveAccountBtnPressed() {
@@ -75,7 +75,6 @@ class WelcomeController: UIViewController {
 extension WelcomeController: WelcomeView {
 
     func signInBtnPressed() {
-        print("view")
         presenter?.signInBtnPressed()
     }
     func signUpBtnPressed() {

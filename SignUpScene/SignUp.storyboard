@@ -117,27 +117,28 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bTq-5o-kO7">
                                                 <rect key="frame" x="152.33333333333334" y="482.00000000000006" width="85.333333333333343" height="88.666666666666686"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04X-TZ-UYZ">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG1-dQ-J6U">
                                                         <rect key="frame" x="0.0" y="0.0" width="85.333333333333329" height="34.333333333333336"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Sign In">
-                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="signInBtnPressed" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LP7-FI-Dl2"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG1-dQ-J6U">
-                                                        <rect key="frame" x="0.0" y="54.333333333333371" width="85.333333333333329" height="34.333333333333343"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="signUpBtnPressed" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gNN-io-K2e"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04X-TZ-UYZ">
+                                                        <rect key="frame" x="0.0" y="54.333333333333371" width="85.333333333333329" height="34.333333333333343"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Sign In">
+                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="signInBtnPressed" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LP7-FI-Dl2"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -181,15 +182,11 @@
                     </view>
                     <connections>
                         <outlet property="birthdayTextField" destination="JMG-e3-M1p" id="Dbd-w5-opP"/>
-                        <outlet property="calendarIconImageView" destination="RGo-7r-Nys" id="flI-dS-nYI"/>
                         <outlet property="confirmPasswordTextField" destination="ilJ-n2-TfT" id="piN-TB-zlr"/>
-                        <outlet property="emailIconImageView" destination="pZQ-d3-RNo" id="fpM-1N-nTX"/>
                         <outlet property="emailTextField" destination="83s-5g-Y0S" id="Kyr-sg-21x"/>
-                        <outlet property="eyeIconImageView" destination="8hJ-1D-7Q3" id="UlM-Nc-Yb3"/>
                         <outlet property="oldPasswordTextField" destination="xdZ-qO-zCt" id="CkP-OG-Jvl"/>
                         <outlet property="signInBtn" destination="04X-TZ-UYZ" id="IJG-jG-nB4"/>
                         <outlet property="signUpBtn" destination="cG1-dQ-J6U" id="p34-f1-Cse"/>
-                        <outlet property="userIconImageView" destination="Pfx-Cf-hM5" id="P1j-JH-HWb"/>
                         <outlet property="userNameTextField" destination="hRq-kj-QfF" id="AYC-XD-fIR"/>
                     </connections>
                 </viewController>

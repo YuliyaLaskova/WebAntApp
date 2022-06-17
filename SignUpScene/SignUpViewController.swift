@@ -7,9 +7,10 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     internal var presenter: SignUpPresenter?
+    private let datePicker = UIDatePicker()
     
     // MARK: IB Outlets
 
@@ -18,11 +19,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailTextField: DesignableUITextField!
     @IBOutlet var oldPasswordTextField: DesignableUITextField!
     @IBOutlet var confirmPasswordTextField: DesignableUITextField!
-
-    @IBOutlet var userIconImageView: UIImageView!
-    @IBOutlet var calendarIconImageView: UIImageView!
-    @IBOutlet var emailIconImageView: UIImageView!
-    @IBOutlet var eyeIconImageView: UIImageView!
 
     @IBOutlet var signInBtn: UIButton!
     @IBOutlet var signUpBtn: UIButton!
@@ -38,6 +34,7 @@ class SignUpViewController: UIViewController {
     private func setupUI() {
 
         setupIconsInTextFields()
+        createDatePicker()
 
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
@@ -45,51 +42,95 @@ class SignUpViewController: UIViewController {
 
     }
 
+    func setupTextFieldsDelegate() {
+        emailTextField.delegate = self
+        userNameTextField.delegate = self
+        oldPasswordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+    }
+
+    private func createDatePicker() {
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        birthdayTextField.inputView = datePicker
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: nil,
+            action: #selector (dateDoneBtnPressed)
+        )
+
+        let cancelButton = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: nil,
+            action: #selector (dateCancelBtnPressed)
+        )
+
+        let flexibleSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil, action: nil)
+
+        toolbar.setItems([cancelButton, flexibleSpace,doneButton], animated: true)
+
+        birthdayTextField.inputAccessoryView = toolbar
+    }
+
+    @objc func dateDoneBtnPressed() {
+        if birthdayTextField.text?.isEmpty == true {
+            birthdayTextField.resignFirstResponder()
+            birthdayTextField.text = "\(datePicker.date.formatted(date: .long, time: .omitted))"
+        } else {
+            birthdayTextField.text = ""
+            birthdayTextField.resignFirstResponder()
+        }
+    }
+
+    @objc func dateCancelBtnPressed() {
+        birthdayTextField.text = .none
+        birthdayTextField.resignFirstResponder()
+    }
+
+
     // MARK: IB Actions
 
     @IBAction func signInBtnPressed() {
+        signInBtnTapped()
     }
     
     @IBAction func signUpBtnPressed() {
+        signUpBtnPressed()
     }
 
 
     // MARK: Setup Icons In Text Fields method
 
     private func setupIconsInTextFields() {
-        userIconImageView = UIImageView(image: UIImage(named: "userIcon.png"))
-        userIconImageView.contentMode = UIView.ContentMode.center
-        userIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: userIconImageView.image!.size.width + 20, height: userIconImageView.image!.size.height)
-        userNameTextField.rightViewMode = UITextField.ViewMode.always
-        userNameTextField.rightView = userIconImageView
 
-        calendarIconImageView = UIImageView(image: UIImage(named: "calendarIcon.png"))
-        calendarIconImageView.contentMode = UIView.ContentMode.center
-        calendarIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: calendarIconImageView.image!.size.width + 20, height: calendarIconImageView.image!.size.height)
-        birthdayTextField.rightViewMode = UITextField.ViewMode.always
-        birthdayTextField.rightView = calendarIconImageView
+        guard let userIconImage = UIImage(resource: R.image.userIcon) else { return }
+        userNameTextField.rightImage = userIconImage
 
-        emailIconImageView = UIImageView(image: UIImage(named: "emailIcon.png"))
-        emailIconImageView.contentMode = UIView.ContentMode.center
-        emailIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: emailIconImageView.image!.size.width + 20, height: emailIconImageView.image!.size.height)
-        emailTextField.rightViewMode = UITextField.ViewMode.always
-        emailTextField.rightView = emailIconImageView
+        guard let calendarIconImage = UIImage(resource: R.image.calendarIcon) else { return }
+        birthdayTextField.rightImage = calendarIconImage
 
-        eyeIconImageView = UIImageView(image: UIImage(named: "eyeIcon.png"))
-        eyeIconImageView.contentMode = UIView.ContentMode.center
-        eyeIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: eyeIconImageView.image!.size.width + 20, height: eyeIconImageView.image!.size.height)
-        oldPasswordTextField.rightViewMode = UITextField.ViewMode.always
-        oldPasswordTextField.rightView = eyeIconImageView
+        guard let emailIconImage = UIImage(resource: R.image.emailIcon) else { return }
+        emailTextField.rightImage = emailIconImage
 
-        eyeIconImageView = UIImageView(image: UIImage(named: "eyeIcon.png"))
-        eyeIconImageView.contentMode = UIView.ContentMode.center
-        eyeIconImageView.frame = CGRect(x: 0.0, y: 0.0, width: eyeIconImageView.image!.size.width + 20, height: eyeIconImageView.image!.size.height)
-        confirmPasswordTextField.rightViewMode = UITextField.ViewMode.always
-        confirmPasswordTextField.rightView = eyeIconImageView
+        oldPasswordTextField.rightButton = UIButton()
+        confirmPasswordTextField.rightButton = UIButton()
+
     }
-
 }
 
 extension SignUpViewController: SignUpView {
+    func signUpBtnPressed(user: UserEntity) {
+        presenter?.signUpBtnPressed(user: user)
+    }
 
+    func signInBtnTapped() {
+        presenter?.signInBtnPressed()
+    }
 }
