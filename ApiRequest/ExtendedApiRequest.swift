@@ -64,6 +64,17 @@ class ExtendedApiRequest<T: Codable>: ApiRequest<T> {
         request.query = queryArr
         return request
     }
+
+    static func tokenRefreshRequest(_ refreshToken: String) -> ExtendedApiRequest {
+           extendedRequest(path: "/oauth/v2/token",
+                           method: .post,
+                           formData: [
+                               "client_id": Config.clientId,
+                               "client_secret": Config.clientSecret,
+                               "grant_type": "refresh_token",
+                               "refresh_token": refreshToken
+                           ])
+       }
 }
 
 fileprivate extension Data {

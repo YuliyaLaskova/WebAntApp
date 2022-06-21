@@ -16,42 +16,73 @@ class DI {
 
     static func initDependencies(appDelegate: AppDelegate) {
 
+        self.container.register(AuthInterceptor.init)
+            .as(AuthInterceptor.self)
+            .lifetime(.single)
+
+        self.container.register {
+            AuthResponseHandler(appDelegate, $0, $1, $2)
+        }
+        .as(AuthResponseHandler.self)
+        .lifetime(.single)
+
+
         self.container.register { () -> ApiClientImp in
-//            let config = URLSessionConfiguration.default
-//            config.timeoutIntervalForRequest = 60 * 20
-//            config.timeoutIntervalForResource = 60 * 20
-//            config.waitsForConnectivity = true
-//            config.shouldUseExtendedBackgroundIdleMode = true
-//            config.urlCache?.removeAllCachedResponses()
+            //            let config = URLSessionConfiguration.default
+            //            config.timeoutIntervalForRequest = 60 * 20
+            //            config.timeoutIntervalForResource = 60 * 20
+            //            config.waitsForConnectivity = true
+            //            config.shouldUseExtendedBackgroundIdleMode = true
+            //            config.urlCache?.removeAllCachedResponses()
 
 
 
             let client = ApiClientImp.defaultInstance(host: Config.apiEndpoint)
-//            (urlSessionConfiguration: config, completionHandlerQueue: .main)
-//            client.responseHandlersQueue.append(ErrorResponseHandler())
-//            client.responseHandlersQueue.append(JsonResponseHandler())
-//            client.responseHandlersQueue.append(NSErrorResponseHandler())
+            //            (urlSessionConfiguration: config, completionHandlerQueue: .main)
+            //            client.responseHandlersQueue.append(ErrorResponseHandler())
+            client.responseHandlersQueue.append(JsonResponseHandler())
+            //            client.responseHandlersQueue.append(NSErrorResponseHandler())
+
+            // MARK: add this files
+            //            client.interceptors.append(JsonContentInterceptor())
+            //            client.interceptors.append(ExtraPathInterceptor())
+
 
             return client
         }
         .as(ApiClient.self)
+        .injection(cycle: true) {
+            $0.responseHandlersQueue.insert($1 as AuthResponseHandler, at: 0)
+        }
+        .injection(cycle: true) {
+            $0.interceptors.insert($1 as AuthInterceptor, at: 0)
+        }
         .lifetime(.single)
+
+        self.container.register(LocalSettings.init)
+            .as(Settings.self)
+            .lifetime(.single)
+
+
+        self.container.register(UserDefaultsSettings.init)
+            .as(UserDefaultsSettings.self)
+            .lifetime(.single)
 
 
         self.container.register(SignInGatewayImp.init)
-                    .as(SignInGateway.self)
-                    .lifetime(.single)
+            .as(SignInGateway.self)
+            .lifetime(.single)
 
         self.container.register(SignUpGatewayImp.init)
-                    .as(SignUpGateway.self)
-                    .lifetime(.single)
+            .as(SignUpGateway.self)
+            .lifetime(.single)
 
         self.container.register(SignUpUseCaseImp.init)
-                   .as(RegistrationUseCase.self)
+            .as(SignUpUseCase.self)
 
         self.container.register(SignInUseCaseImp.init)
-                   .as(SignInUseCase.self)
-
+            .as(SignInUseCase.self)
+            .lifetime(.single)
 
     }
 

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5601135E95C46F80F2FA41E1 /* Pods_WebAntApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF06869783F558A16850F5 /* Pods_WebAntApp.framework */; };
+		8C030F5928605B700029BEAD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5828605B700029BEAD /* Settings.swift */; };
+		8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5B28605EEF0029BEAD /* AuthInterceptor.swift */; };
+		8C030F5F286061450029BEAD /* ErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5E286061450029BEAD /* ErrorResponseHandler.swift */; };
+		8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */; };
+		8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F622860623B0029BEAD /* ExtendedJsonResponseHandler.swift */; };
+		8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */; };
+		8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */; };
+		8C030F8F28619EFE0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8E28619EFE0029BEAD /* Token.swift */; };
+		8C030F9128619F1B0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F9028619F1B0029BEAD /* Token.swift */; };
 		8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA2285B276E0089D180 /* UserEntity.swift */; };
 		8C36BDA5285B41CE0089D180 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA4285B41CE0089D180 /* DI.swift */; };
 		8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */; };
@@ -32,7 +41,6 @@
 		8C6B3F902859D7F900153686 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F8F2859D7F900153686 /* Validator.swift */; };
 		8C6B3F932859E94900153686 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F922859E94900153686 /* Config.swift */; };
 		8C6B3F962859EA6E00153686 /* SignInGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F952859EA6E00153686 /* SignInGateway.swift */; };
-		8C6B3F982859EBE100153686 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F972859EBE100153686 /* Token.swift */; };
 		8C6B3F9A2859ED8800153686 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F992859ED8700153686 /* SignInUseCase.swift */; };
 		8C6B3F9C2859F6F700153686 /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F9B2859F6F700153686 /* StringManager.swift */; };
 		8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE78E284E0F34001F9D9B /* AppDelegate.swift */; };
@@ -59,6 +67,15 @@
 /* Begin PBXFileReference section */
 		04389DDD9DC4C51A7AC84D80 /* Pods-WebAntApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAntApp.release.xcconfig"; path = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp.release.xcconfig"; sourceTree = "<group>"; };
 		3E91C675A7E4D9ECF649FA35 /* Pods-WebAntApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAntApp.debug.xcconfig"; path = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8C030F5828605B700029BEAD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8C030F5B28605EEF0029BEAD /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
+		8C030F5E286061450029BEAD /* ErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseHandler.swift; sourceTree = "<group>"; };
+		8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseHandler.swift; sourceTree = "<group>"; };
+		8C030F622860623B0029BEAD /* ExtendedJsonResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedJsonResponseHandler.swift; sourceTree = "<group>"; };
+		8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeyType.swift; sourceTree = "<group>"; };
+		8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
+		8C030F8E28619EFE0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		8C030F9028619F1B0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8C36BDA2285B276E0089D180 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		8C36BDA4285B41CE0089D180 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
@@ -83,7 +100,6 @@
 		8C6B3F8F2859D7F900153686 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		8C6B3F922859E94900153686 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8C6B3F952859EA6E00153686 /* SignInGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGateway.swift; sourceTree = "<group>"; };
-		8C6B3F972859EBE100153686 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8C6B3F992859ED8700153686 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		8C6B3F9B2859F6F700153686 /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		8C7DE78B284E0F34001F9D9B /* WebAntApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebAntApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +155,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8C030F5728605B600029BEAD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8C030F5828605B700029BEAD /* Settings.swift */,
+				8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */,
+				8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8C030F5A28605E480029BEAD /* Interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				8C030F5B28605EEF0029BEAD /* AuthInterceptor.swift */,
+			);
+			path = Interceptor;
+			sourceTree = "<group>";
+		};
+		8C030F5D286060A40029BEAD /* ResponseHandler */ = {
+			isa = PBXGroup;
+			children = (
+				8C030F5E286061450029BEAD /* ErrorResponseHandler.swift */,
+				8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */,
+				8C030F622860623B0029BEAD /* ExtendedJsonResponseHandler.swift */,
+			);
+			path = ResponseHandler;
+			sourceTree = "<group>";
+		};
+		8C030F9228619F530029BEAD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C6B3F7F285364AA00153686 /* SignUpView.swift */,
+				8C6B3F7D285364A700153686 /* SignUpPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8C030F9328619F6B0029BEAD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C6B3F6C2853450700153686 /* SignInPresenter.swift */,
+				8C6B3F6D2853450700153686 /* SignInView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8C030F9428619F8B0029BEAD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */,
+				8CA8A8E72853346D0037D6DE /* WelcomeView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		8C36BD9E285B15DE0089D180 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,12 +218,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		8C36BDA1285B274B0089D180 /* UserEntities */ = {
+		8C36BDA1285B274B0089D180 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				8C36BDA2285B276E0089D180 /* UserEntity.swift */,
 			);
-			path = UserEntities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		8C36BDAA285C5A8A0089D180 /* UseCases */ = {
@@ -172,8 +243,7 @@
 				8C6B3F612853447300153686 /* SignInRouter.swift */,
 				8C6B3F632853447300153686 /* SignInPresenterImp.swift */,
 				8C6B3F642853447300153686 /* SignInConfigurator.swift */,
-				8C6B3F6C2853450700153686 /* SignInPresenter.swift */,
-				8C6B3F6D2853450700153686 /* SignInView.swift */,
+				8C030F9328619F6B0029BEAD /* Protocols */,
 			);
 			path = SignInScene;
 			sourceTree = "<group>";
@@ -187,8 +257,7 @@
 				8C6B3F722853645B00153686 /* SignUpRouter.swift */,
 				8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */,
 				8C6B3F752853645B00153686 /* SignUpConfigurator.swift */,
-				8C6B3F7D285364A700153686 /* SignUpPresenter.swift */,
-				8C6B3F7F285364AA00153686 /* SignUpView.swift */,
+				8C030F9228619F530029BEAD /* Protocols */,
 			);
 			path = SignUpScene;
 			sourceTree = "<group>";
@@ -201,6 +270,8 @@
 				8C6B3F892858941900153686 /* RegistrationGateway.swift */,
 				8C6B3F8B2858957E00153686 /* Requests.swift */,
 				8C6B3F8D28589CF400153686 /* RegistrationUseCase.swift */,
+				8C030F5A28605E480029BEAD /* Interceptor */,
+				8C030F5D286060A40029BEAD /* ResponseHandler */,
 			);
 			path = ApiRequest;
 			sourceTree = "<group>";
@@ -226,9 +297,11 @@
 			isa = PBXGroup;
 			children = (
 				8C36BDA4285B41CE0089D180 /* DI.swift */,
+				8C030F8E28619EFE0029BEAD /* Token.swift */,
+				8C030F9028619F1B0029BEAD /* Token.swift */,
+				8C030F5728605B600029BEAD /* Settings */,
 				8C36BDAA285C5A8A0089D180 /* UseCases */,
-				8C6B3F972859EBE100153686 /* Token.swift */,
-				8C36BDA1285B274B0089D180 /* UserEntities */,
+				8C36BDA1285B274B0089D180 /* Entities */,
 				8C36BD9E285B15DE0089D180 /* Base */,
 				8C6B3F942859EA5200153686 /* Gateways */,
 				8C6B3F912859E92F00153686 /* Config */,
@@ -237,6 +310,7 @@
 				8C6B3F5F28533E9B00153686 /* SignInScene */,
 				8CA8A8D8285333CC0037D6DE /* WelcomeScene */,
 				8CA8A8D5285332D10037D6DE /* Resources */,
+				8CA8A8D0285207310037D6DE /* SupportingFiles */,
 				8C7DE78D284E0F34001F9D9B /* WebAntApp */,
 				8C7DE78C284E0F34001F9D9B /* Products */,
 				618DB4E23E02E7EF174C2458 /* Pods */,
@@ -278,7 +352,6 @@
 				8C7DE794284E0F34001F9D9B /* Main.storyboard */,
 				8C7DE7B82850B313001F9D9B /* SignIn.storyboard */,
 				8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */,
-				8CA8A8D0285207310037D6DE /* SupportingFiles */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -309,8 +382,7 @@
 				8CA8A8DA2853341B0037D6DE /* WelcomeRouter.swift */,
 				8CA8A8DC2853341B0037D6DE /* WelcomePresenterImp.swift */,
 				8CA8A8DD2853341B0037D6DE /* WelcomeConfigurator.swift */,
-				8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */,
-				8CA8A8E72853346D0037D6DE /* WelcomeView.swift */,
+				8C030F9428619F8B0029BEAD /* Protocols */,
 			);
 			path = WelcomeScene;
 			sourceTree = "<group>";
@@ -323,7 +395,8 @@
 			buildConfigurationList = 8C7DE79F284E0F35001F9D9B /* Build configuration list for PBXNativeTarget "WebAntApp" */;
 			buildPhases = (
 				1C8E184A0E4DF1246F1E46B9 /* [CP] Check Pods Manifest.lock */,
-				8CA8A8D4285331CE0037D6DE /* ShellScript */,
+				8CA8A8D4285331CE0037D6DE /* R.Swift */,
+				8CDDF03D285CA2FA00156A28 /* ShellScript */,
 				8C7DE787284E0F34001F9D9B /* Sources */,
 				8C7DE788284E0F34001F9D9B /* Frameworks */,
 				8C7DE789284E0F34001F9D9B /* Resources */,
@@ -412,9 +485,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8CA8A8D4285331CE0037D6DE /* ShellScript */ = {
+		8CA8A8D4285331CE0037D6DE /* R.Swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.Swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		8CDDF03D285CA2FA00156A28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -425,11 +517,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+			shellScript = "
+";
 		};
 		A5B8B1218EFCCAFCE087873D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -460,17 +552,23 @@
 				8CA8A8D72853330E0037D6DE /* R.generated.swift in Sources */,
 				8C6B3F962859EA6E00153686 /* SignInGateway.swift in Sources */,
 				8CA8A8E02853341B0037D6DE /* WelcomeRouter.swift in Sources */,
+				8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */,
 				8C6B3F9A2859ED8800153686 /* SignInUseCase.swift in Sources */,
 				8C6B3F8E28589CF400153686 /* RegistrationUseCase.swift in Sources */,
+				8C030F5F286061450029BEAD /* ErrorResponseHandler.swift in Sources */,
 				8C6B3F80285364AA00153686 /* SignUpView.swift in Sources */,
-				8C6B3F982859EBE100153686 /* Token.swift in Sources */,
 				8C6B3F8C2858957E00153686 /* Requests.swift in Sources */,
 				8C6B3F6A2853447300153686 /* SignInConfigurator.swift in Sources */,
 				8CA8A8E22853341B0037D6DE /* WelcomePresenterImp.swift in Sources */,
 				8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */,
 				8C6B3F6F2853450700153686 /* SignInPresenter.swift in Sources */,
 				8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */,
+				8C030F5928605B700029BEAD /* Settings.swift in Sources */,
+				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
+				8C030F8F28619EFE0029BEAD /* Token.swift in Sources */,
+				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
 				8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */,
+				8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */,
 				8C6B3F9C2859F6F700153686 /* StringManager.swift in Sources */,
 				8C6B3F902859D7F900153686 /* Validator.swift in Sources */,
 				8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */,
@@ -483,11 +581,13 @@
 				8C6B3F692853447300153686 /* SignInPresenterImp.swift in Sources */,
 				8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */,
+				8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */,
 				8C6B3F8A2858941900153686 /* RegistrationGateway.swift in Sources */,
 				8CA8A8E82853346D0037D6DE /* WelcomeView.swift in Sources */,
 				8C6B3F672853447300153686 /* SignInRouter.swift in Sources */,
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
 				8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */,
+				8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */,
 				8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */,
 				8C7DE7BD2850B350001F9D9B /* SignInViewController.swift in Sources */,
 				8C7DE791284E0F34001F9D9B /* SceneDelegate.swift in Sources */,

@@ -9,26 +9,45 @@
 //
 
 import Foundation
+import Accelerate
+import RxSwift
 
 class SignUpPresenterImp: SignUpPresenter {
 
     private weak var view: SignUpView?
     private let router: SignUpRouter
-    private let signUpUseCase: SignInUseCase
+    private let signUpUseCase: SignUpUseCase
+    private let signInUseCase: SignInUseCase
+    private let disposeBag = DisposeBag()
     
-    init(_ view: SignUpView,
-         _ router: SignUpRouter, _ signUpUseCase: SignInUseCase) {
+    init(view: SignUpView,
+         router: SignUpRouter, signUpUseCase: SignUpUseCase, signInUseCase: SignInUseCase) {
         self.view = view
         self.router = router
         self.signUpUseCase = signUpUseCase
+        self.signInUseCase = signInUseCase
     }
 
 
     func signInBtnPressed() {
         router.openSignInScene()
     }
+    
     func signUpBtnPressed(user: UserEntity) {
-        signUpUseCase.signIn("", "")
-            .subscribe()
+        signUpUseCase.signUp(user)
+            .subscribe { [weak self] _ in
+                guard let strongSelf = self else {
+                    return
+                }
+                self?.signInUseCase.signIn(user.email, user.password)
+                    .subscribe(onCompleted: {
+                        // router
+                        print("router!!")
+                    })
+                        .disposed(by: strongSelf.disposeBag)
+
+            }
+            .disposed(by: disposeBag)
+
     }
 }

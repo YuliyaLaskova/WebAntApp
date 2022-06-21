@@ -12,6 +12,6 @@ import Foundation
 
 protocol SignInPresenter {
     func signUpBtnPressed()
-    func signInBtnPressed()
+    func signInBtnPressed(username: String, password: String) 
 
 }

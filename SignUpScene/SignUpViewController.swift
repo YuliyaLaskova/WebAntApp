@@ -35,10 +35,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
         setupIconsInTextFields()
         createDatePicker()
+        setupTextFieldsDelegate()
+        setupNavigationBarItem() 
 
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
-        signUpBtn.layer.borderWidth = 1
+        signInBtn.layer.borderWidth = 1
 
     }
 
@@ -102,7 +104,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpBtnPressed() {
-        signUpBtnPressed()
+        signUpBtnTapped()
     }
 
 
@@ -122,12 +124,62 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         oldPasswordTextField.rightButton = UIButton()
         confirmPasswordTextField.rightButton = UIButton()
 
+        let asterix  = NSMutableAttributedString(string: " *", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+
+        userNameTextField.attributedPlaceholder = makeRedStarPlaceholder(left: NSAttributedString(string: "User Name"), right: asterix)
+        emailTextField.attributedPlaceholder = makeRedStarPlaceholder(left: NSAttributedString(string: "E-mail"), right: asterix)
+        oldPasswordTextField.attributedPlaceholder = makeRedStarPlaceholder(left: NSAttributedString(string: "Old password"), right: asterix)
+        confirmPasswordTextField.attributedPlaceholder = makeRedStarPlaceholder(left: NSAttributedString(string: "Confirm password"), right: asterix)
+    }
+
+    func makeRedStarPlaceholder(left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
+        let result = NSMutableAttributedString()
+        result.append(left)
+        result.append(right)
+        return result
+    }
+
+    func setupNavigationBarItem() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        let cancelButton = UIBarButtonItem.init(
+              title: "Cancel",
+              style: .done,
+              target: self,
+            action: #selector(goBack)
+        )
+        self.navigationItem.leftBarButtonItem = cancelButton
+        cancelButton.tintColor = .gray
+    }
+
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
 extension SignUpViewController: SignUpView {
-    func signUpBtnPressed(user: UserEntity) {
-        presenter?.signUpBtnPressed(user: user)
+    func signUpBtnTapped() {
+        guard let userName = userNameTextField.text,
+              let email = emailTextField.text,
+              let password = oldPasswordTextField.text,
+              let birthday = birthdayTextField.text,
+              let confirmPassword = confirmPasswordTextField.text
+        else { return }
+
+        let user = UserEntity(username: userName, email: email, pass: password, birthday: birthday)
+
+        if birthday.isEmpty {
+            user.birthday = nil
+        }
+
+        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) && password == confirmPassword {
+
+            presenter?.signUpBtnPressed(user: user)
+            print("validation OK")
+
+        } else {
+
+            print("validation BAAAAD")
+        }
     }
 
     func signInBtnTapped() {

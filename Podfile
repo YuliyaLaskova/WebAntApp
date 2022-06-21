@@ -11,5 +11,6 @@ target 'WebAntApp' do
 	pod "DBDebugToolkit", '~> 0.6.0'
 	pod 'Kingfisher'
 	pod 'DITranquillity'
+	pod 'SwiftLint'
 
 end

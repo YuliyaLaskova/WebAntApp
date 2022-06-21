@@ -30,16 +30,14 @@ class SignInViewController: UIViewController {
     // MARK: IB Actions
 
     @IBAction func signInBtnPressed() {
-        if isNoteEmpty() {
+        if isFieldEmpty() {
             showAlert(with: "Error", and: "You didn't fill all fields")
         }
         signInBtnTapped()
-        print("button TTTT")
     }
 
     @IBAction func signUpBtnPressed() {
         signUpBtnTapped()
-        print("button")
     }
 
     // MARK: Constraints
@@ -69,12 +67,31 @@ class SignInViewController: UIViewController {
         signUpBtn.layer.cornerRadius = 4
         signUpBtn.layer.borderWidth = 1
 
+        setupNavigationBarItem()
+
         guard let emailIconImage = UIImage(resource: R.image.emailIcon) else { return }
         emailTextField.rightImage = emailIconImage
 
         passwordTextField.rightButton = UIButton()
 
     }
+
+    func setupNavigationBarItem() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        let cancelButton = UIBarButtonItem.init(
+              title: "Cancel",
+              style: .done,
+              target: self,
+            action: #selector(goBack)
+        )
+        self.navigationItem.leftBarButtonItem = cancelButton
+        cancelButton.tintColor = .gray
+    }
+
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+
 }
 
 // MARK: - Work with keyboard
@@ -108,7 +125,13 @@ extension SignInViewController: SignInView {
     }
 
     func signInBtnTapped() {
-        if Validator.isStringValid(stringValue: emailTextField.text!, validationType: .email) && Validator.isStringValid(stringValue: passwordTextField.text!, validationType: .password) {
+
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
+        else { return }
+
+        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
+            presenter?.signInBtnPressed(username: email, password: password)
             print("validation OK")
         } else {
             print("validation BAAAAD")
@@ -125,7 +148,7 @@ extension SignInViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    func isNoteEmpty() -> Bool {
+    func isFieldEmpty() -> Bool {
         var isEmailTTextEmpty: Bool {
             emailTextField.text == ""
         }

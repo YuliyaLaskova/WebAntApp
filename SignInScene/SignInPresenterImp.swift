@@ -9,23 +9,36 @@
 //
 
 import Foundation
+import RxSwift
 
 class SignInPresenterImp: SignInPresenter {
-    func signInBtnPressed() {
+
+    private weak var view: SignInView?
+    private let router: SignInRouter
+    private let signInUseCase: SignInUseCase
+    private let disposeBag = DisposeBag()
     
+    init(view: SignInView,
+         router: SignInRouter, signInUseCase: SignInUseCase) {
+        self.view = view
+        self.router = router
+        self.signInUseCase = signInUseCase
+    }
+
+    func signInBtnPressed(username: String, password: String) {
+        signInUseCase.signIn(username, password)
+            .subscribe {
+                print("Router")
+                // router
+            } onDisposed: {
+                print("Disposed")
+            }
+            .disposed(by: disposeBag)
+
     }
 
     func signUpBtnPressed() {
         router.openSignUpScene()
     }
-    
-    private weak var view: SignInView?
-    private let router: SignInRouter
-    
-    init(_ view: SignInView,
-         _ router: SignInRouter) {
-        self.view = view
-        self.router = router
-    }
-    
+
 }
