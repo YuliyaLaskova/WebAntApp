@@ -17,6 +17,14 @@
 		8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */; };
 		8C030F8F28619EFE0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8E28619EFE0029BEAD /* Token.swift */; };
 		8C030F9128619F1B0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F9028619F1B0029BEAD /* Token.swift */; };
+		8C030F9B2861C9B20029BEAD /* MainGalleryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */; };
+		8C030F9C2861C9B20029BEAD /* MainGalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */; };
+		8C030F9D2861C9B20029BEAD /* MainGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F972861C9B20029BEAD /* MainGalleryViewController.swift */; };
+		8C030F9E2861C9B20029BEAD /* MainGalleryPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F982861C9B20029BEAD /* MainGalleryPresenterImp.swift */; };
+		8C030F9F2861C9B20029BEAD /* MainGalleryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F992861C9B20029BEAD /* MainGalleryConfigurator.swift */; };
+		8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */; };
+		8C030FA42861C9C00029BEAD /* MainGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA32861C9C00029BEAD /* MainGalleryView.swift */; };
+		8C030FAA2861D5A10029BEAD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA92861D5A10029BEAD /* PhotoCell.swift */; };
 		8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA2285B276E0089D180 /* UserEntity.swift */; };
 		8C36BDA5285B41CE0089D180 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA4285B41CE0089D180 /* DI.swift */; };
 		8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */; };
@@ -27,7 +35,6 @@
 		8C6B3F6A2853447300153686 /* SignInConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F642853447300153686 /* SignInConfigurator.swift */; };
 		8C6B3F6E2853450700153686 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F6D2853450700153686 /* SignInView.swift */; };
 		8C6B3F6F2853450700153686 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F6C2853450700153686 /* SignInPresenter.swift */; };
-		8C6B3F772853645C00153686 /* SignUpStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C6B3F712853645B00153686 /* SignUpStoryboard.storyboard */; };
 		8C6B3F782853645C00153686 /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F722853645B00153686 /* SignUpRouter.swift */; };
 		8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */; };
 		8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F752853645B00153686 /* SignUpConfigurator.swift */; };
@@ -46,11 +53,9 @@
 		8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE78E284E0F34001F9D9B /* AppDelegate.swift */; };
 		8C7DE791284E0F34001F9D9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE790284E0F34001F9D9B /* SceneDelegate.swift */; };
 		8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE792284E0F34001F9D9B /* WelcomeController.swift */; };
-		8C7DE796284E0F34001F9D9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE794284E0F34001F9D9B /* Main.storyboard */; };
 		8C7DE798284E0F35001F9D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE797284E0F35001F9D9B /* Assets.xcassets */; };
 		8C7DE79B284E0F35001F9D9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */; };
 		8C7DE7B028509949001F9D9B /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */; };
-		8C7DE7B92850B313001F9D9B /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE7B82850B313001F9D9B /* SignIn.storyboard */; };
 		8C7DE7BB2850B32B001F9D9B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */; };
 		8C7DE7BD2850B350001F9D9B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BC2850B350001F9D9B /* SignInViewController.swift */; };
 		8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */; };
@@ -76,6 +81,14 @@
 		8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
 		8C030F8E28619EFE0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8C030F9028619F1B0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainGalleryStoryboard.storyboard; sourceTree = "<group>"; };
+		8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryRouter.swift; sourceTree = "<group>"; };
+		8C030F972861C9B20029BEAD /* MainGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryViewController.swift; sourceTree = "<group>"; };
+		8C030F982861C9B20029BEAD /* MainGalleryPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryPresenterImp.swift; sourceTree = "<group>"; };
+		8C030F992861C9B20029BEAD /* MainGalleryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryConfigurator.swift; sourceTree = "<group>"; };
+		8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryPresenter.swift; sourceTree = "<group>"; };
+		8C030FA32861C9C00029BEAD /* MainGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryView.swift; sourceTree = "<group>"; };
+		8C030FA92861D5A10029BEAD /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		8C36BDA2285B276E0089D180 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		8C36BDA4285B41CE0089D180 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
@@ -86,7 +99,6 @@
 		8C6B3F642853447300153686 /* SignInConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInConfigurator.swift; sourceTree = "<group>"; };
 		8C6B3F6C2853450700153686 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		8C6B3F6D2853450700153686 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		8C6B3F712853645B00153686 /* SignUpStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpStoryboard.storyboard; sourceTree = "<group>"; };
 		8C6B3F722853645B00153686 /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenterImp.swift; sourceTree = "<group>"; };
 		8C6B3F752853645B00153686 /* SignUpConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpConfigurator.swift; sourceTree = "<group>"; };
@@ -106,12 +118,10 @@
 		8C7DE78E284E0F34001F9D9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C7DE790284E0F34001F9D9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8C7DE792284E0F34001F9D9B /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
-		8C7DE795284E0F34001F9D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C7DE797284E0F35001F9D9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C7DE79A284E0F35001F9D9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C7DE79C284E0F35001F9D9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
-		8C7DE7B82850B313001F9D9B /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8C7DE7BC2850B350001F9D9B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +220,40 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		8C030FA52861C9CC0029BEAD /* MainGallery */ = {
+			isa = PBXGroup;
+			children = (
+				8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */,
+				8C030F972861C9B20029BEAD /* MainGalleryViewController.swift */,
+				8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */,
+				8C030F982861C9B20029BEAD /* MainGalleryPresenterImp.swift */,
+				8C030F992861C9B20029BEAD /* MainGalleryConfigurator.swift */,
+				8C030FA82861CA700029BEAD /* Protocols */,
+				8C030FA92861D5A10029BEAD /* PhotoCell.swift */,
+			);
+			path = MainGallery;
+			sourceTree = "<group>";
+		};
+		8C030FA72861CA390029BEAD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8C030FA52861C9CC0029BEAD /* MainGallery */,
+				8C6B3F702853643600153686 /* SignUpScene */,
+				8C6B3F5F28533E9B00153686 /* SignInScene */,
+				8CA8A8D8285333CC0037D6DE /* WelcomeScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		8C030FA82861CA700029BEAD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C030FA32861C9C00029BEAD /* MainGalleryView.swift */,
+				8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		8C36BD9E285B15DE0089D180 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +297,6 @@
 			children = (
 				8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */,
 				8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */,
-				8C6B3F712853645B00153686 /* SignUpStoryboard.storyboard */,
 				8C6B3F722853645B00153686 /* SignUpRouter.swift */,
 				8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */,
 				8C6B3F752853645B00153686 /* SignUpConfigurator.swift */,
@@ -305,10 +348,8 @@
 				8C36BD9E285B15DE0089D180 /* Base */,
 				8C6B3F942859EA5200153686 /* Gateways */,
 				8C6B3F912859E92F00153686 /* Config */,
+				8C030FA72861CA390029BEAD /* Scenes */,
 				8C6B3F82285892AE00153686 /* ApiRequest */,
-				8C6B3F702853643600153686 /* SignUpScene */,
-				8C6B3F5F28533E9B00153686 /* SignInScene */,
-				8CA8A8D8285333CC0037D6DE /* WelcomeScene */,
 				8CA8A8D5285332D10037D6DE /* Resources */,
 				8CA8A8D0285207310037D6DE /* SupportingFiles */,
 				8C7DE78D284E0F34001F9D9B /* WebAntApp */,
@@ -329,7 +370,7 @@
 		8C7DE78D284E0F34001F9D9B /* WebAntApp */ = {
 			isa = PBXGroup;
 			children = (
-				8C7DE7B32850A7E4001F9D9B /* Scenes */,
+				8C7DE7B32850A7E4001F9D9B /* LaunchScreen */,
 				8C7DE797284E0F35001F9D9B /* Assets.xcassets */,
 				8C7DE79C284E0F35001F9D9B /* Info.plist */,
 			);
@@ -346,14 +387,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8C7DE7B32850A7E4001F9D9B /* Scenes */ = {
+		8C7DE7B32850A7E4001F9D9B /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				8C7DE794284E0F34001F9D9B /* Main.storyboard */,
-				8C7DE7B82850B313001F9D9B /* SignIn.storyboard */,
 				8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */,
 			);
-			path = Scenes;
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		8CA8A8D0285207310037D6DE /* SupportingFiles */ = {
@@ -449,13 +488,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C7DE7B92850B313001F9D9B /* SignIn.storyboard in Resources */,
-				8C6B3F772853645C00153686 /* SignUpStoryboard.storyboard in Resources */,
 				8C7DE79B284E0F35001F9D9B /* LaunchScreen.storyboard in Resources */,
 				8C7DE798284E0F35001F9D9B /* Assets.xcassets in Resources */,
+				8C030F9B2861C9B20029BEAD /* MainGalleryStoryboard.storyboard in Resources */,
 				8C6B3F662853447300153686 /* SignInStoryboard.storyboard in Resources */,
 				8CA8A8DF2853341B0037D6DE /* WelcomeStoryboard.storyboard in Resources */,
-				8C7DE796284E0F34001F9D9B /* Main.storyboard in Resources */,
 				8C7DE7BB2850B32B001F9D9B /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,8 +599,10 @@
 				8CA8A8E22853341B0037D6DE /* WelcomePresenterImp.swift in Sources */,
 				8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */,
 				8C6B3F6F2853450700153686 /* SignInPresenter.swift in Sources */,
+				8C030F9E2861C9B20029BEAD /* MainGalleryPresenterImp.swift in Sources */,
 				8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */,
 				8C030F5928605B700029BEAD /* Settings.swift in Sources */,
+				8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */,
 				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
 				8C030F8F28619EFE0029BEAD /* Token.swift in Sources */,
 				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
@@ -579,6 +618,7 @@
 				8C7DE7B028509949001F9D9B /* DesignableUITextField.swift in Sources */,
 				8CA8A8EA285336340037D6DE /* BaseRouter.swift in Sources */,
 				8C6B3F692853447300153686 /* SignInPresenterImp.swift in Sources */,
+				8C030F9C2861C9B20029BEAD /* MainGalleryRouter.swift in Sources */,
 				8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */,
 				8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */,
@@ -588,10 +628,14 @@
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
 				8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */,
 				8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */,
+				8C030FA42861C9C00029BEAD /* MainGalleryView.swift in Sources */,
 				8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */,
+				8C030FAA2861D5A10029BEAD /* PhotoCell.swift in Sources */,
 				8C7DE7BD2850B350001F9D9B /* SignInViewController.swift in Sources */,
 				8C7DE791284E0F34001F9D9B /* SceneDelegate.swift in Sources */,
 				8C6B3F782853645C00153686 /* SignUpRouter.swift in Sources */,
+				8C030F9D2861C9B20029BEAD /* MainGalleryViewController.swift in Sources */,
+				8C030F9F2861C9B20029BEAD /* MainGalleryConfigurator.swift in Sources */,
 				8C6B3F842858934800153686 /* ExtendedApiRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,14 +643,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8C7DE794284E0F34001F9D9B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C7DE795284E0F34001F9D9B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8C7DE799284E0F35001F9D9B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
