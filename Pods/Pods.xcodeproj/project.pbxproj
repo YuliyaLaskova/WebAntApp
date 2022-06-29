@@ -1067,7 +1067,7 @@
 		7EC04A6D79403FC2D8B5DB85C90FFB26 /* UICollectionView+Swizzling.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UICollectionView+Swizzling.m"; path = "Sources/UI/InjectIntoSubviews/iOS-tvOS/UICollectionView+Swizzling.m"; sourceTree = "<group>"; };
 		7FF0FB96E4D1A42054276CA09991E8C8 /* DBCrashReportsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBCrashReportsTableViewController.m; path = DBDebugToolkit/Classes/CrashReports/DBCrashReportsTableViewController.m; sourceTree = "<group>"; };
 		8072298E9D1AD920DD71E79EFDD62451 /* DBOptionsListTableViewController.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DBOptionsListTableViewController.storyboard; path = DBDebugToolkit/Resources/DBOptionsListTableViewController.storyboard; sourceTree = "<group>"; };
-		809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RxSwift; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8339A8EFF05466085E442A7647ECA84B /* DBMenuSegmentedControlTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBMenuSegmentedControlTableViewCell.h; path = DBDebugToolkit/Classes/Cells/DBMenuSegmentedControlTableViewCell.h; sourceTree = "<group>"; };
 		8385E24E97BA836707E8C03B0BF66654 /* RecursiveLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RecursiveLock.swift; path = Platform/RecursiveLock.swift; sourceTree = "<group>"; };
 		83F5E6FEA311B8EC105F1F666E791688 /* DBTitleValueTableViewCellDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBTitleValueTableViewCellDataSource.h; path = DBDebugToolkit/Classes/Cells/TitleValue/DBTitleValueTableViewCellDataSource.h; sourceTree = "<group>"; };
@@ -1196,7 +1196,7 @@
 		B090689D701DFA5D5FCFC2D14326060F /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/General/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		B0B0E9B91B46112271E33A0329B052EE /* Completable+AndThen.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Completable+AndThen.swift"; path = "RxSwift/Traits/PrimitiveSequence/Completable+AndThen.swift"; sourceTree = "<group>"; };
 		B0CE06C7CE286E8239BF0D65A2EE22FF /* Observable+Concurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Observable+Concurrency.swift"; path = "RxSwift/Observable+Concurrency.swift"; sourceTree = "<group>"; };
-		B17091F9A26A30050FD99148535ABF8A /* Pods-WebAntApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-WebAntApp"; path = Pods_WebAntApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B17091F9A26A30050FD99148535ABF8A /* Pods_WebAntApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebAntApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27AD0014AD1BD8619087234F408EB8F /* Infallible+Zip+arity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Infallible+Zip+arity.swift"; path = "RxSwift/Traits/Infallible/Infallible+Zip+arity.swift"; sourceTree = "<group>"; };
 		B27E69C3B3750543380226F46D7AFC32 /* DBCustomVariable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBCustomVariable.h; path = DBDebugToolkit/Classes/CustomVariables/DBCustomVariable.h; sourceTree = "<group>"; };
 		B35C255388582C8447143F6BA7C2E986 /* DBCrashReportDetailsTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBCrashReportDetailsTableViewController.m; path = DBDebugToolkit/Classes/CrashReports/DBCrashReportDetailsTableViewController.m; sourceTree = "<group>"; };
@@ -1255,7 +1255,7 @@
 		C96F648C5A45D72E0AF87A9A917C81FA /* WithUnretained.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WithUnretained.swift; path = RxSwift/Observables/WithUnretained.swift; sourceTree = "<group>"; };
 		C9B48DFA0B07497014DFD1DEE0D465D6 /* SubscribeOn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscribeOn.swift; path = RxSwift/Observables/SubscribeOn.swift; sourceTree = "<group>"; };
 		C9CAC8862A6FE3DA910FD3F157343BE7 /* SubscriptionDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscriptionDisposable.swift; path = RxSwift/Disposables/SubscriptionDisposable.swift; sourceTree = "<group>"; };
-		CA4E3B66CE4D02048C77392B64FD0ABB /* R.swift.Library */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = R.swift.Library; path = Rswift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA4E3B66CE4D02048C77392B64FD0ABB /* Rswift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rswift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5C8D4D8AC703CFD1C89209105EE708 /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = RxSwift/Observables/Zip.swift; sourceTree = "<group>"; };
 		CAFE56E93A21FBA1355F7521144557C8 /* DBCoreDataToolkit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBCoreDataToolkit.h; path = DBDebugToolkit/Classes/Resources/CoreData/DBCoreDataToolkit.h; sourceTree = "<group>"; };
 		CB0FF2A3EA5DF4DFD70F5D94A4382600 /* AsSingle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsSingle.swift; path = RxSwift/Observables/AsSingle.swift; sourceTree = "<group>"; };
@@ -1632,10 +1632,10 @@
 				C6CC39D1F8D9CE2A1049B82A8A9BC9D5 /* DBDebugToolkit.bundle */,
 				C65062AD530271648BE476C20AA34425 /* DITranquillity.framework */,
 				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
-				B17091F9A26A30050FD99148535ABF8A /* Pods-WebAntApp */,
-				CA4E3B66CE4D02048C77392B64FD0ABB /* R.swift.Library */,
+				B17091F9A26A30050FD99148535ABF8A /* Pods_WebAntApp.framework */,
+				CA4E3B66CE4D02048C77392B64FD0ABB /* Rswift.framework */,
 				B86FE85A01A01E16477E296B62B20B73 /* RxNetworkApiClient.framework */,
-				809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift */,
+				809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */,
 				107052419D395B615005FBB6A88AAC7B /* SwiftLazy.framework */,
 				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
 			);
@@ -2569,7 +2569,7 @@
 			);
 			name = "Pods-WebAntApp";
 			productName = Pods_WebAntApp;
-			productReference = B17091F9A26A30050FD99148535ABF8A /* Pods-WebAntApp */;
+			productReference = B17091F9A26A30050FD99148535ABF8A /* Pods_WebAntApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		39C7BD4699F15645EA51D9F439333942 /* DBDebugToolkit-DBDebugToolkit */ = {
@@ -2680,7 +2680,7 @@
 			);
 			name = R.swift.Library;
 			productName = Rswift;
-			productReference = CA4E3B66CE4D02048C77392B64FD0ABB /* R.swift.Library */;
+			productReference = CA4E3B66CE4D02048C77392B64FD0ABB /* Rswift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {
@@ -2734,7 +2734,7 @@
 			);
 			name = RxSwift;
 			productName = RxSwift;
-			productReference = 809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift */;
+			productReference = 809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -3502,7 +3502,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RxNetworkApiClient/RxNetworkApiClient-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RxNetworkApiClient/RxNetworkApiClient-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3537,7 +3537,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/R.swift.Library/R.swift.Library-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/R.swift.Library/R.swift.Library-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3572,7 +3572,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftLazy/SwiftLazy-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftLazy/SwiftLazy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3607,7 +3607,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3643,7 +3643,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DBDebugToolkit/DBDebugToolkit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/DBDebugToolkit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3678,7 +3678,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DBDebugToolkit/DBDebugToolkit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/DBDebugToolkit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3712,7 +3712,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftLazy/SwiftLazy-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftLazy/SwiftLazy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3747,7 +3747,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DITranquillity/DITranquillity-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DITranquillity/DITranquillity-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3773,7 +3773,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3861,7 +3861,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RxSwift/RxSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RxSwift/RxSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3896,7 +3896,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4034,7 +4034,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RxSwift/RxSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RxSwift/RxSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4060,7 +4060,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4148,7 +4148,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4173,7 +4173,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/RxNetworkApiClient/RxNetworkApiClient-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/RxNetworkApiClient/RxNetworkApiClient-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4199,7 +4199,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
 				IBSC_MODULE = DBDebugToolkit;
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-DBDebugToolkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4223,7 +4223,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/DITranquillity/DITranquillity-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/DITranquillity/DITranquillity-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4248,7 +4248,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4307,7 +4307,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/R.swift.Library/R.swift.Library-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/R.swift.Library/R.swift.Library-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4333,7 +4333,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DBDebugToolkit";
 				IBSC_MODULE = DBDebugToolkit;
 				INFOPLIST_FILE = "Target Support Files/DBDebugToolkit/ResourceBundle-DBDebugToolkit-DBDebugToolkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = DBDebugToolkit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

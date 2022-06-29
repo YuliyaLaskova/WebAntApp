@@ -10,7 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     internal var presenter: SignUpPresenter?
-    private let datePicker = UIDatePicker()
+    private let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     
     // MARK: IB Outlets
 
@@ -54,8 +54,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     private func createDatePicker() {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         birthdayTextField.inputView = datePicker
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .date
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+            datePicker.datePickerMode = .date
+        } else {
+            datePicker.datePickerMode = .date
+        }
+//        datePicker.datePickerMode = .date
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -84,7 +89,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @objc func dateDoneBtnPressed() {
         if birthdayTextField.text?.isEmpty == true {
             birthdayTextField.resignFirstResponder()
-            birthdayTextField.text = "\(datePicker.date.formatted(date: .long, time: .omitted))"
+//            birthdayTextField.text = "\(datePicker.date.formatted(date: .long, time: .omitted))"
+            birthdayTextField.text = "\(datePicker.date)"
         } else {
             birthdayTextField.text = ""
             birthdayTextField.resignFirstResponder()
@@ -100,11 +106,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: IB Actions
 
     @IBAction func signInBtnPressed() {
-        signInBtnTapped()
+        openSignInScene()
     }
     
     @IBAction func signUpBtnPressed() {
-        signUpBtnTapped()
+        openMainGalleryScene()
     }
 
 
@@ -157,7 +163,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension SignUpViewController: SignUpView {
-    func signUpBtnTapped() {
+    func openMainGalleryScene() {
         guard let userName = userNameTextField.text,
               let email = emailTextField.text,
               let password = oldPasswordTextField.text,
@@ -173,7 +179,7 @@ extension SignUpViewController: SignUpView {
 
         if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) && password == confirmPassword {
 
-            presenter?.signUpBtnPressed(user: user)
+            presenter?.openMainGalleryScene(user: user)
             print("validation OK")
 
         } else {
@@ -182,7 +188,7 @@ extension SignUpViewController: SignUpView {
         }
     }
 
-    func signInBtnTapped() {
-        presenter?.signInBtnPressed()
+    func openSignInScene() {
+        presenter?.openSignInScene()
     }
 }

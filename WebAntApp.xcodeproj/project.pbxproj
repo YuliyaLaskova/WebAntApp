@@ -14,8 +14,6 @@
 		8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */; };
 		8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F622860623B0029BEAD /* ExtendedJsonResponseHandler.swift */; };
 		8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */; };
-		8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */; };
-		8C030F8F28619EFE0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F8E28619EFE0029BEAD /* Token.swift */; };
 		8C030F9128619F1B0029BEAD /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F9028619F1B0029BEAD /* Token.swift */; };
 		8C030F9B2861C9B20029BEAD /* MainGalleryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */; };
 		8C030F9C2861C9B20029BEAD /* MainGalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */; };
@@ -25,10 +23,33 @@
 		8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */; };
 		8C030FA42861C9C00029BEAD /* MainGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA32861C9C00029BEAD /* MainGalleryView.swift */; };
 		8C030FAA2861D5A10029BEAD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030FA92861D5A10029BEAD /* PhotoCell.swift */; };
+		8C17AC06286AF688002CF17E /* AddDataStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C17AC00286AF688002CF17E /* AddDataStoryboard.storyboard */; };
+		8C17AC07286AF688002CF17E /* AddDataRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC01286AF688002CF17E /* AddDataRouter.swift */; };
+		8C17AC08286AF688002CF17E /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC02286AF688002CF17E /* AddDataViewController.swift */; };
+		8C17AC09286AF688002CF17E /* AddDataPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC03286AF688002CF17E /* AddDataPresenterImp.swift */; };
+		8C17AC0A286AF688002CF17E /* AddDataConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC04286AF688002CF17E /* AddDataConfigurator.swift */; };
+		8C17AC0D286AF68D002CF17E /* AddDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC0C286AF68D002CF17E /* AddDataPresenter.swift */; };
+		8C17AC10286AF6D3002CF17E /* AddDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC0F286AF6D3002CF17E /* AddDataView.swift */; };
+		8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */; };
 		8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA2285B276E0089D180 /* UserEntity.swift */; };
 		8C36BDA5285B41CE0089D180 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA4285B41CE0089D180 /* DI.swift */; };
 		8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */; };
 		8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA8285C580A0089D180 /* SignUpGateway.swift */; };
+		8C4027DF28646CDE00CB9DE9 /* GetPhotoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027DE28646CDE00CB9DE9 /* GetPhotoEntity.swift */; };
+		8C4027E128646ECE00CB9DE9 /* GetPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */; };
+		8C4027E328646F2400CB9DE9 /* GetPhotoGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */; };
+		8C4027E92865B60D00CB9DE9 /* PostPhotoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027E82865B60D00CB9DE9 /* PostPhotoEntity.swift */; };
+		8C4027EB2865B6FF00CB9DE9 /* PostPhotoGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027EA2865B6FF00CB9DE9 /* PostPhotoGateway.swift */; };
+		8C4027ED2865B7AB00CB9DE9 /* MediaObjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */; };
+		8C4027EF2865BD7500CB9DE9 /* PostPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */; };
+		8C4028132869C18700CB9DE9 /* RootStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4028122869C18700CB9DE9 /* RootStoryboard.storyboard */; };
+		8C5496B328645077005674C1 /* AddPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */; };
+		8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496AE28645077005674C1 /* AddPhotoRouter.swift */; };
+		8C5496B528645077005674C1 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496AF28645077005674C1 /* AddPhotoViewController.swift */; };
+		8C5496B628645077005674C1 /* AddPhotoPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496B028645077005674C1 /* AddPhotoPresenterImp.swift */; };
+		8C5496B728645077005674C1 /* AddPhotoConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496B128645077005674C1 /* AddPhotoConfigurator.swift */; };
+		8C5496BA2864507E005674C1 /* AddPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496B92864507E005674C1 /* AddPhotoPresenter.swift */; };
+		8C5496BC28645080005674C1 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496BB28645080005674C1 /* AddPhotoView.swift */; };
 		8C6B3F662853447300153686 /* SignInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C6B3F602853447300153686 /* SignInStoryboard.storyboard */; };
 		8C6B3F672853447300153686 /* SignInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F612853447300153686 /* SignInRouter.swift */; };
 		8C6B3F692853447300153686 /* SignInPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6B3F632853447300153686 /* SignInPresenterImp.swift */; };
@@ -67,6 +88,7 @@
 		8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */; };
 		8CA8A8E82853346D0037D6DE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E72853346D0037D6DE /* WelcomeView.swift */; };
 		8CA8A8EA285336340037D6DE /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E9285336340037D6DE /* BaseRouter.swift */; };
+		8CAFB81C28645FA900A430AB /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,8 +100,6 @@
 		8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseHandler.swift; sourceTree = "<group>"; };
 		8C030F622860623B0029BEAD /* ExtendedJsonResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedJsonResponseHandler.swift; sourceTree = "<group>"; };
 		8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeyType.swift; sourceTree = "<group>"; };
-		8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
-		8C030F8E28619EFE0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8C030F9028619F1B0029BEAD /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainGalleryStoryboard.storyboard; sourceTree = "<group>"; };
 		8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryRouter.swift; sourceTree = "<group>"; };
@@ -89,10 +109,33 @@
 		8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryPresenter.swift; sourceTree = "<group>"; };
 		8C030FA32861C9C00029BEAD /* MainGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGalleryView.swift; sourceTree = "<group>"; };
 		8C030FA92861D5A10029BEAD /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		8C17AC00286AF688002CF17E /* AddDataStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddDataStoryboard.storyboard; sourceTree = "<group>"; };
+		8C17AC01286AF688002CF17E /* AddDataRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataRouter.swift; sourceTree = "<group>"; };
+		8C17AC02286AF688002CF17E /* AddDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
+		8C17AC03286AF688002CF17E /* AddDataPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataPresenterImp.swift; sourceTree = "<group>"; };
+		8C17AC04286AF688002CF17E /* AddDataConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataConfigurator.swift; sourceTree = "<group>"; };
+		8C17AC0C286AF68D002CF17E /* AddDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataPresenter.swift; sourceTree = "<group>"; };
+		8C17AC0F286AF6D3002CF17E /* AddDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataView.swift; sourceTree = "<group>"; };
+		8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		8C36BDA2285B276E0089D180 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		8C36BDA4285B41CE0089D180 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		8C36BDA8285C580A0089D180 /* SignUpGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpGateway.swift; sourceTree = "<group>"; };
+		8C4027DE28646CDE00CB9DE9 /* GetPhotoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoEntity.swift; sourceTree = "<group>"; };
+		8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoUseCase.swift; sourceTree = "<group>"; };
+		8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoGateway.swift; sourceTree = "<group>"; };
+		8C4027E82865B60D00CB9DE9 /* PostPhotoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoEntity.swift; sourceTree = "<group>"; };
+		8C4027EA2865B6FF00CB9DE9 /* PostPhotoGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoGateway.swift; sourceTree = "<group>"; };
+		8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectEntity.swift; sourceTree = "<group>"; };
+		8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoUseCase.swift; sourceTree = "<group>"; };
+		8C4028122869C18700CB9DE9 /* RootStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootStoryboard.storyboard; sourceTree = "<group>"; };
+		8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
+		8C5496AE28645077005674C1 /* AddPhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoRouter.swift; sourceTree = "<group>"; };
+		8C5496AF28645077005674C1 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		8C5496B028645077005674C1 /* AddPhotoPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoPresenterImp.swift; sourceTree = "<group>"; };
+		8C5496B128645077005674C1 /* AddPhotoConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoConfigurator.swift; sourceTree = "<group>"; };
+		8C5496B92864507E005674C1 /* AddPhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoPresenter.swift; sourceTree = "<group>"; };
+		8C5496BB28645080005674C1 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		8C6B3F602853447300153686 /* SignInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInStoryboard.storyboard; sourceTree = "<group>"; };
 		8C6B3F612853447300153686 /* SignInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRouter.swift; sourceTree = "<group>"; };
 		8C6B3F632853447300153686 /* SignInPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenterImp.swift; sourceTree = "<group>"; };
@@ -133,6 +176,7 @@
 		8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		8CA8A8E72853346D0037D6DE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8CA8A8E9285336340037D6DE /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
 		C0FF06869783F558A16850F5 /* Pods_WebAntApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebAntApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,7 +214,6 @@
 			children = (
 				8C030F5828605B700029BEAD /* Settings.swift */,
 				8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */,
-				8C030F8628609F410029BEAD /* UserDefaultsSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -225,11 +268,11 @@
 			children = (
 				8C030F952861C9B20029BEAD /* MainGalleryStoryboard.storyboard */,
 				8C030F972861C9B20029BEAD /* MainGalleryViewController.swift */,
+				8C030FA92861D5A10029BEAD /* PhotoCell.swift */,
 				8C030F962861C9B20029BEAD /* MainGalleryRouter.swift */,
 				8C030F982861C9B20029BEAD /* MainGalleryPresenterImp.swift */,
 				8C030F992861C9B20029BEAD /* MainGalleryConfigurator.swift */,
 				8C030FA82861CA700029BEAD /* Protocols */,
-				8C030FA92861D5A10029BEAD /* PhotoCell.swift */,
 			);
 			path = MainGallery;
 			sourceTree = "<group>";
@@ -237,10 +280,13 @@
 		8C030FA72861CA390029BEAD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8C030FA52861C9CC0029BEAD /* MainGallery */,
-				8C6B3F702853643600153686 /* SignUpScene */,
-				8C6B3F5F28533E9B00153686 /* SignInScene */,
+				8C4028122869C18700CB9DE9 /* RootStoryboard.storyboard */,
 				8CA8A8D8285333CC0037D6DE /* WelcomeScene */,
+				8C6B3F5F28533E9B00153686 /* SignInScene */,
+				8C6B3F702853643600153686 /* SignUpScene */,
+				8C030FA52861C9CC0029BEAD /* MainGallery */,
+				8C5496AC2864502E005674C1 /* AddPhotoScene */,
+				8C17AC0E286AF6BA002CF17E /* AddDataScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -250,6 +296,28 @@
 			children = (
 				8C030FA32861C9C00029BEAD /* MainGalleryView.swift */,
 				8C030FA12861C9BE0029BEAD /* MainGalleryPresenter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8C17AC0E286AF6BA002CF17E /* AddDataScene */ = {
+			isa = PBXGroup;
+			children = (
+				8C17AC00286AF688002CF17E /* AddDataStoryboard.storyboard */,
+				8C17AC02286AF688002CF17E /* AddDataViewController.swift */,
+				8C17AC01286AF688002CF17E /* AddDataRouter.swift */,
+				8C17AC03286AF688002CF17E /* AddDataPresenterImp.swift */,
+				8C17AC04286AF688002CF17E /* AddDataConfigurator.swift */,
+				8C17AC11286AF6E9002CF17E /* Protocols */,
+			);
+			path = AddDataScene;
+			sourceTree = "<group>";
+		};
+		8C17AC11286AF6E9002CF17E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C17AC0F286AF6D3002CF17E /* AddDataView.swift */,
+				8C17AC0C286AF68D002CF17E /* AddDataPresenter.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -266,6 +334,9 @@
 			isa = PBXGroup;
 			children = (
 				8C36BDA2285B276E0089D180 /* UserEntity.swift */,
+				8C4027DE28646CDE00CB9DE9 /* GetPhotoEntity.swift */,
+				8C4027E82865B60D00CB9DE9 /* PostPhotoEntity.swift */,
+				8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -275,8 +346,33 @@
 			children = (
 				8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */,
 				8C6B3F992859ED8700153686 /* SignInUseCase.swift */,
+				8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */,
+				8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		8C5496AC2864502E005674C1 /* AddPhotoScene */ = {
+			isa = PBXGroup;
+			children = (
+				8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */,
+				8C5496AF28645077005674C1 /* AddPhotoViewController.swift */,
+				8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */,
+				8C5496AE28645077005674C1 /* AddPhotoRouter.swift */,
+				8C5496B028645077005674C1 /* AddPhotoPresenterImp.swift */,
+				8C5496B128645077005674C1 /* AddPhotoConfigurator.swift */,
+				8C5496BD2864508A005674C1 /* Protocols */,
+			);
+			path = AddPhotoScene;
+			sourceTree = "<group>";
+		};
+		8C5496BD2864508A005674C1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C5496B92864507E005674C1 /* AddPhotoPresenter.swift */,
+				8C5496BB28645080005674C1 /* AddPhotoView.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		8C6B3F5F28533E9B00153686 /* SignInScene */ = {
@@ -332,6 +428,8 @@
 			children = (
 				8C6B3F952859EA6E00153686 /* SignInGateway.swift */,
 				8C36BDA8285C580A0089D180 /* SignUpGateway.swift */,
+				8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */,
+				8C4027EA2865B6FF00CB9DE9 /* PostPhotoGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -340,18 +438,17 @@
 			isa = PBXGroup;
 			children = (
 				8C36BDA4285B41CE0089D180 /* DI.swift */,
-				8C030F8E28619EFE0029BEAD /* Token.swift */,
 				8C030F9028619F1B0029BEAD /* Token.swift */,
+				8C6B3F82285892AE00153686 /* ApiRequest */,
 				8C030F5728605B600029BEAD /* Settings */,
+				8C6B3F942859EA5200153686 /* Gateways */,
 				8C36BDAA285C5A8A0089D180 /* UseCases */,
 				8C36BDA1285B274B0089D180 /* Entities */,
 				8C36BD9E285B15DE0089D180 /* Base */,
-				8C6B3F942859EA5200153686 /* Gateways */,
 				8C6B3F912859E92F00153686 /* Config */,
 				8C030FA72861CA390029BEAD /* Scenes */,
-				8C6B3F82285892AE00153686 /* ApiRequest */,
-				8CA8A8D5285332D10037D6DE /* Resources */,
 				8CA8A8D0285207310037D6DE /* SupportingFiles */,
+				8CA8A8D5285332D10037D6DE /* Resources */,
 				8C7DE78D284E0F34001F9D9B /* WebAntApp */,
 				8C7DE78C284E0F34001F9D9B /* Products */,
 				618DB4E23E02E7EF174C2458 /* Pods */,
@@ -380,6 +477,7 @@
 		8C7DE7AC2850987E001F9D9B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */,
 				8C6B3F8F2859D7F900153686 /* Validator.swift */,
 				8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */,
 				8C6B3F9B2859F6F700153686 /* StringManager.swift */,
@@ -488,7 +586,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C5496B328645077005674C1 /* AddPhotoStoryboard.storyboard in Resources */,
+				8C17AC06286AF688002CF17E /* AddDataStoryboard.storyboard in Resources */,
 				8C7DE79B284E0F35001F9D9B /* LaunchScreen.storyboard in Resources */,
+				8C4028132869C18700CB9DE9 /* RootStoryboard.storyboard in Resources */,
 				8C7DE798284E0F35001F9D9B /* Assets.xcassets in Resources */,
 				8C030F9B2861C9B20029BEAD /* MainGalleryStoryboard.storyboard in Resources */,
 				8C6B3F662853447300153686 /* SignInStoryboard.storyboard in Resources */,
@@ -588,10 +689,14 @@
 				8C6B3F7E285364A700153686 /* SignUpPresenter.swift in Sources */,
 				8CA8A8D72853330E0037D6DE /* R.generated.swift in Sources */,
 				8C6B3F962859EA6E00153686 /* SignInGateway.swift in Sources */,
+				8C17AC0D286AF68D002CF17E /* AddDataPresenter.swift in Sources */,
 				8CA8A8E02853341B0037D6DE /* WelcomeRouter.swift in Sources */,
 				8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */,
 				8C6B3F9A2859ED8800153686 /* SignInUseCase.swift in Sources */,
+				8C5496BC28645080005674C1 /* AddPhotoView.swift in Sources */,
 				8C6B3F8E28589CF400153686 /* RegistrationUseCase.swift in Sources */,
+				8C4027EB2865B6FF00CB9DE9 /* PostPhotoGateway.swift in Sources */,
+				8C4027ED2865B7AB00CB9DE9 /* MediaObjectEntity.swift in Sources */,
 				8C030F5F286061450029BEAD /* ErrorResponseHandler.swift in Sources */,
 				8C6B3F80285364AA00153686 /* SignUpView.swift in Sources */,
 				8C6B3F8C2858957E00153686 /* Requests.swift in Sources */,
@@ -599,27 +704,41 @@
 				8CA8A8E22853341B0037D6DE /* WelcomePresenterImp.swift in Sources */,
 				8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */,
 				8C6B3F6F2853450700153686 /* SignInPresenter.swift in Sources */,
+				8C17AC07286AF688002CF17E /* AddDataRouter.swift in Sources */,
 				8C030F9E2861C9B20029BEAD /* MainGalleryPresenterImp.swift in Sources */,
+				8C17AC0A286AF688002CF17E /* AddDataConfigurator.swift in Sources */,
 				8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */,
 				8C030F5928605B700029BEAD /* Settings.swift in Sources */,
 				8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */,
 				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
-				8C030F8F28619EFE0029BEAD /* Token.swift in Sources */,
 				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
 				8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */,
+				8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */,
+				8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */,
 				8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */,
 				8C6B3F9C2859F6F700153686 /* StringManager.swift in Sources */,
 				8C6B3F902859D7F900153686 /* Validator.swift in Sources */,
 				8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */,
+				8C5496BA2864507E005674C1 /* AddPhotoPresenter.swift in Sources */,
 				8CA8A8E32853341B0037D6DE /* WelcomeConfigurator.swift in Sources */,
+				8CAFB81C28645FA900A430AB /* GalleryPhotoCell.swift in Sources */,
 				8C36BDA5285B41CE0089D180 /* DI.swift in Sources */,
+				8C5496B728645077005674C1 /* AddPhotoConfigurator.swift in Sources */,
+				8C17AC08286AF688002CF17E /* AddDataViewController.swift in Sources */,
 				8C6B3F88285893F900153686 /* ApiBaseGateway.swift in Sources */,
+				8C17AC09286AF688002CF17E /* AddDataPresenterImp.swift in Sources */,
+				8C4027EF2865BD7500CB9DE9 /* PostPhotoUseCase.swift in Sources */,
 				8C6B3F932859E94900153686 /* Config.swift in Sources */,
+				8C5496B528645077005674C1 /* AddPhotoViewController.swift in Sources */,
 				8C7DE7B028509949001F9D9B /* DesignableUITextField.swift in Sources */,
+				8C4027E92865B60D00CB9DE9 /* PostPhotoEntity.swift in Sources */,
 				8CA8A8EA285336340037D6DE /* BaseRouter.swift in Sources */,
+				8C17AC10286AF6D3002CF17E /* AddDataView.swift in Sources */,
 				8C6B3F692853447300153686 /* SignInPresenterImp.swift in Sources */,
 				8C030F9C2861C9B20029BEAD /* MainGalleryRouter.swift in Sources */,
 				8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */,
+				8C4027DF28646CDE00CB9DE9 /* GetPhotoEntity.swift in Sources */,
+				8C4027E328646F2400CB9DE9 /* GetPhotoGateway.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */,
 				8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */,
 				8C6B3F8A2858941900153686 /* RegistrationGateway.swift in Sources */,
@@ -627,14 +746,15 @@
 				8C6B3F672853447300153686 /* SignInRouter.swift in Sources */,
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
 				8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */,
-				8C030F8728609F410029BEAD /* UserDefaultsSettings.swift in Sources */,
 				8C030FA42861C9C00029BEAD /* MainGalleryView.swift in Sources */,
 				8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */,
 				8C030FAA2861D5A10029BEAD /* PhotoCell.swift in Sources */,
 				8C7DE7BD2850B350001F9D9B /* SignInViewController.swift in Sources */,
 				8C7DE791284E0F34001F9D9B /* SceneDelegate.swift in Sources */,
+				8C5496B628645077005674C1 /* AddPhotoPresenterImp.swift in Sources */,
 				8C6B3F782853645C00153686 /* SignUpRouter.swift in Sources */,
 				8C030F9D2861C9B20029BEAD /* MainGalleryViewController.swift in Sources */,
+				8C4027E128646ECE00CB9DE9 /* GetPhotoUseCase.swift in Sources */,
 				8C030F9F2861C9B20029BEAD /* MainGalleryConfigurator.swift in Sources */,
 				8C6B3F842858934800153686 /* ExtendedApiRequest.swift in Sources */,
 			);
@@ -704,7 +824,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -758,7 +878,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -783,6 +903,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -811,6 +932,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

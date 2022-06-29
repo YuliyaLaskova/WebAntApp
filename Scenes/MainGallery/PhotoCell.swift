@@ -16,33 +16,3 @@ class PhotoCell: UICollectionViewCell {
     }
 }
 
-//    private let photoView: UIImageView = {
-//        let photoView = UIImageView()
-//        photoView.contentMode = .scaleAspectFill
-//        photoView.clipsToBounds = true
-//        return photoView
-//    }()
-//
-//    func setupCell(withImage:UIImage) {
-//        self.photoView.image = withImage
-//    }
-//
-//    override init(frame: CGRect) {
-//        super .init(frame: frame)
-//        contentView.addSubview(photoView)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("Error")
-//    }
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        photoView.frame = contentView.bounds
-//    }
-//
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        photoView.image = nil
-//    }
-//}

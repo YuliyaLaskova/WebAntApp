@@ -25,11 +25,12 @@ class SignInPresenterImp: SignInPresenter {
         self.signInUseCase = signInUseCase
     }
 
-    func signInBtnPressed(username: String, password: String) {
+    func signInAndOpenMainGallery(username: String, password: String) {
+
+//        self.router.openMainGallery()
         
         signInUseCase.signIn(username, password)
             .subscribe {
-                print("Router")
                 DispatchQueue.main.async {
                     self.router.openMainGallery()
                 }
@@ -40,7 +41,7 @@ class SignInPresenterImp: SignInPresenter {
 
     }
 
-    func signUpBtnPressed() {
+    func openSignUpScene() {
         router.openSignUpScene()
     }
 

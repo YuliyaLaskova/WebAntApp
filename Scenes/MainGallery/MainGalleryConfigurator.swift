@@ -19,11 +19,13 @@ enum MainGalleryConfigurator {
     }
 
     static func open(navigationController: UINavigationController) {
-        guard let view = R.storyboard.mainGalleryStoryboard().instantiateInitialViewController() as? MainGalleryViewController else {
-            return
-        }
-        Self.configure(view: view)
-        navigationController.pushViewController(view, animated: true)
+//        guard let view = R.storyboard.mainGalleryStoryboard().instantiateInitialViewController() as? MainGalleryViewController else {
+//            return
+//        }
+//        Self.configure(view: view)
+//        navigationController.pushViewController(view, animated: true)
+       let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        appDelegate?.openMainGalleryScreen(window: appDelegate?.window)
     }
 }
 

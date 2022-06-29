@@ -61,12 +61,12 @@ class WelcomeController: UIViewController {
     // MARK: IB Actions
 
     @IBAction func createAccountBtnPressed(_ sender: Any) {
-        signUpBtnPressed()
+        openSignUpScene()
     }
 
 
     @IBAction func haveAccountBtnPressed() {
-        signInBtnPressed()
+        openSignInScene()
 
     }
 
@@ -74,11 +74,11 @@ class WelcomeController: UIViewController {
 
 extension WelcomeController: WelcomeView {
 
-    func signInBtnPressed() {
-        presenter?.signInBtnPressed()
+    func openSignInScene() {
+        presenter?.openSignInScene()
     }
-    func signUpBtnPressed() {
-        presenter?.signUpBtnPressed()
+    func openSignUpScene() {
+        presenter?.openSignUpScene()
     }
 
 }

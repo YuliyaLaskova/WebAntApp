@@ -63,12 +63,6 @@ class DI {
             .as(Settings.self)
             .lifetime(.single)
 
-
-        self.container.register(UserDefaultsSettings.init)
-            .as(UserDefaultsSettings.self)
-            .lifetime(.single)
-
-
         self.container.register(SignInGatewayImp.init)
             .as(SignInGateway.self)
             .lifetime(.single)

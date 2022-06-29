@@ -33,15 +33,29 @@ extension ExtendedApiRequest {
             body: userEntity)
 
     }
+
+    static func postMediaObject(file: UploadFile) -> ExtendedApiRequest {
+        return extendedRequest(
+            path: "/api/media_objects",
+            method: .post,
+            headers: [Header.contentJson],
+            files: [file])
+    }
+
+    static func postPhoto(photo: PostPhotoEntity) -> ExtendedApiRequest {
+        return extendedRequest(
+            path: "/api/photos",
+            method: .post,
+            headers: [Header.contentJson]
+        )
+    }
+
+    static func getPhoto() -> ExtendedApiRequest {
+            extendedRequest(
+                path: "/api/photos",
+                method: .get,
+                headers: [Header.contentJson]
+            )
+        }
+
 }
-//
-//extendedRequest(
-//                path: "/oauth/v2/token",
-//                method: .get,
-//                headers: [Header.contentJson],
-//                query:
-//                ("client_id", Config.clientId),
-//                ("grant_type", "password"),
-//                ("username", username),
-//                ("password", password),
-//                ("client_secret", Config.clientSecret))

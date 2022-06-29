@@ -12,11 +12,11 @@ import Foundation
 
 class WelcomePresenterImp: WelcomePresenter {
 
-    func signInBtnPressed() {
+    func openSignInScene() {
         router.openSignInScene()
     }
 
-    func signUpBtnPressed() {
+    func openSignUpScene() {
         router.openSignUpScene()
     }
 

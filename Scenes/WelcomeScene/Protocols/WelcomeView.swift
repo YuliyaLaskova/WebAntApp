@@ -12,6 +12,6 @@ import UIKit
 
 protocol WelcomeView: AnyObject {
 
-    func signInBtnPressed()
-    func signUpBtnPressed()
+    func openSignInScene()
+    func openSignUpScene()
 }

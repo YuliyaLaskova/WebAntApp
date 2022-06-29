@@ -12,5 +12,5 @@ import UIKit
 
 protocol SignUpView: AnyObject {
     func signInBtnPressed()
-    func signUpBtnTapped()
+    func openMainGalleryScene()
 }

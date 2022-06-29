@@ -21,19 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         (UIApplication.shared.delegate as? AppDelegate)?.openStartScreen(window: self.window)
-//        window.makeKeyAndVisible()
-//        self.window = window
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "welcomeId")
-//
-////        let welcomeVC = WelcomeController()
-//        window.rootViewController = UINavigationController(rootViewController: destinationVC)
 
-
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SignInId")
-//        self.navigationController?.pushViewController(destinationVC, animated: true)
+        if LocalSettings().token != nil {
+            print("token")
+            (UIApplication.shared.delegate as? AppDelegate)?.openMainGalleryScreen(window: self.window)
+        } else {
+            print("no token")
+            (UIApplication.shared.delegate as? AppDelegate)?.openStartScreen(window: self.window)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -66,4 +60,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
+}

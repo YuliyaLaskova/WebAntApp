@@ -17,6 +17,14 @@ class SignUpRouter: BaseRouter {
     init(_ view: SignUpViewController) {
         self.view = view
     }
+
+    func openMainGalleryScene()  {
+
+        guard let navController = self.view?.navigationController else {
+            return
+        }
+        MainGalleryConfigurator.open(navigationController: navController)
+    }
     
     func openSignInScene() {
         guard let navController = self.view?.navigationController else {

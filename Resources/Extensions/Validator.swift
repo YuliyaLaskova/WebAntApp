@@ -15,7 +15,7 @@ enum ValidatorEnum {
 class Validator {
 
    static func isStringValid(stringValue: String, validationType: ValidatorEnum ) -> Bool {
-
+//
         var returnValue = true
         var regEx = ""
 

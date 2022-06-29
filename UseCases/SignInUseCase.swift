@@ -46,6 +46,7 @@ class SignInUseCaseImp: SignInUseCase {
             .do { token in
                 print("@@@token:\naccess:\(token.access_token)")
                 self.settings.token = token
+            
                 self.tokenState = .active
             }
 

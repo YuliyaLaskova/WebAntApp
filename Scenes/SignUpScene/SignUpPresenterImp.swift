@@ -29,11 +29,11 @@ class SignUpPresenterImp: SignUpPresenter {
     }
 
 
-    func signInBtnPressed() {
+    func openSignInScene() {
         router.openSignInScene()
     }
     
-    func signUpBtnPressed(user: UserEntity) {
+    func openMainGalleryScene(user: UserEntity) {
         signUpUseCase.signUp(user)
             .subscribe { [weak self] _ in
                 guard let strongSelf = self else {
@@ -41,8 +41,7 @@ class SignUpPresenterImp: SignUpPresenter {
                 }
                 self?.signInUseCase.signIn(user.email, user.password)
                     .subscribe(onCompleted: {
-                        // router
-                        print("router!!")
+                        self?.router.openMainGalleryScene()
                     })
                         .disposed(by: strongSelf.disposeBag)
 

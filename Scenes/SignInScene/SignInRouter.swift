@@ -18,6 +18,12 @@ class SignInRouter: BaseRouter {
         self.view = view
     }
 
+
+//    func openMainGallery()  {
+
+//        guard let mainTabBar = R.storyboard.rootStoryboard().instantiateInitialViewController() else { return }
+//        (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(mainTabBar)
+//    }
     func openMainGallery()  {
         guard let navController = self.view?.navigationController else {
             return

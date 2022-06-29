@@ -11,7 +11,7 @@
 import Foundation
 
 protocol SignInPresenter {
-    func signUpBtnPressed()
-    func signInBtnPressed(username: String, password: String) 
+    func openSignUpScene()
+    func signInAndOpenMainGallery(username: String, password: String) 
 
 }

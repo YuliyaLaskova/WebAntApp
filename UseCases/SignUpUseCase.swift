@@ -25,7 +25,6 @@ class SignUpUseCaseImp: SignUpUseCase {
     }
 
     func signUp(_ entity: UserEntity) -> Single<UserEntity> {
-        print("registrated")
         return self.registrationGateway.signUp(entity)
     }
 }

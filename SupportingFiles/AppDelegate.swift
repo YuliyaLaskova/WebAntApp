@@ -16,13 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         DI.initDependencies(appDelegate: self)
+//            LocalSettings().clearUserData()
 
-        if UserDefaults.standard.object(forKey: "refresh_token") != nil {
-            print("Token!!!")
-        }
-        else {
-            print("No token1!!!")
-        }
+        
+//        if UserDefaults.standard.object(forKey: UserDefaultsKey.token.rawValue) != nil {
+//            print("token")
+//            openMainGalleryScreen(window: self.window)
+//        } else {
+//            print("no token")
+//            openStartScreen(window: self.window)
+//        }
         // Override point for customization after application launch.
         return true
     }
@@ -36,19 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
 
-    }
-
-    func openSignInScene() {
-        guard let window = self.window else {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            return openSignInScene()
-        }
-        DispatchQueue.main.async {
-            let navController = UINavigationController()
-            window.rootViewController = navController
-            SignInConfigurator.open(navigationController: navController)
-            window.makeKeyAndVisible()
-        }
     }
 }
 
@@ -69,6 +59,21 @@ extension AppDelegate {
             window.rootViewController = rootView
         }
     }
+
+    func openMainGalleryScreen(window: UIWindow?) {
+        if let window = window {
+            self.window = window
+        }
+        guard let window = self.window else {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            return openMainGalleryScreen(window: nil)
+        }
+        DispatchQueue.main.async {
+            let rootView = R.storyboard.rootStoryboard().instantiateInitialViewController()
+            window.makeKeyAndVisible()
+            window.rootViewController = rootView
+        }
+    }
 }
 
 extension AppDelegate: AuthResponseHandlerDelegate {
@@ -79,7 +84,7 @@ extension AppDelegate: AuthResponseHandlerDelegate {
         guard let navController = self.window?.rootViewController as? UINavigationController,
               navController.viewControllers.last as? SignInViewController != nil else {
             DispatchQueue.main.async {
-                self.openSignInScene()
+                self.openStartScreen(window: self.window)
             }
             return
         }

@@ -12,6 +12,6 @@ import Foundation
 
 protocol WelcomePresenter {
 
-    func signInBtnPressed() 
-    func signUpBtnPressed()
+    func openSignInScene() 
+    func openSignUpScene()
 }

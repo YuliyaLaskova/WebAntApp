@@ -33,11 +33,11 @@ class SignInViewController: UIViewController {
         if isFieldEmpty() {
             showAlert(with: "Error", and: "You didn't fill all fields")
         }
-        signInBtnTapped()
+        signInAndOpenMainGallery()
     }
 
     @IBAction func signUpBtnPressed() {
-        signUpBtnTapped()
+        openSignUpScene()
     }
 
     // MARK: Constraints
@@ -120,18 +120,18 @@ extension SignInViewController: UITextFieldDelegate {
 
 extension SignInViewController: SignInView {
 
-    func signUpBtnTapped() {
-        presenter?.signUpBtnPressed()
+    func openSignUpScene() {
+        presenter?.openSignUpScene()
     }
 
-    func signInBtnTapped() {
+    func signInAndOpenMainGallery() {
 
         guard let email = emailTextField.text,
               let password = passwordTextField.text
         else { return }
 
         if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
-            presenter?.signInBtnPressed(username: email, password: password)
+            presenter?.signInAndOpenMainGallery(username: email, password: password)
             
             print("validation OK")
         } else {

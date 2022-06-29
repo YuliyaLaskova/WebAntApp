@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="dNh-dc-YLB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P3c-xa-QNK">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="779"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bxa-pX-hks">
                                     <size key="itemSize" width="128" height="128"/>
@@ -39,46 +40,60 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="unr-6J-M31">
-                                                    <rect key="frame" x="-56" y="0.0" width="240" height="128"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="unr-6J-M31" firstAttribute="height" secondItem="DJK-op-m7K" secondAttribute="height" id="5e8-lb-rE6"/>
-                                                <constraint firstItem="unr-6J-M31" firstAttribute="centerX" secondItem="DJK-op-m7K" secondAttribute="centerX" id="8yX-Me-obM"/>
-                                                <constraint firstItem="unr-6J-M31" firstAttribute="centerY" secondItem="DJK-op-m7K" secondAttribute="centerY" id="C7P-IO-u6T"/>
-                                                <constraint firstItem="unr-6J-M31" firstAttribute="width" secondItem="DJK-op-m7K" secondAttribute="width" multiplier="1.875" id="v5T-HJ-RVk"/>
+                                                <constraint firstItem="unr-6J-M31" firstAttribute="leading" secondItem="DJK-op-m7K" secondAttribute="leading" id="NjY-pN-Ncs"/>
+                                                <constraint firstAttribute="bottom" secondItem="unr-6J-M31" secondAttribute="bottom" id="OFJ-6L-dE0"/>
+                                                <constraint firstAttribute="trailing" secondItem="unr-6J-M31" secondAttribute="trailing" id="hpa-sK-Xb1"/>
+                                                <constraint firstItem="unr-6J-M31" firstAttribute="top" secondItem="DJK-op-m7K" secondAttribute="top" id="uCk-TK-As1"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.91976243260000001" green="0.17093295829999999" blue="0.87542511540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <connections>
                                             <outlet property="myImageView" destination="unr-6J-M31" id="lhp-s9-C8G"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-4z-V70" customClass="CustomSegmentedControl" customModule="WebAntApp" customModuleProvider="target">
+                                <rect key="frame" x="16" y="44" width="382" height="31"/>
+                                <color key="backgroundColor" red="0.06041065893" green="0.91517635929999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="7d3-dF-WnP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQV-Dz-KaG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zhc-C2-kVg" firstAttribute="top" secondItem="P3c-xa-QNK" secondAttribute="bottom" id="Fqw-Tf-TS7"/>
-                            <constraint firstItem="P3c-xa-QNK" firstAttribute="top" secondItem="O6U-9Z-OWv" secondAttribute="bottom" id="JHJ-mx-eOC"/>
-                            <constraint firstItem="P3c-xa-QNK" firstAttribute="centerX" secondItem="5hN-cM-1el" secondAttribute="centerX" id="VHg-Rq-uMj"/>
-                            <constraint firstItem="P3c-xa-QNK" firstAttribute="leading" secondItem="5hN-cM-1el" secondAttribute="leadingMargin" id="lny-aE-E0A"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P3c-xa-QNK" secondAttribute="trailing" id="sKR-Tp-Yer"/>
+                            <constraint firstItem="4Li-4z-V70" firstAttribute="leading" secondItem="IQV-Dz-KaG" secondAttribute="leading" constant="16" id="MVQ-3r-Nsb"/>
+                            <constraint firstItem="P3c-xa-QNK" firstAttribute="top" secondItem="4Li-4z-V70" secondAttribute="bottom" constant="8" symbolic="YES" id="Wst-jE-JpG"/>
+                            <constraint firstItem="IQV-Dz-KaG" firstAttribute="trailing" secondItem="4Li-4z-V70" secondAttribute="trailing" constant="16" id="dTN-Jh-WUX"/>
+                            <constraint firstItem="IQV-Dz-KaG" firstAttribute="trailing" secondItem="P3c-xa-QNK" secondAttribute="trailing" id="eTJ-gL-FL0"/>
+                            <constraint firstItem="P3c-xa-QNK" firstAttribute="leading" secondItem="IQV-Dz-KaG" secondAttribute="leading" id="ule-zK-y6k"/>
+                            <constraint firstItem="4Li-4z-V70" firstAttribute="top" secondItem="IQV-Dz-KaG" secondAttribute="top" id="zQW-jC-wKb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="533-N3-05g"/>
                     <connections>
                         <outlet property="imageCollection" destination="P3c-xa-QNK" id="BIx-a0-ad8"/>
+                        <outlet property="newPopularSegCntrl" destination="4Li-4z-V70" id="sCD-o7-H9y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUu-9d-dSc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="-178"/>
+            <point key="canvasLocation" x="1281.1594202898552" y="-178.125"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

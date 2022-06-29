@@ -89,18 +89,38 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
+    /// Storyboard `AddDataStoryboard`.
+    static let addDataStoryboard = _R.storyboard.addDataStoryboard()
+    /// Storyboard `AddPhotoStoryboard`.
+    static let addPhotoStoryboard = _R.storyboard.addPhotoStoryboard()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `MainGalleryStoryboard`.
     static let mainGalleryStoryboard = _R.storyboard.mainGalleryStoryboard()
+    /// Storyboard `RootStoryboard`.
+    static let rootStoryboard = _R.storyboard.rootStoryboard()
     /// Storyboard `SignInStoryboard`.
     static let signInStoryboard = _R.storyboard.signInStoryboard()
     /// Storyboard `SignUp`.
     static let signUp = _R.storyboard.signUp()
     /// Storyboard `WelcomeStoryboard`.
     static let welcomeStoryboard = _R.storyboard.welcomeStoryboard()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "AddDataStoryboard", bundle: ...)`
+    static func addDataStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.addDataStoryboard)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "AddPhotoStoryboard", bundle: ...)`
+    static func addPhotoStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.addPhotoStoryboard)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -113,6 +133,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "MainGalleryStoryboard", bundle: ...)`
     static func mainGalleryStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.mainGalleryStoryboard)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "RootStoryboard", bundle: ...)`
+    static func rootStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.rootStoryboard)
     }
     #endif
 
@@ -166,14 +193,26 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
+    /// Image `Bear`.
+    static let bear = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bear")
+    /// Image `Field`.
+    static let field = Rswift.ImageResource(bundle: R.hostingBundle, name: "Field")
+    /// Image `Flower`.
+    static let flower = Rswift.ImageResource(bundle: R.hostingBundle, name: "Flower")
     /// Image `Fog`.
     static let fog = Rswift.ImageResource(bundle: R.hostingBundle, name: "Fog")
-    /// Image `Grass`.
-    static let grass = Rswift.ImageResource(bundle: R.hostingBundle, name: "Grass")
+    /// Image `Forest`.
+    static let forest = Rswift.ImageResource(bundle: R.hostingBundle, name: "Forest")
+    /// Image `Home`.
+    static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "Home")
     /// Image `Logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "Logo")
+    /// Image `Photo`.
+    static let photo = Rswift.ImageResource(bundle: R.hostingBundle, name: "Photo")
+    /// Image `User`.
+    static let user = Rswift.ImageResource(bundle: R.hostingBundle, name: "User")
     /// Image `calendarIcon`.
     static let calendarIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "calendarIcon")
     /// Image `emailIcon`.
@@ -186,6 +225,27 @@ struct R: Rswift.Validatable {
     static let userIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "userIcon")
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Bear", bundle: ..., traitCollection: ...)`
+    static func bear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bear, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Field", bundle: ..., traitCollection: ...)`
+    static func field(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.field, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Flower", bundle: ..., traitCollection: ...)`
+    static func flower(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.flower, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Fog", bundle: ..., traitCollection: ...)`
     static func fog(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.fog, compatibleWith: traitCollection)
@@ -193,9 +253,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "Grass", bundle: ..., traitCollection: ...)`
-    static func grass(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.grass, compatibleWith: traitCollection)
+    /// `UIImage(named: "Forest", bundle: ..., traitCollection: ...)`
+    static func forest(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.forest, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Home", bundle: ..., traitCollection: ...)`
+    static func home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home, compatibleWith: traitCollection)
     }
     #endif
 
@@ -203,6 +270,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "Logo", bundle: ..., traitCollection: ...)`
     static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Photo", bundle: ..., traitCollection: ...)`
+    static func photo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "User", bundle: ..., traitCollection: ...)`
+    static func user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.user, compatibleWith: traitCollection)
     }
     #endif
 
@@ -274,8 +355,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `ImageCell`.
+    static let imageCell: Rswift.ReuseIdentifier<GalleryPhotoCell> = Rswift.ReuseIdentifier(identifier: "ImageCell")
     /// Reuse identifier `PhotoViewCell`.
     static let photoViewCell: Rswift.ReuseIdentifier<PhotoCell> = Rswift.ReuseIdentifier(identifier: "PhotoViewCell")
 
@@ -306,10 +389,19 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       #if os(iOS) || os(tvOS)
+      try addDataStoryboard.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try addPhotoStoryboard.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
       try launchScreen.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try mainGalleryStoryboard.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try rootStoryboard.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try signInStoryboard.validate()
@@ -321,6 +413,40 @@ struct _R: Rswift.Validatable {
       try welcomeStoryboard.validate()
       #endif
     }
+
+    #if os(iOS) || os(tvOS)
+    struct addDataStoryboard: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = AddDataViewController
+
+      let bundle = R.hostingBundle
+      let name = "AddDataStoryboard"
+
+      static func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "photo") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'photo' is used in storyboard 'AddDataStoryboard', but couldn't be loaded.") } }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct addPhotoStoryboard: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = AddPhotoViewController
+
+      let bundle = R.hostingBundle
+      let name = "AddPhotoStoryboard"
+
+      static func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "photo") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'photo' is used in storyboard 'AddPhotoStoryboard', but couldn't be loaded.") } }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -347,6 +473,24 @@ struct _R: Rswift.Validatable {
       let name = "MainGalleryStoryboard"
 
       static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct rootStoryboard: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UITabBarController
+
+      let bundle = R.hostingBundle
+      let name = "RootStoryboard"
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "Home", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Home' is used in storyboard 'RootStoryboard', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Photo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Photo' is used in storyboard 'RootStoryboard', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
