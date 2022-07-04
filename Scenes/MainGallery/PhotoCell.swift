@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoCell: UICollectionViewCell {
 
@@ -13,6 +14,34 @@ class PhotoCell: UICollectionViewCell {
         didSet {
             myImageView.contentMode = .scaleToFill
         }
+    }
+
+    private lazy var spinner = UIActivityIndicatorView(style: .large)
+
+            override init(frame: CGRect) {
+                super.init(frame: frame)
+                commonInit()
+            }
+
+    required init?(coder: NSCoder) {
+                super.init(coder: coder)
+                commonInit()
+            }
+
+            private func commonInit() {
+                 spinner.translatesAutoresizingMaskIntoConstraints = false
+                contentView.addSubview(spinner)
+
+                spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+                spinner.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+             }
+
+    func setupImage(_ url: String) {
+        guard let urlValid = URL(string: "\(Config.apiEndpoint)/media/\(url)") else {
+            return
+        }
+
+        myImageView.kf.setImage(with: urlValid)
     }
 }
 

@@ -9,7 +9,8 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AddPhotoPresenter {
-    func  openAddDataViewController()
+    func  openAddDataViewController(photoForPost: UIImage)
 }

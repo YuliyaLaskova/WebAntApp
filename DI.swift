@@ -28,20 +28,20 @@ class DI {
 
 
         self.container.register { () -> ApiClientImp in
-            //            let config = URLSessionConfiguration.default
-            //            config.timeoutIntervalForRequest = 60 * 20
-            //            config.timeoutIntervalForResource = 60 * 20
-            //            config.waitsForConnectivity = true
-            //            config.shouldUseExtendedBackgroundIdleMode = true
-            //            config.urlCache?.removeAllCachedResponses()
+                        let config = URLSessionConfiguration.default
+                        config.timeoutIntervalForRequest = 60 * 20
+                        config.timeoutIntervalForResource = 60 * 20
+                        config.waitsForConnectivity = true
+                        config.shouldUseExtendedBackgroundIdleMode = true
+                        config.urlCache?.removeAllCachedResponses()
 
 
 
             let client = ApiClientImp.defaultInstance(host: Config.apiEndpoint)
-            //            (urlSessionConfiguration: config, completionHandlerQueue: .main)
-            //            client.responseHandlersQueue.append(ErrorResponseHandler())
+//                        (urlSessionConfiguration: config, completionHandlerQueue: .main)
+//                        client.responseHandlersQueue.append(ErrorResponseHandler())
             client.responseHandlersQueue.append(JsonResponseHandler())
-            //            client.responseHandlersQueue.append(NSErrorResponseHandler())
+//                        client.responseHandlersQueue.append(NSErrorResponseHandler())
 
             // MARK: add this files
             //            client.interceptors.append(JsonContentInterceptor())
@@ -63,6 +63,7 @@ class DI {
             .as(Settings.self)
             .lifetime(.single)
 
+        // Gateways
         self.container.register(SignInGatewayImp.init)
             .as(SignInGateway.self)
             .lifetime(.single)
@@ -71,11 +72,36 @@ class DI {
             .as(SignUpGateway.self)
             .lifetime(.single)
 
+        self.container.register(GetPhotoGatewayImp.init)
+            .as(GetPhotoGateway.self)
+            .lifetime(.single)
+
+        self.container.register(ApiPhotoPaginationGateway.init)
+            .as(PaginationGateway.self)
+            .lifetime(.single)
+
+        self.container.register(PostPhotoGatewayImp.init)
+            .as(PostPhotoGateway.self)
+            .lifetime(.single)
+
+        // UseCases
         self.container.register(SignUpUseCaseImp.init)
             .as(SignUpUseCase.self)
 
         self.container.register(SignInUseCaseImp.init)
             .as(SignInUseCase.self)
+            .lifetime(.single)
+
+        self.container.register(GetPhotoUseCaseImp.init)
+            .as(GetPhotoUseCase.self)
+            .lifetime(.single)
+
+        self.container.register(PaginationUseCaseImp.init)
+            .as(PaginationUseCase.self)
+            .lifetime(.single)
+
+        self.container.register(PostPhotoUseCaseImp.init)
+            .as(PostPhotoUseCase.self)
             .lifetime(.single)
 
     }

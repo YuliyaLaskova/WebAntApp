@@ -9,7 +9,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AddDataPresenter {
-    
+    func takeImageForPost() -> UIImage
+    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost)
 }

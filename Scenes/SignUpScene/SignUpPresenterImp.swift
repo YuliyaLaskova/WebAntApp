@@ -33,20 +33,22 @@ class SignUpPresenterImp: SignUpPresenter {
         router.openSignInScene()
     }
     
-    func openMainGalleryScene(user: UserEntity) {
-        signUpUseCase.signUp(user)
-            .subscribe { [weak self] _ in
-                guard let strongSelf = self else {
-                    return
-                }
-                self?.signInUseCase.signIn(user.email, user.password)
-                    .subscribe(onCompleted: {
-                        self?.router.openMainGalleryScene()
-                    })
+    func registrateAndOpenMainGalleryScene(user: UserEntity) {
+        if Validator.isStringValid(stringValue: user.email, validationType: .email) && Validator.isStringValid(stringValue: user.password, validationType: .password) {
+            signUpUseCase.signUp(user)
+                .observe(on: MainScheduler.instance)
+                .subscribe { [weak self] _ in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    self?.signInUseCase.signIn(user.email, user.password)
+                        .subscribe(onCompleted: {
+                            self?.router.openMainGalleryScene()
+                        })
                         .disposed(by: strongSelf.disposeBag)
 
-            }
-            .disposed(by: disposeBag)
-
+                }
+                .disposed(by: disposeBag)
+        }
     }
 }

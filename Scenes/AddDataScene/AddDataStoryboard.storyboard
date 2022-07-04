@@ -24,30 +24,29 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GLR-Sc-Rxf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="806"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSm-fJ-eZP">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4km-9D-oPX">
-                                                        <rect key="frame" x="0.0" y="51" width="414" height="272.5"/>
+                                                        <rect key="frame" x="0.0" y="1" width="414" height="297.5"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="systemGray4Color"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="275" id="kOU-ko-gRK"/>
+                                                            <constraint firstAttribute="height" constant="300" id="kOU-ko-gRK"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
-                                                    <constraint firstItem="4km-9D-oPX" firstAttribute="leading" secondItem="sSm-fJ-eZP" secondAttribute="leading" id="3mK-yz-GlT"/>
-                                                    <constraint firstItem="4km-9D-oPX" firstAttribute="top" secondItem="sSm-fJ-eZP" secondAttribute="top" constant="50" id="Hel-h7-d7U"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4km-9D-oPX" secondAttribute="bottom" constant="50" id="I1y-oh-j4U"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4km-9D-oPX" secondAttribute="trailing" id="hgg-eZ-OwE"/>
+                                                    <constraint firstItem="4km-9D-oPX" firstAttribute="centerX" secondItem="sSm-fJ-eZP" secondAttribute="centerX" id="Nwa-tm-4BH"/>
+                                                    <constraint firstItem="4km-9D-oPX" firstAttribute="centerY" secondItem="sSm-fJ-eZP" secondAttribute="centerY" id="ejK-Sg-roA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4km-9D-oPX" secondAttribute="bottom" id="hLL-SY-DwC"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asf-9w-nWE">
-                                                <rect key="frame" x="0.0" y="375" width="414" height="56"/>
+                                                <rect key="frame" x="0.0" y="300" width="414" height="56"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jov-Je-KtE">
                                                         <rect key="frame" x="16" y="10" width="382" height="36"/>
@@ -66,7 +65,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jbb-WR-biA">
-                                                <rect key="frame" x="0.0" y="431" width="414" height="375"/>
+                                                <rect key="frame" x="0.0" y="356" width="414" height="300"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fOz-Qa-Wd4">
                                                         <rect key="frame" x="16" y="0.0" width="382" height="150"/>
@@ -74,7 +73,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="150" id="o5n-V5-82A"/>
                                                         </constraints>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -94,6 +92,7 @@
                                             <constraint firstItem="sSm-fJ-eZP" firstAttribute="centerX" secondItem="GLR-Sc-Rxf" secondAttribute="centerX" id="G6d-qw-YGA"/>
                                             <constraint firstItem="asf-9w-nWE" firstAttribute="centerY" secondItem="GLR-Sc-Rxf" secondAttribute="centerY" id="Oqh-w6-7wN"/>
                                             <constraint firstItem="Jbb-WR-biA" firstAttribute="centerX" secondItem="GLR-Sc-Rxf" secondAttribute="centerX" id="dqa-Mw-O8n"/>
+                                            <constraint firstItem="4km-9D-oPX" firstAttribute="width" secondItem="GLR-Sc-Rxf" secondAttribute="width" id="eZ3-1c-2uy"/>
                                             <constraint firstItem="sSm-fJ-eZP" firstAttribute="top" secondItem="GLR-Sc-Rxf" secondAttribute="top" id="rxA-RF-WIG"/>
                                         </constraints>
                                     </stackView>
@@ -117,7 +116,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="U1M-O8-dUO"/>
                     <connections>
-                        <outlet property="descriptionTextField" destination="fOz-Qa-Wd4" id="HV1-98-IxE"/>
+                        <outlet property="descriptionTextView" destination="fOz-Qa-Wd4" id="HV1-98-IxE"/>
                         <outlet property="nameTextField" destination="Jov-Je-KtE" id="9KC-by-GPy"/>
                         <outlet property="photoToPost" destination="4km-9D-oPX" id="GVl-sp-1eo"/>
                     </connections>

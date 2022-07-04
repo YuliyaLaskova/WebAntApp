@@ -12,17 +12,17 @@ import UIKit
 
 enum AddDataConfigurator {
     
-    static func configure(view: AddDataViewController) {
+    static func configure(view: AddDataViewController, photoForPost: UIImage) {
         let router = AddDataRouter(view)
-        let presenter = AddDataPresenterImp(view, router)
+        let presenter = AddDataPresenterImp(view, router, postPhotoUseCase: DI.resolve(), photoForPost)
         view.presenter = presenter
     }
 
-    static func open(navigationController: UINavigationController) {
+    static func open(navigationController: UINavigationController, photoForPost: UIImage) {
         guard let view = R.storyboard.addDataStoryboard().instantiateInitialViewController() as? AddDataViewController else {
             return
         }
-        Self.configure(view: view)
+        Self.configure(view: view, photoForPost: photoForPost)
         navigationController.pushViewController(view, animated: true)
     }
 }

@@ -18,7 +18,6 @@ class SignInGatewayImp: ApiBaseGateway, SignInGateway {
     func refreshToken(refreshToken: String) -> Single<Token> {
         apiClient.execute(request: ExtendedApiRequest.tokenRefreshRequest(refreshToken))
     }
-    
 
     func authorize(login: String, password: String) -> Single<Token> {
        return apiClient.execute(request: ExtendedApiRequest.signIn(login: login, password: password))

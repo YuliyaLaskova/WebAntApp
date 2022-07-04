@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AddPhotoPresenterImp: AddPhotoPresenter {
 
@@ -22,8 +23,8 @@ class AddPhotoPresenterImp: AddPhotoPresenter {
     }
 
 
-    func openAddDataViewController() {
-        router.openAddDataViewController()
+    func openAddDataViewController(photoForPost: UIImage) {
+        router.openAddDataViewController(photoForPost: photoForPost)
     }
 
 }

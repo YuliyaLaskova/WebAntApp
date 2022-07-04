@@ -51,7 +51,31 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.delegate = self
     }
 
+//    @objc func handleDatePicker() {
+//        self.birthdayTextField.text = defaultFormatter.string(from: datePicker.date)
+//    }
+//
+//    var defaultFormatter: DateFormatter {
+//        let formatter = DateFormatter()
+//        formatter.timeZone = TimeZone.current
+//        formatter.dateFormat = "dd.MM.yyyy"
+//
+//        return formatter
+//    }
+
     private func createDatePicker() {
+//        UIDatePicker.appearance().backgroundColor = .blue
+//        UIDatePicker.appearance().tintColor = .gray
+//        self.datePicker.setValue(UIColor.gray, forKeyPath: "textColor")
+//        self.datePicker.datePickerMode = .date
+//        self.datePicker.maximumDate = Date()
+//        self.datePicker.addTarget(self,
+//                                 action: #selector(self.handleDatePicker),
+//                                 for: .valueChanged)
+//        self.birthdayTextField.inputView = datePicker
+//        if #available(iOS 13.4, *) {
+//            self.datePicker.preferredDatePickerStyle = .wheels
+//        }
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         birthdayTextField.inputView = datePicker
         if #available(iOS 13.4, *) {
@@ -163,6 +187,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension SignUpViewController: SignUpView {
+// TODO: Вынести валидацию в презентер
     func openMainGalleryScene() {
         guard let userName = userNameTextField.text,
               let email = emailTextField.text,
@@ -177,9 +202,10 @@ extension SignUpViewController: SignUpView {
             user.birthday = nil
         }
 
-        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) && password == confirmPassword {
+//        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) &&
+        if password == confirmPassword {
 
-            presenter?.openMainGalleryScene(user: user)
+            presenter?.registrateAndOpenMainGalleryScene(user: user)
             print("validation OK")
 
         } else {

@@ -8,7 +8,7 @@
 import Foundation
 
 class Token: Codable {
-    
+
     var access_token: String
     var refresh_token: String
 

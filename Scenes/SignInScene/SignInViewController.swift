@@ -24,6 +24,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupUI()
     }
 
@@ -63,6 +64,9 @@ class SignInViewController: UIViewController {
     // MARK: Setup UI method
 
     private func setupUI() {
+        
+        emailTextField.becomeFirstResponder()
+
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
         signUpBtn.layer.borderWidth = 1
@@ -79,9 +83,9 @@ class SignInViewController: UIViewController {
     func setupNavigationBarItem() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         let cancelButton = UIBarButtonItem.init(
-              title: "Cancel",
-              style: .done,
-              target: self,
+            title: "Cancel",
+            style: .done,
+            target: self,
             action: #selector(goBack)
         )
         self.navigationItem.leftBarButtonItem = cancelButton
@@ -130,13 +134,7 @@ extension SignInViewController: SignInView {
               let password = passwordTextField.text
         else { return }
 
-        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
-            presenter?.signInAndOpenMainGallery(username: email, password: password)
-            
-            print("validation OK")
-        } else {
-            print("validation BAAAAD")
-        }
+        presenter?.signInAndOpenMainGallery(username: email, password: password)
     }
 }
 

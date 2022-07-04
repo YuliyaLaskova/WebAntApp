@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class DesignableUITextField: UITextField, UITextFieldDelegate {
 
     // Provides left padding for images

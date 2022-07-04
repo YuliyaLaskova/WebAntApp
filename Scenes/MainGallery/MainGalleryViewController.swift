@@ -18,6 +18,7 @@ class MainGalleryViewController: UIViewController {
     var array: [UIImage] = [UIImage(named: "Forest")!, UIImage(named: "Field")!, UIImage(named: "Flower")!, UIImage(named: "Bear")!]
 
     @IBOutlet var imageCollection: UICollectionView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet var newPopularSegCntrl: CustomSegmentedControl!{
         didSet{
@@ -30,6 +31,11 @@ class MainGalleryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if presenter == nil {
+            MainGalleryConfigurator.configure(view: self)
+        }
+        presenter?.viewDidLoad()
         setupUI()
     }
 
@@ -66,30 +72,66 @@ class MainGalleryViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
 
     }
+
+//    func actIndicatorStartAnimating() {
+//        activityIndicator.startAnimating()
+//    }
 }
 
 extension MainGalleryViewController: MainGalleryView {
-    
-}
 
-extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource, CustomSegmentedControlDelegate  {
-    func change(to index: Int) {
-        print("segmentedControl index changed to \(index)")
+    func refreshPhotoCollection(isHidden: Bool) {
+        imageCollection.reloadData()
+    }
+
+    func actIndicatorStartAnimating() {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+    }
+
+    func actIndicatorStopAnimating() {
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
 
 
+    
+}
+extension MainGalleryViewController: CustomSegmentedControlDelegate  {
+    func change(to index: Int) {
+        print("segmentedControl index changed to \(index)")
+    }
+}
+
+extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
+        return presenter?.photoItems.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as? PhotoCell {
-            cell.myImageView.image = array[indexPath.row]
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 10
-            return cell
-        } else {
+            guard let photo = presenter?.photoItems[indexPath.row].image?.name else {
+                return UICollectionViewCell()
+            }
+//            if let photo = presenter?.photoItems[indexPath.row].image {
+                cell.clipsToBounds = true
+                cell.layer.cornerRadius = 10
+                cell.setupImage(photo)
+                return cell
+        }
+        else {
             return UICollectionViewCell()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == self.presenter!.photoItems.count - 1 {
+            self.presenter?.fetchPhotosWithPagination()
         }
     }
 }

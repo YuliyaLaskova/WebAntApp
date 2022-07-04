@@ -19,17 +19,18 @@ class SignInPresenterImp: SignInPresenter {
     private let disposeBag = DisposeBag()
     
     init(view: SignInView,
-         router: SignInRouter, signInUseCase: SignInUseCase) {
+         router: SignInRouter,
+         signInUseCase: SignInUseCase) {
         self.view = view
         self.router = router
         self.signInUseCase = signInUseCase
     }
 
     func signInAndOpenMainGallery(username: String, password: String) {
-
 //        self.router.openMainGallery()
-        
+        if Validator.isStringValid(stringValue: username, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
         signInUseCase.signIn(username, password)
+            .observe(on: MainScheduler.instance)
             .subscribe {
                 DispatchQueue.main.async {
                     self.router.openMainGallery()
@@ -38,7 +39,7 @@ class SignInPresenterImp: SignInPresenter {
                 print("Disposed")
             }
             .disposed(by: disposeBag)
-
+        }
     }
 
     func openSignUpScene() {

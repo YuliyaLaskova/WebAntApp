@@ -38,15 +38,15 @@ extension ExtendedApiRequest {
         return extendedRequest(
             path: "/api/media_objects",
             method: .post,
-            headers: [Header.contentJson],
             files: [file])
     }
 
-    static func postPhoto(photo: PostPhotoEntity) -> ExtendedApiRequest {
+    static func postPhoto(photo: PhotoEntityForPost) -> ExtendedApiRequest {
         return extendedRequest(
             path: "/api/photos",
             method: .post,
-            headers: [Header.contentJson]
+            headers: [Header.contentJson],
+            body: photo
         )
     }
 
@@ -54,8 +54,17 @@ extension ExtendedApiRequest {
             extendedRequest(
                 path: "/api/photos",
                 method: .get,
-                headers: [Header.contentJson]
-            )
+                headers: [Header.contentJson])
+        }
+
+    static func getPhotoPaginated(_ page: Int, _ limit: Int) -> ExtendedApiRequest {
+            extendedRequest(
+                path: "/api/photos",
+                method: .get,
+                headers: [Header.contentJson],
+                query:
+                ("page", "\(page)"),
+                ("limit", "\(limit)"))
         }
 
 }

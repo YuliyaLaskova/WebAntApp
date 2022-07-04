@@ -50,8 +50,6 @@ class AddPhotoViewController: UIViewController {
         checkedImage.isUserInteractionEnabled = true
         tapObserver()
 
-        //        view.addSubview(photoCollection)
-
     }
 
     private func setupBarButtonItems() {
@@ -83,7 +81,8 @@ class AddPhotoViewController: UIViewController {
     }
 
     @objc func nextBtnPressed() {
-        openAddDataViewController()
+        // передать картинку
+                openAddDataViewController()
     }
 
     @objc func goBack() {
@@ -105,7 +104,8 @@ class AddPhotoViewController: UIViewController {
 
 extension AddPhotoViewController: AddPhotoView {
     func openAddDataViewController() {
-        presenter?.openAddDataViewController()
+        guard let checkedImage = checkedImage.image else { return }
+        presenter?.openAddDataViewController(photoForPost: checkedImage)
     }
 }
 

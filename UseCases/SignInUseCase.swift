@@ -42,6 +42,8 @@ class SignInUseCaseImp: SignInUseCase {
     }
 
     func signIn(_ login: String, _ password: String) -> Completable {
+// TODO: do(onSubscribe: { })
+
         signInGateway.authorize(login: login, password: password)
             .do { token in
                 print("@@@token:\naccess:\(token.access_token)")

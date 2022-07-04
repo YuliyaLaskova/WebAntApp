@@ -12,5 +12,5 @@ import Foundation
 
 protocol SignUpPresenter {
     func openSignInScene()
-    func openMainGalleryScene(user: UserEntity)
+    func registrateAndOpenMainGalleryScene(user: UserEntity)
 }

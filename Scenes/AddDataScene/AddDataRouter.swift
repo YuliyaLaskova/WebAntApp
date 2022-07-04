@@ -18,10 +18,10 @@ class AddDataRouter: BaseRouter {
         self.view = view
     }
     
-    func openSomeScene() {
+    func postPhotoThenOpenMainGallery() {
         guard let navController = self.view?.navigationController else {
             return
         }
-        //  SomeSceneConfigurator.open(navigationController: navController)
+          MainGalleryConfigurator.open(navigationController: navController)
     }
 }

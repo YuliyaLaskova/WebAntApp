@@ -13,15 +13,16 @@ import UIKit
 class AddPhotoRouter: BaseRouter {
     
     weak var view: UIViewController?
+
     
     init(_ view: AddPhotoViewController) {
         self.view = view
     }
 
-    func  openAddDataViewController() {
+    func  openAddDataViewController(photoForPost: UIImage) {
         guard let navController = self.view?.navigationController else {
             return
         }
-        AddDataConfigurator.open(navigationController: navController)
+        AddDataConfigurator.open(navigationController: navController, photoForPost: photoForPost)
     }
 }

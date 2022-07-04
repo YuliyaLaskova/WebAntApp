@@ -10,7 +10,7 @@ import RxSwift
 import RxNetworkApiClient
 
 protocol GetPhotoUseCase {
-    func getPhoto(_ photo: PhotoModel) -> Single<PhotoModel>
+    func getPhoto() -> Single<PhotoModel>
 }
 
 class GetPhotoUseCaseImp: GetPhotoUseCase {
@@ -21,8 +21,8 @@ class GetPhotoUseCaseImp: GetPhotoUseCase {
         self.getPhotoGateway = gateway
     }
 
-    func getPhoto(_ photo: PhotoModel) -> Single<PhotoModel> {
-        getPhotoGateway.getPhoto(photo)
+    func getPhoto() -> Single<PhotoModel> {
+        getPhotoGateway.getPhoto()
     }
 }
 

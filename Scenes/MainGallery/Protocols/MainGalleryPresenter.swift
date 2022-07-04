@@ -11,5 +11,11 @@
 import Foundation
 
 protocol MainGalleryPresenter {
-    
+    var isNewsLoadingInProgress: Bool { get }
+
+    var  photoItems: [PhotoEntityForGet] { get set }
+    func fetchPhotos()
+    func fetchPhotosWithPagination()
+    func subscribeOnPhotoUpdates()
+    func viewDidLoad()
 }

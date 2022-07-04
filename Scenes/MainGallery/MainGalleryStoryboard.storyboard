@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P3c-xa-QNK">
-                                <rect key="frame" x="0.0" y="83" width="414" height="779"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bxa-pX-hks">
                                     <size key="itemSize" width="128" height="128"/>
@@ -64,21 +64,28 @@
                                     <constraint firstAttribute="height" constant="31" id="7d3-dF-WnP"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6eG-T9-VZk">
+                                <rect key="frame" x="197" y="842" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IQV-Dz-KaG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Zhc-C2-kVg" firstAttribute="top" secondItem="P3c-xa-QNK" secondAttribute="bottom" id="Fqw-Tf-TS7"/>
+                            <constraint firstItem="6eG-T9-VZk" firstAttribute="centerX" secondItem="5hN-cM-1el" secondAttribute="centerX" id="KcY-c2-JgW"/>
                             <constraint firstItem="4Li-4z-V70" firstAttribute="leading" secondItem="IQV-Dz-KaG" secondAttribute="leading" constant="16" id="MVQ-3r-Nsb"/>
                             <constraint firstItem="P3c-xa-QNK" firstAttribute="top" secondItem="4Li-4z-V70" secondAttribute="bottom" constant="8" symbolic="YES" id="Wst-jE-JpG"/>
                             <constraint firstItem="IQV-Dz-KaG" firstAttribute="trailing" secondItem="4Li-4z-V70" secondAttribute="trailing" constant="16" id="dTN-Jh-WUX"/>
                             <constraint firstItem="IQV-Dz-KaG" firstAttribute="trailing" secondItem="P3c-xa-QNK" secondAttribute="trailing" id="eTJ-gL-FL0"/>
+                            <constraint firstItem="6eG-T9-VZk" firstAttribute="top" secondItem="P3c-xa-QNK" secondAttribute="bottom" id="ghf-wT-RTC"/>
+                            <constraint firstItem="IQV-Dz-KaG" firstAttribute="bottom" secondItem="6eG-T9-VZk" secondAttribute="bottom" id="tTt-Sa-Ao5"/>
                             <constraint firstItem="P3c-xa-QNK" firstAttribute="leading" secondItem="IQV-Dz-KaG" secondAttribute="leading" id="ule-zK-y6k"/>
+                            <constraint firstItem="IQV-Dz-KaG" firstAttribute="bottom" secondItem="P3c-xa-QNK" secondAttribute="bottom" constant="20" id="wmX-LX-Yoj"/>
                             <constraint firstItem="4Li-4z-V70" firstAttribute="top" secondItem="IQV-Dz-KaG" secondAttribute="top" id="zQW-jC-wKb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="533-N3-05g"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="6eG-T9-VZk" id="EgK-Ld-N5h"/>
                         <outlet property="imageCollection" destination="P3c-xa-QNK" id="BIx-a0-ad8"/>
                         <outlet property="newPopularSegCntrl" destination="4Li-4z-V70" id="sCD-o7-H9y"/>
                     </connections>

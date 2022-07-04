@@ -11,5 +11,6 @@
 import UIKit
 
 protocol AddDataView: AnyObject {
-    
+    // func Photo(_ image: UIImage, PhotoEntityForPost)
+    func addPressed()
 }
