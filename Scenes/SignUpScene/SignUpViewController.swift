@@ -201,16 +201,10 @@ extension SignUpViewController: SignUpView {
         if birthday.isEmpty {
             user.birthday = nil
         }
-
-//        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) &&
+//        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) && password == confirmPassword {
         if password == confirmPassword {
 
             presenter?.registrateAndOpenMainGalleryScene(user: user)
-            print("validation OK")
-
-        } else {
-
-            print("validation BAAAAD")
         }
     }
 

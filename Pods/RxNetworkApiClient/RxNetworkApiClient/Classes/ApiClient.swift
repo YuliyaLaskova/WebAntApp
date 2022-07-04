@@ -57,38 +57,38 @@ public class ApiClientImp: ApiClient {
 
     public func execute<T>(request: ApiRequest<T>) -> Single<T> {
         return Single.create { (observer: @escaping (SingleEvent<T>) -> ()) in
-                    self.prepare(request)
+            self.prepare(request)
 
-                    let dataTask: URLSessionDataTask = self.urlSession
-                            .dataTask(with: request.request) { (data, response, error) in
+            let dataTask: URLSessionDataTask = self.urlSession
+                .dataTask(with: request.request) { (data, response, error) in
 
-                        self.preHandle(request, (data, response, error))
-                        var isHandled = false
-                        for handler in self.responseHandlersQueue {
-                            if isHandled {
-                                break
-                            }
-                            isHandled = handler.handle(observer: observer,
-                                                       request: request,
-                                                       response: (data, response, error))
+                    self.preHandle(request, (data, response, error))
+                    var isHandled = false
+                    for handler in self.responseHandlersQueue {
+                        if isHandled {
+                            break
                         }
-                        if !isHandled {
-                            let errorEntity = ResponseErrorEntity(response)
-                            errorEntity.errors.append(
-                                    "Внутренняя ошибка приложения: не найдет обработчик ответа от сервера")
-                            observer(.failure(errorEntity))
-                        }
+                        isHandled = handler.handle(observer: observer,
+                                                   request: request,
+                                                   response: (data, response, error))
                     }
-                    dataTask.resume()
-                    return Disposables.create {
-                        dataTask.cancel()
+                    if !isHandled {
+                        let errorEntity = ResponseErrorEntity(response)
+                        errorEntity.errors.append(
+                            "Внутренняя ошибка приложения: не найдет обработчик ответа от сервера")
+                        observer(.failure(errorEntity))
                     }
                 }
-                .subscribeOn(dispatchQueue)
-                .observeOn(dispatchQueue)
-                .timeout(RxTimeInterval.milliseconds(Int(Double(request.responseTimeout))), scheduler: timeoutScheduler)
-                .do(onError: { error in print("network error:", error.localizedDescription) })
-    }
+            dataTask.resume()
+            return Disposables.create {
+                dataTask.cancel()
+            }
+        }
+        .subscribe(on: dispatchQueue)
+        .observe(on: dispatchQueue)
+        .timeout(RxTimeInterval.seconds(Int(Double(request.responseTimeout))), scheduler: timeoutScheduler)
+        .do(onError: { error in print("network error:", error.localizedDescription) })
+            }
 
     /// Вызывается перед тем, как обработается ответ от сервера.
     ///

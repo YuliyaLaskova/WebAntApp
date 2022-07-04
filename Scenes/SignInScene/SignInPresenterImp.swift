@@ -27,21 +27,21 @@ class SignInPresenterImp: SignInPresenter {
     }
 
     func signInAndOpenMainGallery(username: String, password: String) {
-//        self.router.openMainGallery()
+        //        self.router.openMainGallery()
         if Validator.isStringValid(stringValue: username, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
-        signInUseCase.signIn(username, password)
-            .observe(on: MainScheduler.instance)
-            .subscribe {
-                DispatchQueue.main.async {
-                    self.router.openMainGallery()
+            signInUseCase.signIn(username, password)
+                .observe(on: MainScheduler.instance)
+                .subscribe {
+                    DispatchQueue.main.async {
+                        self.router.openMainGallery()
+                    }
+                } onDisposed: {
+                    print("Disposed")
                 }
-            } onDisposed: {
-                print("Disposed")
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
         }
     }
-
+    
     func openSignUpScene() {
         router.openSignUpScene()
     }

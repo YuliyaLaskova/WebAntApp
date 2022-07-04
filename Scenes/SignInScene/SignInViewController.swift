@@ -132,7 +132,15 @@ extension SignInViewController: SignInView {
 
         guard let email = emailTextField.text,
               let password = passwordTextField.text
+                
         else { return }
+//        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
+                   presenter?.signInAndOpenMainGallery(username: email, password: password)
+
+//                   print("validation OK")
+//               } else {
+//                   print("validation BAAAAD")
+//               }
 
         presenter?.signInAndOpenMainGallery(username: email, password: password)
     }

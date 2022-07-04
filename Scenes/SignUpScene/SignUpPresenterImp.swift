@@ -46,7 +46,6 @@ class SignUpPresenterImp: SignUpPresenter {
                             self?.router.openMainGalleryScene()
                         })
                         .disposed(by: strongSelf.disposeBag)
-
                 }
                 .disposed(by: disposeBag)
         }
