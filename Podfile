@@ -6,7 +6,7 @@ target 'WebAntApp' do
   use_frameworks!
 
   # Pods for WebAntApp
-	pod 'R.swift'
+pod 'R.swift'
 	pod 'RxNetworkApiClient'
 	pod "DBDebugToolkit", '~> 0.6.0'
 	pod 'Kingfisher'

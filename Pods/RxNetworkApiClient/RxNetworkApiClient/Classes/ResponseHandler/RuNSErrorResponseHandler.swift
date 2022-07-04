@@ -19,8 +19,8 @@ open class RuNSErrorResponseHandler: ResponseHandler {
             let errorResponseEntity = ResponseErrorEntity(response.urlResponse)
             let errorMessage = errorCodeToMessage(errorCode)
             errorResponseEntity.errors.append(errorMessage)
+            // observer(.error(errorResponseEntity))
             observer(.failure(errorResponseEntity))
-
             return true
         }
         return false

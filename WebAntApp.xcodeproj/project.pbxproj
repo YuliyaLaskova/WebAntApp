@@ -586,7 +586,7 @@
 				8C7DE787284E0F34001F9D9B /* Sources */,
 				8C7DE788284E0F34001F9D9B /* Frameworks */,
 				8C7DE789284E0F34001F9D9B /* Resources */,
-				A5B8B1218EFCCAFCE087873D /* [CP] Embed Pods Frameworks */,
+				0A89FBC22E5069937BB7B042 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -651,6 +651,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A89FBC22E5069937BB7B042 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1C8E184A0E4DF1246F1E46B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -687,7 +704,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -708,25 +725,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
-		};
-		A5B8B1218EFCCAFCE087873D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

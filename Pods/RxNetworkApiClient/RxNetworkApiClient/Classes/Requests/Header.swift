@@ -24,14 +24,14 @@ public struct Header {
 
 public extension Header {
 
-    static let contentJson = Header("Content-Type", "application/json; charset=utf-8")
-    static let acceptJson = Header("Accept", "application/json")
+    public static let contentJson = Header("Content-Type", "application/json; charset=utf-8")
+    public static let acceptJson = Header("Accept", "application/json")
 }
 
 
 public extension Array where Element == Header {
 
-    func toMap() -> [String: String] {
+    public func toMap() -> [String: String] {
         var map: [String: String] = [:]
         forEach { header in
             map[header.key] = header.value

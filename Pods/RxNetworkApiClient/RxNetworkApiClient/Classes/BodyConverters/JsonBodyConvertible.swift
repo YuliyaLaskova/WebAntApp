@@ -14,11 +14,11 @@ public protocol JsonBodyConvertible: BodyConvertible, Codable {
 
 public extension JsonBodyConvertible {
 
-    var jsonEncoder: JSONEncoder {
+    public var jsonEncoder: JSONEncoder {
         return JSONEncoder()
     }
 
-    func createBody() -> Data {
+    public func createBody() -> Data {
         return try! jsonEncoder.encode(self)
     }
 }

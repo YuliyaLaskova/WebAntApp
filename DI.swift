@@ -35,8 +35,6 @@ class DI {
                         config.shouldUseExtendedBackgroundIdleMode = true
                         config.urlCache?.removeAllCachedResponses()
 
-
-
             let client = ApiClientImp.defaultInstance(host: Config.apiEndpoint)
 //                        (urlSessionConfiguration: config, completionHandlerQueue: .main)
 //                        client.responseHandlersQueue.append(ErrorResponseHandler())
@@ -90,20 +88,16 @@ class DI {
 
         self.container.register(SignInUseCaseImp.init)
             .as(SignInUseCase.self)
-            .lifetime(.single)
 
         self.container.register(GetPhotoUseCaseImp.init)
             .as(GetPhotoUseCase.self)
-            .lifetime(.single)
 
         self.container.register(PaginationUseCaseImp.init)
             .as(PaginationUseCase.self)
-            .lifetime(.single)
 
         self.container.register(PostPhotoUseCaseImp.init)
             .as(PostPhotoUseCase.self)
-            .lifetime(.single)
-
+        
     }
 
     static func resolve<T>() -> T {
