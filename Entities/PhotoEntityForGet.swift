@@ -21,13 +21,15 @@ class PhotoEntityForGet: JsonBodyConvertible, Codable {
     var new: Bool
     var popular: Bool
     var image: Image?
+    var user: String?
 
-    init(name: String?, dateCreate: String?, description: String?, new: Bool, popular: Bool ) {
+    init(name: String?, dateCreate: String?, description: String?, new: Bool, popular: Bool, user: String? ) {
         self.name = name
         self.dateCreate = dateCreate
         self.description = description
         self.new = new
         self.popular = popular
+        self.user = user
     }
 
     struct Image: JsonBodyConvertible, Codable {

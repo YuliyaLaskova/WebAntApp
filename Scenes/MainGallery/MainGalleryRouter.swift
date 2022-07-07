@@ -18,10 +18,12 @@ class MainGalleryRouter: BaseRouter {
         self.view = view
     }
     
-    func openSomeScene() {
+    func openDetailedPhotoViewController(imageEntity: PhotoEntityForGet) {
         guard let navController = self.view?.navigationController else {
             return
         }
-        //  SomeSceneConfigurator.open(navigationController: navController)
+        
+        DetailedPhotoConfigurator.open(navigationController: navController,
+                                       imageModel: imageEntity)
     }
 }

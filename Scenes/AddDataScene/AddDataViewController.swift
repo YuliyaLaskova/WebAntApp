@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AddDataViewController: UIViewController, UITextViewDelegate {
+class AddDataViewController: UIViewController {
     
     internal var presenter: AddDataPresenter?
 
@@ -29,8 +29,11 @@ class AddDataViewController: UIViewController, UITextViewDelegate {
         descriptionTextView.layer.borderColor = UIColor.systemGray6.cgColor
         descriptionTextView.layer.cornerRadius = 5
 
+//        descriptionTextView.adjastableForKeyboard()
 
         nameTextField.becomeFirstResponder()
+        nameTextField.addDoneButtonOnKeyboard()
+        descriptionTextView.addDoneButtonOnKeyboard()
 
         setupBarButtonItems()
 
@@ -67,19 +70,6 @@ class AddDataViewController: UIViewController, UITextViewDelegate {
         addPressed()
     }
 
-    // MARK: TextView placeholder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
-            textView.text = ""
-            textView.textColor = .black
-        }
-    }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            textView.text = "Description"
-            textView.textColor = .lightGray
-        }
-    }
 }
 
 // MARK: Extensions
@@ -95,3 +85,75 @@ extension AddDataViewController: AddDataView {
     }
 }
 
+extension AddDataViewController: UITextViewDelegate, UITextFieldDelegate{
+    // MARK: TextView placeholder
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .lightGray {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Description"
+            textView.textColor = .lightGray
+        }
+    }
+}
+
+// TODO: вынести экстеншн
+extension UITextView {
+    /**
+     Добавляет кнопку "Готово" на клавиатуру
+     */
+    func addDoneButtonOnKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self, action: #selector(resignFirstResponder))
+        doneButton.tintColor = .gray
+        keyboardToolbar.items = [flexibleSpace, doneButton]
+        self.inputAccessoryView = keyboardToolbar
+    }
+
+//    func adjastableForKeyboard() {
+//        let notificationCenter = NotificationCenter.default
+//
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(adjustForKeyboard),
+//            name: UIResponder.keyboardWillHideNotification,
+//            object: nil
+//        )
+//        notificationCenter.addObserver(
+//            self,
+//            selector: #selector(adjustForKeyboard),
+//            name: UIResponder.keyboardWillChangeFrameNotification,
+//            object: nil
+//        )
+//    }
+//
+//    @objc private func adjustForKeyboard(notification: Notification) {
+//        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+//            return
+//        }
+//        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+//        let keyboardViewEndFrame = convert(keyboardScreenEndFrame, from: window)
+//
+//        if notification.name == UIResponder.keyboardWillHideNotification {
+//            contentInset = .zero
+//        } else {
+//            contentInset = UIEdgeInsets(
+//                top: 0,
+//                left: 0,
+//                bottom: keyboardViewEndFrame.height - safeAreaInsets.bottom,
+//                right: 0
+//            )
+//        }
+//
+//        scrollIndicatorInsets = contentInset
+//        scrollRangeToVisible(selectedRange)
+//    }
+}

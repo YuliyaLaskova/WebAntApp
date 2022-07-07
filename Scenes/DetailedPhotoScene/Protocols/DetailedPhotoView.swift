@@ -11,5 +11,10 @@
 import UIKit
 
 protocol DetailedPhotoView: AnyObject {
-    
+    func setView(image: String?,
+                 name: String?,
+                 desription: String?,
+                 user: String?)
+
+    func getUsername(username: String?)
 }

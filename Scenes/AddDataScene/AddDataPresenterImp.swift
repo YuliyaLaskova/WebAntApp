@@ -21,7 +21,6 @@ class AddDataPresenterImp: AddDataPresenter {
     private let postPhotoUseCase: PostPhotoUseCase
     private let disposeBag = DisposeBag()
 
-
     init(_ view: AddDataView,
          _ router: AddDataRouter, postPhotoUseCase: PostPhotoUseCase, _ photoForPost: UIImage) {
         self.view = view

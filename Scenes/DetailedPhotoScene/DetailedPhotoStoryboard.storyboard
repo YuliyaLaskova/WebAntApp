@@ -156,7 +156,7 @@
                                     <constraint firstItem="ZcY-8v-duw" firstAttribute="leading" secondItem="ByX-nC-ZXW" secondAttribute="leading" id="Mci-Ts-8Qg"/>
                                     <constraint firstAttribute="trailing" secondItem="ZcY-8v-duw" secondAttribute="trailing" id="S2k-Cx-xxe"/>
                                     <constraint firstItem="ZcY-8v-duw" firstAttribute="centerX" secondItem="ByX-nC-ZXW" secondAttribute="centerX" id="qUm-JW-S4X"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZcY-8v-duw" secondAttribute="bottom" constant="460" id="t8m-pM-joK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kwm-pR-ZL4" secondAttribute="bottom" constant="164" id="sV6-oH-09X"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -168,6 +168,13 @@
                             <constraint firstItem="wzT-Y9-E1e" firstAttribute="top" secondItem="ByX-nC-ZXW" secondAttribute="bottom" id="lrq-Fd-8di"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateTextField" destination="4ly-ep-tdp" id="3KK-AV-01q"/>
+                        <outlet property="descriptionTextView" destination="kbg-Ec-mzp" id="BhL-1I-vKP"/>
+                        <outlet property="detailedPhoto" destination="eP3-pf-kr4" id="Q4C-Zs-Con"/>
+                        <outlet property="photoNameTextField" destination="YDg-JR-gLg" id="rhk-Na-YrK"/>
+                        <outlet property="userNameTextField" destination="4gw-1d-ZXt" id="aCK-U0-pJJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5o-QG-0Tr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

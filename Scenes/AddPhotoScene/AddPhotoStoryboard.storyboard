@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lnN-Po-SOb">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnN-Po-SOb">
                                 <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k0s-7J-UF4">
@@ -103,6 +103,7 @@
                                 <constraints>
                                     <constraint firstItem="k0s-7J-UF4" firstAttribute="leading" secondItem="lnN-Po-SOb" secondAttribute="leading" id="8fI-f9-nuo"/>
                                     <constraint firstAttribute="trailing" secondItem="k0s-7J-UF4" secondAttribute="trailing" id="GdM-5T-RXl"/>
+                                    <constraint firstAttribute="bottom" secondItem="yqh-sS-qmL" secondAttribute="bottom" constant="186" id="Rug-Fc-W5S"/>
                                     <constraint firstItem="k0s-7J-UF4" firstAttribute="top" secondItem="lnN-Po-SOb" secondAttribute="top" id="S94-t5-AKV"/>
                                     <constraint firstItem="k0s-7J-UF4" firstAttribute="width" secondItem="lnN-Po-SOb" secondAttribute="width" id="bEd-kf-2oL"/>
                                 </constraints>

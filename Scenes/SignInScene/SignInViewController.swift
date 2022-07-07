@@ -64,8 +64,12 @@ class SignInViewController: UIViewController {
     // MARK: Setup UI method
 
     private func setupUI() {
-        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+
         emailTextField.becomeFirstResponder()
+        emailTextField.addDoneButtonOnKeyboard()
+        passwordTextField.addDoneButtonOnKeyboard()
 
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
@@ -77,7 +81,6 @@ class SignInViewController: UIViewController {
         emailTextField.rightImage = emailIconImage
 
         passwordTextField.rightButton = UIButton()
-
     }
 
     func setupNavigationBarItem() {
@@ -115,12 +118,11 @@ extension SignInViewController: UITextFieldDelegate {
         return true
     }
 
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text = textField.text?.removingWhitespaces()
     }
 }
-
-// MARK: Validation extension
 
 extension SignInViewController: SignInView {
 
@@ -134,14 +136,7 @@ extension SignInViewController: SignInView {
               let password = passwordTextField.text
                 
         else { return }
-//        if Validator.isStringValid(stringValue: email, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
-                   presenter?.signInAndOpenMainGallery(username: email, password: password)
-
-//                   print("validation OK")
-//               } else {
-//                   print("validation BAAAAD")
-//               }
-
+        presenter?.signInAndOpenMainGallery(username: email, password: password)
         presenter?.signInAndOpenMainGallery(username: email, password: password)
     }
 }

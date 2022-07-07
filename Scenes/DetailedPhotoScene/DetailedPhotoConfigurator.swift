@@ -8,21 +8,22 @@
 //  Cheeezcake Template Inc.
 //
 
+import Foundation
 import UIKit
 
 enum DetailedPhotoConfigurator {
     
-    static func configure(view: DetailedPhotoViewController) {
-        let router = DetailedPhotoRouter(view)
-        let presenter = DetailedPhotoPresenterImp(view, router)
+    static func configure(view: DetailedPhotoViewController, imageEntity: PhotoEntityForGet) {
+//        let router = DetailedPhotoRouter(view)
+        let presenter = DetailedPhotoPresenterImp(view: view, imageModel: imageEntity, settings: DI.resolve(), getUserUseCase: DI.resolve())
         view.presenter = presenter
     }
 
-    static func open(navigationController: UINavigationController) {
+    static func open(navigationController: UINavigationController, imageModel: PhotoEntityForGet) {
         guard let view = R.storyboard.detailedPhotoStoryboard().instantiateInitialViewController() as? DetailedPhotoViewController else {
             return
         }
-        Self.configure(view: view)
+        Self.configure(view: view, imageEntity: imageModel)
         navigationController.pushViewController(view, animated: true)
     }
 }

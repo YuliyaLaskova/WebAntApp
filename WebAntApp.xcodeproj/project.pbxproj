@@ -99,6 +99,10 @@
 		8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */; };
 		8CA8A8E82853346D0037D6DE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E72853346D0037D6DE /* WelcomeView.swift */; };
 		8CA8A8EA285336340037D6DE /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A8E9285336340037D6DE /* BaseRouter.swift */; };
+		8CABFF9028743B3200FF31B0 /* GetUserGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABFF8F28743B3200FF31B0 /* GetUserGateway.swift */; };
+		8CABFF9228743C8E00FF31B0 /* UserEntityForGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABFF9128743C8E00FF31B0 /* UserEntityForGet.swift */; };
+		8CABFF9428743CC100FF31B0 /* GetUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABFF9328743CC100FF31B0 /* GetUserUseCase.swift */; };
+		8CABFF96287575FC00FF31B0 /* TextFieldExtForKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABFF95287575FC00FF31B0 /* TextFieldExtForKeyboard.swift */; };
 		8CAFB81C28645FA900A430AB /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +202,10 @@
 		8CA8A8E52853346B0037D6DE /* WelcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePresenter.swift; sourceTree = "<group>"; };
 		8CA8A8E72853346D0037D6DE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		8CA8A8E9285336340037D6DE /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		8CABFF8F28743B3200FF31B0 /* GetUserGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserGateway.swift; sourceTree = "<group>"; };
+		8CABFF9128743C8E00FF31B0 /* UserEntityForGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntityForGet.swift; sourceTree = "<group>"; };
+		8CABFF9328743CC100FF31B0 /* GetUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCase.swift; sourceTree = "<group>"; };
+		8CABFF95287575FC00FF31B0 /* TextFieldExtForKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtForKeyboard.swift; sourceTree = "<group>"; };
 		8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
 		C0FF06869783F558A16850F5 /* Pods_WebAntApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebAntApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -349,8 +357,8 @@
 			isa = PBXGroup;
 			children = (
 				8C17AC2B286EFDC9002CF17E /* DetailedPhotoStoryboard.storyboard */,
-				8C17AC2C286EFDC9002CF17E /* DetailedPhotoRouter.swift */,
 				8C17AC2D286EFDC9002CF17E /* DetailedPhotoViewController.swift */,
+				8C17AC2C286EFDC9002CF17E /* DetailedPhotoRouter.swift */,
 				8C17AC2E286EFDC9002CF17E /* DetailedPhotoPresenterImp.swift */,
 				8C17AC2F286EFDC9002CF17E /* DetailedPhotoConfigurator.swift */,
 				8C17AC3B286EFE32002CF17E /* Protocols */,
@@ -383,6 +391,7 @@
 				8C4027E82865B60D00CB9DE9 /* PhotoEntityForPost.swift */,
 				8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */,
 				8C17AC12286D9D5F002CF17E /* PaginationEntity.swift */,
+				8CABFF9128743C8E00FF31B0 /* UserEntityForGet.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -395,6 +404,7 @@
 				8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */,
 				8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */,
 				8C17AC14286D9E18002CF17E /* PaginationUseCase.swift */,
+				8CABFF9328743CC100FF31B0 /* GetUserUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -425,8 +435,8 @@
 		8C6B3F5F28533E9B00153686 /* SignInScene */ = {
 			isa = PBXGroup;
 			children = (
-				8C7DE7BC2850B350001F9D9B /* SignInViewController.swift */,
 				8C6B3F602853447300153686 /* SignInStoryboard.storyboard */,
+				8C7DE7BC2850B350001F9D9B /* SignInViewController.swift */,
 				8C6B3F612853447300153686 /* SignInRouter.swift */,
 				8C6B3F632853447300153686 /* SignInPresenterImp.swift */,
 				8C6B3F642853447300153686 /* SignInConfigurator.swift */,
@@ -438,8 +448,8 @@
 		8C6B3F702853643600153686 /* SignUpScene */ = {
 			isa = PBXGroup;
 			children = (
-				8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */,
 				8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */,
+				8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */,
 				8C6B3F722853645B00153686 /* SignUpRouter.swift */,
 				8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */,
 				8C6B3F752853645B00153686 /* SignUpConfigurator.swift */,
@@ -479,6 +489,7 @@
 				8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */,
 				8C4027EA2865B6FF00CB9DE9 /* PostPhotoGateway.swift */,
 				8C17AC16286DA7B4002CF17E /* PaginationGateway.swift */,
+				8CABFF8F28743B3200FF31B0 /* GetUserGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -530,6 +541,7 @@
 				8C6B3F8F2859D7F900153686 /* Validator.swift */,
 				8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */,
 				8C6B3F9B2859F6F700153686 /* StringManager.swift */,
+				8CABFF95287575FC00FF31B0 /* TextFieldExtForKeyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -704,7 +716,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -725,7 +737,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -761,6 +774,7 @@
 				8C17AC0A286AF688002CF17E /* AddDataConfigurator.swift in Sources */,
 				8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */,
 				8C030F5928605B700029BEAD /* Settings.swift in Sources */,
+				8CABFF9028743B3200FF31B0 /* GetUserGateway.swift in Sources */,
 				8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */,
 				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
 				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
@@ -769,6 +783,7 @@
 				8C17AC17286DA7B4002CF17E /* PaginationGateway.swift in Sources */,
 				8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */,
 				8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */,
+				8CABFF9228743C8E00FF31B0 /* UserEntityForGet.swift in Sources */,
 				8C17AC38286EFDD7002CF17E /* DetailedPhotoPresenter.swift in Sources */,
 				8C17AC15286D9E18002CF17E /* PaginationUseCase.swift in Sources */,
 				8C6B3F9C2859F6F700153686 /* StringManager.swift in Sources */,
@@ -803,6 +818,7 @@
 				8C6B3F672853447300153686 /* SignInRouter.swift in Sources */,
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
 				8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */,
+				8CABFF9428743CC100FF31B0 /* GetUserUseCase.swift in Sources */,
 				8C030FA42861C9C00029BEAD /* MainGalleryView.swift in Sources */,
 				8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */,
 				8C17AC3A286EFDD8002CF17E /* DetailedPhotoView.swift in Sources */,
@@ -813,6 +829,7 @@
 				8C5496B628645077005674C1 /* AddPhotoPresenterImp.swift in Sources */,
 				8C6B3F782853645C00153686 /* SignUpRouter.swift in Sources */,
 				8C030F9D2861C9B20029BEAD /* MainGalleryViewController.swift in Sources */,
+				8CABFF96287575FC00FF31B0 /* TextFieldExtForKeyboard.swift in Sources */,
 				8C4027E128646ECE00CB9DE9 /* GetPhotoUseCase.swift in Sources */,
 				8C030F9F2861C9B20029BEAD /* MainGalleryConfigurator.swift in Sources */,
 				8C6B3F842858934800153686 /* ExtendedApiRequest.swift in Sources */,

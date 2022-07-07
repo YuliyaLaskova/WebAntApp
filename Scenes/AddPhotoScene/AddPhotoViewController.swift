@@ -53,15 +53,15 @@ class AddPhotoViewController: UIViewController {
     }
 
     private func setupBarButtonItems() {
-//        let nextButton: UIButton = UIButton (type: UIButton.ButtonType.custom)
-//        nextButton.setTitle("Next", for: .normal)
-//        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-//        nextButton.setTitleColor(.systemPink, for: .normal)
-//        nextButton.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
-//
-//        nextButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        let barButton = UIBarButtonItem(customView: nextButton)
-//        navigationItem.rightBarButtonItem = barButton
+        //        let nextButton: UIButton = UIButton (type: UIButton.ButtonType.custom)
+        //        nextButton.setTitle("Next", for: .normal)
+        //        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        //        nextButton.setTitleColor(.systemPink, for: .normal)
+        //        nextButton.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
+        //
+        //        nextButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        //        let barButton = UIBarButtonItem(customView: nextButton)
+        //        navigationItem.rightBarButtonItem = barButton
         let nextRightBarButtonItem = UIBarButtonItem()
         nextRightBarButtonItem.title = "Next"
         nextRightBarButtonItem.tintColor = .systemPink
@@ -74,7 +74,7 @@ class AddPhotoViewController: UIViewController {
         cancelLeftBarButtonItem.title = "Cancel"
         cancelLeftBarButtonItem.tintColor = .gray
         cancelLeftBarButtonItem.target = self
-        cancelLeftBarButtonItem.action = #selector(goBack)
+        cancelLeftBarButtonItem.action = #selector(setStandartImage)
 
         navigationItem.leftBarButtonItem = cancelLeftBarButtonItem
 
@@ -82,11 +82,12 @@ class AddPhotoViewController: UIViewController {
 
     @objc func nextBtnPressed() {
         // передать картинку
-                openAddDataViewController()
+        openAddDataViewController()
     }
 
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
+    @objc func setStandartImage() {
+        checkedImage.image = UIImage(named: "photoIcon")
+        //        navigationController?.popViewController(animated: true)
     }
 
     private func tapObserver() {
@@ -98,8 +99,23 @@ class AddPhotoViewController: UIViewController {
     }
 
     @objc func didTapImage() {
-        present(imagePicker, animated: true)
+
+        let alert = UIAlertController(title: "Choose the source", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallary()
+        }))
+
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+
+        //        present(imagePicker, animated: true)
     }
+    
 }
 
 extension AddPhotoViewController: AddPhotoView {
@@ -108,6 +124,8 @@ extension AddPhotoViewController: AddPhotoView {
         presenter?.openAddDataViewController(photoForPost: checkedImage)
     }
 }
+
+// MARK: Extension CollectionView
 
 extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
 
@@ -131,6 +149,8 @@ extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+// MARK: Extension ImagePickerController
+
 extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
@@ -138,5 +158,28 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
         }
 
         dismiss(animated: true)
+    }
+
+    func openCamera()
+    {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func openGallary()
+    {
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
     }
 }

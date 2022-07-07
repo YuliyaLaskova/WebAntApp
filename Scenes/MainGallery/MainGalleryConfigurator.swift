@@ -14,7 +14,7 @@ enum MainGalleryConfigurator {
     
     static func configure(view: MainGalleryViewController) {
         let router = MainGalleryRouter(view)
-        let presenter = MainGalleryPresenterImp(view, router, DI.resolve())
+        let presenter = MainGalleryPresenterImp(view: view, router: router, paginationUseCase: DI.resolve())
         view.presenter = presenter
     }
 

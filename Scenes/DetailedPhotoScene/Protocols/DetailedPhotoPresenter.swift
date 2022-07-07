@@ -11,5 +11,9 @@
 import Foundation
 
 protocol DetailedPhotoPresenter {
+    func setImage()
+
+    func getPhotoModel() -> PhotoEntityForGet?
+    func getUserInfo(_ iriId: String)
     
 }

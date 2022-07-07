@@ -82,6 +82,10 @@ class DI {
             .as(PostPhotoGateway.self)
             .lifetime(.single)
 
+        self.container.register(GetUserGatewayImp.init)
+            .as(GetUserGateway.self)
+            .lifetime(.single)
+
         // UseCases
         self.container.register(SignUpUseCaseImp.init)
             .as(SignUpUseCase.self)
@@ -97,6 +101,9 @@ class DI {
 
         self.container.register(PostPhotoUseCaseImp.init)
             .as(PostPhotoUseCase.self)
+
+        self.container.register(GetUserUseCaseImp.init)
+            .as(GetUserUseCase.self)
         
     }
 

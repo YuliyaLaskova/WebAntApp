@@ -202,10 +202,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 16 images.
   struct image {
     /// Image `Bear`.
     static let bear = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bear")
+    /// Image `ErrorIcon`.
+    static let errorIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "ErrorIcon")
     /// Image `Field`.
     static let field = Rswift.ImageResource(bundle: R.hostingBundle, name: "Field")
     /// Image `Flower`.
@@ -230,6 +232,8 @@ struct R: Rswift.Validatable {
     static let eyeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon")
     /// Image `logo1`.
     static let logo1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo1")
+    /// Image `photoIcon`.
+    static let photoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoIcon")
     /// Image `userIcon`.
     static let userIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "userIcon")
 
@@ -237,6 +241,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "Bear", bundle: ..., traitCollection: ...)`
     static func bear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.bear, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ErrorIcon", bundle: ..., traitCollection: ...)`
+    static func errorIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.errorIcon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -321,6 +332,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "logo1", bundle: ..., traitCollection: ...)`
     static func logo1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo1, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photoIcon", bundle: ..., traitCollection: ...)`
+    static func photoIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photoIcon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -503,6 +521,7 @@ struct _R: Rswift.Validatable {
       let name = "MainGalleryStoryboard"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "ErrorIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ErrorIcon' is used in storyboard 'MainGalleryStoryboard', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

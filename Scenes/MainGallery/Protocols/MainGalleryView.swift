@@ -11,7 +11,9 @@
 import UIKit
 
 protocol MainGalleryView: AnyObject {
-    func refreshPhotoCollection(isHidden: Bool)
+    func refreshPhotoCollection()
+    func endRefreshing()
     func actIndicatorStartAnimating()
     func actIndicatorStopAnimating()
+    func showErrorOnEmptyGallery(show: Bool)
 }

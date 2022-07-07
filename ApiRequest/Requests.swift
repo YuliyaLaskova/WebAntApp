@@ -51,20 +51,25 @@ extension ExtendedApiRequest {
     }
 
     static func getPhoto() -> ExtendedApiRequest {
-            extendedRequest(
-                path: "/api/photos",
-                method: .get,
-                headers: [Header.contentJson])
-        }
+        extendedRequest(
+            path: "/api/photos",
+            method: .get,
+            headers: [Header.contentJson])
+    }
 
     static func getPhotoPaginated(_ page: Int, _ limit: Int) -> ExtendedApiRequest {
-            extendedRequest(
-                path: "/api/photos",
-                method: .get,
-                headers: [Header.contentJson],
-                query:
+        extendedRequest(
+            path: "/api/photos",
+            method: .get,
+            headers: [Header.contentJson],
+            query:
                 ("page", "\(page)"),
-                ("limit", "\(limit)"))
-        }
+            ("limit", "\(limit)"))
+    }
 
+    static func getUserInfo(_ iriId: String) -> ExtendedApiRequest {
+        extendedRequest(path: iriId,
+                        method: .get,
+                        headers: [Header.contentJson])
+    }
 }

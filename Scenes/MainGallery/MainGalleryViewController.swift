@@ -12,13 +12,17 @@ import UIKit
 
 class MainGalleryViewController: UIViewController {
     
-    internal var presenter: MainGalleryPresenter?
+    var presenter: MainGalleryPresenter?
 
-   // var searchBar = UISearchBar()
+    private let refreshControl = UIRefreshControl()
+    private let searchBar = UISearchBar()
+    
+    
     var array: [UIImage] = [UIImage(named: "Forest")!, UIImage(named: "Field")!, UIImage(named: "Flower")!, UIImage(named: "Bear")!]
 
     @IBOutlet var imageCollection: UICollectionView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var errorImage: UIImageView!
 
     @IBOutlet var newPopularSegCntrl: CustomSegmentedControl!{
         didSet{
@@ -38,29 +42,24 @@ class MainGalleryViewController: UIViewController {
         presenter?.viewDidLoad()
         setupUI()
     }
-
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //        imageCollection.frame = view.bounds
-    //    }
     
     func setupUI() {
 
-        let searchBar = UISearchBar()
+        errorImage.isHidden = true
+
+        searchBar.delegate = self
         self.navigationItem.titleView = searchBar
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        let backButton = UIBarButtonItem.init(
-            title: nil,
-            style: .done,
-            target: self,
-            action: nil
-        )
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .gray
 
         imageCollection.delegate = self
         imageCollection.dataSource = self
         newPopularSegCntrl.delegate = self
+
+        imageCollection.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(pullToRefreshPhotos) , for: .valueChanged)
 
         let layout = UICollectionViewFlowLayout()
         imageCollection.collectionViewLayout = layout
@@ -73,14 +72,27 @@ class MainGalleryViewController: UIViewController {
 
     }
 
-//    func actIndicatorStartAnimating() {
-//        activityIndicator.startAnimating()
-//    }
+    @objc func pullToRefreshPhotos() {
+        presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex)
+    }
+
+    //    @objc func pullToRefreshPhotos() {
+    //        presenter?.refreshPhotos()
+    //    }
 }
 
 extension MainGalleryViewController: MainGalleryView {
 
-    func refreshPhotoCollection(isHidden: Bool) {
+    func showErrorOnEmptyGallery(show: Bool) {
+        switch show {
+        case true:
+            errorImage.isHidden = false
+        default:
+            errorImage.isHidden = true
+        }
+    }
+
+    func refreshPhotoCollection() {
         imageCollection.reloadData()
     }
 
@@ -94,11 +106,14 @@ extension MainGalleryViewController: MainGalleryView {
         activityIndicator.isHidden = true
     }
 
-
-    
+    func endRefreshing() {
+        refreshControl.endRefreshing()
+    }
 }
+
 extension MainGalleryViewController: CustomSegmentedControlDelegate  {
     func change(to index: Int) {
+        refreshPhotoCollection()
         print("segmentedControl index changed to \(index)")
     }
 }
@@ -106,32 +121,85 @@ extension MainGalleryViewController: CustomSegmentedControlDelegate  {
 extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.photoItems.count ?? 0
+        guard let presenter = presenter else { return 0}
+
+        switch newPopularSegCntrl.selectedIndex {
+        case 0: if presenter.newPhotoArray.count > 0 {
+            showErrorOnEmptyGallery(show: false)
+            return presenter.newPhotoArray.count
+        } else {
+            showErrorOnEmptyGallery(show: true)
+            return 0
+        }
+        case 1: if presenter.popularPhotoArray.count > 0 {
+            showErrorOnEmptyGallery(show: false)
+            return presenter.popularPhotoArray.count
+        } else {
+            showErrorOnEmptyGallery(show: true)
+            return 0
+        }
+        default:
+            showErrorOnEmptyGallery(show: true)
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as? PhotoCell {
-            guard let photo = presenter?.photoItems[indexPath.row].image?.name else {
-                return UICollectionViewCell()
-            }
-//            if let photo = presenter?.photoItems[indexPath.row].image {
+            switch newPopularSegCntrl.selectedIndex {
+            case 0:
+                guard let photo = presenter?.newPhotoArray[indexPath.row].image?.name else {
+                    return UICollectionViewCell()
+                }
                 cell.clipsToBounds = true
                 cell.layer.cornerRadius = 10
                 cell.setupImage(photo)
                 return cell
-        }
-        else {
+            case 1:
+
+                guard let photo = presenter?.popularPhotoArray[indexPath.row].image?.name else {
+                    return UICollectionViewCell()
+                }
+                //            if let photo = presenter?.photoItems[indexPath.row].image {
+                cell.clipsToBounds = true
+                cell.layer.cornerRadius = 10
+                cell.setupImage(photo)
+                return cell
+            default:
+                return UICollectionViewCell()
+            }
+
+            //            guard let photo = presenter?.photoItems[indexPath.row].image?.name else {
+            //                return UICollectionViewCell()
+            //            }
+            //            if let photo = presenter?.photoItems[indexPath.row].image {
+            //            cell.clipsToBounds = true
+            //            cell.layer.cornerRadius = 10
+            //            cell.setupImage(photo)
+            //            return cell
+        } else {
             return UICollectionViewCell()
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        presenter?.openDetailedPhoto(photoIndex: indexPath.row, newPopularSegCntrlIndex: newPopularSegCntrl.selectedIndex)
+        print("you tapped item at index \(indexPath.row)")
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == self.presenter!.photoItems.count - 1 {
+        if indexPath.row == self.presenter!.newPhotoArray.count - 1 {
             self.presenter?.fetchPhotosWithPagination()
+        }
+    }
+}
+
+extension MainGalleryViewController: UISearchBarDelegate {
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            self.imageCollection.reloadData()
         }
     }
 }
