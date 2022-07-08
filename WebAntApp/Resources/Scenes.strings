@@ -1,0 +1,20 @@
+/* 
+  Scenes.strings
+  WebAntApp
+
+  Created by Yuliya Laskova on 07.07.2022.
+  
+*/
+"username" = "User Name";
+"name" = "Name";
+"surname" = "Surname";
+"dateOfBirth" = "Birthday";
+"email" = "E-mail";
+"phoneNumber" = "Phone number";
+"password" = "Password";
+"save" = "Save";
+"confirmPassword" = "Confirm password";
+"error" = "Error";
+"emptyFieldsMessage" = "You didn't fill all required fields";
+"okAction" = "OK";
+"passwordsNotMatch" = "Passwords aren't identical";
