@@ -19,8 +19,8 @@ class PhotoEntityForPost: JsonBodyConvertible, Codable {
     init(name: String?, description: String?, new: Bool, popular: Bool, image: Int?) {
         self.name = name
         self.description = description
-        self.new = new
-        self.popular = popular
+        self.popular = Bool.random()
+        self.new = !self.popular
         self.image = "/api/media_objects/\(image ?? 0)"
     }
 }

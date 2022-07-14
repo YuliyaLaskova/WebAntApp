@@ -169,7 +169,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dateTextField" destination="4ly-ep-tdp" id="3KK-AV-01q"/>
+                        <outlet property="dateTextField" destination="4ly-ep-tdp" id="Nvd-ch-SeA"/>
                         <outlet property="descriptionTextView" destination="kbg-Ec-mzp" id="BhL-1I-vKP"/>
                         <outlet property="detailedPhoto" destination="eP3-pf-kr4" id="Q4C-Zs-Con"/>
                         <outlet property="photoNameTextField" destination="YDg-JR-gLg" id="rhk-Na-YrK"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController {
 
     internal var presenter: SignUpPresenter?
     private let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         setupIconsInTextFields()
         createDatePicker()
 
-        setupTextFieldsDelegate()
+        setupTextFields()
         setupNavigationBarItem()
 
         signInBtn.layer.cornerRadius = 4
@@ -46,11 +46,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     }
 
-    func setupTextFieldsDelegate() {
+    func setupTextFields() {
+        userNameTextField.delegate = self
         emailTextField.delegate = self
         userNameTextField.delegate = self
         oldPasswordTextField.delegate = self
         confirmPasswordTextField.delegate = self
+
+        userNameTextField.addDoneButtonOnKeyboard()
+        emailTextField.addDoneButtonOnKeyboard()
+        userNameTextField.addDoneButtonOnKeyboard()
+        oldPasswordTextField.addDoneButtonOnKeyboard()
+        confirmPasswordTextField.addDoneButtonOnKeyboard()
     }
 
 
@@ -141,7 +148,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
 
         presenter?.registrateAndOpenMainGalleryScene(user: user)
-        //        signUpAndopenMainGalleryScene()
     }
 
 
@@ -227,5 +233,18 @@ extension SignUpViewController {
         let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Work with keyboard
+
+extension SignUpViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = textField.text?.removingWhitespaces()
     }
 }

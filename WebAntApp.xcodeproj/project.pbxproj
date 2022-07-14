@@ -32,7 +32,6 @@
 		8C17AC10286AF6D3002CF17E /* AddDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC0F286AF6D3002CF17E /* AddDataView.swift */; };
 		8C17AC13286D9D5F002CF17E /* PaginationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC12286D9D5F002CF17E /* PaginationEntity.swift */; };
 		8C17AC15286D9E18002CF17E /* PaginationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC14286D9E18002CF17E /* PaginationUseCase.swift */; };
-		8C17AC17286DA7B4002CF17E /* PaginationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC16286DA7B4002CF17E /* PaginationGateway.swift */; };
 		8C17AC19286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC18286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift */; };
 		8C17AC31286EFDC9002CF17E /* DetailedPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C17AC2B286EFDC9002CF17E /* DetailedPhotoStoryboard.storyboard */; };
 		8C17AC32286EFDC9002CF17E /* DetailedPhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC2C286EFDC9002CF17E /* DetailedPhotoRouter.swift */; };
@@ -144,7 +143,6 @@
 		8C17AC0F286AF6D3002CF17E /* AddDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataView.swift; sourceTree = "<group>"; };
 		8C17AC12286D9D5F002CF17E /* PaginationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationEntity.swift; sourceTree = "<group>"; };
 		8C17AC14286D9E18002CF17E /* PaginationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationUseCase.swift; sourceTree = "<group>"; };
-		8C17AC16286DA7B4002CF17E /* PaginationGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationGateway.swift; sourceTree = "<group>"; };
 		8C17AC18286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPhotoPaginationGateway.swift; sourceTree = "<group>"; };
 		8C17AC2B286EFDC9002CF17E /* DetailedPhotoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		8C17AC2C286EFDC9002CF17E /* DetailedPhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPhotoRouter.swift; sourceTree = "<group>"; };
@@ -490,7 +488,6 @@
 				8C6B3F892858941900153686 /* RegistrationGateway.swift */,
 				8C6B3F8B2858957E00153686 /* Requests.swift */,
 				8C6B3F8D28589CF400153686 /* RegistrationUseCase.swift */,
-				8C17AC18286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift */,
 				8C030F5A28605E480029BEAD /* Interceptor */,
 				8C030F5D286060A40029BEAD /* ResponseHandler */,
 			);
@@ -512,7 +509,7 @@
 				8C36BDA8285C580A0089D180 /* SignUpGateway.swift */,
 				8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */,
 				8C4027EA2865B6FF00CB9DE9 /* PostPhotoGateway.swift */,
-				8C17AC16286DA7B4002CF17E /* PaginationGateway.swift */,
+				8C17AC18286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift */,
 				8CABFF8F28743B3200FF31B0 /* GetUserGateway.swift */,
 				8C5F11AD2878446800981819 /* GetCurrentUserGateway.swift */,
 			);
@@ -624,8 +621,8 @@
 		8CA8A8D8285333CC0037D6DE /* WelcomeScene */ = {
 			isa = PBXGroup;
 			children = (
-				8C7DE792284E0F34001F9D9B /* WelcomeController.swift */,
 				8CA8A8D92853341B0037D6DE /* WelcomeStoryboard.storyboard */,
+				8C7DE792284E0F34001F9D9B /* WelcomeController.swift */,
 				8CA8A8DA2853341B0037D6DE /* WelcomeRouter.swift */,
 				8CA8A8DC2853341B0037D6DE /* WelcomePresenterImp.swift */,
 				8CA8A8DD2853341B0037D6DE /* WelcomeConfigurator.swift */,
@@ -833,7 +830,6 @@
 				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
 				8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */,
 				8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */,
-				8C17AC17286DA7B4002CF17E /* PaginationGateway.swift in Sources */,
 				8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */,
 				8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */,
 				8CABFF9228743C8E00FF31B0 /* UserEntityForGet.swift in Sources */,

@@ -18,10 +18,10 @@ protocol PostPhotoGateway {
 class PostPhotoGatewayImp: ApiBaseGateway, PostPhotoGateway {
 
     func postMediaObject(_ file: UploadFile) -> Single<MediaObjectEntity> {
-        apiClient.execute(request: ExtendedApiRequest.postMediaObject(file: file))
+        apiClient.execute(request: ExtendedApiRequest.postMediaObjectRequest(file: file))
     }
 
     func postPhoto(_ photo: PhotoEntityForPost) -> Single<PhotoEntityForPost> {
-        apiClient.execute(request: ExtendedApiRequest.postPhoto(photo: photo))
+        apiClient.execute(request: ExtendedApiRequest.postPhotoRequest(photo: photo))
     }
 }

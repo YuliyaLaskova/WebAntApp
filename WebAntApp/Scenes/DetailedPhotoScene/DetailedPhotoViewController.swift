@@ -55,10 +55,11 @@ class DetailedPhotoViewController: UIViewController {
 
 extension DetailedPhotoViewController: DetailedPhotoView {
 
-    func setView(image: String?, name: String?, desription: String?, user: String?) {
+    func setView(image: String?, name: String?, desription: String?, user: String?, dateCreation: String?) {
         setupImage(image)
         photoNameTextField.text = name ?? ""
         descriptionTextView.text = desription ?? ""
+        dateTextField.text = dateCreation?.convertDateFormatFromISO8601() ?? ""
     }
     
     func setupImage(_ name: String?) {

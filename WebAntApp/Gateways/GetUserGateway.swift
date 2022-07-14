@@ -10,14 +10,12 @@ import RxSwift
 import RxNetworkApiClient
 
 protocol GetUserGateway {
-
     func getUser(_ iriId: String) -> Single<UserEntityForGet>
 }
 
-
 class GetUserGatewayImp: ApiBaseGateway, GetUserGateway {
     func getUser(_ iriId: String) -> Single<UserEntityForGet> {
-        apiClient.execute(request: ExtendedApiRequest.getUserInfo(iriId))
+        apiClient.execute(request: ExtendedApiRequest.getUserInfoRequest(iriId))
     }
 
 }

@@ -14,7 +14,7 @@ enum UserProfileConfigurator {
     
     static func configure(view: UserProfileViewController) {
         let router = UserProfileRouter(view)
-        let presenter = UserProfilePresenterImp(view, router, DI.resolve())
+        let presenter = UserProfilePresenterImp(view: view, router: router, getCurrentUserUseCase: DI.resolve(), paginationUseCase: DI.resolve())
         view.presenter = presenter
     }
 

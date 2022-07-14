@@ -12,9 +12,9 @@ class PaginationEntity<T: Codable>: Codable {
     var totalItems: Int
     var itemsPerPage: Int
     var countOfPages: Int
-    var data: [T]
+    var data: [PhotoEntityForGet]
 
-    init(totalItems: Int, itemsPerPage: Int, countOfPages: Int, items: [T]) {
+    init(totalItems: Int, itemsPerPage: Int, countOfPages: Int, items: [PhotoEntityForGet]) {
         self.totalItems = totalItems
         self.itemsPerPage = itemsPerPage
         self.countOfPages = countOfPages

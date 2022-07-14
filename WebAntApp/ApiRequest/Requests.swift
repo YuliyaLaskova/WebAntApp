@@ -14,7 +14,7 @@ import RxSwift
 
 extension ExtendedApiRequest {
 
-    public static func signIn(login: String, password: String) -> ExtendedApiRequest {
+    public static func signInRequest(login: String, password: String) -> ExtendedApiRequest {
         return extendedRequest(path: "/oauth/v2/token",
                                method: .get,
                                query: ("client_id", Config.clientId),
@@ -25,7 +25,7 @@ extension ExtendedApiRequest {
 
     }
 
-    static func signUp(userEntity: UserEntity) -> ExtendedApiRequest {
+    static func signUpRequest(userEntity: UserEntity) -> ExtendedApiRequest {
         return extendedRequest(
             path: "/api/users",
             method: .post,
@@ -34,14 +34,14 @@ extension ExtendedApiRequest {
 
     }
 
-    static func postMediaObject(file: UploadFile) -> ExtendedApiRequest {
+    static func postMediaObjectRequest(file: UploadFile) -> ExtendedApiRequest {
         return extendedRequest(
             path: "/api/media_objects",
             method: .post,
             files: [file])
     }
 
-    static func postPhoto(photo: PhotoEntityForPost) -> ExtendedApiRequest {
+    static func postPhotoRequest(photo: PhotoEntityForPost) -> ExtendedApiRequest {
         return extendedRequest(
             path: "/api/photos",
             method: .post,
@@ -57,25 +57,73 @@ extension ExtendedApiRequest {
             headers: [Header.contentJson])
     }
 
-    static func getPhotoPaginated(_ page: Int, _ limit: Int) -> ExtendedApiRequest {
-        extendedRequest(
-            path: "/api/photos",
-            method: .get,
-            headers: [Header.contentJson],
-            query:
-                ("page", "\(page)"),
-            ("limit", "\(limit)"))
+
+//    static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int, _ isNew: Bool) -> ExtendedApiRequest {
+//
+//        let newOrPopular: (String, String) = (isNew == true) ? ("new", "true") : ("new", "false"),("popular", "true")
+//        return extendedRequest(
+//            path: "/api/photos",
+//            method: .get,
+//            headers: [Header.contentJson],
+//            query:
+//                ("page", "\(page)"),
+//            ("limit", "\(limit)"),
+//            (newOrPopular))
+//    }
+
+
+    //передавать нэйм в квери/ он опциональный/ обращаться к нему когда у нас поиск
+
+
+    static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int, _ isNew: Bool, _ name: String? = nil) -> ExtendedApiRequest {
+        if isNew {
+            return extendedRequest(
+                path: "/api/photos",
+                method: .get,
+                headers: [Header.contentJson],
+                query: ("page", "\(page)"),
+                ("limit", "\(limit)"),
+                ("new", "true"),
+                ( "name", name))
+        } else {
+            return extendedRequest(
+                path: "/api/photos",
+                method: .get,
+                headers: [Header.contentJson],
+                query: ("page", "\(page)"),
+                ("limit", "\(limit)"),
+                ("new", "false"),
+                ("popular", "true"),
+                ( "name", name))
+        }
     }
 
-    static func getUserInfo(_ iriId: String) -> ExtendedApiRequest {
+//    static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int) -> ExtendedApiRequest {
+//        extendedRequest(
+//            path: "/api/photos",
+//            method: .get,
+//            headers: [Header.contentJson],
+//            query:
+//                ("page", "\(page)"),
+//            ("limit", "\(limit)"))
+//    }
+
+    static func getUserInfoRequest(_ iriId: String) -> ExtendedApiRequest {
         extendedRequest(path: iriId,
                         method: .get,
                         headers: [Header.contentJson])
     }
 
-    static func getCurrentUser() -> ExtendedApiRequest {
+    static func getCurrentUserRequest() -> ExtendedApiRequest {
         extendedRequest(path: "/api/users/current",
                         method: .get,
                         headers: [Header.contentJson])
+    }
+
+    static func getUserPhotosRequest(userId: Int) -> ExtendedApiRequest {
+        extendedRequest(path: "/api/photos",
+                        method: .get,
+                        headers: [Header.contentJson],
+                        query: ("user.id", "\(userId)"))
     }
 }

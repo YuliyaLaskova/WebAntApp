@@ -41,7 +41,6 @@ class PhotoCell: UICollectionViewCell {
         guard let urlValid = URL(string: "\(Config.apiEndpoint)/media/\(url)") else {
             return
         }
-
         imageViewInCell.kf.setImage(with: urlValid)
     }
 }

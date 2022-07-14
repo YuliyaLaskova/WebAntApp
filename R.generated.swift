@@ -825,8 +825,8 @@ struct _R: Rswift.Validatable {
       let name = "UserProfileStoryboard"
 
       static func validate() throws {
+        if UIKit.UIImage(named: "ErrorIcon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ErrorIcon' is used in storyboard 'UserProfileStoryboard', but couldn't be loaded.") }
         if UIKit.UIImage(named: "PhotoIcon-1", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'PhotoIcon-1' is used in storyboard 'UserProfileStoryboard', but couldn't be loaded.") }
-        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "photo") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'photo' is used in storyboard 'UserProfileStoryboard', but couldn't be loaded.") } }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

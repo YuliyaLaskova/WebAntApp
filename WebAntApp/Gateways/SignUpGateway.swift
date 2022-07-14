@@ -17,7 +17,7 @@ protocol SignUpGateway {
 class SignUpGatewayImp: ApiBaseGateway, SignUpGateway {
 
     func signUp(_ entity: UserEntity) -> Single<UserEntity> {
-        let request: ExtendedApiRequest<UserEntity> = ExtendedApiRequest.signUp(userEntity: entity)
+        let request: ExtendedApiRequest<UserEntity> = ExtendedApiRequest.signUpRequest(userEntity: entity)
         return apiClient.execute(request: request)
     }
 }

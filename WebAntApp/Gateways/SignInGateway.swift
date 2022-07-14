@@ -20,7 +20,7 @@ class SignInGatewayImp: ApiBaseGateway, SignInGateway {
     }
 
     func authorize(login: String, password: String) -> Single<Token> {
-       return apiClient.execute(request: ExtendedApiRequest.signIn(login: login, password: password))
+       return apiClient.execute(request: ExtendedApiRequest.signInRequest(login: login, password: password))
 
     }
 }

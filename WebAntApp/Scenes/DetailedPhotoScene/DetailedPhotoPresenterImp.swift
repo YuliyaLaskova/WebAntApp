@@ -33,7 +33,8 @@ class DetailedPhotoPresenterImp: DetailedPhotoPresenter {
         view?.setView(image: imageModel.image?.name,
                       name: imageModel.name,
                       desription: imageModel.description,
-                      user: imageModel.user)
+                      user: imageModel.user,
+                      dateCreation: imageModel.dateCreate)
     }
 
     func getPhotoModel() -> PhotoEntityForGet? {

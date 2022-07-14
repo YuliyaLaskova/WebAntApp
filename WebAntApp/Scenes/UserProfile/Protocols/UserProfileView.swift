@@ -13,4 +13,10 @@ import UIKit
 protocol UserProfileView: AnyObject {
 
     func setupUser(user: UserEntityForGet?)
+
+    func refreshPhotoCollection()
+    func endRefreshing()
+    func actIndicatorStartAnimating()
+    func actIndicatorStopAnimating()
+    func showErrorOnEmptyGallery(show: Bool)
 }

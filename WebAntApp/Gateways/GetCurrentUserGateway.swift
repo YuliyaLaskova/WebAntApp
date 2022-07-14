@@ -11,12 +11,11 @@ import RxSwift
 
 protocol GetCurrentUserGateway {
     func getCurrentUser() -> Single<UserEntityForGet>
-
 }
 
 class GetCurrentUserGatewayImp: ApiBaseGateway, GetCurrentUserGateway {
     func getCurrentUser() -> Single<UserEntityForGet> {
-        let request: ExtendedApiRequest<UserEntityForGet> = ExtendedApiRequest.getCurrentUser()
+        let request: ExtendedApiRequest<UserEntityForGet> = ExtendedApiRequest.getCurrentUserRequest()
         return apiClient.execute(request: request)
     }
 }

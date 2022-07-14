@@ -15,7 +15,6 @@ protocol SignUpUseCase {
     func signUp(_ entity: UserEntity) -> Single<UserEntity>
 }
 
-
 class SignUpUseCaseImp: SignUpUseCase {
 
     let registrationGateway: SignUpGateway

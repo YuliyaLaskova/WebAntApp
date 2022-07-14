@@ -18,8 +18,10 @@ protocol MainGalleryPresenter {
     var popularPhotoArray: [PhotoEntityForGet] { get set }
     
 //    func fetchPhotos()
-    func fetchPhotosWithPagination()
-    func subscribeOnPhotoUpdates()
+    func fetchNewPhotosWithPagination()
+    func fetchPopularPhotosWithPagination()
+    func subscribeOnNewPhotoUpdates()
+    func subscribeOnPopularPhotoUpdates()
     func openDetailedPhoto(photoIndex: Int, newPopularSegCntrlIndex: Int)
     func refreshPhotos(photoIndex: Int)
     func viewDidLoad()

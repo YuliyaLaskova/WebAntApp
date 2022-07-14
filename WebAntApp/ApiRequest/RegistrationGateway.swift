@@ -18,7 +18,7 @@ protocol RegistrationGateway {
 
 class RegistrationGatewayImp: ApiBaseGateway, RegistrationGateway {
     func signIn(login: String, password: String) -> Single<User> {
-        let request: ExtendedApiRequest<User> = ExtendedApiRequest.signIn(login: login, password: password)
+        let request: ExtendedApiRequest<User> = ExtendedApiRequest.signInRequest(login: login, password: password)
         return apiClient.execute(request: request)
     }
 

@@ -14,7 +14,8 @@ protocol DetailedPhotoView: AnyObject {
     func setView(image: String?,
                  name: String?,
                  desription: String?,
-                 user: String?)
+                 user: String?,
+                 dateCreation: String?)
 
     func getUsername(username: String?)
 }

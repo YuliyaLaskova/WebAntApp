@@ -90,14 +90,14 @@ private class UnfairLock: FastLock {
 }
 
 private class SpinLock: FastLock {
-  private var monitor: OSSpinLock = OSSpinLock()
+  private var monitor: os_unfair_lock = os_unfair_lock()
 
   func lock() {
-    OSSpinLockLock(&monitor)
+      os_unfair_lock_lock(&monitor)
   }
 
   func unlock() {
-    OSSpinLockUnlock(&monitor)
+      os_unfair_lock_unlock(&monitor)
   }
 }
 

@@ -27,20 +27,6 @@ class SignInViewController: UIViewController {
 
         setupUI()
     }
-
-    // MARK: IB Actions
-
-    @IBAction func signInBtnPressed() {
-        if isFieldEmpty() {
-            showAlert(with: R.string.scenes.error(), and: "You didn't fill all fields")
-        }
-        signInAndOpenMainGallery()
-    }
-
-    @IBAction func signUpBtnPressed() {
-        openSignUpScene()
-    }
-
     // MARK: Constraints
 
     override func viewDidLayoutSubviews() {
@@ -67,7 +53,7 @@ class SignInViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
 
-        emailTextField.becomeFirstResponder()
+//        emailTextField.becomeFirstResponder()
         emailTextField.addDoneButtonOnKeyboard()
         passwordTextField.addDoneButtonOnKeyboard()
 
@@ -82,7 +68,19 @@ class SignInViewController: UIViewController {
 
         passwordTextField.rightButton = UIButton()
     }
+    // MARK: IB Actions
 
+    @IBAction func signInBtnPressed() {
+        if isFieldEmpty() {
+            showAlert(with: R.string.scenes.error(), and: "You didn't fill all fields")
+        }
+        signInAndOpenMainGallery()
+    }
+
+    @IBAction func signUpBtnPressed() {
+        openSignUpScene()
+    }
+    
     func setupNavigationBarItem() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         let cancelButton = UIBarButtonItem.init(
@@ -98,7 +96,6 @@ class SignInViewController: UIViewController {
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
     }
-
 }
 
 // MARK: - Work with keyboard
@@ -118,7 +115,6 @@ extension SignInViewController: UITextFieldDelegate {
         return true
     }
 
-
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text = textField.text?.removingWhitespaces()
     }
@@ -131,7 +127,6 @@ extension SignInViewController: SignInView {
     }
 
     func signInAndOpenMainGallery() {
-
         guard let email = emailTextField.text,
               let password = passwordTextField.text
                 

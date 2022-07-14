@@ -17,9 +17,6 @@ class MainGalleryViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     private let searchBar = UISearchBar()
     
-    
-    var array: [UIImage] = [UIImage(named: "Forest")!, UIImage(named: "Field")!, UIImage(named: "Flower")!, UIImage(named: "Bear")!]
-
     @IBOutlet var imageCollection: UICollectionView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var errorImage: UIImageView!
@@ -47,7 +44,6 @@ class MainGalleryViewController: UIViewController {
 
         errorImage.isHidden = true
 
-        searchBar.delegate = self
         self.navigationItem.titleView = searchBar
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -61,24 +57,70 @@ class MainGalleryViewController: UIViewController {
         imageCollection.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(pullToRefreshPhotos) , for: .valueChanged)
 
-        let layout = UICollectionViewFlowLayout()
-        imageCollection.collectionViewLayout = layout
 
-        let width: CGFloat = ((view.frame.size.width - 37) / 2)
+        let layout = UICollectionViewFlowLayout()
+
+//        let width: CGFloat = ((view.frame.size.width - 37) / 2)
+        let width: CGFloat = ((view.frame.size.width / 2) - 20)
         layout.itemSize = CGSize(width: width, height: width)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-
+        imageCollection.collectionViewLayout = layout
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if UIDevice.current.orientation.isPortrait {
+            let layout = UICollectionViewFlowLayout()
+
+//            let width: CGFloat = ((view.frame.size.width - 37) / 2)
+            let width: CGFloat = ((view.frame.size.width / 2) - 20)
+            layout.itemSize = CGSize(width: width, height: width)
+            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 5
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+            imageCollection.collectionViewLayout = layout
+
+            view.layoutIfNeeded()
+        }
+
+        else if UIDevice.current.orientation.isLandscape {
+            let layout = UICollectionViewFlowLayout()
+
+//            let width: CGFloat = ((view.frame.size.width - 37) / 2)
+            let width: CGFloat = ((view.frame.size.width / 4) - 40)
+            layout.itemSize = CGSize(width: width, height: width)
+            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 5
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+            imageCollection.collectionViewLayout = layout
+            view.layoutIfNeeded()
+        }
+    }
+
+//            if UIDevice.current.orientation.isPortrait, let layout = imageCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+//
+//                let width: CGFloat = ((view.frame.size.width / 2) - 20)
+//                layout.itemSize = CGSize(width: width, height: width)
+//                layout.minimumInteritemSpacing = 5
+//                layout.minimumLineSpacing = 5
+//                layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+//            }
+//
+//            else if UIDevice.current.orientation.isLandscape, let layout = imageCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+//
+//                let width: CGFloat = ((view.frame.size.width / 4) - 40)
+//                layout.itemSize = CGSize(width: width, height: width)
+//                layout.minimumInteritemSpacing = 5
+//                layout.minimumLineSpacing = 5
+//                layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+//            }
+//        }
 
     @objc func pullToRefreshPhotos() {
         presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex)
     }
-
-    //    @objc func pullToRefreshPhotos() {
-    //        presenter?.refreshPhotos()
-    //    }
 }
 
 extension MainGalleryViewController: MainGalleryView {
@@ -157,7 +199,6 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
                 cell.setupImage(photo)
                 return cell
             case 1:
-
                 guard let photo = presenter?.popularPhotoArray[indexPath.row].image?.name else {
                     return UICollectionViewCell()
                 }
@@ -190,16 +231,7 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.presenter!.newPhotoArray.count - 1 {
-            self.presenter?.fetchPhotosWithPagination()
-        }
-    }
-}
-
-extension MainGalleryViewController: UISearchBarDelegate {
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if searchBar.text == "" {
-            self.imageCollection.reloadData()
+            self.presenter?.fetchNewPhotosWithPagination()
         }
     }
 }

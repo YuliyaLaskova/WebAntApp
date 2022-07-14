@@ -22,7 +22,6 @@ class MainGalleryRouter: BaseRouter {
         guard let navController = self.view?.navigationController else {
             return
         }
-        
         DetailedPhotoConfigurator.open(navigationController: navController,
                                        imageModel: imageEntity)
     }

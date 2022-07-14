@@ -15,11 +15,9 @@ protocol RegistrationUseCase {
 class RegistrationUseCaseImp: RegistrationUseCase {
     let registrationGateway: RegistrationGateway
 
-
     init (gateway: RegistrationGateway) {
         self.registrationGateway = gateway
     }
-
 
     func signUp(login: String, password: String) -> Single<User> {
         return self.registrationGateway.signIn(login: login, password: password)
