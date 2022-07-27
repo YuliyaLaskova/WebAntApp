@@ -12,15 +12,16 @@ class PhotoEntityForPost: JsonBodyConvertible, Codable {
 
     var name: String?
     var description: String?
-    var new: Bool
-    var popular: Bool
+    var new: String?
+    var popular: String?
     var image: String?
 
-    init(name: String?, description: String?, new: Bool, popular: Bool, image: Int?) {
+    init(name: String?, description: String?, new: String?, popular: String?, image: Int?) {
         self.name = name
         self.description = description
-        self.popular = Bool.random()
-        self.new = !self.popular
+        // self.popular = new   self.new = popular или наоборот?
+        self.popular = new
+        self.new = popular
         self.image = "/api/media_objects/\(image ?? 0)"
     }
 }

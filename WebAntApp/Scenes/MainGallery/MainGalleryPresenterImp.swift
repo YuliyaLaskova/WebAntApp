@@ -12,10 +12,11 @@ import Foundation
 import RxSwift
 
 class MainGalleryPresenterImp: MainGalleryPresenter {
+    var currentStateOfNewCollection: CGFloat = 0
+    var currentStateOfPopularCollection: CGFloat = 0
 
     private weak var view: MainGalleryView?
     private let router: MainGalleryRouter
-    //    private let getPhotoUseCase: GetPhotoUseCase
     private let paginationUseCase: PaginationUseCase
     private let disposeBag = DisposeBag()
     private var requestDisposeBag = DisposeBag()
@@ -41,28 +42,7 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
     deinit {
         self.paginationDisposeBag = DisposeBag()
     }
-    //    init(_ view: MainGalleryView,
-    //         _ router: MainGalleryRouter,_ getPhotoUseCase: GetPhotoUseCase) {
-    //        self.view = view
-    //        self.router = router
-    //        self.getPhotoUseCase = getPhotoUseCase
-    //    }
 
-    //    func fetchPhotos() {
-    //        getPhotoUseCase.getPhoto()
-    //            .observe(on: MainScheduler.instance)
-    //            .subscribe { [weak self] photoModel in
-    //                for item in photoModel.data where item.image != nil {
-    //                    self?.photoArray.append(item)
-    //                }
-    //                self?.view?.refreshPhotoCollection()
-    //            } onFailure: { error in
-    //                print(error)
-    //            } onDisposed: {
-    //                print("Disposed")
-    //            }
-    //            .disposed(by: disposeBag)
-    //    }
 
     func subscribeOnNewPhotoUpdates() {
         paginationUseCase.sourceForNewPhotos
@@ -87,27 +67,19 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                 guard let self = self else {
                     return
                 }
-                // TODO: - no filter
-//                self.popularPhotoArray = result.filter({ photo in
-//                    photo.popular ?? true
-//                })
                 self.popularPhotoArray = result
-//                    .filter({ photo in
-//                    photo.popular ?? true
-//                })
                 self.view?.refreshPhotoCollection()
             })
             .disposed(by: self.paginationDisposeBag)
     }
 
-    func fetchNewPhotosWithPagination() {
+    func fetchNewPhotosWithPagination(imageName: String? = nil) {
         self.requestDisposeBag = DisposeBag()
         guard self.paginationUseCase.hasMoreNewItems(),
               !isNewsLoadingInProgress else {
             return
         }
-//        self.view?.refreshPhotoCollection()
-        self.paginationUseCase.getMoreNewPhotos()
+        self.paginationUseCase.getMoreNewPhotos(imageName: imageName)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
                 view?.actIndicatorStartAnimating()
@@ -124,12 +96,12 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
             .disposed(by: self.requestDisposeBag)
                 }
 
-    func fetchPopularPhotosWithPagination() {
+    func fetchPopularPhotosWithPagination(imageName: String? = nil) {
         self.requestDisposeBag = DisposeBag()
         guard self.paginationUseCase.hasMorePopularItems(),
               !isNewsLoadingInProgress else { return }
 //        self.view?.refreshPhotoCollection()
-        self.paginationUseCase.getMorePopularPhotos()
+        self.paginationUseCase.getMorePopularPhotos(imageName: imageName)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
                 view?.actIndicatorStartAnimating()
@@ -156,21 +128,54 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
     }
 
     // TODO: - сделать загрузку фоток  в популар при первом открытии популар в галерее
-    func refreshPhotos(photoIndex: Int) {
+    func refreshPhotos(photoIndex: Int, needToLoadPhotos: Bool) {
         paginationUseCase.reset(photoIndex: photoIndex)
         switch photoIndex {
-        case 0: newPhotoArray.removeAll()
+        case 0:
+            newPhotoArray.removeAll()
             view?.refreshPhotoCollection()
-            fetchNewPhotosWithPagination()
+            if needToLoadPhotos {
+                fetchNewPhotosWithPagination(imageName: nil)
+            }
             view?.endRefreshing()
-        case 1: popularPhotoArray.removeAll()
+
+        case 1: if needToLoadPhotos == true {
+            popularPhotoArray.removeAll()
             view?.refreshPhotoCollection()
-            fetchPopularPhotosWithPagination()
+            if needToLoadPhotos {
+                fetchPopularPhotosWithPagination(imageName: nil)
+            }
             view?.endRefreshing()
+        }
         default: break
         }
     }
 }
+
+//    private let getPhotoUseCase: GetPhotoUseCase
+
+//    init(_ view: MainGalleryView,
+//         _ router: MainGalleryRouter,_ getPhotoUseCase: GetPhotoUseCase) {
+//        self.view = view
+//        self.router = router
+//        self.getPhotoUseCase = getPhotoUseCase
+//    }
+
+//    func fetchPhotos() {
+//        getPhotoUseCase.getPhoto()
+//            .observe(on: MainScheduler.instance)
+//            .subscribe { [weak self] photoModel in
+//                for item in photoModel.data where item.image != nil {
+//                    self?.photoArray.append(item)
+//                }
+//                self?.view?.refreshPhotoCollection()
+//            } onFailure: { error in
+//                print(error)
+//            } onDisposed: {
+//                print("Disposed")
+//            }
+//            .disposed(by: disposeBag)
+//    }
 
 //func subscribeOnPhotoUpdates() {
 //    paginationUseCase.source

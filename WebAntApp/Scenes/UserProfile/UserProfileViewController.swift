@@ -32,15 +32,26 @@ class UserProfileViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .gray
-
+//
         let layout = UICollectionViewFlowLayout()
-        userImageCollection.collectionViewLayout = layout
+//
+//        let width: CGFloat = ((view.frame.size.width / 4) - 40)
+//        layout.itemSize = CGSize(width: width, height: width)
+//        layout.minimumInteritemSpacing = 5
+//        layout.minimumLineSpacing = 5
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+//        userImageCollection.collectionViewLayout = layout
+//        let layout = UICollectionViewFlowLayout()
 
+//        let width: CGFloat = ((view.frame.size.width - 37) / 2)
+
+        // левый спейсинг + правый спейсинг + отступ между 3 элементами(тк мы хотим 4 элемента)
         let width: CGFloat = ((view.frame.size.width - 47) / 4)
         layout.itemSize = CGSize(width: width, height: width)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        userImageCollection.collectionViewLayout = layout
 
         profilePhotoView.layer.borderWidth = 1
         profilePhotoView.layer.borderColor = UIColor.systemGray5.cgColor
@@ -56,7 +67,35 @@ class UserProfileViewController: UIViewController {
         }
         presenter?.viewDidLoad()
     }
-    
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if UIDevice.current.orientation.isPortrait {
+            let layout = UICollectionViewFlowLayout()
+            let width: CGFloat = ((view.frame.size.width - 47) / 4)
+            layout.itemSize = CGSize(width: width, height: width)
+            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 5
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+            userImageCollection.collectionViewLayout = layout
+           // view.layoutIfNeeded()
+            layout.invalidateLayout()
+        }
+
+        else if UIDevice.current.orientation.isLandscape {
+            let layout = UICollectionViewFlowLayout()
+//            let width: CGFloat = ((view.frame.size.width / 4) - 108)
+            let width: CGFloat = ((view.frame.size.width - 125) / 6)
+            layout.itemSize = CGSize(width: width, height: width)
+            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 5
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
+            
+            userImageCollection.collectionViewLayout = layout
+//            view.layoutIfNeeded()
+            layout.invalidateLayout()
+        }
+    }
 
     @objc func pullToRefreshPhotos() {
         presenter?.refreshPhotos(photoIndex: 0)

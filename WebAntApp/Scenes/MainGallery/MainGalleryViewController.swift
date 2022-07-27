@@ -16,7 +16,7 @@ class MainGalleryViewController: UIViewController {
 
     private let refreshControl = UIRefreshControl()
     private let searchBar = UISearchBar()
-    
+
     @IBOutlet var imageCollection: UICollectionView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var errorImage: UIImageView!
@@ -45,6 +45,9 @@ class MainGalleryViewController: UIViewController {
         errorImage.isHidden = true
 
         self.navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        searchBar.placeholder = R.string.scenes.searchCase()
+        searchBar.searchTextField.addDoneButtonOnKeyboard()
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
@@ -56,7 +59,6 @@ class MainGalleryViewController: UIViewController {
 
         imageCollection.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(pullToRefreshPhotos) , for: .valueChanged)
-
 
         let layout = UICollectionViewFlowLayout()
 
@@ -73,8 +75,6 @@ class MainGalleryViewController: UIViewController {
         super.viewDidLayoutSubviews()
         if UIDevice.current.orientation.isPortrait {
             let layout = UICollectionViewFlowLayout()
-
-//            let width: CGFloat = ((view.frame.size.width - 37) / 2)
             let width: CGFloat = ((view.frame.size.width / 2) - 20)
             layout.itemSize = CGSize(width: width, height: width)
             layout.minimumInteritemSpacing = 5
@@ -87,8 +87,6 @@ class MainGalleryViewController: UIViewController {
 
         else if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()
-
-//            let width: CGFloat = ((view.frame.size.width - 37) / 2)
             let width: CGFloat = ((view.frame.size.width / 4) - 40)
             layout.itemSize = CGSize(width: width, height: width)
             layout.minimumInteritemSpacing = 5
@@ -119,7 +117,7 @@ class MainGalleryViewController: UIViewController {
 //        }
 
     @objc func pullToRefreshPhotos() {
-        presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex)
+        presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: true)
     }
 }
 
@@ -155,11 +153,24 @@ extension MainGalleryViewController: MainGalleryView {
 
 extension MainGalleryViewController: CustomSegmentedControlDelegate  {
     func change(to index: Int) {
+        searchBar.text = ""
+        switch index {
+        case 0:
+            imageCollection.setContentOffset(CGPoint(x: 0, y: presenter?.currentStateOfNewCollection ?? 0), animated: false)
+            presenter?.fetchNewPhotosWithPagination(imageName: nil)
+        case 1:
+            imageCollection.setContentOffset(CGPoint(x: 0, y: presenter?.currentStateOfPopularCollection ?? 0), animated: false)
+            presenter?.fetchPopularPhotosWithPagination(imageName: nil)
+        default:
+            break
+        }
         refreshPhotoCollection()
         print("segmentedControl index changed to \(index)")
     }
 }
 
+
+// content offset
 extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -173,16 +184,14 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
             showErrorOnEmptyGallery(show: true)
             return 0
         }
-        case 1: if presenter.popularPhotoArray.count > 0 {
-            showErrorOnEmptyGallery(show: false)
-            return presenter.popularPhotoArray.count
-        } else {
-            showErrorOnEmptyGallery(show: true)
-            return 0
-        }
         default:
-            showErrorOnEmptyGallery(show: true)
-            return 0
+            if presenter.popularPhotoArray.count > 0 {
+                showErrorOnEmptyGallery(show: false)
+                return presenter.popularPhotoArray.count
+            } else {
+                showErrorOnEmptyGallery(show: true)
+                return 0
+            }
         }
     }
 
@@ -231,7 +240,50 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.presenter!.newPhotoArray.count - 1 {
-            self.presenter?.fetchNewPhotosWithPagination()
+            self.presenter?.fetchNewPhotosWithPagination(imageName: nil)
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        switch newPopularSegCntrl.selectedIndex {
+        case 0:
+            presenter?.currentStateOfNewCollection = scrollView.contentOffset.y
+        case 1:
+            presenter?.currentStateOfPopularCollection = scrollView.contentOffset.y
+        default:
+            break
+        }
+    }
+}
+
+extension MainGalleryViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+
+        guard let imageName = searchBar.text else { return }
+        presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: false)
+        switch newPopularSegCntrl.selectedIndex {
+        case 0: presenter?.fetchNewPhotosWithPagination(imageName: imageName)
+        case 1: presenter?.fetchPopularPhotosWithPagination(imageName: imageName)
+        default: break
+        }
+    }
+
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//            self.searchBar.showsCancelButton = true
+//    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+            if searchBar.text == "" {
+                presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: true)
+
+            }
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: true)
         }
     }
 }

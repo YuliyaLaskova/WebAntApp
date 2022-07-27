@@ -16,7 +16,6 @@ class PhotoCell: UICollectionViewCell {
         }
     }
 
-
     private lazy var spinner = UIActivityIndicatorView(style: .large)
 
     override init(frame: CGRect) {

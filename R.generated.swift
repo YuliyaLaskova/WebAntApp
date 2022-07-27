@@ -211,8 +211,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 18 images.
+  /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
+    /// Image `ActivityIndicator`.
+    static let activityIndicator = Rswift.ImageResource(bundle: R.hostingBundle, name: "ActivityIndicator")
     /// Image `Bear`.
     static let bear = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bear")
     /// Image `Camera`.
@@ -249,6 +251,13 @@ struct R: Rswift.Validatable {
     static let photoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoIcon")
     /// Image `userIcon`.
     static let userIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "userIcon")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ActivityIndicator", bundle: ..., traitCollection: ...)`
+    static func activityIndicator(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.activityIndicator, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Bear", bundle: ..., traitCollection: ...)`
@@ -421,7 +430,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.scenes` struct is generated, and contains static references to 13 localization keys.
+    /// This `R.string.scenes` struct is generated, and contains static references to 15 localization keys.
     struct scenes {
       /// Value: Birthday
       static let dateOfBirth = Rswift.StringResource(key: "dateOfBirth", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -443,6 +452,10 @@ struct R: Rswift.Validatable {
       static let phoneNumber = Rswift.StringResource(key: "phoneNumber", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Save
       static let save = Rswift.StringResource(key: "save", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Search
+      static let searchCase = Rswift.StringResource(key: "searchCase", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Succsess
+      static let succsessMessage = Rswift.StringResource(key: "succsessMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Surname
       static let surname = Rswift.StringResource(key: "surname", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: User Name
@@ -578,6 +591,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("save", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Search
+      static func searchCase(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("searchCase", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "searchCase"
+        }
+
+        return NSLocalizedString("searchCase", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Succsess
+      static func succsessMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("succsessMessage", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "succsessMessage"
+        }
+
+        return NSLocalizedString("succsessMessage", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Surname

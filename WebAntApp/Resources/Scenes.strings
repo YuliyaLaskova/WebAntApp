@@ -18,3 +18,5 @@
 "emptyFieldsMessage" = "You didn't fill all required fields";
 "okAction" = "OK";
 "passwordsNotMatch" = "Passwords aren't identical";
+"searchCase" = "Search";
+"succsessMessage" = "Succsess";

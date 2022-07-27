@@ -20,8 +20,8 @@ protocol PaginationUseCase {
 
     func hasMoreNewItems() -> Bool
     func hasMorePopularItems() -> Bool
-    func getMoreNewPhotos() -> Completable
-    func getMorePopularPhotos() -> Completable
+    func getMoreNewPhotos(imageName: String?) -> Completable
+    func getMorePopularPhotos(imageName: String?) -> Completable
     func getMoreUserPhotos(userId: Int) -> Completable
     func reset(photoIndex: Int)
 }
@@ -64,12 +64,12 @@ class PaginationUseCaseImp: PaginationUseCase {
         return self.popularItems.count < totalItemsCount - notPopularPhotoTypeItem
     }
 
-    public func getMoreNewPhotos() -> Completable {
+    public func getMoreNewPhotos(imageName: String? = nil) -> Completable {
         .deferred {
             self.cancelLoading()
             self.isLoadingInProcess = true
 
-            return self.gateway.getPhotos(self.newCurrentPage, self.limit, true, nil)
+            return self.gateway.getPhotos(self.newCurrentPage, self.limit, true, imageName)
                     .do(onSuccess: { (result: PaginationEntity<PhotoEntityForGet>) in
                         for item in result.data {
                             if item.image?.name != nil {
@@ -91,12 +91,12 @@ class PaginationUseCaseImp: PaginationUseCase {
         }
     }
 
-    public func getMorePopularPhotos() -> Completable {
+    public func getMorePopularPhotos(imageName: String? = nil) -> Completable {
         .deferred {
             self.cancelLoading()
             self.isLoadingInProcess = true
 
-            return self.gateway.getPhotos(self.popularCurrentPage, self.limit, false, nil)
+            return self.gateway.getPhotos(self.popularCurrentPage, self.limit, false, imageName)
                     .do(onSuccess: { (result: PaginationEntity<PhotoEntityForGet>) in
                         for item in result.data {
                             if item.image?.name != nil {
@@ -161,7 +161,6 @@ class PaginationUseCaseImp: PaginationUseCase {
             self.notPopularPhotoTypeItem = 0
         default: break
         }
-
     }
 
     private func cancelLoading() {

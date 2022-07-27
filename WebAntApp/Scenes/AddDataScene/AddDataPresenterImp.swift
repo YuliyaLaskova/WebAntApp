@@ -33,26 +33,60 @@ class AddDataPresenterImp: AddDataPresenter {
         return self.photoForPost
     }
 
+    //    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
+    //        guard let data = image.jpegData(compressionQuality: 0.5) else {return}
+    //
+    //        let file = UploadFile("file", data, "image")
+    //        print(file)
+    //        postPhotoUseCase.postMediaObject(file)
+    //            .subscribe(onSuccess: { file in
+    //                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
+    //                self.postPhotoUseCase.postPhoto(newPhoto)
+    //                    .observe(on: MainScheduler.instance)
+    //                    .subscribe { photo in
+    //                        print("##SucceSS\(photo)")
+    //                    } onFailure: { _ in
+    //                        print("error")
+    //                    } onDisposed: {
+    //                        print("Disposed")
+    //                    }
+    //                    .disposed(by: self.disposeBag)
+    //        })
+    //            .disposed(by: self.disposeBag)
+    //}
+
     func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
         guard let data = image.jpegData(compressionQuality: 0.5) else {return}
 
         let file = UploadFile("file", data, "image")
         print(file)
         postPhotoUseCase.postMediaObject(file)
+            .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { file in
-                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
+                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: "true", popular: "true", image: file.id)
                 self.postPhotoUseCase.postPhoto(newPhoto)
                     .observe(on: MainScheduler.instance)
-                    .subscribe { photo in
-                        print("##SucceSS\(photo)")
-                    } onFailure: { _ in
-                        print("error")
-                    } onDisposed: {
+                    .subscribe(onSuccess: { [weak self] _ in
+                        guard let self = self else {
+                            return
+                        }
+                        self.backToMainGallery()
+                        //                        self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.succsessMessage(),
+                        //                                                         alertMessage: nil,
+                        //                                                         buttonMessage: R.string.scenes.okAction(),
+                        //                                                         completion: { [weak self ] in
+                        //                            self?.backToMainGallery()                                                            })
+                    }, onFailure: { error in
+                        print(error.localizedDescription)
+                    }, onDisposed: {
                         print("Disposed")
-                    }
+                    })
                     .disposed(by: self.disposeBag)
-        })
+            })
             .disposed(by: self.disposeBag)
+    }
+    func backToMainGallery() {
+        router.goBackToMainGallery()
+    }
+    
 }
-            }
-

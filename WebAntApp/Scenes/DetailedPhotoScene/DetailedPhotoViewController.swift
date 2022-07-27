@@ -13,19 +13,25 @@ import UIKit
 class DetailedPhotoViewController: UIViewController {
     
     internal var presenter: DetailedPhotoPresenter?
-        
+    @IBOutlet var viewsTextField: DesignableUITextField!
     @IBOutlet var detailedPhoto: UIImageView!
-    @IBOutlet var photoNameTextField: UITextField!
-    @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet var dateTextField: UITextField!
+    @IBOutlet var photoNameLabel: UILabel!
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         guard let photo = presenter?.getPhotoModel() else {
             return
         }
+
+        detailedPhoto.isUserInteractionEnabled = true
+        descriptionTextView.isEditable = false
+        viewsTextField.isUserInteractionEnabled = false
+    
         presenter?.getUserInfo(photo.user ?? "")
 
         presenter?.setImage()
@@ -57,9 +63,9 @@ extension DetailedPhotoViewController: DetailedPhotoView {
 
     func setView(image: String?, name: String?, desription: String?, user: String?, dateCreation: String?) {
         setupImage(image)
-        photoNameTextField.text = name ?? ""
+        photoNameLabel.text = name ?? ""
         descriptionTextView.text = desription ?? ""
-        dateTextField.text = dateCreation?.convertDateFormatFromISO8601() ?? ""
+        dateLabel.text = dateCreation?.convertDateFormatFromISO8601() ?? ""
     }
     
     func setupImage(_ name: String?) {
@@ -74,7 +80,7 @@ extension DetailedPhotoViewController: DetailedPhotoView {
         guard let username = username else {
             return
         }
-        userNameTextField.text = username
+        userNameLabel.text = username
 
     }
 }

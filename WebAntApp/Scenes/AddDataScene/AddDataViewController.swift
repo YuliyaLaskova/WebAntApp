@@ -29,7 +29,7 @@ class AddDataViewController: UIViewController {
         descriptionTextView.layer.borderColor = UIColor.systemGray6.cgColor
         descriptionTextView.layer.cornerRadius = 5
 
-//        descriptionTextView.adjastableForKeyboard()
+        //        descriptionTextView.adjastableForKeyboard()
 
         nameTextField.becomeFirstResponder()
         nameTextField.addDoneButtonOnKeyboard()
@@ -69,7 +69,6 @@ class AddDataViewController: UIViewController {
     @objc func addBtnPressed() {
         addPressed()
     }
-
 }
 
 // MARK: Extensions
@@ -79,7 +78,15 @@ extension AddDataViewController: AddDataView {
         guard let image = photoToPost.image else {
             return
         }
-        let photo = PhotoEntityForPost(name: nameTextField.text, description: descriptionTextView.text, new: true, popular: true, image: nil)
+
+        var descriptionText = ""
+        if descriptionTextView.text == "Description" {
+            descriptionText = ""
+        } else {
+            descriptionText = descriptionTextView.text
+        }
+
+        let photo = PhotoEntityForPost(name: nameTextField.text, description: descriptionText, new: "true", popular: "true", image: nil)
 
         presenter?.postPhoto(image, photo)
     }
@@ -118,42 +125,42 @@ extension UITextView {
         self.inputAccessoryView = keyboardToolbar
     }
 
-//    func adjastableForKeyboard() {
-//        let notificationCenter = NotificationCenter.default
-//
-//        notificationCenter.addObserver(
-//            self,
-//            selector: #selector(adjustForKeyboard),
-//            name: UIResponder.keyboardWillHideNotification,
-//            object: nil
-//        )
-//        notificationCenter.addObserver(
-//            self,
-//            selector: #selector(adjustForKeyboard),
-//            name: UIResponder.keyboardWillChangeFrameNotification,
-//            object: nil
-//        )
-//    }
-//
-//    @objc private func adjustForKeyboard(notification: Notification) {
-//        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-//            return
-//        }
-//        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-//        let keyboardViewEndFrame = convert(keyboardScreenEndFrame, from: window)
-//
-//        if notification.name == UIResponder.keyboardWillHideNotification {
-//            contentInset = .zero
-//        } else {
-//            contentInset = UIEdgeInsets(
-//                top: 0,
-//                left: 0,
-//                bottom: keyboardViewEndFrame.height - safeAreaInsets.bottom,
-//                right: 0
-//            )
-//        }
-//
-//        scrollIndicatorInsets = contentInset
-//        scrollRangeToVisible(selectedRange)
-//    }
+    //    func adjastableForKeyboard() {
+    //        let notificationCenter = NotificationCenter.default
+    //
+    //        notificationCenter.addObserver(
+    //            self,
+    //            selector: #selector(adjustForKeyboard),
+    //            name: UIResponder.keyboardWillHideNotification,
+    //            object: nil
+    //        )
+    //        notificationCenter.addObserver(
+    //            self,
+    //            selector: #selector(adjustForKeyboard),
+    //            name: UIResponder.keyboardWillChangeFrameNotification,
+    //            object: nil
+    //        )
+    //    }
+    //
+    //    @objc private func adjustForKeyboard(notification: Notification) {
+    //        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+    //            return
+    //        }
+    //        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    //        let keyboardViewEndFrame = convert(keyboardScreenEndFrame, from: window)
+    //
+    //        if notification.name == UIResponder.keyboardWillHideNotification {
+    //            contentInset = .zero
+    //        } else {
+    //            contentInset = UIEdgeInsets(
+    //                top: 0,
+    //                left: 0,
+    //                bottom: keyboardViewEndFrame.height - safeAreaInsets.bottom,
+    //                right: 0
+    //            )
+    //        }
+    //
+    //        scrollIndicatorInsets = contentInset
+    //        scrollRangeToVisible(selectedRange)
+    //    }
 }

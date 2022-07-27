@@ -9,6 +9,11 @@ import Foundation
 
 class Token: Codable {
 
+//    enum CodingKey: String, Codable {
+//        case accessToken = "access_token"
+//        case refreshToken = "refresh_token"
+//    }
+
     var access_token: String
     var refresh_token: String
 

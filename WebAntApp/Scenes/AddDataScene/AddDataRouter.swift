@@ -17,11 +17,13 @@ class AddDataRouter: BaseRouter {
     init(_ view: AddDataViewController) {
         self.view = view
     }
-    
-    func postPhotoThenOpenMainGallery() {
-        guard let navController = self.view?.navigationController else {
-            return
-        }
-          MainGalleryConfigurator.open(navigationController: navController)
+
+    func goBackToMainGallery() {
+//        guard let navController = self.view?.navigationController else {
+//            return
+//        }
+//          MainGalleryConfigurator.open(navigationController: navController)
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+         appDelegate?.openMainGalleryScreen(window: appDelegate?.window)
     }
 }

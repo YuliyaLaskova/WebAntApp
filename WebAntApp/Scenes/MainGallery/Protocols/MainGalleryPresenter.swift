@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MainGalleryPresenter {
     var isNewsLoadingInProgress: Bool { get }
@@ -16,13 +17,14 @@ protocol MainGalleryPresenter {
 //    var photoItems: [PhotoEntityForGet] { get set }
     var newPhotoArray: [PhotoEntityForGet] { get set }
     var popularPhotoArray: [PhotoEntityForGet] { get set }
-    
+    var currentStateOfNewCollection: CGFloat { get set }
+    var currentStateOfPopularCollection: CGFloat { get set }
 //    func fetchPhotos()
-    func fetchNewPhotosWithPagination()
-    func fetchPopularPhotosWithPagination()
+    func fetchNewPhotosWithPagination(imageName: String?)
+    func fetchPopularPhotosWithPagination(imageName: String?)
     func subscribeOnNewPhotoUpdates()
     func subscribeOnPopularPhotoUpdates()
     func openDetailedPhoto(photoIndex: Int, newPopularSegCntrlIndex: Int)
-    func refreshPhotos(photoIndex: Int)
+    func refreshPhotos(photoIndex: Int, needToLoadPhotos: Bool)
     func viewDidLoad()
 }

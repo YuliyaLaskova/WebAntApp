@@ -33,7 +33,6 @@ class SignInUseCaseImp: SignInUseCase {
         tokenState
     }
 
-
     init(signInGateway: SignInGateway, settings: Settings) {
         self.signInGateway = signInGateway
         self.settings = settings
@@ -76,7 +75,6 @@ class SignInUseCaseImp: SignInUseCase {
             })
                 .asCompletable()
                 }
-
 }
 
 enum LoginError: LocalizedError {
