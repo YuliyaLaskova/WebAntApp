@@ -30,20 +30,15 @@ class UserProfileViewController: UIViewController {
         userImageCollection.dataSource = self
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = .gray
-//
-        let layout = UICollectionViewFlowLayout()
-//
-//        let width: CGFloat = ((view.frame.size.width / 4) - 40)
-//        layout.itemSize = CGSize(width: width, height: width)
-//        layout.minimumInteritemSpacing = 5
-//        layout.minimumLineSpacing = 5
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-//        userImageCollection.collectionViewLayout = layout
-//        let layout = UICollectionViewFlowLayout()
+        let settingsBarButtonItem = UIBarButtonItem()
+        settingsBarButtonItem.image = UIImage(named: "gear")
+        settingsBarButtonItem.tintColor = .black
+        settingsBarButtonItem.target = self
+        settingsBarButtonItem.action = #selector(settingsBtnPressed)
 
-//        let width: CGFloat = ((view.frame.size.width - 37) / 2)
+        navigationItem.rightBarButtonItem = settingsBarButtonItem
+        
+        let layout = UICollectionViewFlowLayout()
 
         // левый спейсинг + правый спейсинг + отступ между 3 элементами(тк мы хотим 4 элемента)
         let width: CGFloat = ((view.frame.size.width - 47) / 4)
@@ -100,9 +95,17 @@ class UserProfileViewController: UIViewController {
     @objc func pullToRefreshPhotos() {
         presenter?.refreshPhotos(photoIndex: 0)
     }
+
+    @objc func settingsBtnPressed() {
+        openSettingsScene()
+    }
 }
 
 extension UserProfileViewController: UserProfileView {
+    func openSettingsScene() {
+        presenter?.goToSettingScene()
+    }
+    
     func refreshPhotoCollection() {
         userImageCollection.reloadData()
     }
@@ -111,6 +114,7 @@ extension UserProfileViewController: UserProfileView {
         refreshControl.endRefreshing()
     }
 
+    // TODO: add activity indic and animate it
     func actIndicatorStartAnimating() {
     }
 

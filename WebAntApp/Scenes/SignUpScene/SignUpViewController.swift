@@ -49,18 +49,18 @@ class SignUpViewController: UIViewController {
     func setupTextFields() {
         userNameTextField.delegate = self
         emailTextField.delegate = self
-        userNameTextField.delegate = self
+        birthdayTextField.delegate = self
         oldPasswordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
         userNameTextField.addDoneButtonOnKeyboard()
         emailTextField.addDoneButtonOnKeyboard()
-        userNameTextField.addDoneButtonOnKeyboard()
+        birthdayTextField.addDoneButtonOnKeyboard()
         oldPasswordTextField.addDoneButtonOnKeyboard()
         confirmPasswordTextField.addDoneButtonOnKeyboard()
     }
 
-
+// TODO: make proper picker
     private func createDatePicker() {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         birthdayTextField.inputView = datePicker

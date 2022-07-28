@@ -108,4 +108,9 @@ class UserProfilePresenterImp: UserProfilePresenter {
         let photo = photoItems[photoIndex]
             router.openDetailedPhotoViewController(imageEntity: photo)
     }
+
+    func goToSettingScene() {
+        router.openSettingsViewController()
+    }
+
 }

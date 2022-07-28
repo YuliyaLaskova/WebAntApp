@@ -19,4 +19,6 @@
 "okAction" = "OK";
 "passwordsNotMatch" = "Passwords aren't identical";
 "searchCase" = "Search";
-"succsessMessage" = "Succsess";
+"SuccessMessage" = "Success";
+"successInPublicationMessage" = "Publication has been moderated";
+"failInPublicationMessage" = "Sorry. Something went wrong";

@@ -45,6 +45,14 @@
 		8C36BDA5285B41CE0089D180 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA4285B41CE0089D180 /* DI.swift */; };
 		8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */; };
 		8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA8285C580A0089D180 /* SignUpGateway.swift */; };
+		8C3E217628926CD500D5976F /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3E217028926CD500D5976F /* SettingsStoryboard.storyboard */; };
+		8C3E217728926CD500D5976F /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217128926CD500D5976F /* SettingsRouter.swift */; };
+		8C3E217828926CD500D5976F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217228926CD500D5976F /* SettingsViewController.swift */; };
+		8C3E217928926CD500D5976F /* SettingsPresenterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217328926CD500D5976F /* SettingsPresenterImp.swift */; };
+		8C3E217A28926CD500D5976F /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217428926CD500D5976F /* SettingsConfigurator.swift */; };
+		8C3E217D28926CDD00D5976F /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217C28926CDD00D5976F /* SettingsPresenter.swift */; };
+		8C3E217F28926CDF00D5976F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217E28926CDF00D5976F /* SettingsView.swift */; };
+		8C3E218228926E8500D5976F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E218128926E8500D5976F /* BaseView.swift */; };
 		8C4027DF28646CDE00CB9DE9 /* PhotoEntityForGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027DE28646CDE00CB9DE9 /* PhotoEntityForGet.swift */; };
 		8C4027E128646ECE00CB9DE9 /* GetPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */; };
 		8C4027E328646F2400CB9DE9 /* GetPhotoGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */; };
@@ -53,6 +61,7 @@
 		8C4027ED2865B7AB00CB9DE9 /* MediaObjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */; };
 		8C4027EF2865BD7500CB9DE9 /* PostPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */; };
 		8C4028132869C18700CB9DE9 /* RootStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4028122869C18700CB9DE9 /* RootStoryboard.storyboard */; };
+		8C458AAC2891536900709CC9 /* CustomActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C458AAB2891536900709CC9 /* CustomActivityIndicatorView.swift */; };
 		8C5496B328645077005674C1 /* AddPhotoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */; };
 		8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496AE28645077005674C1 /* AddPhotoRouter.swift */; };
 		8C5496B528645077005674C1 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5496AF28645077005674C1 /* AddPhotoViewController.swift */; };
@@ -156,6 +165,14 @@
 		8C36BDA4285B41CE0089D180 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		8C36BDA8285C580A0089D180 /* SignUpGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpGateway.swift; sourceTree = "<group>"; };
+		8C3E217028926CD500D5976F /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		8C3E217128926CD500D5976F /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		8C3E217228926CD500D5976F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8C3E217328926CD500D5976F /* SettingsPresenterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterImp.swift; sourceTree = "<group>"; };
+		8C3E217428926CD500D5976F /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		8C3E217C28926CDD00D5976F /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		8C3E217E28926CDF00D5976F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8C3E218128926E8500D5976F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8C4027DE28646CDE00CB9DE9 /* PhotoEntityForGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntityForGet.swift; sourceTree = "<group>"; };
 		8C4027E028646ECE00CB9DE9 /* GetPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoUseCase.swift; sourceTree = "<group>"; };
 		8C4027E228646F2400CB9DE9 /* GetPhotoGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoGateway.swift; sourceTree = "<group>"; };
@@ -164,6 +181,7 @@
 		8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectEntity.swift; sourceTree = "<group>"; };
 		8C4027EE2865BD7500CB9DE9 /* PostPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoUseCase.swift; sourceTree = "<group>"; };
 		8C4028122869C18700CB9DE9 /* RootStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootStoryboard.storyboard; sourceTree = "<group>"; };
+		8C458AAB2891536900709CC9 /* CustomActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivityIndicatorView.swift; sourceTree = "<group>"; };
 		8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPhotoStoryboard.storyboard; sourceTree = "<group>"; };
 		8C5496AE28645077005674C1 /* AddPhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoRouter.swift; sourceTree = "<group>"; };
 		8C5496AF28645077005674C1 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				8C030FA92861D5A10029BEAD /* PhotoCell.swift */,
+				8C3E218128926E8500D5976F /* BaseView.swift */,
 				8CA8A8D8285333CC0037D6DE /* WelcomeScene */,
 				8C6B3F5F28533E9B00153686 /* SignInScene */,
 				8C6B3F702853643600153686 /* SignUpScene */,
@@ -338,6 +357,7 @@
 				8C5496AC2864502E005674C1 /* AddPhotoScene */,
 				8C17AC0E286AF6BA002CF17E /* AddDataScene */,
 				8C7F2CA3287813C00073D6B9 /* UserProfile */,
+				8C458AAD28915CB200709CC9 /* SettingsScene */,
 				8C7DE7B32850A7E4001F9D9B /* LaunchScreen */,
 			);
 			path = Scenes;
@@ -431,12 +451,34 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		8C3E218028926D1A00D5976F /* Prorocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C3E217C28926CDD00D5976F /* SettingsPresenter.swift */,
+				8C3E217E28926CDF00D5976F /* SettingsView.swift */,
+			);
+			path = Prorocols;
+			sourceTree = "<group>";
+		};
+		8C458AAD28915CB200709CC9 /* SettingsScene */ = {
+			isa = PBXGroup;
+			children = (
+				8C3E217028926CD500D5976F /* SettingsStoryboard.storyboard */,
+				8C3E217128926CD500D5976F /* SettingsRouter.swift */,
+				8C3E217228926CD500D5976F /* SettingsViewController.swift */,
+				8C3E217328926CD500D5976F /* SettingsPresenterImp.swift */,
+				8C3E217428926CD500D5976F /* SettingsConfigurator.swift */,
+				8C3E218028926D1A00D5976F /* Prorocols */,
+			);
+			path = SettingsScene;
+			sourceTree = "<group>";
+		};
 		8C5496AC2864502E005674C1 /* AddPhotoScene */ = {
 			isa = PBXGroup;
 			children = (
 				8C5496AD28645077005674C1 /* AddPhotoStoryboard.storyboard */,
-				8C5496AF28645077005674C1 /* AddPhotoViewController.swift */,
 				8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */,
+				8C5496AF28645077005674C1 /* AddPhotoViewController.swift */,
 				8C5496AE28645077005674C1 /* AddPhotoRouter.swift */,
 				8C5496B028645077005674C1 /* AddPhotoPresenterImp.swift */,
 				8C5496B128645077005674C1 /* AddPhotoConfigurator.swift */,
@@ -564,6 +606,7 @@
 				8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */,
 				8C6B3F9B2859F6F700153686 /* StringManager.swift */,
 				8CABFF95287575FC00FF31B0 /* TextFieldExtForKeyboard.swift */,
+				8C458AAB2891536900709CC9 /* CustomActivityIndicatorView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -704,6 +747,7 @@
 				8C7F2CAA287813E40073D6B9 /* UserProfileStoryboard.storyboard in Resources */,
 				8C6B3F662853447300153686 /* SignInStoryboard.storyboard in Resources */,
 				8CA8A8DF2853341B0037D6DE /* WelcomeStoryboard.storyboard in Resources */,
+				8C3E217628926CD500D5976F /* SettingsStoryboard.storyboard in Resources */,
 				8C7DE7BB2850B32B001F9D9B /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,7 +842,9 @@
 				8C6B3F6E2853450700153686 /* SignInView.swift in Sources */,
 				8C6B3F7E285364A700153686 /* SignUpPresenter.swift in Sources */,
 				8CA8A8D72853330E0037D6DE /* R.generated.swift in Sources */,
+				8C3E218228926E8500D5976F /* BaseView.swift in Sources */,
 				8C17AC35286EFDC9002CF17E /* DetailedPhotoConfigurator.swift in Sources */,
+				8C3E217828926CD500D5976F /* SettingsViewController.swift in Sources */,
 				8C6B3F962859EA6E00153686 /* SignInGateway.swift in Sources */,
 				8C17AC0D286AF68D002CF17E /* AddDataPresenter.swift in Sources */,
 				8CA8A8E02853341B0037D6DE /* WelcomeRouter.swift in Sources */,
@@ -828,6 +874,8 @@
 				8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */,
 				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
 				8C030F9128619F1B0029BEAD /* Token.swift in Sources */,
+				8C3E217728926CD500D5976F /* SettingsRouter.swift in Sources */,
+				8C3E217F28926CDF00D5976F /* SettingsView.swift in Sources */,
 				8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */,
 				8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */,
 				8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */,
@@ -841,6 +889,7 @@
 				8C17AC13286D9D5F002CF17E /* PaginationEntity.swift in Sources */,
 				8C7DE7BF2850B363001F9D9B /* SignUpViewController.swift in Sources */,
 				8C5496BA2864507E005674C1 /* AddPhotoPresenter.swift in Sources */,
+				8C3E217928926CD500D5976F /* SettingsPresenterImp.swift in Sources */,
 				8CA8A8E32853341B0037D6DE /* WelcomeConfigurator.swift in Sources */,
 				8CAFB81C28645FA900A430AB /* GalleryPhotoCell.swift in Sources */,
 				8C36BDA5285B41CE0089D180 /* DI.swift in Sources */,
@@ -858,17 +907,20 @@
 				8C4027E92865B60D00CB9DE9 /* PhotoEntityForPost.swift in Sources */,
 				8CA8A8EA285336340037D6DE /* BaseRouter.swift in Sources */,
 				8C17AC10286AF6D3002CF17E /* AddDataView.swift in Sources */,
+				8C3E217A28926CD500D5976F /* SettingsConfigurator.swift in Sources */,
 				8C6B3F692853447300153686 /* SignInPresenterImp.swift in Sources */,
 				8C030F9C2861C9B20029BEAD /* MainGalleryRouter.swift in Sources */,
 				8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */,
 				8C7F2CAD287813E40073D6B9 /* UserProfilePresenterImp.swift in Sources */,
 				8C4027DF28646CDE00CB9DE9 /* PhotoEntityForGet.swift in Sources */,
+				8C458AAC2891536900709CC9 /* CustomActivityIndicatorView.swift in Sources */,
 				8C4027E328646F2400CB9DE9 /* GetPhotoGateway.swift in Sources */,
 				8C7F2CAC287813E40073D6B9 /* UserProfileViewController.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */,
 				8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */,
 				8C6B3F8A2858941900153686 /* RegistrationGateway.swift in Sources */,
 				8CA8A8E82853346D0037D6DE /* WelcomeView.swift in Sources */,
+				8C3E217D28926CDD00D5976F /* SettingsPresenter.swift in Sources */,
 				8C6B3F672853447300153686 /* SignInRouter.swift in Sources */,
 				8C7DE78F284E0F34001F9D9B /* AppDelegate.swift in Sources */,
 				8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */,

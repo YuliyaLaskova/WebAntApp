@@ -12,7 +12,7 @@ import RxNetworkApiClient
 
 protocol PostPhotoUseCase {
 
-    func postPhoto(_ entity: PhotoEntityForPost) -> Single<PhotoEntityForPost>
+    func postPhoto(_ entity: PhotoEntityForPost) -> Single<PhotoEntityForGet>
     func postMediaObject(_ file: UploadFile) -> Single<MediaObjectEntity>
 }
 
@@ -24,7 +24,7 @@ class PostPhotoUseCaseImp: PostPhotoUseCase {
         self.postPhotoGateway = gateway
     }
 
-    func postPhoto(_ entity: PhotoEntityForPost) -> Single<PhotoEntityForPost> {
+    func postPhoto(_ entity: PhotoEntityForPost) -> Single<PhotoEntityForGet> {
         postPhotoGateway.postPhoto(entity)
     }
 

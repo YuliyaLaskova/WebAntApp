@@ -127,7 +127,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
         //        router.openDetailedPhotoViewController(imageEntity: photo)
     }
 
-    // TODO: - сделать загрузку фоток  в популар при первом открытии популар в галерее
     func refreshPhotos(photoIndex: Int, needToLoadPhotos: Bool) {
         paginationUseCase.reset(photoIndex: photoIndex)
         switch photoIndex {

@@ -26,4 +26,13 @@ class UserProfileRouter: BaseRouter {
         DetailedPhotoConfigurator.open(navigationController: navController,
                                        imageModel: imageEntity)
     }
+
+//    func openSettingsViewController(userEntity: UserEntityForGet) {
+    func openSettingsViewController() {
+        guard let navController = self.view?.navigationController else {
+            return
+        }
+
+        SettingsConfigurator.open(navigationController: navController)
+    }
 }

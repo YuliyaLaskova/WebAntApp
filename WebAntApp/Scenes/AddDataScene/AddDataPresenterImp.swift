@@ -12,6 +12,7 @@ import Foundation
 import UIKit
 import RxNetworkApiClient
 import RxSwift
+import Kingfisher
 
 class AddDataPresenterImp: AddDataPresenter {
     
@@ -27,6 +28,10 @@ class AddDataPresenterImp: AddDataPresenter {
         self.router = router
         self.postPhotoUseCase = postPhotoUseCase
         self.photoForPost = photoForPost
+    }
+
+    enum RequestError: Error {
+        case selfIsNil
     }
 
     func takeImageForPost() -> UIImage {
@@ -55,36 +60,85 @@ class AddDataPresenterImp: AddDataPresenter {
     //            .disposed(by: self.disposeBag)
     //}
 
-    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
-        guard let data = image.jpegData(compressionQuality: 0.5) else {return}
+    //    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
+    //        guard let data = image.jpegData(compressionQuality: 0.5) else {return}
+    //
+    //        let file = UploadFile("file", data, "image")
+    //        print(file)
+    //        postPhotoUseCase.postMediaObject(file)
+    //            .observe(on: MainScheduler.instance)
+    //            .subscribe(onSuccess: { file in
+    //                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
+    //                self.postPhotoUseCase.postPhoto(newPhoto)
+    //                    .observe(on: MainScheduler.instance)
+    //                    .subscribe(onSuccess: { [weak self] photo in
+    //                        guard let self = self else {
+    //                            return
+    //                        }
+    //                        print(photo)
+    //                        self.backToMainGallery()
+    //                                                self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.succsessMessage(),
+    //                                                                                 alertMessage: nil,
+    //                                                                                 buttonMessage: R.string.scenes.okAction(),
+    //                                                                                 completion: { [weak self ] in
+    //                                                    self?.backToMainGallery()                                                            })
+    //                    }, onFailure: { error in
+    //                        print(error.localizedDescription)
+    //                    }, onDisposed: {
+    //                        print("Disposed")
+    //                    })
+    //                    .disposed(by: self.disposeBag)
+    //            })
+    //            .disposed(by: self.disposeBag)
+    //    }
 
+
+    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
         let file = UploadFile("file", data, "image")
         print(file)
         postPhotoUseCase.postMediaObject(file)
-            .observe(on: MainScheduler.instance)
-            .subscribe(onSuccess: { file in
-                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: "true", popular: "true", image: file.id)
-                self.postPhotoUseCase.postPhoto(newPhoto)
-                    .observe(on: MainScheduler.instance)
-                    .subscribe(onSuccess: { [weak self] _ in
-                        guard let self = self else {
-                            return
+            .do(onSubscribe: { [weak self] in
+                self?.view?.actIndicatorStartAnimating()
+                print("put here activiti indicator")
+            }/*,
+                onDispose: { [weak view = self.view] in view?.actIndicatorStopAnimating()
+                
+        }*/)
+                .flatMap ({ [weak self] file -> Single<PhotoEntityForGet> in
+                    guard let strongSelf = self else {
+                        return Single.create { observer in
+                            observer(.failure(RequestError.selfIsNil))
+                            return Disposables.create()
                         }
-                        self.backToMainGallery()
-                        //                        self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.succsessMessage(),
-                        //                                                         alertMessage: nil,
-                        //                                                         buttonMessage: R.string.scenes.okAction(),
-                        //                                                         completion: { [weak self ] in
-                        //                            self?.backToMainGallery()                                                            })
-                    }, onFailure: { error in
-                        print(error.localizedDescription)
-                    }, onDisposed: {
-                        print("Disposed")
+                    }
+                    let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
+                    return     strongSelf.postPhotoUseCase.postPhoto(newPhoto)
+
+                })
+                .observe(on: MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] photo in
+                    print(photo)
+                    self?.view?.actIndicatorStopAnimating()
+                    self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
+                                                     alertMessage: R.string.scenes.successInPublicationMessage(),
+                                                     buttonMessage: R.string.scenes.okAction(),
+                                                     completion: { [weak self ] in
+                        self?.backToMainGallery()
                     })
-                    .disposed(by: self.disposeBag)
-            })
-            .disposed(by: self.disposeBag)
-    }
+                }, onFailure: { error in
+                    self.view?.addInfoModuleWithFunc(
+                        alertTitle: R.string.scenes.failInPublicationMessage(),
+                        alertMessage: error.localizedDescription,
+                        buttonMessage:  R.string.scenes.okAction()
+                    )
+                    print(error.localizedDescription)
+                }, onDisposed: {
+                    print("Disposed")
+                })
+                .disposed(by: self.disposeBag)
+                }
+
     func backToMainGallery() {
         router.goBackToMainGallery()
     }

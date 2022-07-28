@@ -10,7 +10,7 @@
 
 import UIKit
 
-protocol DetailedPhotoView: AnyObject {
+protocol DetailedPhotoView: BaseView {
     func setView(image: String?,
                  name: String?,
                  desription: String?,

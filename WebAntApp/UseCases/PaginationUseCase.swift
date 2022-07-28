@@ -74,7 +74,7 @@ class PaginationUseCaseImp: PaginationUseCase {
                         for item in result.data {
                             if item.image?.name != nil {
                                 self.newItems.append(item)
-                                print("item added to new")
+//                                print("item added to new")
                             } else {
                                 self.notNewPhotoTypeItem += 1
                             }
@@ -101,7 +101,7 @@ class PaginationUseCaseImp: PaginationUseCase {
                         for item in result.data {
                             if item.image?.name != nil {
                                 self.popularItems.append(item)
-                                print("item added to popular")
+//                                print("item added to popular")
                             } else {
                                 self.notPopularPhotoTypeItem += 1
                             }

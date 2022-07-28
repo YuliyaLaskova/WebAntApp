@@ -21,4 +21,6 @@ protocol UserProfilePresenter {
     func refreshPhotos(photoIndex: Int)
     func getCurrentUser() -> UserEntityForGet?
     func openDetailedPhoto(photoIndex: Int)
+    func goToSettingScene()
+
 }

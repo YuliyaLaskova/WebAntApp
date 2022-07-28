@@ -10,7 +10,7 @@
 
 import UIKit
 
-protocol WelcomeView: AnyObject {
+protocol WelcomeView: BaseView {
 
     func openSignInScene()
     func openSignUpScene()

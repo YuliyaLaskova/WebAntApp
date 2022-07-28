@@ -89,7 +89,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 10 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 11 storyboards.
   struct storyboard {
     /// Storyboard `AddDataStoryboard`.
     static let addDataStoryboard = _R.storyboard.addDataStoryboard()
@@ -103,6 +103,8 @@ struct R: Rswift.Validatable {
     static let mainGalleryStoryboard = _R.storyboard.mainGalleryStoryboard()
     /// Storyboard `RootStoryboard`.
     static let rootStoryboard = _R.storyboard.rootStoryboard()
+    /// Storyboard `SettingsStoryboard`.
+    static let settingsStoryboard = _R.storyboard.settingsStoryboard()
     /// Storyboard `SignInStoryboard`.
     static let signInStoryboard = _R.storyboard.signInStoryboard()
     /// Storyboard `SignUp`.
@@ -151,6 +153,13 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "RootStoryboard", bundle: ...)`
     static func rootStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.rootStoryboard)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "SettingsStoryboard", bundle: ...)`
+    static func settingsStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.settingsStoryboard)
     }
     #endif
 
@@ -213,8 +222,6 @@ struct R: Rswift.Validatable {
 
   /// This `R.image` struct is generated, and contains static references to 19 images.
   struct image {
-    /// Image `ActivityIndicator`.
-    static let activityIndicator = Rswift.ImageResource(bundle: R.hostingBundle, name: "ActivityIndicator")
     /// Image `Bear`.
     static let bear = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bear")
     /// Image `Camera`.
@@ -245,19 +252,14 @@ struct R: Rswift.Validatable {
     static let emailIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "emailIcon")
     /// Image `eyeIcon`.
     static let eyeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "eyeIcon")
+    /// Image `gear`.
+    static let gear = Rswift.ImageResource(bundle: R.hostingBundle, name: "gear")
     /// Image `logo1`.
     static let logo1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo1")
     /// Image `photoIcon`.
     static let photoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoIcon")
     /// Image `userIcon`.
     static let userIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "userIcon")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ActivityIndicator", bundle: ..., traitCollection: ...)`
-    static func activityIndicator(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.activityIndicator, compatibleWith: traitCollection)
-    }
-    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Bear", bundle: ..., traitCollection: ...)`
@@ -365,6 +367,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "gear", bundle: ..., traitCollection: ...)`
+    static func gear(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.gear, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "logo1", bundle: ..., traitCollection: ...)`
     static func logo1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo1, compatibleWith: traitCollection)
@@ -430,7 +439,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.scenes` struct is generated, and contains static references to 15 localization keys.
+    /// This `R.string.scenes` struct is generated, and contains static references to 17 localization keys.
     struct scenes {
       /// Value: Birthday
       static let dateOfBirth = Rswift.StringResource(key: "dateOfBirth", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -450,12 +459,16 @@ struct R: Rswift.Validatable {
       static let passwordsNotMatch = Rswift.StringResource(key: "passwordsNotMatch", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Phone number
       static let phoneNumber = Rswift.StringResource(key: "phoneNumber", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Publication has been moderated
+      static let successInPublicationMessage = Rswift.StringResource(key: "successInPublicationMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Save
       static let save = Rswift.StringResource(key: "save", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Search
       static let searchCase = Rswift.StringResource(key: "searchCase", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Succsess
-      static let succsessMessage = Rswift.StringResource(key: "succsessMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Sorry. Something went wrong
+      static let failInPublicationMessage = Rswift.StringResource(key: "failInPublicationMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Success
+      static let successMessage = Rswift.StringResource(key: "SuccessMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Surname
       static let surname = Rswift.StringResource(key: "surname", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: User Name
@@ -580,6 +593,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("phoneNumber", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
+      /// Value: Publication has been moderated
+      static func successInPublicationMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("successInPublicationMessage", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "successInPublicationMessage"
+        }
+
+        return NSLocalizedString("successInPublicationMessage", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
       /// Value: Save
       static func save(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -606,17 +632,30 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("searchCase", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
-      /// Value: Succsess
-      static func succsessMessage(preferredLanguages: [String]? = nil) -> String {
+      /// Value: Sorry. Something went wrong
+      static func failInPublicationMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("succsessMessage", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("failInPublicationMessage", tableName: "Scenes", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
-          return "succsessMessage"
+          return "failInPublicationMessage"
         }
 
-        return NSLocalizedString("succsessMessage", tableName: "Scenes", bundle: bundle, comment: "")
+        return NSLocalizedString("failInPublicationMessage", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Success
+      static func successMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("SuccessMessage", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "SuccessMessage"
+        }
+
+        return NSLocalizedString("SuccessMessage", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Surname
@@ -704,6 +743,9 @@ struct _R: Rswift.Validatable {
       #endif
       #if os(iOS) || os(tvOS)
       try rootStoryboard.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try settingsStoryboard.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try signInStoryboard.validate()
@@ -816,6 +858,23 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "Home", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Home' is used in storyboard 'RootStoryboard', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Photo", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Photo' is used in storyboard 'RootStoryboard', but couldn't be loaded.") }
         if UIKit.UIImage(named: "User", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'User' is used in storyboard 'RootStoryboard', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct settingsStoryboard: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = SettingsViewController
+
+      let bundle = R.hostingBundle
+      let name = "SettingsStoryboard"
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "PhotoIcon-1", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'PhotoIcon-1' is used in storyboard 'SettingsStoryboard', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

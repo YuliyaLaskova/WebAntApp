@@ -11,7 +11,7 @@ import RxNetworkApiClient
 
 protocol PostPhotoGateway {
     func postMediaObject(_ file: UploadFile) -> Single<MediaObjectEntity>
-    func postPhoto(_ photo: PhotoEntityForPost) -> Single<PhotoEntityForPost>
+    func postPhoto(_ photo: PhotoEntityForPost) -> Single<PhotoEntityForGet>
 }
 
 
@@ -21,7 +21,7 @@ class PostPhotoGatewayImp: ApiBaseGateway, PostPhotoGateway {
         apiClient.execute(request: ExtendedApiRequest.postMediaObjectRequest(file: file))
     }
 
-    func postPhoto(_ photo: PhotoEntityForPost) -> Single<PhotoEntityForPost> {
+    func postPhoto(_ photo: PhotoEntityForPost) -> Single<PhotoEntityForGet> {
         apiClient.execute(request: ExtendedApiRequest.postPhotoRequest(photo: photo))
     }
 }

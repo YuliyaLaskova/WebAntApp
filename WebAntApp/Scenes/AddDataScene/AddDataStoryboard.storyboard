@@ -104,6 +104,13 @@
                                     <constraint firstItem="GLR-Sc-Rxf" firstAttribute="top" secondItem="pmP-ht-IR8" secondAttribute="top" id="pRc-Fh-x0i"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpA-Vh-9FC" customClass="CustomActivityIndicatorView" customModule="WebAntApp" customModuleProvider="target">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gNc-Cw-wwD"/>
+                                    <constraint firstAttribute="height" constant="100" id="zuX-co-1rK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -111,10 +118,13 @@
                             <constraint firstItem="pmP-ht-IR8" firstAttribute="top" secondItem="043-GL-JSL" secondAttribute="bottom" id="23j-3R-tzJ"/>
                             <constraint firstItem="JfP-D5-Nwz" firstAttribute="top" secondItem="pmP-ht-IR8" secondAttribute="bottom" id="2mF-GH-ko8"/>
                             <constraint firstAttribute="trailing" secondItem="pmP-ht-IR8" secondAttribute="trailing" id="8a6-6Z-WJy"/>
+                            <constraint firstItem="wpA-Vh-9FC" firstAttribute="centerX" secondItem="VkF-ff-gdF" secondAttribute="centerX" id="RMT-wG-dAW"/>
+                            <constraint firstItem="wpA-Vh-9FC" firstAttribute="centerY" secondItem="VkF-ff-gdF" secondAttribute="centerY" id="ku5-hI-KkT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="U1M-O8-dUO"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="wpA-Vh-9FC" id="zYw-v2-Jrp"/>
                         <outlet property="descriptionTextView" destination="fOz-Qa-Wd4" id="HV1-98-IxE"/>
                         <outlet property="nameTextField" destination="Jov-Je-KtE" id="9KC-by-GPy"/>
                         <outlet property="photoToPost" destination="4km-9D-oPX" id="GVl-sp-1eo"/>

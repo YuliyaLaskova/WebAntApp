@@ -10,7 +10,7 @@
 
 import UIKit
 
-protocol UserProfileView: AnyObject {
+protocol UserProfileView: BaseView {
 
     func setupUser(user: UserEntityForGet?)
 
@@ -19,4 +19,6 @@ protocol UserProfileView: AnyObject {
     func actIndicatorStartAnimating()
     func actIndicatorStopAnimating()
     func showErrorOnEmptyGallery(show: Bool)
+
+    func openSettingsScene()
 }

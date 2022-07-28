@@ -10,7 +10,7 @@
 
 import UIKit
 
-protocol MainGalleryView: AnyObject {
+protocol MainGalleryView: BaseView {
     func refreshPhotoCollection()
     func endRefreshing()
     func actIndicatorStartAnimating()

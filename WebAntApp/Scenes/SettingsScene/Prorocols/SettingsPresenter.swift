@@ -1,15 +1,15 @@
 //
-//  SignUpView.swift
+//  SettingsPresenter.swift
 //  WebAntApp
 //
-//  Created by Yuliya Laskova on 10.06.2022.
+//  Created by Yuliya Laskova on 28.07.2022.
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 //  Cheeezcake Template Inc.
 //
 
-import UIKit
+import Foundation
 
-protocol SignUpView: BaseView {
-
+protocol SettingsPresenter {
+    
 }

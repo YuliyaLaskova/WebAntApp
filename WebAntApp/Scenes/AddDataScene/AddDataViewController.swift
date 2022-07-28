@@ -17,6 +17,8 @@ class AddDataViewController: UIViewController {
     @IBOutlet var photoToPost: UIImageView!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextView: UITextView!
+//    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicatorView: CustomActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,10 @@ class AddDataViewController: UIViewController {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.systemGray6.cgColor
         descriptionTextView.layer.cornerRadius = 5
+
+//        activityIndicator.isHidden = true
+//        activityIndicatorView.backgroundColor = .
+        activityIndicatorView.isHidden = true
 
         //        descriptionTextView.adjastableForKeyboard()
 
@@ -74,6 +80,17 @@ class AddDataViewController: UIViewController {
 // MARK: Extensions
 
 extension AddDataViewController: AddDataView {
+    func actIndicatorStartAnimating() {
+        activityIndicatorView.animate()
+        activityIndicatorView.isHidden = false
+    }
+
+    func actIndicatorStopAnimating() {
+        activityIndicatorView.isHidden = true
+//        activityIndicator.stopAnimating()
+//        activityIndicator.isHidden = true
+    }
+
     func addPressed() {
         guard let image = photoToPost.image else {
             return
@@ -86,7 +103,7 @@ extension AddDataViewController: AddDataView {
             descriptionText = descriptionTextView.text
         }
 
-        let photo = PhotoEntityForPost(name: nameTextField.text, description: descriptionText, new: "true", popular: "true", image: nil)
+        let photo = PhotoEntityForPost(name: nameTextField.text, description: descriptionText, new: true, popular: true, image: nil)
 
         presenter?.postPhoto(image, photo)
     }

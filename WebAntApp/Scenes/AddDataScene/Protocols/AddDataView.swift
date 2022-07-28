@@ -10,9 +10,11 @@
 
 import UIKit
 
-protocol AddDataView: AnyObject {
+protocol AddDataView: BaseView {
     // func Photo(_ image: UIImage, PhotoEntityForPost)
-    func addPressed()    
+    func addPressed()
+    func actIndicatorStartAnimating() 
+    func actIndicatorStopAnimating()
 }
 
 extension AddDataView {

@@ -10,7 +10,7 @@
 
 import UIKit
 
-protocol SignInView: AnyObject {
+protocol SignInView: BaseView {
 //    func signUpBtnPressed()
 //    func signInBtnPressed()
     
