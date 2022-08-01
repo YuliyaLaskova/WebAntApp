@@ -47,8 +47,8 @@ class MainGalleryViewController: UIViewController {
         self.navigationItem.titleView = searchBar
         searchBar.delegate = self
         searchBar.placeholder = R.string.scenes.searchCase()
-        dissmissKeyboardIfViewTapped()
-//        searchBar.searchTextField.addDoneButtonOnKeyboard()
+
+        searchBar.searchTextField.addDoneButtonOnKeyboard()
 
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
@@ -120,18 +120,6 @@ class MainGalleryViewController: UIViewController {
     @objc func pullToRefreshPhotos() {
         presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: true)
     }
-
-    private func dissmissKeyboardIfViewTapped() {
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
-
-     }
-
-     @objc func viewTapped() {
-         searchBar.searchTextField.resignFirstResponder()
-//         view.endEditing(true)
-//         userNameTextField.resignFirstResponder() лучше не использовать ибо тогда надо для каждого поля отдельно прописывать
-
-     }
 
 }
 
@@ -255,6 +243,10 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.presenter!.newPhotoArray.count - 1 {
             self.presenter?.fetchNewPhotosWithPagination(imageName: nil)
+        } else if
+            indexPath.row == self.presenter!.popularPhotoArray.count - 1 {
+            self.presenter?.fetchPopularPhotosWithPagination(imageName: nil)
+
         }
     }
 

@@ -100,11 +100,7 @@ class AddDataPresenterImp: AddDataPresenter {
         postPhotoUseCase.postMediaObject(file)
             .do(onSubscribe: { [weak self] in
                 self?.view?.actIndicatorStartAnimating()
-                print("put here activiti indicator")
-            }/*,
-                onDispose: { [weak view = self.view] in view?.actIndicatorStopAnimating()
-                
-        }*/)
+            })
                 .flatMap ({ [weak self] file -> Single<PhotoEntityForGet> in
                     guard let strongSelf = self else {
                         return Single.create { observer in
@@ -112,20 +108,22 @@ class AddDataPresenterImp: AddDataPresenter {
                             return Disposables.create()
                         }
                     }
-                    let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
-                    return     strongSelf.postPhotoUseCase.postPhoto(newPhoto)
+                    let newPhoto = PhotoEntityForPost(
+                        name: photo.name,
+                        description: photo.description,
+                        new: true,
+                        popular: true,
+                        image: file.id
+                    )
+                    return strongSelf.postPhotoUseCase.postPhoto(newPhoto)
 
                 })
                 .observe(on: MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] photo in
-                    print(photo)
                     self?.view?.actIndicatorStopAnimating()
-                    self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
-                                                     alertMessage: R.string.scenes.successInPublicationMessage(),
-                                                     buttonMessage: R.string.scenes.okAction(),
-                                                     completion: { [weak self ] in
-                        self?.backToMainGallery()
-                    })
+                    self?.view?.showModalView {
+                        self?.router.goBackToMainGallery()
+                    }
                 }, onFailure: { error in
                     self.view?.addInfoModuleWithFunc(
                         alertTitle: R.string.scenes.failInPublicationMessage(),
@@ -142,5 +140,4 @@ class AddDataPresenterImp: AddDataPresenter {
     func backToMainGallery() {
         router.goBackToMainGallery()
     }
-    
 }

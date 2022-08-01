@@ -52,9 +52,9 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                     return
                 }
                 self.newPhotoArray = result
-//                    .filter({ photo in
-//                    photo.new ?? true
-//                })
+                //                    .filter({ photo in
+                //                    photo.new ?? true
+                //                })
                 self.view?.refreshPhotoCollection()
             })
             .disposed(by: self.paginationDisposeBag)
@@ -94,24 +94,31 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                 print(error.localizedDescription)
             })
             .disposed(by: self.requestDisposeBag)
-                }
+    }
 
     func fetchPopularPhotosWithPagination(imageName: String? = nil) {
         self.requestDisposeBag = DisposeBag()
         guard self.paginationUseCase.hasMorePopularItems(),
-              !isNewsLoadingInProgress else { return }
-//        self.view?.refreshPhotoCollection()
+              !isNewsLoadingInProgress else {
+            return
+        }
+        //        self.view?.refreshPhotoCollection()
         self.paginationUseCase.getMorePopularPhotos(imageName: imageName)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
                 view?.actIndicatorStartAnimating()
             },
-                onDispose: { [weak view = self.view] in view?.actIndicatorStopAnimating() })
-            .subscribe(onCompleted: { [weak self]  in
-                guard let self = self else { return }
-                self.view?.refreshPhotoCollection()
+                onDispose: { [weak view = self.view] in
+                view?.actIndicatorStopAnimating()
+
             })
-            .disposed(by: self.requestDisposeBag)
+                .subscribe(onCompleted: { [weak self]  in
+                    guard let self = self else { return }
+                    self.view?.refreshPhotoCollection()
+                }, onError: { error in
+                    print(error.localizedDescription)
+                })
+                .disposed(by: self.requestDisposeBag)
                 }
 
     func openDetailedPhoto(photoIndex: Int, newPopularSegCntrlIndex: Int) {

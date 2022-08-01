@@ -19,9 +19,9 @@ class SettingsRouter: BaseRouter {
     }
     
     func openSomeScene() {
-        guard let navController = self.view?.navigationController else {
-            return
-        }
+//        guard let navController = self.view?.navigationController else {
+//            return
+//        }
         //  SomeSceneConfigurator.open(navigationController: navController)
     }
 }

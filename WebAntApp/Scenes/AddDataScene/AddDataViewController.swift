@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AddDataViewController: UIViewController {
+class AddDataViewController: ModuleAlertViewController {
     
     internal var presenter: AddDataPresenter?
 
@@ -80,6 +80,11 @@ class AddDataViewController: UIViewController {
 // MARK: Extensions
 
 extension AddDataViewController: AddDataView {
+    
+    func showModalView(finished: @escaping (() -> Void)) {
+        showModal(finished: finished)
+    }
+
     func actIndicatorStartAnimating() {
         activityIndicatorView.animate()
         activityIndicatorView.isHidden = false
@@ -87,6 +92,7 @@ extension AddDataViewController: AddDataView {
 
     func actIndicatorStopAnimating() {
         activityIndicatorView.isHidden = true
+        activityIndicatorView = nil
 //        activityIndicator.stopAnimating()
 //        activityIndicator.isHidden = true
     }

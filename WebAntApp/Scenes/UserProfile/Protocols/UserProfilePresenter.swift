@@ -13,7 +13,7 @@ import RxSwift
 
 protocol UserProfilePresenter {
     var photoItems: [PhotoEntityForGet] { get set }
-    var isNewsLoadingInProgress: Bool { get }
+    var isPhotoLoadingInProgress: Bool { get }
     
     func getCurrentUserFromAPI()
     func fetchUserPhotos()

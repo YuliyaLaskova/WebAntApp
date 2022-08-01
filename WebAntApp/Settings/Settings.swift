@@ -22,11 +22,6 @@ protocol Settings: AnyObject {
 
 
 class LocalSettings: Settings {
-    func clearUserData() {
-        self.token = nil
-        UserDefaults.standard.removeObject(forKey: "accessToken")
-        UserDefaults.standard.removeObject(forKey: "refreshToken")
-    }
 
     var token: Token? {
         get {
@@ -48,6 +43,12 @@ class LocalSettings: Settings {
             UserDefaults.standard.set(newToken.access_token, forKey: "accessToken")
             UserDefaults.standard.set(newToken.refresh_token, forKey: "refreshToken")
         }
+    }
+
+    func clearUserData() {
+        self.token = nil
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.removeObject(forKey: "refreshToken")
     }
     
 }

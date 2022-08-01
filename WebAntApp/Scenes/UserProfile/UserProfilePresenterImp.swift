@@ -20,7 +20,7 @@ class UserProfilePresenterImp: UserProfilePresenter {
     private var currentUser: UserEntityForGet?
 
     private let paginationUseCase: PaginationUseCase
-     var isNewsLoadingInProgress: Bool {  return self.paginationUseCase.isLoadingInProcess }
+     var isPhotoLoadingInProgress: Bool {  return self.paginationUseCase.isLoadingInProcess }
 
     private var requestDisposeBag = DisposeBag()
     private var paginationDisposeBag = DisposeBag()
@@ -66,7 +66,7 @@ class UserProfilePresenterImp: UserProfilePresenter {
 
     func fetchUserPhotos() {
         guard self.paginationUseCase.hasMoreNewItems(),
-              !isNewsLoadingInProgress else { return }
+              !isPhotoLoadingInProgress else { return }
         self.view?.refreshPhotoCollection()
         guard let userId = currentUser?.id else { return }
         self.paginationUseCase.getMoreUserPhotos(userId: userId)

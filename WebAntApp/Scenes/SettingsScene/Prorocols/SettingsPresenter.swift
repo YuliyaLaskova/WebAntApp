@@ -11,5 +11,8 @@
 import Foundation
 
 protocol SettingsPresenter {
-    
+    func getCurrentUser() -> UserEntityForGet?
+    func getCurrentUserFromAPI()
+    func viewDidLoad()
 }
+

@@ -106,7 +106,7 @@
                                                                     <constraint firstAttribute="height" constant="36" id="xCO-7i-Ite"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                         <real key="value" value="10"/>
@@ -119,7 +119,7 @@
                                                                     <constraint firstAttribute="height" constant="36" id="Ukt-Gw-OOl"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                         <real key="value" value="10"/>
@@ -178,7 +178,7 @@
                                                             <constraint firstAttribute="height" constant="36" id="z2e-3O-KmF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                 <real key="value" value="10"/>
@@ -238,7 +238,7 @@
                                                                     <constraint firstAttribute="height" constant="36" id="aIa-Xd-wS7"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                         <real key="value" value="10"/>
@@ -251,7 +251,7 @@
                                                                     <constraint firstAttribute="height" constant="36" id="3TP-hf-5ax"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                         <real key="value" value="10"/>
@@ -264,7 +264,7 @@
                                                                     <constraint firstAttribute="height" constant="36" id="vLl-gY-JJ7"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="rightPadding">
                                                                         <real key="value" value="10"/>
@@ -300,19 +300,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGg-gZ-xoq">
-                                                        <rect key="frame" x="67.5" y="0.0" width="146.5" height="16"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGg-gZ-xoq">
+                                                        <rect key="frame" x="71.5" y="0.0" width="123" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                         <color key="tintColor" systemColor="systemPinkColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="delete your account">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="14" name="Helvetica"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="delete your account"/>
                                                         <connections>
                                                             <action selector="deleteAccountBtnPressed" destination="BUx-hK-sBr" eventType="touchUpInside" id="hFW-ti-Gbr"/>
                                                         </connections>
@@ -320,12 +313,11 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="lHp-3A-SZw" firstAttribute="top" secondItem="59e-p0-zRI" secondAttribute="top" id="5aF-fK-Hbe"/>
+                                                    <constraint firstItem="eGg-gZ-xoq" firstAttribute="leading" secondItem="lHp-3A-SZw" secondAttribute="trailing" constant="4" id="6kH-am-LZj"/>
                                                     <constraint firstItem="eGg-gZ-xoq" firstAttribute="top" secondItem="59e-p0-zRI" secondAttribute="top" id="9Mh-5M-Wb0"/>
                                                     <constraint firstAttribute="bottom" secondItem="eGg-gZ-xoq" secondAttribute="bottom" id="N6L-xQ-Tsj"/>
                                                     <constraint firstAttribute="bottom" secondItem="lHp-3A-SZw" secondAttribute="bottom" id="Qy2-IL-4IE"/>
-                                                    <constraint firstItem="eGg-gZ-xoq" firstAttribute="leading" secondItem="lHp-3A-SZw" secondAttribute="trailing" id="cpk-cP-7Xp"/>
                                                     <constraint firstItem="lHp-3A-SZw" firstAttribute="leading" secondItem="59e-p0-zRI" secondAttribute="leading" constant="16" id="hjN-vF-AWc"/>
-                                                    <constraint firstItem="eGg-gZ-xoq" firstAttribute="height" secondItem="lHp-3A-SZw" secondAttribute="height" id="q6E-cN-vPD"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQ7-i0-Ngz">
@@ -338,22 +330,14 @@
                                                 <rect key="frame" x="0.0" y="762" width="414" height="16"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-Dc-Vfk">
-                                                        <rect key="frame" x="8" y="0.0" width="71" height="16"/>
+                                                        <rect key="frame" x="16" y="0.0" width="47" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="q4u-sR-XRs"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                         <color key="tintColor" systemColor="systemPinkColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" titleAlignment="trailing">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="Sign Out">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="12" name="Helvetica"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Sign Out"/>
                                                         <connections>
                                                             <action selector="signOutBtnPressed:" destination="BUx-hK-sBr" eventType="touchUpInside" id="rCS-lS-h5E"/>
                                                         </connections>
@@ -362,7 +346,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="Jh0-Dc-Vfk" secondAttribute="bottom" id="5bC-DM-Q8i"/>
                                                     <constraint firstItem="Jh0-Dc-Vfk" firstAttribute="top" secondItem="ACo-SS-gql" secondAttribute="top" id="EhH-jK-dSZ"/>
-                                                    <constraint firstItem="Jh0-Dc-Vfk" firstAttribute="leading" secondItem="ACo-SS-gql" secondAttribute="leading" constant="8" id="aXp-TE-FCH"/>
+                                                    <constraint firstItem="Jh0-Dc-Vfk" firstAttribute="leading" secondItem="ACo-SS-gql" secondAttribute="leading" constant="16" id="aXp-TE-FCH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1W-hu-Mxo">
@@ -402,6 +386,7 @@
                         <outlet property="emailTextField" destination="DHJ-IB-KEv" id="QZN-uS-aHa"/>
                         <outlet property="newPasswordTextField" destination="RoG-e7-jQ8" id="q5W-tC-bNN"/>
                         <outlet property="oldPasswordTextField" destination="2VA-dg-tkR" id="zFH-Om-u9J"/>
+                        <outlet property="scrollView" destination="dGd-4J-gVP" id="p4e-VB-ZaP"/>
                         <outlet property="userNameTextField" destination="cjI-nO-qo0" id="AbT-wi-A4g"/>
                         <outlet property="userPhotoView" destination="Kcl-cf-3ey" id="xdK-kC-Z2y"/>
                     </connections>

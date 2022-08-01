@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
         signInBtn.layer.borderWidth = 1
 
     }
-
+    // TODO: сделать так чтоб по кнопке next мы автоматичеки переходили на редактирование следущего поля и скрывать клавиатуру на сайт ап и сайт ин как в экране сеттинг
     func setupTextFields() {
         userNameTextField.delegate = self
         emailTextField.delegate = self

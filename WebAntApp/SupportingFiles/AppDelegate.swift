@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //            LocalSettings().clearUserData()
 
-        
 //        if UserDefaults.standard.object(forKey: UserDefaultsKey.token.rawValue) != nil {
 //            print("token")
 //            openMainGalleryScreen(window: self.window)
@@ -82,10 +81,16 @@ extension AppDelegate {
 extension AppDelegate: AuthResponseHandlerDelegate {
 
     func doLogout() {
-        self.settings?.clearUserData()
+//        self.settings?.clearUserData()
+        LocalSettings().clearUserData()
+        // и открой стартовый экран --- TODO
 
         guard let navController = self.window?.rootViewController as? UINavigationController,
-              navController.viewControllers.last as? SignInViewController != nil else {
+              // MARK: исправить экран контроллера
+              // почему as? SignInViewController??? если конечно ориентироваться на baseapp
+              //  navController.viewControllers.last as? SignInViewController != nil else {
+                // пока изменила на WelcomeController
+              navController.viewControllers.last as? WelcomeController != nil else {
             DispatchQueue.main.async {
                 self.openStartScreen(window: self.window)
             }
