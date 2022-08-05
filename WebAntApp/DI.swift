@@ -90,6 +90,14 @@ class DI {
             .as(GetCurrentUserGateway.self)
             .lifetime(.single)
 
+        self.container.register(ChangePasswordGatewayImp.init)
+            .as(ChangePasswordGateway.self)
+            .lifetime(.single)
+
+        self.container.register(ChangeUserInfoGatewayImp.init)
+            .as(ChangeUserInfoGateway.self)
+            .lifetime(.single)
+
         // UseCases
         self.container.register(SignUpUseCaseImp.init)
             .as(SignUpUseCase.self)
@@ -111,6 +119,12 @@ class DI {
 
         self.container.register(GetCurrentUserUseCaseImp.init)
             .as(GetCurrentUserUseCase.self)
+
+        self.container.register(ChangePasswordUseCaseImp.init)
+            .as(ChangePasswordUseCase.self)
+
+        self.container.register(ChangeUserInfoUseCaseImp.init)
+            .as(ChangeUserInfoUseCase.self)
         
     }
 

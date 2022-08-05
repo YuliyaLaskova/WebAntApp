@@ -7,7 +7,7 @@
 //
 //  Cheeezcake Template Inc.
 //
-
+import Foundation
 import UIKit
 
 class DetailedPhotoViewController: UIViewController {
@@ -19,6 +19,8 @@ class DetailedPhotoViewController: UIViewController {
     @IBOutlet var photoNameLabel: UILabel!
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var stackView: UIStackView!
 
 
 
@@ -28,6 +30,8 @@ class DetailedPhotoViewController: UIViewController {
             return
         }
 
+        scrollView.delegate = self
+
         detailedPhoto.isUserInteractionEnabled = true
         descriptionTextView.isEditable = false
         viewsTextField.isUserInteractionEnabled = false
@@ -35,9 +39,20 @@ class DetailedPhotoViewController: UIViewController {
         presenter?.getUserInfo(photo.user ?? "")
 
         presenter?.setImage()
-
-
+        setupZooming()
 //        setupNavigationBarItem()
+    }
+
+    func setupZooming() {
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 10
+        photoNameLabel.isHidden = false
+        descriptionTextView.isHidden = false
+        self.reloadInputViews()
+        scrollView.layoutSubviews()
+        scrollView.setNeedsDisplay()
+        stackView.layoutSubviews()
+        stackView.updateConstraints()
     }
 
     func setupNavigationBarItem() {
@@ -81,6 +96,27 @@ extension DetailedPhotoViewController: DetailedPhotoView {
             return
         }
         userNameLabel.text = username
+    }
+}
 
+extension DetailedPhotoViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return stackView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        photoNameLabel.isHidden = true
+        descriptionTextView.isHidden = true
+        dateLabel.isHidden = true
+        userNameLabel.isHidden = true
+        viewsTextField.isHidden = true
+    }
+
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        photoNameLabel.isHidden = false
+        descriptionTextView.isHidden = false
+        dateLabel.isHidden = false
+        userNameLabel.isHidden = false
+        viewsTextField.isHidden = false
     }
 }

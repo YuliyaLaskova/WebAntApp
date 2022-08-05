@@ -448,8 +448,22 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.scenes` struct is generated, and contains static references to 17 localization keys.
+    /// This `R.string.scenes` struct is generated, and contains static references to 35 localization keys.
     struct scenes {
+      /// Value: '%@' должно содержать %@ символов
+      static let fieldIsNoEqual = Rswift.StringResource(key: "fieldIsNoEqual", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' может содержать только буквы, пробел, дефис
+      static let forbiddenSymbolsForText = Rswift.StringResource(key: "forbiddenSymbolsForText", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' может содержать только латинские буквы, цифры, знак подчёркивания, точку и минус
+      static let forbiddenSymbolsForEmailOrUsername = Rswift.StringResource(key: "forbiddenSymbolsForEmailOrUsername", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' может содержать только латинские буквы, цифры, знаки препинания
+      static let forbiddenSymbolsForPassword = Rswift.StringResource(key: "forbiddenSymbolsForPassword", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' не может быть более %@ символов
+      static let fieldIsTooLong = Rswift.StringResource(key: "fieldIsTooLong", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' не может быть менее %@ символов
+      static let fieldIsTooShort = Rswift.StringResource(key: "fieldIsTooShort", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: '%@' не может быть пустым
+      static let fieldIsEmpty = Rswift.StringResource(key: "fieldIsEmpty", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Birthday
       static let dateOfBirth = Rswift.StringResource(key: "dateOfBirth", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Confirm password
@@ -468,6 +482,8 @@ struct R: Rswift.Validatable {
       static let passwordsNotMatch = Rswift.StringResource(key: "passwordsNotMatch", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Phone number
       static let phoneNumber = Rswift.StringResource(key: "phoneNumber", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Please check your data
+      static let pleaseCheckYourData = Rswift.StringResource(key: "pleaseCheckYourData", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Publication has been moderated
       static let successInPublicationMessage = Rswift.StringResource(key: "successInPublicationMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Save
@@ -484,6 +500,131 @@ struct R: Rswift.Validatable {
       static let username = Rswift.StringResource(key: "username", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You didn't fill all required fields
       static let emptyFieldsMessage = Rswift.StringResource(key: "emptyFieldsMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Дата еще не наступила
+      static let dateStillToCome = Rswift.StringResource(key: "dateStillToCome", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Дата уже прошла
+      static let dateAlreadyPast = Rswift.StringResource(key: "dateAlreadyPast", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Меньше необходимого временного интервала
+      static let lessThanRequiredTimeInterval = Rswift.StringResource(key: "lessThanRequiredTimeInterval", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Название
+      static let violationEntityName = Rswift.StringResource(key: "violationEntityName", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Не удалось найти идентификатор пользователя. Обновите профиль
+      static let localUserIdIsNil = Rswift.StringResource(key: "localUserIdIsNil", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Не удалось получить ID пользователя
+      static let remoteUserIdIsNil = Rswift.StringResource(key: "remoteUserIdIsNil", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Неверный формат
+      static let incorrect = Rswift.StringResource(key: "incorrect", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Номер совпадает с текущим
+      static let equalPhoneNumber = Rswift.StringResource(key: "equalPhoneNumber", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Пароли не совпадают
+      static let passwordsAreDifferent = Rswift.StringResource(key: "passwordsAreDifferent", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Почта
+      static let violationEntityEmail = Rswift.StringResource(key: "violationEntityEmail", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: '%@' должно содержать %@ символов
+      static func fieldIsNoEqual(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsNoEqual", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsNoEqual"
+        }
+
+        let format = NSLocalizedString("fieldIsNoEqual", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: '%@' может содержать только буквы, пробел, дефис
+      static func forbiddenSymbolsForText(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("forbiddenSymbolsForText", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "forbiddenSymbolsForText"
+        }
+
+        let format = NSLocalizedString("forbiddenSymbolsForText", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: '%@' может содержать только латинские буквы, цифры, знак подчёркивания, точку и минус
+      static func forbiddenSymbolsForEmailOrUsername(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("forbiddenSymbolsForEmailOrUsername", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "forbiddenSymbolsForEmailOrUsername"
+        }
+
+        let format = NSLocalizedString("forbiddenSymbolsForEmailOrUsername", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: '%@' может содержать только латинские буквы, цифры, знаки препинания
+      static func forbiddenSymbolsForPassword(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("forbiddenSymbolsForPassword", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "forbiddenSymbolsForPassword"
+        }
+
+        let format = NSLocalizedString("forbiddenSymbolsForPassword", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: '%@' не может быть более %@ символов
+      static func fieldIsTooLong(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsTooLong"
+        }
+
+        let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: '%@' не может быть менее %@ символов
+      static func fieldIsTooShort(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsTooShort"
+        }
+
+        let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: '%@' не может быть пустым
+      static func fieldIsEmpty(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsEmpty", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsEmpty"
+        }
+
+        let format = NSLocalizedString("fieldIsEmpty", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
 
       /// Value: Birthday
       static func dateOfBirth(preferredLanguages: [String]? = nil) -> String {
@@ -602,6 +743,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("phoneNumber", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
+      /// Value: Please check your data
+      static func pleaseCheckYourData(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("pleaseCheckYourData", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "pleaseCheckYourData"
+        }
+
+        return NSLocalizedString("pleaseCheckYourData", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
       /// Value: Publication has been moderated
       static func successInPublicationMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -704,6 +858,136 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("emptyFieldsMessage", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Дата еще не наступила
+      static func dateStillToCome(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("dateStillToCome", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "dateStillToCome"
+        }
+
+        return NSLocalizedString("dateStillToCome", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Дата уже прошла
+      static func dateAlreadyPast(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("dateAlreadyPast", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "dateAlreadyPast"
+        }
+
+        return NSLocalizedString("dateAlreadyPast", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Меньше необходимого временного интервала
+      static func lessThanRequiredTimeInterval(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("lessThanRequiredTimeInterval", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "lessThanRequiredTimeInterval"
+        }
+
+        return NSLocalizedString("lessThanRequiredTimeInterval", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Название
+      static func violationEntityName(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("violationEntityName", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "violationEntityName"
+        }
+
+        return NSLocalizedString("violationEntityName", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Не удалось найти идентификатор пользователя. Обновите профиль
+      static func localUserIdIsNil(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("localUserIdIsNil", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "localUserIdIsNil"
+        }
+
+        return NSLocalizedString("localUserIdIsNil", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Не удалось получить ID пользователя
+      static func remoteUserIdIsNil(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("remoteUserIdIsNil", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "remoteUserIdIsNil"
+        }
+
+        return NSLocalizedString("remoteUserIdIsNil", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Неверный формат
+      static func incorrect(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("incorrect", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "incorrect"
+        }
+
+        return NSLocalizedString("incorrect", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Номер совпадает с текущим
+      static func equalPhoneNumber(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("equalPhoneNumber", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "equalPhoneNumber"
+        }
+
+        return NSLocalizedString("equalPhoneNumber", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Пароли не совпадают
+      static func passwordsAreDifferent(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("passwordsAreDifferent", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "passwordsAreDifferent"
+        }
+
+        return NSLocalizedString("passwordsAreDifferent", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Почта
+      static func violationEntityEmail(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("violationEntityEmail", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "violationEntityEmail"
+        }
+
+        return NSLocalizedString("violationEntityEmail", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

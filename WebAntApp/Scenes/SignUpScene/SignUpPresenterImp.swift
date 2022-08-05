@@ -36,6 +36,7 @@ class SignUpPresenterImp: SignUpPresenter {
     func registrateAndOpenMainGalleryScene(user: UserEntity) {
 
         // TODO: отредактировать валидатор
+//        user.email.isValidEmail
         if Validator.isStringValid(stringValue: user.email, validationType: .email) && Validator.isStringValid(stringValue: user.password, validationType: .password) {
             signUpUseCase.signUp(user)
                 .observe(on: MainScheduler.instance)

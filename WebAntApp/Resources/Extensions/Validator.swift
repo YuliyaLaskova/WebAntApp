@@ -43,4 +43,10 @@ class Validator {
 
         return  returnValue
     }
+
+//    var isValidEmail: Bool {
+//        let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
+//        let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
+//        return emailTest.evaluate(with: self)
+//    }
 }

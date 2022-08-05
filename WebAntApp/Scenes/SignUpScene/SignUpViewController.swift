@@ -10,8 +10,9 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     internal var presenter: SignUpPresenter?
-    private let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     var currentDate: String?
+    public let passwordLength = 6
     
     // MARK: IB Outlets
 
@@ -35,7 +36,8 @@ class SignUpViewController: UIViewController {
     private func setupUI() {
 
         setupIconsInTextFields()
-        createDatePicker()
+//        createDatePicker()
+        setDatePicker()
 
         setupTextFields()
         setupNavigationBarItem()
@@ -43,7 +45,6 @@ class SignUpViewController: UIViewController {
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
         signInBtn.layer.borderWidth = 1
-
     }
     // TODO: сделать так чтоб по кнопке next мы автоматичеки переходили на редактирование следущего поля и скрывать клавиатуру на сайт ап и сайт ин как в экране сеттинг
     func setupTextFields() {
@@ -60,60 +61,85 @@ class SignUpViewController: UIViewController {
         confirmPasswordTextField.addDoneButtonOnKeyboard()
     }
 
-// TODO: make proper picker
-    private func createDatePicker() {
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
+    // TODO: make proper picker
+    func setDatePicker() {
         birthdayTextField.inputView = datePicker
-
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
             datePicker.datePickerMode = .date
         } else {
             datePicker.datePickerMode = .date
         }
-
+        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(closeDataPicker))
+        self.view.addGestureRecognizer(tapped)
         let maxData = Calendar.current.date(byAdding: .day, value: 0, to: Date())
         datePicker.maximumDate = maxData
-
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: nil,
-            action: #selector (dateDoneBtnPressed)
-        )
-
-        let cancelButton = UIBarButtonItem(
-            barButtonSystemItem: .cancel,
-            target: nil,
-            action: #selector (dateCancelBtnPressed)
-        )
-
-        let flexibleSpace = UIBarButtonItem(
-            barButtonSystemItem: .flexibleSpace,
-            target: nil, action: nil)
-
-        toolbar.setItems([cancelButton, flexibleSpace,doneButton], animated: true)
-
-        birthdayTextField.inputAccessoryView = toolbar
+    }
+    @objc func dateChanged() {
+        getDateFromPicker()
     }
 
-    @objc func dateDoneBtnPressed() {
-        if birthdayTextField.text?.isEmpty == true {
-            birthdayTextField.resignFirstResponder()
-            birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
-        } else {
-            birthdayTextField.text = ""
-            birthdayTextField.resignFirstResponder()
-        }
+    func getDateFromPicker() {
+        birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
     }
+
+    @objc func closeDataPicker() {
+        view.endEditing(true)
+    }
+//    private func createDatePicker() {
+//        datePicker.translatesAutoresizingMaskIntoConstraints = false
+//        birthdayTextField.inputView = datePicker
+//
+//        if #available(iOS 13.4, *) {
+//            datePicker.preferredDatePickerStyle = .wheels
+//            datePicker.datePickerMode = .date
+//        } else {
+//            datePicker.datePickerMode = .date
+//        }
+//
+//        let maxData = Calendar.current.date(byAdding: .day, value: 0, to: Date())
+//        datePicker.maximumDate = maxData
+//
+//        let toolbar = UIToolbar()
+//        toolbar.sizeToFit()
+//
+//        let doneButton = UIBarButtonItem(
+//            barButtonSystemItem: .done,
+//            target: nil,
+//            action: #selector (dateDoneBtnPressed)
+//        )
+//
+//        let cancelButton = UIBarButtonItem(
+//            barButtonSystemItem: .cancel,
+//            target: nil,
+//            action: #selector (dateCancelBtnPressed)
+//        )
+//
+//        let flexibleSpace = UIBarButtonItem(
+//            barButtonSystemItem: .flexibleSpace,
+//            target: nil, action: nil)
+//
+//        toolbar.setItems([cancelButton, flexibleSpace,doneButton], animated: true)
+//
+//        birthdayTextField.inputAccessoryView = toolbar
+//    }
+//
+//    @objc func dateDoneBtnPressed() {
+//        birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
+////        if birthdayTextField.text?.isEmpty == true {
+////            birthdayTextField.resignFirstResponder()
+//////            birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
+////        } else {
+////            birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
+////            birthdayTextField.resignFirstResponder()
+////        }
+//    }
 
     @objc func dateCancelBtnPressed() {
         birthdayTextField.text = .none
         birthdayTextField.resignFirstResponder()
     }
-
 
     // MARK: IB Actions
 
@@ -122,32 +148,34 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpBtnPressed() {
-        guard let userName = userNameTextField.text,
-              let email = emailTextField.text,
-              let password = oldPasswordTextField.text,
-              let birthday = birthdayTextField.text,
-              let confirmPassword = confirmPasswordTextField.text
-        else { return }
-
-        if userName.isEmpty ||
-           email.isEmpty ||
-           password.isEmpty ||
-           confirmPassword.isEmpty {
-            showAlert(with: R.string.scenes.error(), and: R.string.scenes.emptyFieldsMessage())
-        }
-
-
-        let user = UserEntity(username: userName, email: email, pass: password, birthday: birthday)
-
-        if birthday.isEmpty {
-            user.birthday = nil
-        }
-
-        if password != confirmPassword {
-            showAlert(with: R.string.scenes.error(), and: R.string.scenes.passwordsNotMatch())
-        }
-
-        presenter?.registrateAndOpenMainGalleryScene(user: user)
+        self.validateTextFieldsAndProceed()
+        
+//        guard let userName = userNameTextField.text,
+//              let email = emailTextField.text,
+//              let password = oldPasswordTextField.text,
+//              let birthday = birthdayTextField.text,
+//              let confirmPassword = confirmPasswordTextField.text
+//        else { return }
+//
+//        if userName.isEmpty ||
+//            email.isEmpty ||
+//            password.isEmpty ||
+//            confirmPassword.isEmpty {
+//            showAlert(withTitle: R.string.scenes.error(), andMessage: R.string.scenes.emptyFieldsMessage())
+//        }
+//
+//
+//        let user = UserEntity(username: userName, email: email, pass: password, birthday: birthday)
+//
+//        if birthday.isEmpty {
+//            user.birthday = nil
+//        }
+//
+//        if password != confirmPassword {
+//            showAlert(withTitle: R.string.scenes.error(), andMessage: R.string.scenes.passwordsNotMatch())
+//        }
+//
+//        presenter?.registrateAndOpenMainGalleryScene(user: user)
     }
 
 
@@ -228,8 +256,8 @@ extension SignUpViewController: SignUpView {
 }
 
 extension SignUpViewController {
-    private func showAlert(with title: String, and message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+     func showAlert(withTitle: String, andMessage: String) {
+        let alertController = UIAlertController(title: title, message: andMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)

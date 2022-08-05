@@ -67,7 +67,7 @@ class UserProfilePresenterImp: UserProfilePresenter {
     func fetchUserPhotos() {
         guard self.paginationUseCase.hasMoreNewItems(),
               !isPhotoLoadingInProgress else { return }
-        self.view?.refreshPhotoCollection()
+//        self.view?.refreshPhotoCollection()
         guard let userId = currentUser?.id else { return }
         self.paginationUseCase.getMoreUserPhotos(userId: userId)
             .observe(on: MainScheduler.instance)
@@ -75,7 +75,9 @@ class UserProfilePresenterImp: UserProfilePresenter {
                 view?.actIndicatorStartAnimating()
                 view?.refreshPhotoCollection()
             },
-                onDispose: { [weak view = self.view] in view?.actIndicatorStopAnimating() })
+                onDispose: {
+                [weak view = self.view] in view?.actIndicatorStopAnimating()
+            })
 
                 .subscribe(onError: { [weak self] error in
                     guard let self = self else { return }

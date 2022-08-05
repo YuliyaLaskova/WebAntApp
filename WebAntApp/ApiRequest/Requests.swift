@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import RxNetworkApiClient
 import RxSwift
 
@@ -31,7 +30,6 @@ extension ExtendedApiRequest {
             method: .post,
             headers: [Header.contentJson],
             body: userEntity)
-
     }
 
     static func postMediaObjectRequest(file: UploadFile) -> ExtendedApiRequest {
@@ -126,4 +124,19 @@ extension ExtendedApiRequest {
                         headers: [Header.contentJson],
                         query: ("user.id", "\(userId)"))
     }
+
+    static func updateUserInfo(userId: Int, user: UserEntity) -> ExtendedApiRequest {
+           extendedRequest(path: "/api/users/\(userId)",
+                           method: .put,
+                           headers: [Header.contentJson],
+                           body: user)
+       }
+
+    static func updatePassword(userId: Int, passwordEntity: ChangePasswordEntity) -> ExtendedApiRequest {
+           extendedRequest(path: "/api/users/update_password/\(userId)",
+                           method: .put,
+                           headers: [Header.contentJson],
+                           body: passwordEntity)
+       }
+
 }

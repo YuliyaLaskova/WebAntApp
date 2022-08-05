@@ -11,7 +11,6 @@ PODS:
     - SwiftyJSON
   - RxSwift (6.5.0)
   - SwiftLazy (1.1.9)
-  - SwiftLint (0.47.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
@@ -20,7 +19,6 @@ DEPENDENCIES:
   - Kingfisher
   - R.swift
   - RxNetworkApiClient
-  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -32,7 +30,6 @@ SPEC REPOS:
     - RxNetworkApiClient
     - RxSwift
     - SwiftLazy
-    - SwiftLint
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -44,9 +41,8 @@ SPEC CHECKSUMS:
   RxNetworkApiClient: f45056395be3d62388b8344441331aad5ff60a68
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SwiftLazy: 1657354f43dbd6a0a79e00ad67558d655c77bdc9
-  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: dc80298b0f8719a1b71e444540c1cbc826ea323e
+PODFILE CHECKSUM: 6ce7769807d08d088838aae30281ab04e7c5d07d
 
 COCOAPODS: 1.11.3

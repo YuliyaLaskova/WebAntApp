@@ -45,6 +45,23 @@ class LocalSettings: Settings {
         }
     }
 
+//    var account: UserEntity? {
+//        get {
+//            return self.userDefaults.read(UserDefaultsKey.account)
+//
+//        }
+//        set(value) {
+//            return self.userDefaults.saveData(UserDefaultsKey.account, value)
+////            return UserDefaults.standard.set(UserDefaultsKey., forKey: <#T##String#>)
+//        }
+//    }
+//
+//    let userDefaults: UserDefaultsSettings
+//
+//    init(userDefaults: UserDefaultsSettings) {
+//        self.userDefaults = userDefaults
+//    }
+
     func clearUserData() {
         self.token = nil
         UserDefaults.standard.removeObject(forKey: "accessToken")

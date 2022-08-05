@@ -27,6 +27,7 @@ class SignInPresenterImp: SignInPresenter {
     }
 
     func signInAndOpenMainGallery(username: String, password: String) {
+        
         //        self.router.openMainGallery()
         if Validator.isStringValid(stringValue: username, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
             signInUseCase.signIn(username, password)

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5601135E95C46F80F2FA41E1 /* Pods_WebAntApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FF06869783F558A16850F5 /* Pods_WebAntApp.framework */; };
-		8C030F5928605B700029BEAD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5828605B700029BEAD /* Settings.swift */; };
+		8C030F5928605B700029BEAD /* LocalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5828605B700029BEAD /* LocalSettings.swift */; };
 		8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5B28605EEF0029BEAD /* AuthInterceptor.swift */; };
 		8C030F5F286061450029BEAD /* ErrorResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F5E286061450029BEAD /* ErrorResponseHandler.swift */; };
 		8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */; };
@@ -41,10 +41,17 @@
 		8C17AC38286EFDD7002CF17E /* DetailedPhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC37286EFDD7002CF17E /* DetailedPhotoPresenter.swift */; };
 		8C17AC3A286EFDD8002CF17E /* DetailedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17AC39286EFDD8002CF17E /* DetailedPhotoView.swift */; };
 		8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */; };
+		8C3471AC289BC84600973558 /* SignUpVC+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3471AB289BC84600973558 /* SignUpVC+Validation.swift */; };
+		8C3471AE289BDBE300973558 /* CharacterSetExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3471AD289BDBE300973558 /* CharacterSetExt.swift */; };
 		8C36BDA3285B276E0089D180 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA2285B276E0089D180 /* UserEntity.swift */; };
 		8C36BDA5285B41CE0089D180 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA4285B41CE0089D180 /* DI.swift */; };
 		8C36BDA7285B57A50089D180 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */; };
 		8C36BDA9285C580A0089D180 /* SignUpGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C36BDA8285C580A0089D180 /* SignUpGateway.swift */; };
+		8C3757122897F8A6007B5248 /* ChangePasswordGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3757112897F8A6007B5248 /* ChangePasswordGateway.swift */; };
+		8C3757142897FBF9007B5248 /* ChangePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3757132897FBF9007B5248 /* ChangePasswordUseCase.swift */; };
+		8C37571628992729007B5248 /* ChangeUserInfoGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37571528992729007B5248 /* ChangeUserInfoGateway.swift */; };
+		8C37571828992933007B5248 /* ChangeUserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37571728992933007B5248 /* ChangeUserInfoUseCase.swift */; };
+		8C37571A28993395007B5248 /* UserDefaultsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C37571928993395007B5248 /* UserDefaultsSettings.swift */; };
 		8C3E217628926CD500D5976F /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3E217028926CD500D5976F /* SettingsStoryboard.storyboard */; };
 		8C3E217728926CD500D5976F /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217128926CD500D5976F /* SettingsRouter.swift */; };
 		8C3E217828926CD500D5976F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E217228926CD500D5976F /* SettingsViewController.swift */; };
@@ -124,12 +131,14 @@
 		8CABFF9A2876E78000FF31B0 /* Scenes.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CABFF992876E78000FF31B0 /* Scenes.strings */; };
 		8CABFF9C2876F73700FF31B0 /* DateFormatter + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABFF9B2876F73600FF31B0 /* DateFormatter + Ext.swift */; };
 		8CAFB81C28645FA900A430AB /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */; };
+		8CB62F892897F396009ACD6E /* ChangePasswordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB62F882897F396009ACD6E /* ChangePasswordEntity.swift */; };
+		8CE74405289BB2EC00D92CAA /* TextFieldsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE74404289BB2EB00D92CAA /* TextFieldsError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04389DDD9DC4C51A7AC84D80 /* Pods-WebAntApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAntApp.release.xcconfig"; path = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp.release.xcconfig"; sourceTree = "<group>"; };
 		3E91C675A7E4D9ECF649FA35 /* Pods-WebAntApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebAntApp.debug.xcconfig"; path = "Target Support Files/Pods-WebAntApp/Pods-WebAntApp.debug.xcconfig"; sourceTree = "<group>"; };
-		8C030F5828605B700029BEAD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8C030F5828605B700029BEAD /* LocalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSettings.swift; sourceTree = "<group>"; };
 		8C030F5B28605EEF0029BEAD /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
 		8C030F5E286061450029BEAD /* ErrorResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseHandler.swift; sourceTree = "<group>"; };
 		8C030F60286061CE0029BEAD /* AuthResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseHandler.swift; sourceTree = "<group>"; };
@@ -162,10 +171,17 @@
 		8C17AC37286EFDD7002CF17E /* DetailedPhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPhotoPresenter.swift; sourceTree = "<group>"; };
 		8C17AC39286EFDD8002CF17E /* DetailedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPhotoView.swift; sourceTree = "<group>"; };
 		8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		8C3471AB289BC84600973558 /* SignUpVC+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpVC+Validation.swift"; sourceTree = "<group>"; };
+		8C3471AD289BDBE300973558 /* CharacterSetExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSetExt.swift; sourceTree = "<group>"; };
 		8C36BDA2285B276E0089D180 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		8C36BDA4285B41CE0089D180 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		8C36BDA6285B57A50089D180 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		8C36BDA8285C580A0089D180 /* SignUpGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpGateway.swift; sourceTree = "<group>"; };
+		8C3757112897F8A6007B5248 /* ChangePasswordGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordGateway.swift; sourceTree = "<group>"; };
+		8C3757132897FBF9007B5248 /* ChangePasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCase.swift; sourceTree = "<group>"; };
+		8C37571528992729007B5248 /* ChangeUserInfoGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserInfoGateway.swift; sourceTree = "<group>"; };
+		8C37571728992933007B5248 /* ChangeUserInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserInfoUseCase.swift; sourceTree = "<group>"; };
+		8C37571928993395007B5248 /* UserDefaultsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettings.swift; sourceTree = "<group>"; };
 		8C3E217028926CD500D5976F /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		8C3E217128926CD500D5976F /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		8C3E217228926CD500D5976F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +263,8 @@
 		8CABFF992876E78000FF31B0 /* Scenes.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Scenes.strings; sourceTree = "<group>"; };
 		8CABFF9B2876F73600FF31B0 /* DateFormatter + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + Ext.swift"; sourceTree = "<group>"; };
 		8CAFB81B28645FA900A430AB /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
+		8CB62F882897F396009ACD6E /* ChangePasswordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordEntity.swift; sourceTree = "<group>"; };
+		8CE74404289BB2EB00D92CAA /* TextFieldsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsError.swift; sourceTree = "<group>"; };
 		C0FF06869783F558A16850F5 /* Pods_WebAntApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebAntApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -282,8 +300,9 @@
 		8C030F5728605B600029BEAD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				8C030F5828605B700029BEAD /* Settings.swift */,
+				8C030F5828605B700029BEAD /* LocalSettings.swift */,
 				8C030F8428609F0B0029BEAD /* UserDefaultsKeyType.swift */,
+				8C37571928993395007B5248 /* UserDefaultsSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -436,6 +455,7 @@
 				8C4027E82865B60D00CB9DE9 /* PhotoEntityForPost.swift */,
 				8C4027EC2865B7AB00CB9DE9 /* MediaObjectEntity.swift */,
 				8C17AC12286D9D5F002CF17E /* PaginationEntity.swift */,
+				8CB62F882897F396009ACD6E /* ChangePasswordEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -451,6 +471,8 @@
 				8C17AC14286D9E18002CF17E /* PaginationUseCase.swift */,
 				8CABFF9328743CC100FF31B0 /* GetUserUseCase.swift */,
 				8C5F11AF2878465100981819 /* GetCurrentUserUseCase.swift */,
+				8C3757132897FBF9007B5248 /* ChangePasswordUseCase.swift */,
+				8C37571728992933007B5248 /* ChangeUserInfoUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -518,6 +540,8 @@
 			children = (
 				8C7DE7BA2850B32B001F9D9B /* SignUp.storyboard */,
 				8C7DE7BE2850B363001F9D9B /* SignUpViewController.swift */,
+				8C3471AB289BC84600973558 /* SignUpVC+Validation.swift */,
+				8CE74404289BB2EB00D92CAA /* TextFieldsError.swift */,
 				8C6B3F722853645B00153686 /* SignUpRouter.swift */,
 				8C6B3F742853645B00153686 /* SignUpPresenterImp.swift */,
 				8C6B3F752853645B00153686 /* SignUpConfigurator.swift */,
@@ -557,6 +581,8 @@
 				8C17AC18286DAEF4002CF17E /* ApiPhotoPaginationGateway.swift */,
 				8CABFF8F28743B3200FF31B0 /* GetUserGateway.swift */,
 				8C5F11AD2878446800981819 /* GetCurrentUserGateway.swift */,
+				8C3757112897F8A6007B5248 /* ChangePasswordGateway.swift */,
+				8C37571528992729007B5248 /* ChangeUserInfoGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -605,11 +631,12 @@
 			isa = PBXGroup;
 			children = (
 				8C3314962863310D003D6F99 /* CustomSegmentedControl.swift */,
-				8C6B3F8F2859D7F900153686 /* Validator.swift */,
 				8C7DE7AF28509949001F9D9B /* DesignableUITextField.swift */,
+				8C6B3F8F2859D7F900153686 /* Validator.swift */,
 				8C6B3F9B2859F6F700153686 /* StringManager.swift */,
 				8CABFF95287575FC00FF31B0 /* TextFieldExtForKeyboard.swift */,
 				8C458AAB2891536900709CC9 /* CustomActivityIndicatorView.swift */,
+				8C3471AD289BDBE300973558 /* CharacterSetExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -657,9 +684,9 @@
 			isa = PBXGroup;
 			children = (
 				8C7DE7AC2850987E001F9D9B /* Extensions */,
-				8CA8A8D62853330E0037D6DE /* R.generated.swift */,
 				8CABFF992876E78000FF31B0 /* Scenes.strings */,
 				8CABFF9B2876F73600FF31B0 /* DateFormatter + Ext.swift */,
+				8CA8A8D62853330E0037D6DE /* R.generated.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -690,7 +717,7 @@
 				8C7DE787284E0F34001F9D9B /* Sources */,
 				8C7DE788284E0F34001F9D9B /* Frameworks */,
 				8C7DE789284E0F34001F9D9B /* Resources */,
-				0A89FBC22E5069937BB7B042 /* [CP] Embed Pods Frameworks */,
+				EA9F97186C932130686E8190 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -758,23 +785,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A89FBC22E5069937BB7B042 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1C8E184A0E4DF1246F1E46B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -835,6 +845,23 @@
 			shellScript = "
 ";
 		};
+		EA9F97186C932130686E8190 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WebAntApp/Pods-WebAntApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -842,13 +869,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3757142897FBF9007B5248 /* ChangePasswordUseCase.swift in Sources */,
+				8C3471AC289BC84600973558 /* SignUpVC+Validation.swift in Sources */,
 				8C6B3F6E2853450700153686 /* SignInView.swift in Sources */,
 				8C6B3F7E285364A700153686 /* SignUpPresenter.swift in Sources */,
+				8C37571628992729007B5248 /* ChangeUserInfoGateway.swift in Sources */,
 				8CA8A8D72853330E0037D6DE /* R.generated.swift in Sources */,
 				8C3E218228926E8500D5976F /* BaseView.swift in Sources */,
 				8C17AC35286EFDC9002CF17E /* DetailedPhotoConfigurator.swift in Sources */,
 				8C3E217828926CD500D5976F /* SettingsViewController.swift in Sources */,
 				8C6B3F962859EA6E00153686 /* SignInGateway.swift in Sources */,
+				8C3471AE289BDBE300973558 /* CharacterSetExt.swift in Sources */,
 				8C17AC0D286AF68D002CF17E /* AddDataPresenter.swift in Sources */,
 				8CA8A8E02853341B0037D6DE /* WelcomeRouter.swift in Sources */,
 				8C030F61286061CE0029BEAD /* AuthResponseHandler.swift in Sources */,
@@ -864,6 +895,7 @@
 				8C6B3F6A2853447300153686 /* SignInConfigurator.swift in Sources */,
 				8CA8A8E22853341B0037D6DE /* WelcomePresenterImp.swift in Sources */,
 				8C17AC33286EFDC9002CF17E /* DetailedPhotoViewController.swift in Sources */,
+				8CE74405289BB2EC00D92CAA /* TextFieldsError.swift in Sources */,
 				8CA8A8E62853346B0037D6DE /* WelcomePresenter.swift in Sources */,
 				8C6B3F6F2853450700153686 /* SignInPresenter.swift in Sources */,
 				8C7F2CB3287813EB0073D6B9 /* UserProfileView.swift in Sources */,
@@ -872,7 +904,7 @@
 				8C17AC0A286AF688002CF17E /* AddDataConfigurator.swift in Sources */,
 				8C7F2CAE287813E40073D6B9 /* UserProfileConfigurator.swift in Sources */,
 				8C6B3F7A2853645C00153686 /* SignUpPresenterImp.swift in Sources */,
-				8C030F5928605B700029BEAD /* Settings.swift in Sources */,
+				8C030F5928605B700029BEAD /* LocalSettings.swift in Sources */,
 				8CABFF9028743B3200FF31B0 /* GetUserGateway.swift in Sources */,
 				8C030FA22861C9BE0029BEAD /* MainGalleryPresenter.swift in Sources */,
 				8C030F8528609F0B0029BEAD /* UserDefaultsKeyType.swift in Sources */,
@@ -880,6 +912,7 @@
 				8C3E217728926CD500D5976F /* SettingsRouter.swift in Sources */,
 				8C3E217F28926CDF00D5976F /* SettingsView.swift in Sources */,
 				8C6B3F7B2853645C00153686 /* SignUpConfigurator.swift in Sources */,
+				8C37571828992933007B5248 /* ChangeUserInfoUseCase.swift in Sources */,
 				8C3314972863310D003D6F99 /* CustomSegmentedControl.swift in Sources */,
 				8C5496B428645077005674C1 /* AddPhotoRouter.swift in Sources */,
 				8C030F5C28605EEF0029BEAD /* AuthInterceptor.swift in Sources */,
@@ -917,9 +950,11 @@
 				8C7F2CAD287813E40073D6B9 /* UserProfilePresenterImp.swift in Sources */,
 				8C4027DF28646CDE00CB9DE9 /* PhotoEntityForGet.swift in Sources */,
 				8C458AAC2891536900709CC9 /* CustomActivityIndicatorView.swift in Sources */,
+				8CB62F892897F396009ACD6E /* ChangePasswordEntity.swift in Sources */,
 				8C4027E328646F2400CB9DE9 /* GetPhotoGateway.swift in Sources */,
 				8C7F2CAC287813E40073D6B9 /* UserProfileViewController.swift in Sources */,
 				8C7DE793284E0F34001F9D9B /* WelcomeController.swift in Sources */,
+				8C37571A28993395007B5248 /* UserDefaultsSettings.swift in Sources */,
 				8C030F632860623B0029BEAD /* ExtendedJsonResponseHandler.swift in Sources */,
 				8C6B3F8A2858941900153686 /* RegistrationGateway.swift in Sources */,
 				8CA8A8E82853346D0037D6DE /* WelcomeView.swift in Sources */,
@@ -944,6 +979,7 @@
 				8C4027E128646ECE00CB9DE9 /* GetPhotoUseCase.swift in Sources */,
 				8C030F9F2861C9B20029BEAD /* MainGalleryConfigurator.swift in Sources */,
 				8C6B3F842858934800153686 /* ExtendedApiRequest.swift in Sources */,
+				8C3757122897F8A6007B5248 /* ChangePasswordGateway.swift in Sources */,
 				8C5F11B02878465100981819 /* GetCurrentUserUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

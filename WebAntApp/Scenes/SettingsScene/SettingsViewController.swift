@@ -9,6 +9,7 @@
 //
 
 import UIKit
+//import MaterialTextField
 
 class SettingsViewController: UIViewController {
     
@@ -66,12 +67,12 @@ class SettingsViewController: UIViewController {
     }
 
     func getDateFromPicker() {
-        let formatter = DateFormatter()
-        let humanFormatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        humanFormatter.dateFormat = "d MMM, yyyy"
+//        let formatter = DateFormatter()
+//        let humanFormatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        humanFormatter.dateFormat = "d MMM, yyyy"
 
-        birthdayTextField.text = humanFormatter.string(from: datePicker.date)
+        birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
 //        self.currentDate = formatter.string(from: datePicker.date)
     }
     
@@ -137,7 +138,80 @@ class SettingsViewController: UIViewController {
     }
 
     @objc func saveBtnPressed() {
-//        setupModal()
+        checkPasswordTextFieldsAndUpdateData()
+        checkUserTextFieldsAndUpdateData()
+
+    }
+
+//    func validatePassword(_ textfield: MFTextField) throws -> String {
+//        guard let password = textfield.text,
+//              password.removeWhitespace() != "",
+//              password.removeWhitespace().count >= self.passwordLength else {
+//            throw SignInSignUpTextFieldError.passwordFieldIsTooShort(length: self.passwordLength)
+//        }
+//        guard password.isValidPassword else {
+//            throw SignInSignUpTextFieldError.forbiddenSymbols
+//        }
+//        return password
+//    }
+
+
+    private func checkPasswordTextFieldsAndUpdateData() {
+        if (newPasswordTextField.text == confirmPasswordTextField.text) {
+            guard let oldPassword = oldPasswordTextField.text,
+                  let newPassword = newPasswordTextField.text else {
+                return
+            }
+            presenter?.changeUserPassword(oldPassword: oldPassword, newPassword: newPassword)
+        }
+    }
+
+    // TODO: доделай сюда модалку об ошибке
+    private func checkUserTextFieldsAndUpdateData() {
+
+        guard let username = userNameTextField.text,
+              let email = emailTextField.text  else { return }
+
+        if username == "" {
+           print("доделай сюда модалку об ошибке")
+        }
+
+        if email == "" {
+            print("доделай сюда модалку об ошибке")        }
+
+        if let newPass = newPasswordTextField.text,
+           let confirmPass = confirmPasswordTextField.text {
+
+            if confirmPass != "" &&
+                newPass != confirmPass {
+                print("доделай сюда модалку об ошибке")
+            }
+
+            if let oldPass = oldPasswordTextField.text {
+                if oldPass == "" &&
+                   newPass != "" {
+                    print("доделай сюда модалку об ошибке")
+                }
+            }
+
+            if let oldPass = oldPasswordTextField.text {
+                if oldPass != "" &&
+                    newPass != "" &&
+                    confirmPass != newPass {
+                    print("доделай сюда модалку об ошибке")
+                }
+            }
+
+            if let oldPass = oldPasswordTextField.text {
+                if oldPass != "" &&
+                    newPass == confirmPass &&
+                    newPass == "" {
+                    print("доделай сюда модалку об ошибке")
+                }
+            }
+            presenter?.changeUserInfo()
+            self.navigationController?.reloadInputViews()
+        }
     }
 
     @objc func goBack() {
@@ -147,10 +221,6 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: SettingsView {
 
-//    func setupInfoModule() {
-//        presenter?.showInfoModule()
-//    }
-
     func setupUser(user: UserEntityForGet?) {
         guard let user = presenter?.getCurrentUser() else {
             return
@@ -158,6 +228,5 @@ extension SettingsViewController: SettingsView {
         userNameTextField.text = user.username
         birthdayTextField.text = user.birthday?.convertDateFormatFromISO8601() ?? "no data"
         emailTextField.text = user.email
-
     }
 }

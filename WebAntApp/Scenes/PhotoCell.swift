@@ -41,6 +41,7 @@ class PhotoCell: UICollectionViewCell {
             return
         }
         imageViewInCell.kf.setImage(with: urlValid)
+
     }
 }
 

@@ -11,6 +11,8 @@ import UIKit
 //@IBDesignable
 class DesignableUITextField: UITextField, UITextFieldDelegate {
 
+//    let label: UILabel?
+
     // Provides left padding for images
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         var textRect = super.rightViewRect(forBounds: bounds)
@@ -30,6 +32,16 @@ class DesignableUITextField: UITextField, UITextFieldDelegate {
 
        }
    }
+
+    // TODO: показывать модалку об ошибке
+
+//    func addLabelToTextField
+    //здесь добавить констрейнты для лейбла чтобы они под текстфилдом располагались ивозможено здесь перекрашивать рамку текстфилда в красный
+    //и вызывать эту функцию на ошибках в контроллере
+    // если ошибки уходит то вызывать след метод ремув
+//
+//    fun removelabel
+//    label?.removeFromSuperview()
 
     @IBInspectable var rightPadding: CGFloat = 0
 

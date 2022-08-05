@@ -170,6 +170,8 @@
                         <outlet property="descriptionTextView" destination="kbg-Ec-mzp" id="BhL-1I-vKP"/>
                         <outlet property="detailedPhoto" destination="eP3-pf-kr4" id="Q4C-Zs-Con"/>
                         <outlet property="photoNameLabel" destination="aF7-sE-VKp" id="TGl-2v-a0k"/>
+                        <outlet property="scrollView" destination="ByX-nC-ZXW" id="Q7w-c6-cgQ"/>
+                        <outlet property="stackView" destination="ZcY-8v-duw" id="PUp-oH-wgY"/>
                         <outlet property="userNameLabel" destination="LIt-7l-uq9" id="nVr-mx-Knb"/>
                         <outlet property="viewsTextField" destination="IHf-Sb-mzu" id="dBp-3h-N7N"/>
                     </connections>
