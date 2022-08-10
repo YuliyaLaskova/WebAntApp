@@ -12,8 +12,8 @@ extension SettingsViewController {
 
     func checkUserTextFieldsAndUpdateData() {
         var errors: [Error] = []
-        var oldPassword = "",
-            newPassword = "",
+        var newPassword = "",
+            oldPassword = "",
             confirmPassword = ""
 
         guard let userName = userNameTextField.text,

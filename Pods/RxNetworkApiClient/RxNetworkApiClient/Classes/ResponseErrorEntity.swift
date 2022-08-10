@@ -5,7 +5,6 @@
 
 import Foundation
 
-
 public class ResponseErrorEntity: LocalizedError {
 
     public var errors = [String]()

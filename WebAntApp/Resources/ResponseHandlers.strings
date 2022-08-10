@@ -1,0 +1,18 @@
+/* 
+  ResponseHandlers.strings
+  WebAntApp
+
+  Created by Yuliya Laskova on 10.08.2022.
+  
+*/
+// MARK: - AuthResponseРhandler
+"UserNotActivatedYouCanWithSupport" = "The user has not been activated. Please contact support.";
+"AppError" = "Application Error.";
+"ApiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport" = "The API client is not configured correctly, please contact customer support.";
+"NoUsernameOrPassword" = "No username or password.";
+"IncorrectUsernameOrPassword" = "Incorrect username or password";
+"YouHaveNotLoggedInForAlongTimePleaseLogInAgain" = "*! You have not logged in for a long time, please log in again.";
+"IncorrectCodeTryAgain" = "Incorrect code, try again.";
+"RequestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater" = "Requesting a code can only be done once every 2 minutes. Please try again later.";
+// MARK: - ErrorResponseHandler
+"NotFound" = "404 не найдено \n";

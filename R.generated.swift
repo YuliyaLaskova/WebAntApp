@@ -446,9 +446,150 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
   struct string {
-    /// This `R.string.scenes` struct is generated, and contains static references to 41 localization keys.
+    /// This `R.string.responseHandlers` struct is generated, and contains static references to 9 localization keys.
+    struct responseHandlers {
+      /// Value: *! You have not logged in for a long time, please log in again.
+      static let youHaveNotLoggedInForAlongTimePleaseLogInAgain = Rswift.StringResource(key: "YouHaveNotLoggedInForAlongTimePleaseLogInAgain", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 404 не найдено  
+      static let notFound = Rswift.StringResource(key: "NotFound", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Application Error.
+      static let appError = Rswift.StringResource(key: "AppError", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Incorrect code, try again.
+      static let incorrectCodeTryAgain = Rswift.StringResource(key: "IncorrectCodeTryAgain", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Incorrect username or password
+      static let incorrectUsernameOrPassword = Rswift.StringResource(key: "IncorrectUsernameOrPassword", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: No username or password.
+      static let noUsernameOrPassword = Rswift.StringResource(key: "NoUsernameOrPassword", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Requesting a code can only be done once every 2 minutes. Please try again later.
+      static let requestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater = Rswift.StringResource(key: "RequestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: The API client is not configured correctly, please contact customer support.
+      static let apiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport = Rswift.StringResource(key: "ApiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: The user has not been activated. Please contact support.
+      static let userNotActivatedYouCanWithSupport = Rswift.StringResource(key: "UserNotActivatedYouCanWithSupport", tableName: "ResponseHandlers", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: *! You have not logged in for a long time, please log in again.
+      static func youHaveNotLoggedInForAlongTimePleaseLogInAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("YouHaveNotLoggedInForAlongTimePleaseLogInAgain", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "YouHaveNotLoggedInForAlongTimePleaseLogInAgain"
+        }
+
+        return NSLocalizedString("YouHaveNotLoggedInForAlongTimePleaseLogInAgain", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: 404 не найдено  
+      static func notFound(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("NotFound", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "NotFound"
+        }
+
+        return NSLocalizedString("NotFound", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: Application Error.
+      static func appError(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("AppError", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "AppError"
+        }
+
+        return NSLocalizedString("AppError", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: Incorrect code, try again.
+      static func incorrectCodeTryAgain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("IncorrectCodeTryAgain", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "IncorrectCodeTryAgain"
+        }
+
+        return NSLocalizedString("IncorrectCodeTryAgain", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: Incorrect username or password
+      static func incorrectUsernameOrPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("IncorrectUsernameOrPassword", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "IncorrectUsernameOrPassword"
+        }
+
+        return NSLocalizedString("IncorrectUsernameOrPassword", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: No username or password.
+      static func noUsernameOrPassword(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("NoUsernameOrPassword", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "NoUsernameOrPassword"
+        }
+
+        return NSLocalizedString("NoUsernameOrPassword", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: Requesting a code can only be done once every 2 minutes. Please try again later.
+      static func requestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("RequestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "RequestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater"
+        }
+
+        return NSLocalizedString("RequestingCodeCanOnlyBeDoneOnceEvery2MinutesPleaseTryAgainLater", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: The API client is not configured correctly, please contact customer support.
+      static func apiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ApiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "ApiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport"
+        }
+
+        return NSLocalizedString("ApiClientIsNotConfiguredCorrectlyPleaseContactTechnicalSupport", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      /// Value: The user has not been activated. Please contact support.
+      static func userNotActivatedYouCanWithSupport(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("UserNotActivatedYouCanWithSupport", tableName: "ResponseHandlers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "ResponseHandlers", preferredLanguages: preferredLanguages) else {
+          return "UserNotActivatedYouCanWithSupport"
+        }
+
+        return NSLocalizedString("UserNotActivatedYouCanWithSupport", tableName: "ResponseHandlers", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    /// This `R.string.scenes` struct is generated, and contains static references to 42 localization keys.
     struct scenes {
       /// Value: %@ can contain only latin letters, numbers, punctuation marks
       static let forbiddenSymbolsForPasswordEng = Rswift.StringResource(key: "forbiddenSymbolsForPasswordEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -492,7 +633,7 @@ struct R: Rswift.Validatable {
       static let passwordsNotMatch = Rswift.StringResource(key: "passwordsNotMatch", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Phone number
       static let phoneNumber = Rswift.StringResource(key: "phoneNumber", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Please check your data
+      /// Value: Please, check your data
       static let pleaseCheckYourData = Rswift.StringResource(key: "pleaseCheckYourData", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Publication has been moderated
       static let successInPublicationMessage = Rswift.StringResource(key: "successInPublicationMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -512,6 +653,8 @@ struct R: Rswift.Validatable {
       static let incorrectEng = Rswift.StringResource(key: "incorrectEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You didn't fill all required fields
       static let emptyFieldsMessage = Rswift.StringResource(key: "emptyFieldsMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Your data is successfully changed
+      static let dataIsChanged = Rswift.StringResource(key: "dataIsChanged", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Дата еще не наступила
       static let dateStillToCome = Rswift.StringResource(key: "dateStillToCome", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Дата уже прошла
@@ -826,7 +969,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("phoneNumber", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
-      /// Value: Please check your data
+      /// Value: Please, check your data
       static func pleaseCheckYourData(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("pleaseCheckYourData", tableName: "Scenes", bundle: hostingBundle, comment: "")
@@ -954,6 +1097,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("emptyFieldsMessage", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Your data is successfully changed
+      static func dataIsChanged(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("dataIsChanged", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "dataIsChanged"
+        }
+
+        return NSLocalizedString("dataIsChanged", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Дата еще не наступила

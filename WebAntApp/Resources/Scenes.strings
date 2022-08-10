@@ -26,6 +26,7 @@
 "localUserIdIsNil" = "Не удалось найти идентификатор пользователя. Обновите профиль";
 "emptyFieldsMessage" = "You didn't fill all required fields";
 "accountIsDeleted" = "Account is deleted";
+"dataIsChanged" = "Your data is successfully changed";
 
 
 // MARK: - TextFieldError
@@ -48,7 +49,7 @@
 "dateAlreadyPast" = "Дата уже прошла";
 "dateStillToCome" = "Дата еще не наступила";
 "lessThanRequiredTimeInterval" = "Меньше необходимого временного интервала";
-"pleaseCheckYourData" = "Please check your data";
+"pleaseCheckYourData" = "Please, check your data";
 // MARK: - UserUseCaseError
 "remoteUserIdIsNil" = "Не удалось получить ID пользователя";
 "localUserIdIsNil" = "Не удалось найти идентификатор пользователя. Обновите профиль";

@@ -17,6 +17,7 @@ class CustomActivityIndicatorView: UIView {
     override init(frame:CGRect) {
         super.init(frame: frame)
     }
+    //progress hud control
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -55,7 +56,6 @@ class CustomActivityIndicatorView: UIView {
     }
 
     func resignActivityIndicator() {
-        spinningCircle.removeAllAnimations()
             self.isHidden = true
         spinningCircle.removeFromSuperlayer()
         spinningCircle.removeAllAnimations()

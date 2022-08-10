@@ -25,3 +25,11 @@ class UserEntity: JsonBodyConvertible, Codable {
         self.birthday = birthday
     }
 }
+
+struct EmptyUser: JsonBodyConvertible, Codable {
+    var id: Int?
+    var username: String?
+    var birthday: String?
+    var email: String?
+    var password: String?
+}

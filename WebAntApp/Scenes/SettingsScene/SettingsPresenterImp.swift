@@ -59,12 +59,13 @@ class SettingsPresenterImp: SettingsPresenter {
         changePasswordUseCase.updatePassword(currentUser?.id, userPass)
             .observe(on: MainScheduler.instance)
             .subscribe(onCompleted: { [weak self] in
-                guard let self = self else { return }
-                print("password is updated")
-                //показывать модалку на успех
-            }, onError: { error in
-                //показывать модалку на фэйл
-                print(error.localizedDescription)
+                self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
+                                                  alertMessage: R.string.scenes.dataIsChanged(),
+                                                  buttonMessage: R.string.scenes.okAction())
+            }, onError: { [weak self] error in
+                self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
+                                                  alertMessage: error.localizedDescription,
+                                                  buttonMessage: R.string.scenes.okAction())
             })
             .disposed(by: disposeBag)
     }
@@ -82,51 +83,37 @@ class SettingsPresenterImp: SettingsPresenter {
                 //                        view?.hideActivityIndicator()
             })
             .subscribe(onCompleted: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                //показывать модалку на успех
+                self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
+                                                  alertMessage: R.string.scenes.dataIsChanged(),
+                                                  buttonMessage: R.string.scenes.okAction())
             },
-                       onError: { error in
-                //показывать модалку на фэйл
-                print(error.localizedDescription)
+                       onError: { [weak self] error in
+                self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
+                                                  alertMessage: error.localizedDescription,
+                                                  buttonMessage: R.string.scenes.okAction())
             })
                 .disposed(by: disposeBag)
                 }
 
     func deleteUserAccount() {
-        deleteUserUseCase.deleteUser()
+        deleteUserUseCase.deleteUser(userId: currentUser?.id ?? 0)
             .do(onSubscribe: {
                 self.view?.startActivityIndicator()},
-                                onDispose: { self.view?.stopActivityIndicator() }   )
-                //            }, onDispose: { self.router.goToWelcomeScene() })
-                .observe(on: MainScheduler.instance)
+                onDispose: { self.view?.stopActivityIndicator()}   )
+            .observe(on: MainScheduler.instance)
                 .subscribe(onCompleted: {
-                    //
-                    self.view?.stopActivityIndicator()
-                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.accountIsDeleted(), alertMessage: nil, buttonMessage: R.string.scenes.okAction(), completion: { [ weak self ] in
-                        self?.settings.clearUserData()
-                        self?.view?.stopActivityIndicator()
-                        self?.router.goToWelcomeScene()
-                    })
-                    //                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.accountIsDeleted(),
-                    //                                                            alertMessage: nil,
-                    //                                                            buttonMessage: R.string.scenes.okAction(),
-                    //                                                            completion: { [ weak self ] in
-                    //                                                                self?.settings.clearUserData()
-                    ////                                                                self?.changeRootView()
-                    //                                                            })
-                }, onError: { [weak self] error in
-                    self?.view?.stopActivityIndicator()
-                    //                            guard error is ResponseErrorEntity else { return }
-                    guard let self = self else { return }
-                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
-                                                     alertMessage: error.localizedDescription,
+                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
+                                                     alertMessage: R.string.scenes.accountIsDeleted(),
                                                      buttonMessage: R.string.scenes.okAction(),
-                                                     completion: {
-                        [ weak self ] in
-                            self?.view?.stopActivityIndicator()
+                                                     completion: { [ weak self ] in
+                        self?.settings.clearUserData()
+                        self?.router.goToWelcomeScene()
+
                     })
+                }, onError: { [weak self] error in
+                    self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
+                                                      alertMessage: error.localizedDescription,
+                                                      buttonMessage: R.string.scenes.okAction())
 
                 })
                 .disposed(by: disposeBag)

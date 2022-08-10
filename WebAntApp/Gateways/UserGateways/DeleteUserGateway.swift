@@ -9,11 +9,11 @@ import RxSwift
 import RxNetworkApiClient
 
 protocol DeleteUserGateway {
-    func deleteAccount(_ userId: Int) -> Single<UserEntityForGet>
+    func deleteAccount(_ userId: Int) -> Single<EmptyUser>
 }
 
 class DeleteUserGatewayImp: ApiBaseGateway, DeleteUserGateway {
-    func deleteAccount(_ userId: Int) -> Single<UserEntityForGet> {
+    func deleteAccount(_ userId: Int) -> Single<EmptyUser> {
             return apiClient.execute(request: ExtendedApiRequest.deleteUserRequest(userId: userId))
     }
 }
