@@ -11,11 +11,11 @@
 import Foundation
 
 protocol SettingsPresenter {
-
     func getCurrentUser() -> UserEntityForGet?
     func getCurrentUserFromAPI()
     func viewDidLoad()
     func changeUserPassword(oldPassword: String, newPassword: String)
     func changeUserInfo()
+    func deleteUserAccount()
 }
 

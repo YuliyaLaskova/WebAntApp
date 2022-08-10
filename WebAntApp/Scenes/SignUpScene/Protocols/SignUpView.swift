@@ -11,5 +11,7 @@
 import UIKit
 
 protocol SignUpView: BaseView {
+    func startActivityIndicator()
+    func stopActivityIndicator()
 
 }

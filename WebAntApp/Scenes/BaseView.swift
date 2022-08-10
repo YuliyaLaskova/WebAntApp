@@ -21,6 +21,34 @@ extension BaseView {
 //        modalView.bottomAnchor.constraint(equalTo: .bottomAnchor, constant: 10)
 //
 //    }
+
+//    func actIndicatorStartAnimatingAt(superView: CustomActivityIndicatorView) {
+//        superView.setupActindAt()
+//    }
+
+    func addActivityInd(isNeeded: Bool, superView: UIView) {
+        let activityIndicatorView = CustomActivityIndicatorView()
+
+        if isNeeded == true {
+        superView.addSubview(activityIndicatorView)
+
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        activityIndicatorView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        activityIndicatorView.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: superView.centerYAnchor).isActive = true
+        activityIndicatorView.isHidden = false
+
+        activityIndicatorView.animate()
+        } else
+        if isNeeded == false {
+            //TODO: убрать акт индик до того как показываем модалку
+            activityIndicatorView.removeFromSuperview()
+            activityIndicatorView.isHidden = true
+            activityIndicatorView.resignActivityIndicator()
+        }
+    }
+
     func addInfoModuleWithFunc(alertTitle: String,
                            alertMessage: String?,
                            buttonMessage: String,

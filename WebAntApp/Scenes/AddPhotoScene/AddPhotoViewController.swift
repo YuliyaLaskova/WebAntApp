@@ -11,12 +11,10 @@
 import UIKit
 
 class AddPhotoViewController: UIViewController {
-    
     var presenter: AddPhotoPresenter?
-
-    private let imagePicker = UIImagePickerController()
-
-    var array: [UIImage] = [UIImage(named: "Forest")!, UIImage(named: "Field")!, UIImage(named: "Bear")!, UIImage(named: "Flower")!]
+    let imagePicker = UIImagePickerController()
+//    var array: [UIImage] = [UIImage(named: "Forest")!, UIImage(named: "Field")!, UIImage(named: "Bear")!, UIImage(named: "Flower")!]
+    var imageArray: [UIImage] = []
 
     @IBOutlet var photoCollection: UICollectionView!
     @IBOutlet var checkedImage: UIImageView!
@@ -49,19 +47,9 @@ class AddPhotoViewController: UIViewController {
         imagePicker.delegate = self
         checkedImage.isUserInteractionEnabled = true
         tapObserver()
-
     }
 
     private func setupBarButtonItems() {
-        //        let nextButton: UIButton = UIButton (type: UIButton.ButtonType.custom)
-        //        nextButton.setTitle("Next", for: .normal)
-        //        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        //        nextButton.setTitleColor(.systemPink, for: .normal)
-        //        nextButton.addTarget(self, action: #selector(nextBtnPressed), for: .touchUpInside)
-        //
-        //        nextButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        //        let barButton = UIBarButtonItem(customView: nextButton)
-        //        navigationItem.rightBarButtonItem = barButton
         let nextRightBarButtonItem = UIBarButtonItem()
         nextRightBarButtonItem.title = "Next"
         nextRightBarButtonItem.tintColor = .systemPink
@@ -77,17 +65,14 @@ class AddPhotoViewController: UIViewController {
         cancelLeftBarButtonItem.action = #selector(setStandartImage)
 
         navigationItem.leftBarButtonItem = cancelLeftBarButtonItem
-
     }
 
     @objc func nextBtnPressed() {
-        // передать картинку
         openAddDataViewController()
     }
 
     @objc func setStandartImage() {
-        checkedImage.image = UIImage(named: "photoIcon")
-        //        navigationController?.popViewController(animated: true)
+        checkedImage.image = nil
     }
 
     private func tapObserver() {
@@ -99,7 +84,6 @@ class AddPhotoViewController: UIViewController {
     }
 
     @objc func didTapImage() {
-
         let alert = UIAlertController(title: "Choose the source", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
@@ -112,75 +96,5 @@ class AddPhotoViewController: UIViewController {
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
-
-        //        present(imagePicker, animated: true)
-    }
-    
-}
-
-extension AddPhotoViewController: AddPhotoView {
-    func openAddDataViewController() {
-        guard let checkedImage = checkedImage.image else { return }
-        presenter?.openAddDataViewController(photoForPost: checkedImage)
-    }
-}
-
-// MARK: Extension CollectionView
-
-extension AddPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? GalleryPhotoCell {
-            checkedImage.image = cell.photoView.image
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return array.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? GalleryPhotoCell {
-            cell.photoView.image = array[indexPath.row]
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-}
-
-// MARK: Extension ImagePickerController
-
-extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[.originalImage] as? UIImage {
-            checkedImage.image = image
-        }
-
-        dismiss(animated: true)
-    }
-
-    func openCamera()
-    {
-        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
-        {
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        else
-        {
-            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-
-    func openGallary()
-    {
-        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        imagePicker.allowsEditing = true
-        self.present(imagePicker, animated: true, completion: nil)
     }
 }

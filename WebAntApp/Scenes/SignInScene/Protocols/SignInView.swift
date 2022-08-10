@@ -11,7 +11,7 @@
 import UIKit
 
 protocol SignInView: BaseView {
-//    func signUpBtnPressed()
-//    func signInBtnPressed()
+    func startActivityIndicator()
+    func stopActivityIndicator()
     
 }

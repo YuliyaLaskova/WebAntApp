@@ -448,8 +448,18 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.scenes` struct is generated, and contains static references to 35 localization keys.
+    /// This `R.string.scenes` struct is generated, and contains static references to 41 localization keys.
     struct scenes {
+      /// Value: %@ can contain only latin letters, numbers, punctuation marks
+      static let forbiddenSymbolsForPasswordEng = Rswift.StringResource(key: "forbiddenSymbolsForPasswordEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: %@ cannot be empty
+      static let fieldIsEmptyEng = Rswift.StringResource(key: "fieldIsEmptyEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: %@ couldn't be less than %@ symbols
+      static let fieldIsTooShortEng = Rswift.StringResource(key: "fieldIsTooShortEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: %@ не может быть более %@ символов
+      static let fieldIsTooLong = Rswift.StringResource(key: "fieldIsTooLong", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: %@ не может быть менее %@ символов
+      static let fieldIsTooShort = Rswift.StringResource(key: "fieldIsTooShort", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: '%@' должно содержать %@ символов
       static let fieldIsNoEqual = Rswift.StringResource(key: "fieldIsNoEqual", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: '%@' может содержать только буквы, пробел, дефис
@@ -458,12 +468,10 @@ struct R: Rswift.Validatable {
       static let forbiddenSymbolsForEmailOrUsername = Rswift.StringResource(key: "forbiddenSymbolsForEmailOrUsername", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: '%@' может содержать только латинские буквы, цифры, знаки препинания
       static let forbiddenSymbolsForPassword = Rswift.StringResource(key: "forbiddenSymbolsForPassword", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: '%@' не может быть более %@ символов
-      static let fieldIsTooLong = Rswift.StringResource(key: "fieldIsTooLong", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: '%@' не может быть менее %@ символов
-      static let fieldIsTooShort = Rswift.StringResource(key: "fieldIsTooShort", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: '%@' не может быть пустым
       static let fieldIsEmpty = Rswift.StringResource(key: "fieldIsEmpty", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Account is deleted
+      static let accountIsDeleted = Rswift.StringResource(key: "accountIsDeleted", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Birthday
       static let dateOfBirth = Rswift.StringResource(key: "dateOfBirth", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Confirm password
@@ -478,6 +486,8 @@ struct R: Rswift.Validatable {
       static let okAction = Rswift.StringResource(key: "okAction", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Password
       static let password = Rswift.StringResource(key: "password", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Passwords are different
+      static let passwordsAreDifferentEng = Rswift.StringResource(key: "passwordsAreDifferentEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Passwords aren't identical
       static let passwordsNotMatch = Rswift.StringResource(key: "passwordsNotMatch", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Phone number
@@ -498,6 +508,8 @@ struct R: Rswift.Validatable {
       static let surname = Rswift.StringResource(key: "surname", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: User Name
       static let username = Rswift.StringResource(key: "username", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Wrong format
+      static let incorrectEng = Rswift.StringResource(key: "incorrectEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: You didn't fill all required fields
       static let emptyFieldsMessage = Rswift.StringResource(key: "emptyFieldsMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Дата еще не наступила
@@ -520,6 +532,81 @@ struct R: Rswift.Validatable {
       static let passwordsAreDifferent = Rswift.StringResource(key: "passwordsAreDifferent", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Почта
       static let violationEntityEmail = Rswift.StringResource(key: "violationEntityEmail", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: %@ can contain only latin letters, numbers, punctuation marks
+      static func forbiddenSymbolsForPasswordEng(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("forbiddenSymbolsForPasswordEng", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "forbiddenSymbolsForPasswordEng"
+        }
+
+        let format = NSLocalizedString("forbiddenSymbolsForPasswordEng", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: %@ cannot be empty
+      static func fieldIsEmptyEng(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsEmptyEng", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsEmptyEng"
+        }
+
+        let format = NSLocalizedString("fieldIsEmptyEng", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: %@ couldn't be less than %@ symbols
+      static func fieldIsTooShortEng(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsTooShortEng", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsTooShortEng"
+        }
+
+        let format = NSLocalizedString("fieldIsTooShortEng", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: %@ не может быть более %@ символов
+      static func fieldIsTooLong(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsTooLong"
+        }
+
+        let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
+
+      /// Value: %@ не может быть менее %@ символов
+      static func fieldIsTooShort(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1, value2)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "fieldIsTooShort"
+        }
+
+        let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1, value2)
+      }
 
       /// Value: '%@' должно содержать %@ символов
       static func fieldIsNoEqual(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
@@ -581,36 +668,6 @@ struct R: Rswift.Validatable {
         return String(format: format, locale: locale, value1)
       }
 
-      /// Value: '%@' не может быть более %@ символов
-      static func fieldIsTooLong(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: hostingBundle, comment: "")
-          return String(format: format, locale: applicationLocale, value1, value2)
-        }
-
-        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
-          return "fieldIsTooLong"
-        }
-
-        let format = NSLocalizedString("fieldIsTooLong", tableName: "Scenes", bundle: bundle, comment: "")
-        return String(format: format, locale: locale, value1, value2)
-      }
-
-      /// Value: '%@' не может быть менее %@ символов
-      static func fieldIsTooShort(_ value1: String, _ value2: String, preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: hostingBundle, comment: "")
-          return String(format: format, locale: applicationLocale, value1, value2)
-        }
-
-        guard let (locale, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
-          return "fieldIsTooShort"
-        }
-
-        let format = NSLocalizedString("fieldIsTooShort", tableName: "Scenes", bundle: bundle, comment: "")
-        return String(format: format, locale: locale, value1, value2)
-      }
-
       /// Value: '%@' не может быть пустым
       static func fieldIsEmpty(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -624,6 +681,19 @@ struct R: Rswift.Validatable {
 
         let format = NSLocalizedString("fieldIsEmpty", tableName: "Scenes", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: Account is deleted
+      static func accountIsDeleted(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("accountIsDeleted", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "accountIsDeleted"
+        }
+
+        return NSLocalizedString("accountIsDeleted", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Birthday
@@ -715,6 +785,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("password", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Passwords are different
+      static func passwordsAreDifferentEng(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("passwordsAreDifferentEng", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "passwordsAreDifferentEng"
+        }
+
+        return NSLocalizedString("passwordsAreDifferentEng", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Passwords aren't identical
@@ -845,6 +928,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("username", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Wrong format
+      static func incorrectEng(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("incorrectEng", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "incorrectEng"
+        }
+
+        return NSLocalizedString("incorrectEng", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: You didn't fill all required fields

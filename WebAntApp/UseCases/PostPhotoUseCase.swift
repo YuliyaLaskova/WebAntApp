@@ -11,7 +11,6 @@ import RxNetworkApiClient
 
 
 protocol PostPhotoUseCase {
-
     func postPhoto(_ entity: PhotoEntityForPost) -> Single<PhotoEntityForGet>
     func postMediaObject(_ file: UploadFile) -> Single<MediaObjectEntity>
 }

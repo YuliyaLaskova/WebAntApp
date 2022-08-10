@@ -11,7 +11,6 @@
 import UIKit
 
 enum MainGalleryConfigurator {
-    
     static func configure(view: MainGalleryViewController) {
         let router = MainGalleryRouter(view)
         let presenter = MainGalleryPresenterImp(view: view, router: router, paginationUseCase: DI.resolve())
@@ -19,11 +18,6 @@ enum MainGalleryConfigurator {
     }
 
     static func open(navigationController: UINavigationController) {
-//        guard let view = R.storyboard.mainGalleryStoryboard().instantiateInitialViewController() as? MainGalleryViewController else {
-//            return
-//        }
-//        Self.configure(view: view)
-//        navigationController.pushViewController(view, animated: true)
        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
         appDelegate?.openMainGalleryScreen(window: appDelegate?.window)
     }

@@ -14,7 +14,7 @@ enum SettingsConfigurator {
     
     static func configure(view: SettingsViewController) {
         let router = SettingsRouter(view)
-        let presenter = SettingsPresenterImp(view: view, router: router, getCurrentUserUseCase: DI.resolve(), changePasswordUseCase: DI.resolve(), changeUserInfoUseCase: DI.resolve())
+        let presenter = SettingsPresenterImp(view: view, router: router, settings: DI.resolve(), getCurrentUserUseCase: DI.resolve(), changePasswordUseCase: DI.resolve(), changeUserInfoUseCase: DI.resolve(), deleteUserUseCase: DI.resolve())
         view.presenter = presenter
     }
 

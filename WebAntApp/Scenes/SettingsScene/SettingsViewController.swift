@@ -17,7 +17,6 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet var userPhotoView: UIView!
     @IBOutlet var scrollView: UIScrollView!
-
     @IBOutlet var userNameTextField: DesignableUITextField!
     @IBOutlet var birthdayTextField: DesignableUITextField!
     @IBOutlet var emailTextField: DesignableUITextField!
@@ -27,8 +26,8 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet var deleteAccountButton: UIButton!
     @IBOutlet var signOutButton: UIButton!
-
     let datePicker = UIDatePicker()
+    public let passwordLength = 6
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +66,7 @@ class SettingsViewController: UIViewController {
     }
 
     func getDateFromPicker() {
-//        let formatter = DateFormatter()
-//        let humanFormatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd"
-//        humanFormatter.dateFormat = "d MMM, yyyy"
-
         birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
-//        self.currentDate = formatter.string(from: datePicker.date)
     }
     
     @objc func closeDataPicker() {
@@ -118,6 +111,10 @@ class SettingsViewController: UIViewController {
         confirmPasswordTextField.isSecureTextEntry = true
     }
 
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     private func dissmissKeyboardIfViewTapped() {
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
 
@@ -125,10 +122,10 @@ class SettingsViewController: UIViewController {
 
      @objc func viewTapped() {
          view.endEditing(true)
-//         userNameTextField.resignFirstResponder() лучше не использовать ибо тогда надо для каждого поля отдельно прописывать
      }
 
     @IBAction func deleteAccountBtnPressed() {
+        presenter?.deleteUserAccount()
     }
 
     @IBAction func signOutBtnPressed(_ sender: UIButton) {
@@ -138,95 +135,29 @@ class SettingsViewController: UIViewController {
     }
 
     @objc func saveBtnPressed() {
-        checkPasswordTextFieldsAndUpdateData()
+//        checkPasswordTextFieldsAndUpdateData()
         checkUserTextFieldsAndUpdateData()
 
     }
 
-//    func validatePassword(_ textfield: MFTextField) throws -> String {
-//        guard let password = textfield.text,
-//              password.removeWhitespace() != "",
-//              password.removeWhitespace().count >= self.passwordLength else {
-//            throw SignInSignUpTextFieldError.passwordFieldIsTooShort(length: self.passwordLength)
+//    private func checkPasswordTextFieldsAndUpdateData() {
+//        if (newPasswordTextField.text == confirmPasswordTextField.text) {
+//            guard let oldPassword = oldPasswordTextField.text,
+//                  let newPassword = newPasswordTextField.text else {
+//                return
+//            }
+//            presenter?.changeUserPassword(oldPassword: oldPassword, newPassword: newPassword)
 //        }
-//        guard password.isValidPassword else {
-//            throw SignInSignUpTextFieldError.forbiddenSymbols
-//        }
-//        return password
 //    }
 
-
-    private func checkPasswordTextFieldsAndUpdateData() {
-        if (newPasswordTextField.text == confirmPasswordTextField.text) {
-            guard let oldPassword = oldPasswordTextField.text,
-                  let newPassword = newPasswordTextField.text else {
-                return
-            }
-            presenter?.changeUserPassword(oldPassword: oldPassword, newPassword: newPassword)
-        }
-    }
-
     // TODO: доделай сюда модалку об ошибке
-    private func checkUserTextFieldsAndUpdateData() {
-
-        guard let username = userNameTextField.text,
-              let email = emailTextField.text  else { return }
-
-        if username == "" {
-           print("доделай сюда модалку об ошибке")
-        }
-
-        if email == "" {
-            print("доделай сюда модалку об ошибке")        }
-
-        if let newPass = newPasswordTextField.text,
-           let confirmPass = confirmPasswordTextField.text {
-
-            if confirmPass != "" &&
-                newPass != confirmPass {
-                print("доделай сюда модалку об ошибке")
-            }
-
-            if let oldPass = oldPasswordTextField.text {
-                if oldPass == "" &&
-                   newPass != "" {
-                    print("доделай сюда модалку об ошибке")
-                }
-            }
-
-            if let oldPass = oldPasswordTextField.text {
-                if oldPass != "" &&
-                    newPass != "" &&
-                    confirmPass != newPass {
-                    print("доделай сюда модалку об ошибке")
-                }
-            }
-
-            if let oldPass = oldPasswordTextField.text {
-                if oldPass != "" &&
-                    newPass == confirmPass &&
-                    newPass == "" {
-                    print("доделай сюда модалку об ошибке")
-                }
-            }
-            presenter?.changeUserInfo()
-            self.navigationController?.reloadInputViews()
-        }
-    }
-
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
 }
 
-extension SettingsViewController: SettingsView {
-
-    func setupUser(user: UserEntityForGet?) {
-        guard let user = presenter?.getCurrentUser() else {
-            return
-        }
-        userNameTextField.text = user.username
-        birthdayTextField.text = user.birthday?.convertDateFormatFromISO8601() ?? "no data"
-        emailTextField.text = user.email
+extension SettingsViewController {
+     func showAlert(withTitle: String, andMessage: String) {
+        let alertController = UIAlertController(title: title, message: andMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

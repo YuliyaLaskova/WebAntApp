@@ -24,18 +24,26 @@
 "failInPublicationMessage" = "Sorry. Something went wrong";
 "remoteUserIdIsNil" = "Не удалось получить ID пользователя";
 "localUserIdIsNil" = "Не удалось найти идентификатор пользователя. Обновите профиль";
+"emptyFieldsMessage" = "You didn't fill all required fields";
+"accountIsDeleted" = "Account is deleted";
 
-// MARK: - SignInSignUpTextFieldError
+
+// MARK: - TextFieldError
 "passwordsAreDifferent" = "Пароли не совпадают";
+"passwordsAreDifferentEng" = "Passwords are different";
 "equalPhoneNumber" = "Номер совпадает с текущим"; // при смене номера
 // ValidationUseCase
 "fieldIsEmpty" = "'%@' не может быть пустым";
+"fieldIsEmptyEng" ="%@ cannot be empty";
 "forbiddenSymbolsForText" = "'%@' может содержать только буквы, пробел, дефис";
 "forbiddenSymbolsForPassword" = "'%@' может содержать только латинские буквы, цифры, знаки препинания";
+"forbiddenSymbolsForPasswordEng" = "%@ can contain only latin letters, numbers, punctuation marks";
 "forbiddenSymbolsForEmailOrUsername" = "'%@' может содержать только латинские буквы, цифры, знак подчёркивания, точку и минус";
 "incorrect" = "Неверный формат";
-"fieldIsTooShort" = "'%@' не может быть менее %@ символов";
-"fieldIsTooLong" = "'%@' не может быть более %@ символов";
+"incorrectEng" = "Wrong format";
+"fieldIsTooShort" = "%@ не может быть менее %@ символов";
+"fieldIsTooLong" = "%@ не может быть более %@ символов";
+"fieldIsTooShortEng" = "%@ couldn't be less than %@ symbols";
 "fieldIsNoEqual" = "'%@' должно содержать %@ символов";
 "dateAlreadyPast" = "Дата уже прошла";
 "dateStillToCome" = "Дата еще не наступила";

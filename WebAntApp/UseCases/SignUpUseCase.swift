@@ -11,12 +11,10 @@ import RxNetworkApiClient
 
 
 protocol SignUpUseCase {
-
     func signUp(_ entity: UserEntity) -> Single<UserEntity>
 }
 
 class SignUpUseCaseImp: SignUpUseCase {
-
     let registrationGateway: SignUpGateway
 
     init(_ gateway: SignUpGateway) {

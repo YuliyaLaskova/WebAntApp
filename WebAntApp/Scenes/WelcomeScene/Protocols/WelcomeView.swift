@@ -11,7 +11,6 @@
 import UIKit
 
 protocol WelcomeView: BaseView {
-
     func openSignInScene()
     func openSignUpScene()
 }

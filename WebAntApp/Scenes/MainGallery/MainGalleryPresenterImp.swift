@@ -21,7 +21,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
     private let disposeBag = DisposeBag()
     private var requestDisposeBag = DisposeBag()
     private var paginationDisposeBag = DisposeBag()
-
     var newPhotoArray: [PhotoEntityForGet] = []
     var popularPhotoArray: [PhotoEntityForGet] = []
 
@@ -43,7 +42,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
         self.paginationDisposeBag = DisposeBag()
     }
 
-
     func subscribeOnNewPhotoUpdates() {
         paginationUseCase.sourceForNewPhotos
             .observe(on: MainScheduler.instance)
@@ -52,9 +50,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                     return
                 }
                 self.newPhotoArray = result
-                //                    .filter({ photo in
-                //                    photo.new ?? true
-                //                })
                 self.view?.refreshPhotoCollection()
             })
             .disposed(by: self.paginationDisposeBag)
@@ -102,7 +97,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
               !isNewsLoadingInProgress else {
             return
         }
-        //        self.view?.refreshPhotoCollection()
         self.paginationUseCase.getMorePopularPhotos(imageName: imageName)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
@@ -122,7 +116,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                 }
 
     func openDetailedPhoto(photoIndex: Int, newPopularSegCntrlIndex: Int) {
-
         switch newPopularSegCntrlIndex {
         case 0: let photo = newPhotoArray[photoIndex]
             router.openDetailedPhotoViewController(imageEntity: photo)
@@ -130,8 +123,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
             router.openDetailedPhotoViewController(imageEntity: photo)
         default: break
         }
-        //        let photo = photoItems[photoIndex]
-        //        router.openDetailedPhotoViewController(imageEntity: photo)
     }
 
     func refreshPhotos(photoIndex: Int, needToLoadPhotos: Bool) {
@@ -144,7 +135,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
                 fetchNewPhotosWithPagination(imageName: nil)
             }
             view?.endRefreshing()
-
         case 1: if needToLoadPhotos == true {
             popularPhotoArray.removeAll()
             view?.refreshPhotoCollection()
@@ -157,47 +147,3 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
         }
     }
 }
-
-//    private let getPhotoUseCase: GetPhotoUseCase
-
-//    init(_ view: MainGalleryView,
-//         _ router: MainGalleryRouter,_ getPhotoUseCase: GetPhotoUseCase) {
-//        self.view = view
-//        self.router = router
-//        self.getPhotoUseCase = getPhotoUseCase
-//    }
-
-//    func fetchPhotos() {
-//        getPhotoUseCase.getPhoto()
-//            .observe(on: MainScheduler.instance)
-//            .subscribe { [weak self] photoModel in
-//                for item in photoModel.data where item.image != nil {
-//                    self?.photoArray.append(item)
-//                }
-//                self?.view?.refreshPhotoCollection()
-//            } onFailure: { error in
-//                print(error)
-//            } onDisposed: {
-//                print("Disposed")
-//            }
-//            .disposed(by: disposeBag)
-//    }
-
-//func subscribeOnPhotoUpdates() {
-//    paginationUseCase.source
-//        .observe(on: MainScheduler.instance)
-//        .subscribe(onNext: { [weak self] (result: [PhotoEntityForGet]) in
-//            guard let self = self else {
-//                return
-//            }
-//            self.newPhotoArray = result.filter({ photo in
-//                photo.new ?? true
-//            })
-//            self.popularPhotoArray = result.filter({ photo in
-//                (photo.popular ?? true) && !(photo.new ?? true)
-//            })
-//            //                    self.photoItems = result
-//            self.view?.refreshPhotoCollection()
-//        })
-//        .disposed(by: self.paginationDisposeBag)
-//}

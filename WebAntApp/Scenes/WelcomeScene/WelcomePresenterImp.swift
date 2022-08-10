@@ -11,7 +11,6 @@
 import Foundation
 
 class WelcomePresenterImp: WelcomePresenter {
-
     func openSignInScene() {
         router.openSignInScene()
     }
@@ -20,7 +19,6 @@ class WelcomePresenterImp: WelcomePresenter {
         router.openSignUpScene()
     }
 
-    
     private var view: WelcomeView?
     private let router: WelcomeRouter
     
@@ -29,5 +27,4 @@ class WelcomePresenterImp: WelcomePresenter {
         self.view = view
         self.router = router
     }
-    
 }

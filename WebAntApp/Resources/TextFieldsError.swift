@@ -16,23 +16,22 @@ enum TextFieldsError: LocalizedError, Equatable {
     case forbiddenSymbols
     case passwordsAreDifferent
 
-
     var errorDescription: String? {
         switch self {
         case .emailFieldIsEmpty:
-            return R.string.scenes.emptyFieldsMessage()
+            return R.string.scenes.fieldIsEmptyEng("E-mail")
         case .incorrectEmail:
-            return R.string.scenes.incorrect()
+            return R.string.scenes.incorrectEng()
         case .nameFieldIsEmpty:
-            return R.string.scenes.emptyFieldsMessage()
+            return R.string.scenes.fieldIsEmptyEng("User Name")
         case .dateOfBirthIsEmpty:
             return R.string.scenes.emptyFieldsMessage()
         case .passwordFieldIsTooShort(let length):
-            return R.string.scenes.fieldIsTooShort(String(length), "6")
+            return R.string.scenes.fieldIsTooShortEng("Password", String(length))
         case .forbiddenSymbols:
-            return R.string.scenes.forbiddenSymbolsForPassword("Password")
+            return R.string.scenes.forbiddenSymbolsForPasswordEng("Password")
         case .passwordsAreDifferent:
-            return R.string.scenes.passwordsAreDifferent()
+            return R.string.scenes.passwordsAreDifferentEng()
         }
     }
 }

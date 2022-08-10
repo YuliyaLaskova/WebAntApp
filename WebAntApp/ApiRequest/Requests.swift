@@ -12,7 +12,6 @@ import RxSwift
 // swiftlint:disable file_length superfluous_disable_command
 
 extension ExtendedApiRequest {
-
     public static func signInRequest(login: String, password: String) -> ExtendedApiRequest {
         return extendedRequest(path: "/oauth/v2/token",
                                method: .get,
@@ -48,31 +47,6 @@ extension ExtendedApiRequest {
         )
     }
 
-    static func getPhoto() -> ExtendedApiRequest {
-        extendedRequest(
-            path: "/api/photos",
-            method: .get,
-            headers: [Header.contentJson])
-    }
-
-
-//    static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int, _ isNew: Bool) -> ExtendedApiRequest {
-//
-//        let newOrPopular: (String, String) = (isNew == true) ? ("new", "true") : ("new", "false"),("popular", "true")
-//        return extendedRequest(
-//            path: "/api/photos",
-//            method: .get,
-//            headers: [Header.contentJson],
-//            query:
-//                ("page", "\(page)"),
-//            ("limit", "\(limit)"),
-//            (newOrPopular))
-//    }
-
-
-    //передавать нэйм в квери/ он опциональный/ обращаться к нему когда у нас поиск
-
-
     static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int, _ isNew: Bool, _ name: String? = nil) -> ExtendedApiRequest {
         if isNew {
             return extendedRequest(
@@ -96,16 +70,6 @@ extension ExtendedApiRequest {
         }
     }
 
-//    static func getPhotoPaginatedRequest(_ page: Int, _ limit: Int) -> ExtendedApiRequest {
-//        extendedRequest(
-//            path: "/api/photos",
-//            method: .get,
-//            headers: [Header.contentJson],
-//            query:
-//                ("page", "\(page)"),
-//            ("limit", "\(limit)"))
-//    }
-
     static func getUserInfoRequest(_ iriId: String) -> ExtendedApiRequest {
         extendedRequest(path: iriId,
                         method: .get,
@@ -125,18 +89,22 @@ extension ExtendedApiRequest {
                         query: ("user.id", "\(userId)"))
     }
 
-    static func updateUserInfo(userId: Int, user: UserEntity) -> ExtendedApiRequest {
+    static func updateUserInfoRequest(userId: Int, user: UserEntity) -> ExtendedApiRequest {
            extendedRequest(path: "/api/users/\(userId)",
                            method: .put,
                            headers: [Header.contentJson],
                            body: user)
        }
 
-    static func updatePassword(userId: Int, passwordEntity: ChangePasswordEntity) -> ExtendedApiRequest {
+    static func updatePasswordRequest(userId: Int, passwordEntity: ChangePasswordEntity) -> ExtendedApiRequest {
            extendedRequest(path: "/api/users/update_password/\(userId)",
                            method: .put,
                            headers: [Header.contentJson],
                            body: passwordEntity)
        }
 
+    static func deleteUserRequest(userId: Int) -> ExtendedApiRequest {
+           extendedRequest(path: "/api/users/\(userId)",
+                           method: .delete)
+       }
 }

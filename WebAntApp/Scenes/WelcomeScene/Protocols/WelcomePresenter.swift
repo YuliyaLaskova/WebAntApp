@@ -11,7 +11,6 @@
 import Foundation
 
 protocol WelcomePresenter {
-
     func openSignInScene() 
     func openSignUpScene()
 }

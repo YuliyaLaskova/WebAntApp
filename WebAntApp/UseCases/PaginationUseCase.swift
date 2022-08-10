@@ -10,7 +10,6 @@ import RxSwift
 import SwiftUI
 
 protocol PaginationUseCase {
-
     var sourceForNewPhotos: PublishSubject<[PhotoEntityForGet]> { get }
     var sourceForPopularPhotos: PublishSubject<[PhotoEntityForGet]> { get }
     var isLoadingInProcess: Bool { get }
@@ -27,7 +26,6 @@ protocol PaginationUseCase {
 }
 
 class PaginationUseCaseImp: PaginationUseCase {
-
     public var sourceForNewPhotos = PublishSubject<[PhotoEntityForGet]>()
     public var sourceForPopularPhotos = PublishSubject<[PhotoEntityForGet]>()
     public var isLoadingInProcess = false
@@ -167,30 +165,3 @@ class PaginationUseCaseImp: PaginationUseCase {
         requestsBag = DisposeBag()
     }
 }
-
-//public func getMoreNewPhotos() -> Completable {
-//    .deferred {
-//        self.cancelLoading()
-//        self.isLoadingInProcess = true
-//
-//        return self.gateway.getPhotos(self.currentPage, self.limit)
-//                .do(onSuccess: { (result: PaginationEntity<PhotoEntityForGet>) in
-//                    for item in result.data {
-//                        if item.image?.name != nil {
-//                            self.items.append(item)
-//                            print("item added")
-//                        } else {
-//                            self.notPhotoTypeItem += 1
-//                        }
-//                    }
-//                    self.currentPage += 1
-//                    self.totalItemsCount = result.totalItems
-//                    self.isLoadingInProcess = false
-//                    self.source.onNext(self.items)
-//                }, onError: { error in
-//                    self.isLoadingInProcess = false
-//                    print("PaginationSourceUseCase: catch error =", error.localizedDescription)
-//                })
-//                .asCompletable()
-//    }
-//}

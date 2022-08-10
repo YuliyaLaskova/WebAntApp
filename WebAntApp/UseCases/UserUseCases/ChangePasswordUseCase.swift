@@ -43,5 +43,3 @@ class ChangePasswordUseCaseImp: ChangePasswordUseCase {
         }
     }
 }
-
-// TODO: доделать use case и не забыть добавить их в DI

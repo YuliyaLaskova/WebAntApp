@@ -11,7 +11,6 @@
 import UIKit
 
 class MainGalleryRouter: BaseRouter {
-    
     weak var view: UIViewController?
     
     init(_ view: MainGalleryViewController) {

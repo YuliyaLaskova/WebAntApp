@@ -11,7 +11,6 @@
 import UIKit
 
 class WelcomeRouter: BaseRouter {
-    
     weak var view: UIViewController?
     
     init(_ view: WelcomeController) {

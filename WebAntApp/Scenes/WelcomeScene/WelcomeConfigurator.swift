@@ -11,7 +11,6 @@
 import UIKit
 
 enum WelcomeConfigurator {
-    
     static func configure(view: WelcomeController) {
         let router = WelcomeRouter(view)
         let presenter = WelcomePresenterImp(view, router)

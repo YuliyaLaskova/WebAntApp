@@ -15,7 +15,7 @@ protocol ChangeUserInfoGateway{
 
 class ChangeUserInfoGatewayImp: ApiBaseGateway, ChangeUserInfoGateway {
     func updateUserInfo(_ userId: Int, _ entity: UserEntity) -> Completable {
-        let request: ApiRequest<UserEntity> = ExtendedApiRequest.updateUserInfo(userId: userId, user: entity)
+        let request: ApiRequest<UserEntity> = ExtendedApiRequest.updateUserInfoRequest(userId: userId, user: entity)
             return apiClient.execute(request: request)
             .asCompletable()
     }

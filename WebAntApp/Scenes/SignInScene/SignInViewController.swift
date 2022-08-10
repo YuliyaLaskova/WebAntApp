@@ -8,23 +8,18 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-    
-    internal var presenter: SignInPresenter?
-    
+    var presenter: SignInPresenter?
     // MARK: IB Outlets
-
     @IBOutlet var signInBtn: UIButton!
     @IBOutlet var signUpBtn: UIButton!
     @IBOutlet var emailTextField: DesignableUITextField!
     @IBOutlet var passwordTextField: DesignableUITextField!
-    
     @IBOutlet var signInLabelTopCnstr: NSLayoutConstraint!
     @IBOutlet var loginStackTopCnstr: NSLayoutConstraint!
     @IBOutlet var signInUpStackTopCnstr: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     // MARK: Constraints
@@ -38,7 +33,6 @@ class SignInViewController: UIViewController {
 
             view.layoutIfNeeded()
         }
-
         else if UIDevice.current.orientation.isLandscape {
             signInLabelTopCnstr.constant = 50
             loginStackTopCnstr.constant = 20
@@ -46,17 +40,10 @@ class SignInViewController: UIViewController {
             view.layoutIfNeeded()
         }
     }
-
     // MARK: Setup UI method
 
     private func setupUI() {
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-
-//        emailTextField.becomeFirstResponder()
-        emailTextField.addDoneButtonOnKeyboard()
-        passwordTextField.addDoneButtonOnKeyboard()
-
+        setupTextFieldsDelegate()
         signInBtn.layer.cornerRadius = 4
         signUpBtn.layer.cornerRadius = 4
         signUpBtn.layer.borderWidth = 1
@@ -72,9 +59,24 @@ class SignInViewController: UIViewController {
 
     @IBAction func signInBtnPressed() {
         if isFieldEmpty() {
-            showAlert(with: R.string.scenes.error(), and: "You didn't fill all fields")
+            self.addInfoModuleWithFunc(
+                alertTitle: R.string.scenes.error(),
+                alertMessage: R.string.scenes.emptyFieldsMessage(),
+                buttonMessage: R.string.scenes.okAction(),
+                completion: nil
+            )
         }
         signInAndOpenMainGallery()
+    }
+
+    func isFieldEmpty() -> Bool {
+        var isEmailTTextEmpty: Bool {
+            emailTextField.text == ""
+        }
+        var isPasswordTitleEmpty: Bool {
+            passwordTextField.text == ""
+        }
+        return isEmailTTextEmpty || isPasswordTitleEmpty
     }
 
     @IBAction func signUpBtnPressed() {
@@ -95,71 +97,5 @@ class SignInViewController: UIViewController {
 
     @objc func goBack() {
         navigationController?.popViewController(animated: true)
-    }
-}
-
-// MARK: - Work with keyboard
-
-extension SignInViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else {
-            signInBtnPressed()
-        }
-        return true
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.text = textField.text?.removingWhitespaces()
-    }
-}
-
-extension SignInViewController: SignInView {
-
-    func openSignUpScene() {
-        presenter?.openSignUpScene()
-    }
-
-    func signInAndOpenMainGallery() {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text
-                
-        else { return }
-        presenter?.signInAndOpenMainGallery(username: email, password: password)
-        presenter?.signInAndOpenMainGallery(username: email, password: password)
-    }
-}
-
-// MARK: alert extension
-
-extension SignInViewController {
-    private func showAlert(with title: String, and message: String) {
-        let alertController = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        let okAction = UIAlertAction(
-            title: "OK",
-            style: .cancel,
-            handler: nil
-        )
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    func isFieldEmpty() -> Bool {
-        var isEmailTTextEmpty: Bool {
-            emailTextField.text == ""
-        }
-        var isPasswordTitleEmpty: Bool {
-            passwordTextField.text == ""
-        }
-        return isEmailTTextEmpty || isPasswordTitleEmpty
     }
 }

@@ -13,12 +13,12 @@ import Accelerate
 import RxSwift
 
 class SignUpPresenterImp: SignUpPresenter {
-
     private weak var view: SignUpView?
     private let router: SignUpRouter
     private let signUpUseCase: SignUpUseCase
     private let signInUseCase: SignInUseCase
     private let disposeBag = DisposeBag()
+    private let disposeBag2 = DisposeBag()
     
     init(view: SignUpView,
          router: SignUpRouter, signUpUseCase: SignUpUseCase, signInUseCase: SignInUseCase) {
@@ -36,21 +36,23 @@ class SignUpPresenterImp: SignUpPresenter {
     func registrateAndOpenMainGalleryScene(user: UserEntity) {
 
         // TODO: отредактировать валидатор
-//        user.email.isValidEmail
-        if Validator.isStringValid(stringValue: user.email, validationType: .email) && Validator.isStringValid(stringValue: user.password, validationType: .password) {
+//        if Validator.isStringValid(stringValue: user.email, validationType: .email) && Validator.isStringValid(stringValue: user.password, validationType: .password) {
             signUpUseCase.signUp(user)
+            .do(onSubscribe: {  [weak self] in
+                self?.view?.startActivityIndicator()
+            })
                 .observe(on: MainScheduler.instance)
                 .subscribe { [weak self] _ in
                     guard let strongSelf = self else {
                         return
                     }
                     self?.signInUseCase.signIn(user.email, user.password)
+                        .observe(on: MainScheduler.instance)
                         .subscribe(onCompleted: {
                             self?.router.openMainGalleryScene()
                         })
                         .disposed(by: strongSelf.disposeBag)
                 }
-                .disposed(by: disposeBag)
-        }
+                .disposed(by: self.disposeBag)
     }
 }

@@ -70,9 +70,9 @@ class DI {
             .as(SignUpGateway.self)
             .lifetime(.single)
 
-        self.container.register(GetPhotoGatewayImp.init)
-            .as(GetPhotoGateway.self)
-            .lifetime(.single)
+//        self.container.register(GetPhotoGatewayImp.init)
+//            .as(GetPhotoGateway.self)
+//            .lifetime(.single)
 
         self.container.register(ApiPhotoPaginationGateway.init)
             .as(PaginationGateway.self)
@@ -98,6 +98,10 @@ class DI {
             .as(ChangeUserInfoGateway.self)
             .lifetime(.single)
 
+        self.container.register(DeleteUserGatewayImp.init)
+            .as(DeleteUserGateway.self)
+            .lifetime(.single)
+
         // UseCases
         self.container.register(SignUpUseCaseImp.init)
             .as(SignUpUseCase.self)
@@ -105,8 +109,8 @@ class DI {
         self.container.register(SignInUseCaseImp.init)
             .as(SignInUseCase.self)
 
-        self.container.register(GetPhotoUseCaseImp.init)
-            .as(GetPhotoUseCase.self)
+//        self.container.register(GetPhotoUseCaseImp.init)
+//            .as(GetPhotoUseCase.self)
 
         self.container.register(PaginationUseCaseImp.init)
             .as(PaginationUseCase.self)
@@ -125,6 +129,9 @@ class DI {
 
         self.container.register(ChangeUserInfoUseCaseImp.init)
             .as(ChangeUserInfoUseCase.self)
+
+        self.container.register(DeleteUserUseCasImp.init)
+            .as(DeleteUserUseCase.self)
         
     }
 

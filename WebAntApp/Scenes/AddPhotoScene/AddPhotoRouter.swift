@@ -11,10 +11,8 @@
 import UIKit
 
 class AddPhotoRouter: BaseRouter {
-    
     weak var view: UIViewController?
 
-    
     init(_ view: AddPhotoViewController) {
         self.view = view
     }

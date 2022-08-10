@@ -12,9 +12,7 @@ import Foundation
 import UIKit
 
 enum DetailedPhotoConfigurator {
-    
     static func configure(view: DetailedPhotoViewController, imageEntity: PhotoEntityForGet) {
-//        let router = DetailedPhotoRouter(view)
         let presenter = DetailedPhotoPresenterImp(view: view, imageModel: imageEntity, settings: DI.resolve(), getUserUseCase: DI.resolve())
         view.presenter = presenter
     }

@@ -12,7 +12,6 @@ import Foundation
 import RxSwift
 
 class SignInPresenterImp: SignInPresenter {
-
     private weak var view: SignInView?
     private let router: SignInRouter
     private let signInUseCase: SignInUseCase
@@ -27,24 +26,38 @@ class SignInPresenterImp: SignInPresenter {
     }
 
     func signInAndOpenMainGallery(username: String, password: String) {
-        
-        //        self.router.openMainGallery()
-        if Validator.isStringValid(stringValue: username, validationType: .email) && Validator.isStringValid(stringValue: password, validationType: .password) {
+        if Validator.isStringValid(
+            stringValue: username,
+            validationType: .userName
+        )
+            || Validator.isStringValid(
+                stringValue: username,
+                validationType: .email
+            )
+            && Validator.isStringValid(
+                stringValue: password,
+                validationType: .password
+            ) {
+            // если данные введены не правильно то показывать на диспоз показывать ошибку
             signInUseCase.signIn(username, password)
-                .observe(on: MainScheduler.instance)
-                .subscribe {
-                    DispatchQueue.main.async {
-                        self.router.openMainGallery()
+                .do(onSubscribe: {  [weak self] in
+                    self?.view?.startActivityIndicator()
+                })
+                    .observe(on: MainScheduler.instance)
+                    .subscribe(onCompleted: { [weak self] in
+                        self?.router.openMainGallery()
+                    }, onError: { error in
+                        self.view?.addInfoModuleWithFunc(
+                            alertTitle: R.string.scenes.error(),
+                            alertMessage: error.localizedDescription,
+                            buttonMessage: R.string.scenes.okAction()
+                        )
+                    })
+                    .disposed(by: disposeBag)
                     }
-                } onDisposed: {
-                    print("Disposed")
-                }
-                .disposed(by: disposeBag)
-        }
     }
     
     func openSignUpScene() {
         router.openSignUpScene()
     }
-
 }

@@ -11,7 +11,6 @@
 import UIKit
 
 class SignUpRouter: BaseRouter {
-    
     weak var view: UIViewController?
     
     init(_ view: SignUpViewController) {
@@ -19,7 +18,6 @@ class SignUpRouter: BaseRouter {
     }
 
     func openMainGalleryScene()  {
-
         guard let navController = self.view?.navigationController else {
             return
         }

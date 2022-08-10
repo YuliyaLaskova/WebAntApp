@@ -12,7 +12,6 @@ import Foundation
 import RxSwift
 
 class SettingsPresenterImp: SettingsPresenter {
-    
     private weak var view: SettingsView?
     private let router: SettingsRouter
     private var currentUser: UserEntityForGet?
@@ -20,17 +19,19 @@ class SettingsPresenterImp: SettingsPresenter {
     private var getCurrentUserUseCase: GetCurrentUserUseCase
     private var changePasswordUseCase: ChangePasswordUseCase
     private var changeUserInfoUseCase: ChangeUserInfoUseCase
-
+    private var deleteUserUseCase: DeleteUserUseCase
+    var settings: Settings
     var disposeBag = DisposeBag()
 
-    
     init(view: SettingsView,
-         router: SettingsRouter, getCurrentUserUseCase: GetCurrentUserUseCase, changePasswordUseCase: ChangePasswordUseCase, changeUserInfoUseCase: ChangeUserInfoUseCase) {
+         router: SettingsRouter, settings: Settings, getCurrentUserUseCase: GetCurrentUserUseCase, changePasswordUseCase: ChangePasswordUseCase, changeUserInfoUseCase: ChangeUserInfoUseCase, deleteUserUseCase: DeleteUserUseCase) {
         self.view = view
         self.router = router
+        self.settings = settings
         self.getCurrentUserUseCase = getCurrentUserUseCase
         self.changePasswordUseCase = changePasswordUseCase
         self.changeUserInfoUseCase = changeUserInfoUseCase
+        self.deleteUserUseCase = deleteUserUseCase
     }
 
     func viewDidLoad() {
@@ -70,7 +71,7 @@ class SettingsPresenterImp: SettingsPresenter {
 
     // TODO: вынести активити индикатор в отдельный класс, возможно в baseview, и закинуть его на все места где идет загрузка и показывать модалки на фэйл
     func changeUserInfo() {
-//        let user = UserEntity()
+        //        let user = UserEntity()
         guard let user = currentUserEntity else { return }
         self.changeUserInfoUseCase.updateUserInfo(currentUser?.id, user)
             .subscribe(on: MainScheduler.instance)
@@ -80,39 +81,54 @@ class SettingsPresenterImp: SettingsPresenter {
                 onDispose: { //[weak view = self.view] in
                 //                        view?.hideActivityIndicator()
             })
-                .subscribe(onCompleted: { [weak self] in
-                            guard let self = self else {
-                                return
-                            }
-                    //показывать модалку на успех
-                },
-                           onError: { error in
-                    //показывать модалку на фэйл
-                    print(error.localizedDescription)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                //показывать модалку на успех
+            },
+                       onError: { error in
+                //показывать модалку на фэйл
+                print(error.localizedDescription)
+            })
+                .disposed(by: disposeBag)
+                }
+
+    func deleteUserAccount() {
+        deleteUserUseCase.deleteUser()
+            .do(onSubscribe: {
+                self.view?.startActivityIndicator()},
+                                onDispose: { self.view?.stopActivityIndicator() }   )
+                //            }, onDispose: { self.router.goToWelcomeScene() })
+                .observe(on: MainScheduler.instance)
+                .subscribe(onCompleted: {
+                    //
+                    self.view?.stopActivityIndicator()
+                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.accountIsDeleted(), alertMessage: nil, buttonMessage: R.string.scenes.okAction(), completion: { [ weak self ] in
+                        self?.settings.clearUserData()
+                        self?.view?.stopActivityIndicator()
+                        self?.router.goToWelcomeScene()
+                    })
+                    //                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.accountIsDeleted(),
+                    //                                                            alertMessage: nil,
+                    //                                                            buttonMessage: R.string.scenes.okAction(),
+                    //                                                            completion: { [ weak self ] in
+                    //                                                                self?.settings.clearUserData()
+                    ////                                                                self?.changeRootView()
+                    //                                                            })
+                }, onError: { [weak self] error in
+                    self?.view?.stopActivityIndicator()
+                    //                            guard error is ResponseErrorEntity else { return }
+                    guard let self = self else { return }
+                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
+                                                     alertMessage: error.localizedDescription,
+                                                     buttonMessage: R.string.scenes.okAction(),
+                                                     completion: {
+                        [ weak self ] in
+                            self?.view?.stopActivityIndicator()
+                    })
+
                 })
                 .disposed(by: disposeBag)
                 }
 }
-
-
-//self.userUseCase.updateUserInfo(userEntity, imageData)
-//    .observeOn(MainScheduler.instance)
-//    .do(onSubscribe: { [weak view = self.view] in
-//        view?.showActivityIndicator()
-//    },
-//        onDispose: { [weak view = self.view] in
-//        view?.hideActivityIndicator()
-//    })
-//    .subscribe(onCompleted: { [weak self] in
-//        guard let self = self else {
-//            return
-//        }
-//        self.updateUserInfoView()
-//        self.showSuccessDialog(completion)
-//    }, onError: { [weak self] error in
-//        self?.view?.showCustomErrorAlert(message: error.localizedDescription,
-//                                         buttonState: .single)
-//        completion?(false)
-//    })
-//        .disposed(by: self.disposeBag)
-//        }

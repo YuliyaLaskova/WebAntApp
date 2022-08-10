@@ -12,7 +12,6 @@ import Foundation
 import UIKit
 
 class AddPhotoPresenterImp: AddPhotoPresenter {
-
     private weak var view: AddPhotoView?
     private let router: AddPhotoRouter
     
@@ -21,7 +20,6 @@ class AddPhotoPresenterImp: AddPhotoPresenter {
         self.view = view
         self.router = router
     }
-
 
     func openAddDataViewController(photoForPost: UIImage) {
         router.openAddDataViewController(photoForPost: photoForPost)

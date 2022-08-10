@@ -12,4 +12,6 @@ import UIKit
 
 protocol SettingsView: BaseView {
     func setupUser(user: UserEntityForGet?)
+    func startActivityIndicator()
+    func stopActivityIndicator()
 }

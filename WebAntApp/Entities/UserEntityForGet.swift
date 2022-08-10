@@ -25,3 +25,4 @@ class UserEntityForGet: JsonBodyConvertible, Codable {
         self.birthday = birthday
     }
 }
+

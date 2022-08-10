@@ -11,9 +11,15 @@ import UIKit
 class CustomActivityIndicatorView: UIView {
 
     let spinningCircle = CAShapeLayer()
+//    let activityIndicatorView = CustomActivityIndicatorView()
+//    let superView = UIView()
 
-    convenience override init(frame:CGRect) {
-        self.init(frame: frame)
+    override init(frame:CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func draw(_ rect: CGRect) {
@@ -46,5 +52,13 @@ class CustomActivityIndicatorView: UIView {
                 self.animate()
             }
         }
+    }
+
+    func resignActivityIndicator() {
+        spinningCircle.removeAllAnimations()
+            self.isHidden = true
+        spinningCircle.removeFromSuperlayer()
+        spinningCircle.removeAllAnimations()
+        spinningCircle.isHidden = true
     }
 }

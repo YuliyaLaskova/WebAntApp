@@ -11,9 +11,9 @@ import UIKit
 //@IBDesignable
 class DesignableUITextField: UITextField, UITextFieldDelegate {
 
-//    let label: UILabel?
+    var errorLabel: UILabel?
 
-    // Provides left padding for images
+    // Provides right padding for images
     override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         var textRect = super.rightViewRect(forBounds: bounds)
         textRect.origin.x -= rightPadding
@@ -27,21 +27,37 @@ class DesignableUITextField: UITextField, UITextFieldDelegate {
     }
 
     var rightButton: UIButton? {
-       didSet {
-           updateViewWithButton()
+        didSet {
+            updateViewWithButton()
 
-       }
-   }
+        }
+    }
 
-    // TODO: показывать модалку об ошибке
-
-//    func addLabelToTextField
-    //здесь добавить констрейнты для лейбла чтобы они под текстфилдом располагались ивозможено здесь перекрашивать рамку текстфилда в красный
-    //и вызывать эту функцию на ошибках в контроллере
-    // если ошибки уходит то вызывать след метод ремув
-//
-//    fun removelabel
-//    label?.removeFromSuperview()
+    func addErrorLabelToTextField(needToShowLabel: Bool, withText: String?, superView: UIView) {
+        errorLabel?.removeFromSuperview()
+        if needToShowLabel == true {
+            errorLabel = UILabel()
+            superView.addSubview(errorLabel ?? UILabel())
+            errorLabel?.translatesAutoresizingMaskIntoConstraints = false
+            errorLabel?.heightAnchor.constraint(equalToConstant: 15).isActive = true
+            errorLabel?.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+            errorLabel?.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+            errorLabel?.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+            errorLabel?.font = errorLabel?.font.withSize(12)
+            errorLabel?.textColor = .red
+            errorLabel?.text = withText
+            errorLabel?.isHidden = false
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.red.cgColor
+            self.layer.cornerRadius = 5
+        } else {
+            self.layer.borderWidth = 1
+            self.layer.borderColor = UIColor.systemGray5.cgColor
+            self.layer.cornerRadius = 5
+            errorLabel?.removeFromSuperview()
+        }
+    }
+    // сделать кастомн класс от юфшвью и там два свойства текст филд и ерор лэбл
 
     @IBInspectable var rightPadding: CGFloat = 0
 
@@ -63,25 +79,25 @@ class DesignableUITextField: UITextField, UITextFieldDelegate {
             rightView = nil
         }
 
-//         Placeholder text color
+        //         Placeholder text color
         attributedPlaceholder = NSAttributedString(string: placeholder != nil ?  placeholder! : "", attributes:[NSAttributedString.Key.foregroundColor: color])
     }
 
     private func updateViewWithButton() {
-         if let _ = rightButton {
-             rightViewMode = .always
-             let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-             button.setImage(R.image.eyeIcon(), for: .normal)
-             button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
-             rightView = button
-         }
+        if let _ = rightButton {
+            rightViewMode = .always
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            button.setImage(R.image.eyeIcon(), for: .normal)
+            button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+            rightView = button
+        }
 
-         else {
-             rightViewMode = .never
-             rightView = nil
-         }
+        else {
+            rightViewMode = .never
+            rightView = nil
+        }
 
-     }
+    }
 
     @objc func rightButtonTapped() {
         self.isSecureTextEntry = !self.isSecureTextEntry

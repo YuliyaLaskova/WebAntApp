@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6ra-jv-4QC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="978"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="918"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dum-xA-w05">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
@@ -350,9 +350,9 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1W-hu-Mxo">
-                                                <rect key="frame" x="0.0" y="778" width="414" height="200"/>
+                                                <rect key="frame" x="0.0" y="778" width="414" height="140"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="P0C-Wc-a67"/>
+                                                    <constraint firstAttribute="height" constant="140" id="P0C-Wc-a67"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

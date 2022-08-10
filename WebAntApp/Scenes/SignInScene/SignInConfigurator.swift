@@ -11,7 +11,6 @@
 import UIKit
 
 enum SignInConfigurator {
-    
     static func configure(view: SignInViewController) {
         let router = SignInRouter(view)
         let presenter = SignInPresenterImp(view: view, router: router, signInUseCase: DI.resolve())

@@ -11,19 +11,12 @@
 import UIKit
 
 class SignInRouter: BaseRouter {
-    
     weak var view: UIViewController?
     
     init(_ view: SignInViewController) {
         self.view = view
     }
 
-
-//    func openMainGallery()  {
-
-//        guard let mainTabBar = R.storyboard.rootStoryboard().instantiateInitialViewController() else { return }
-//        (UIApplication.shared.delegate as? AppDelegate)?.changeRootViewController(mainTabBar)
-//    }
     func openMainGallery()  {
         guard let navController = self.view?.navigationController else {
             return
@@ -48,8 +41,6 @@ class SignInRouter: BaseRouter {
         if !isSignUpViewControllerAlreadyExists {
             SignUpConfigurator.open(navigationController: navController)
         }
-
     }
-
 }
 

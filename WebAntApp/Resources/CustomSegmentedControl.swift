@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 protocol CustomSegmentedControlDelegate: AnyObject {
     func change(to index:Int)
 }
@@ -108,6 +109,4 @@ extension CustomSegmentedControl {
         }
         buttons[0].setTitleColor(selectorTextColor, for: .normal)
     }
-    
-    
 }

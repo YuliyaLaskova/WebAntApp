@@ -16,13 +16,19 @@ protocol GetUserUseCase {
 class GetUserUseCaseImp: GetUserUseCase {
 
     let getUserGateway: GetUserGateway
+    var settings: Settings
 
-    init(_ gateway: GetUserGateway) {
+    init(_ gateway: GetUserGateway, _ settings: Settings) {
         self.getUserGateway = gateway
+        self.settings = settings
     }
 
     func getUserInfo(_ iriId: String) -> Single<UserEntityForGet> {
         getUserGateway.getUser(iriId)
+            .observe(on: MainScheduler.instance)
+            .do(onSuccess: { [weak self] user in
+                self?.settings.account = user
+            })
     }
 
 }

@@ -1,25 +1,25 @@
 //
-//  SignUpVC+Validation.swift
+//  SettingsVC+Validation.swift
 //  WebAntApp
 //
-//  Created by Yuliya Laskova on 04.08.2022.
+//  Created by Yuliya Laskova on 10.08.2022.
 //
 
 import Foundation
+import UIKit
 
-extension SignUpViewController {
-    
-    func  validateTextFieldsAndProceed() {
+extension SettingsViewController {
+
+    func checkUserTextFieldsAndUpdateData() {
         var errors: [Error] = []
-        var password = "",
+        var oldPassword = "",
+            newPassword = "",
             confirmPassword = ""
-//        let entity: UserEntity
 
         guard let userName = userNameTextField.text,
               let email = emailTextField.text,
               let userPassword = oldPasswordTextField.text,
-              let birthday = birthdayTextField.text//,
-//              let userConfirmPassword = confirmPasswordTextField.text
+              let birthday = birthdayTextField.text
         else { return }
 
         let entity = UserEntity(username: userName, email: email, pass: userPassword, birthday: birthday)
@@ -27,9 +27,9 @@ extension SignUpViewController {
         do {
             entity.username = try self.validateName()
             print("имя норм")
-            // вызывать функцию из дезайнблтекстфилд об ошибке
+            userNameTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
-            // вызывать функцию из дезайнблтекстфилд об ошибке
+            userNameTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             print("проблема в имени")
             errors.append(error)
         }
@@ -37,54 +37,75 @@ extension SignUpViewController {
         do {
             entity.email = try self.validateEmail()
             print("емейл норм")
-            // вызывать функцию из дезайнблтекстфилд об ошибке
-            //            self.emailTextField.setError(nil, animated: true)
+            emailTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
             print("проблема в емейле")
-            //            self.emailTextField.setError(error, animated: true)
+            emailTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
 
         do {
+            if birthdayTextField.text == "" {
+                entity.birthday = nil
+            } else {
             entity.birthday = try self.validateDateOfBirth()
-            print("ДР норм")
-            // вызывать функцию из дезайнблтекстфилд об ошибке
+                print("ДР норм")
+            }
         } catch let error {
-            print("проблема в ДР")
-            // вызывать функцию из дезайнблтекстфилд об ошибке
             errors.append(error)
         }
 
         do {
-            password = try self.validatePassword(self.oldPasswordTextField) ?? ""
+            oldPassword = try self.validatePassword(self.oldPasswordTextField) ?? ""
             print("пароль норм")
-//            self.passwordTextField.setError(nil, animated: true)
+            oldPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
             print("проблема в пароле")
-//            self.passwordTextField.setError(error, animated: true)
+            oldPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
+            errors.append(error)
+        }
+        do {
+            newPassword = try self.validatePassword(self.oldPasswordTextField) ?? ""
+            print("пароль норм")
+            newPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
+        } catch let error {
+            print("проблема в пароле")
+            newPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
         do {
             confirmPassword = try self.validatePassword(self.confirmPasswordTextField) ?? ""
-//            self.confirmPasswordTextfield.setError(nil, animated: true)
+            confirmPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
+
         } catch let error {
-//            self.confirmPasswordTextfield.setError(error, animated: true)
+            confirmPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
-        if password != confirmPassword {
+
+        if newPassword != confirmPassword {
             let message = TextFieldsError.passwordsAreDifferent.localizedDescription
-            self.showAlert(withTitle: "Error", andMessage: message)
+            self.showAlert(withTitle: R.string.scenes.error(), andMessage: message)
             return
         }
-        entity.password = password
+
+        entity.password = newPassword
 
         guard errors.isEmpty else {
             let message = R.string.scenes.pleaseCheckYourData()
-            self.showAlert(withTitle: "Error", andMessage: message)
+            self.showAlert(withTitle: R.string.scenes.error(), andMessage: message)
             return
         }
 
-        self.presenter?.registrateAndOpenMainGalleryScene(user: entity)
+        if (newPasswordTextField.text == confirmPasswordTextField.text) {
+            guard let oldPassword = oldPasswordTextField.text,
+                  let newPassword = newPasswordTextField.text else {
+                return
+            }
+            presenter?.changeUserPassword(oldPassword: oldPassword, newPassword: newPassword)
+        }
+
+        presenter?.changeUserInfo()
+        self.navigationController?.reloadInputViews()
 
     }
 
@@ -133,8 +154,6 @@ extension SignUpViewController {
         guard password.isValidPassword else {
             throw TextFieldsError.forbiddenSymbols
         }
-
         return password
     }
 }
-

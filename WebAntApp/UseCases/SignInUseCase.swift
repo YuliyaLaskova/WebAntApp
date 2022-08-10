@@ -9,7 +9,6 @@ import Foundation
 import RxSwift
 
 enum TokenState {
-
     case active
     case refreshing
     case failedToRefresh
@@ -17,45 +16,54 @@ enum TokenState {
 }
 
 protocol SignInUseCase {
-
     func signIn(_ login: String, _ password: String) -> Completable
     func refreshToken() -> Completable
 
 }
 
 class SignInUseCaseImp: SignInUseCase {
-
-    private var signInGateway: SignInGateway
-    private var settings: Settings
-    var tokenState: TokenState
+    private let signInGateway: SignInGateway
+    private let settings: Settings
+    private var tokenState: TokenState
+    private let currentUserGateway: GetCurrentUserGateway
 
     var tokenCondition: TokenState {
         tokenState
     }
+    var account: UserEntityForGet? {
+        get {
+            settings.account
+        }
+        set(acc) {
+            settings.account = acc
+        }
+    }
 
-    init(signInGateway: SignInGateway, settings: Settings) {
+    init(signInGateway: SignInGateway, settings: Settings, currentUserGateway: GetCurrentUserGateway) {
         self.signInGateway = signInGateway
         self.settings = settings
-//        self.tokenState = tokenState
+        self.currentUserGateway = currentUserGateway
+        //        self.tokenState = tokenState
         self.tokenState = settings.token == nil ? .none : .active
     }
 
     func signIn(_ login: String, _ password: String) -> Completable {
-// TODO: do(onSubscribe: { })
-
         signInGateway.authorize(login: login, password: password)
-            .do { token in
-                print("@@@token:\naccess:\(token.access_token)")
-                self.settings.token = token
-            
+            .do(onSuccess: { tokenEntity in
+                self.settings.token = tokenEntity
                 self.tokenState = .active
-            }
+            }, onSubscribe: {
+                self.settings.token = nil
+                self.tokenState = .none
+            })
+                .asCompletable()
+                .andThen(self.currentUserGateway.getCurrentUser())
+                .asCompletable()
+                .do(onCompleted: {
+                    NotificationCenter.default.post(name: .onUserSignedIn, object: nil)
+                })
 
-    onError: { error in
-        print(error)
-    }
-    .asCompletable()
-    }
+                    }
     
     func refreshToken() -> Completable {
         let refToken = settings.token?.refresh_token ?? ""
@@ -73,17 +81,11 @@ class SignInUseCaseImp: SignInUseCase {
                     self.tokenState = .failedToRefresh
                 }
             })
-                .asCompletable()
+            .asCompletable()
                 }
 }
 
-enum LoginError: LocalizedError {
-    case notAvailableRole
+extension Notification.Name {
 
-    var errorDescription: String? {
-        switch self {
-        case .notAvailableRole:
-            return "Incorrect user role."
-        }
-    }
+    static let onUserSignedIn = Notification.Name("onUserSignedIn")
 }

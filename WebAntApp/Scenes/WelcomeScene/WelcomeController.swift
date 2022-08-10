@@ -7,18 +7,13 @@
 
 import UIKit
 
-
-
 class WelcomeController: UIViewController {
-
     internal var presenter: WelcomePresenter?
-
     // MARK: IB Outlets
 
     @IBOutlet var createAccountBtn: UIButton!
     @IBOutlet var haveAccountBtn: UIButton!
     @IBOutlet var logoView: UIImageView!
-
     @IBOutlet var logoTopConstraint: NSLayoutConstraint!
     @IBOutlet var createAccountBtnTopCnstr: NSLayoutConstraint!
     @IBOutlet var haveAccountBtnTopCnstr: NSLayoutConstraint!
@@ -28,7 +23,6 @@ class WelcomeController: UIViewController {
         WelcomeConfigurator.configure(view: self)
         setupUI()
     }
-
     // MARK: Constraints
 
     override func viewDidLayoutSubviews() {
@@ -50,12 +44,10 @@ class WelcomeController: UIViewController {
     }
 
     // MARK: Setup UI method
-
     private func setupUI() {
         createAccountBtn.layer.cornerRadius = 4
         haveAccountBtn.layer.cornerRadius = 4
         haveAccountBtn.layer.borderWidth = 1
-
     }
 
     // MARK: IB Actions
@@ -64,21 +56,16 @@ class WelcomeController: UIViewController {
         openSignUpScene()
     }
 
-
     @IBAction func haveAccountBtnPressed() {
         openSignInScene()
-
     }
-
 }
 
 extension WelcomeController: WelcomeView {
-
     func openSignInScene() {
         presenter?.openSignInScene()
     }
     func openSignUpScene() {
         presenter?.openSignUpScene()
     }
-
 }

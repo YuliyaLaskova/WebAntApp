@@ -10,19 +10,15 @@ import Foundation
 protocol Settings: AnyObject {
 
     var token: Token? { get set }
+    var account: UserEntityForGet? { get set }
     
     func clearUserData()
-    // это пример использования в коде
-    // №1
-    //    let lsettings = LocalSettings()
-    //    lsettings.clearUserData()
-    // №2
-    //    LocalSettings().clearUserData()
 }
 
 
 class LocalSettings: Settings {
 
+//    var account: UserEntityForGet?
     var token: Token? {
         get {
             if
@@ -45,27 +41,40 @@ class LocalSettings: Settings {
         }
     }
 
-//    var account: UserEntity? {
-//        get {
-//            return self.userDefaults.read(UserDefaultsKey.account)
-//
-//        }
-//        set(value) {
-//            return self.userDefaults.saveData(UserDefaultsKey.account, value)
-////            return UserDefaults.standard.set(UserDefaultsKey., forKey: <#T##String#>)
-//        }
-//    }
-//
-//    let userDefaults: UserDefaultsSettings
-//
-//    init(userDefaults: UserDefaultsSettings) {
-//        self.userDefaults = userDefaults
-//    }
+    var userDefaults: UserDefaultsSettings?
+
+    var account: UserEntityForGet? {
+        get {
+        if
+            let acc = UserDefaults.standard.object(forKey: "id") as? Int
+//            let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") as? String
+        {
+            let account = UserEntityForGet(username: "", email: "", id: acc, birthday: "")
+            return account
+        } else {
+            return nil
+        }
+    }
+        set(value) {
+            guard let acc = value else {
+                return
+            }
+            UserDefaults.standard.set(acc.id, forKey: "id")
+        }
+    }
+
 
     func clearUserData() {
         self.token = nil
+        self.account = nil
         UserDefaults.standard.removeObject(forKey: "accessToken")
         UserDefaults.standard.removeObject(forKey: "refreshToken")
     }
+
+
+
+//    init(userDefaults: UserDefaultsSettings) {
+//        self.userDefaults = userDefaults
+//    }
     
 }

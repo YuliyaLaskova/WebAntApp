@@ -8,33 +8,30 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
-    internal var presenter: SignUpPresenter?
+    var presenter: SignUpPresenter?
     let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     var currentDate: String?
     public let passwordLength = 6
     
     // MARK: IB Outlets
-
+    @IBOutlet var label: UILabel!
+    @IBOutlet var testViewWithLabel: UIView!
+    @IBOutlet var signInBtn: UIButton!
+    @IBOutlet var signUpBtn: UIButton!
     @IBOutlet var userNameTextField: DesignableUITextField!
     @IBOutlet var birthdayTextField: DesignableUITextField!
     @IBOutlet var emailTextField: DesignableUITextField!
     @IBOutlet var oldPasswordTextField: DesignableUITextField!
     @IBOutlet var confirmPasswordTextField: DesignableUITextField!
 
-    @IBOutlet var signInBtn: UIButton!
-    @IBOutlet var signUpBtn: UIButton!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
     // MARK: Setup UI method
 
     private func setupUI() {
-
         setupIconsInTextFields()
 //        createDatePicker()
         setDatePicker()
@@ -46,7 +43,7 @@ class SignUpViewController: UIViewController {
         signUpBtn.layer.cornerRadius = 4
         signInBtn.layer.borderWidth = 1
     }
-    // TODO: сделать так чтоб по кнопке next мы автоматичеки переходили на редактирование следущего поля и скрывать клавиатуру на сайт ап и сайт ин как в экране сеттинг
+
     func setupTextFields() {
         userNameTextField.delegate = self
         emailTextField.delegate = self
@@ -54,11 +51,7 @@ class SignUpViewController: UIViewController {
         oldPasswordTextField.delegate = self
         confirmPasswordTextField.delegate = self
 
-        userNameTextField.addDoneButtonOnKeyboard()
-        emailTextField.addDoneButtonOnKeyboard()
         birthdayTextField.addDoneButtonOnKeyboard()
-        oldPasswordTextField.addDoneButtonOnKeyboard()
-        confirmPasswordTextField.addDoneButtonOnKeyboard()
     }
 
     // TODO: make proper picker
@@ -76,6 +69,7 @@ class SignUpViewController: UIViewController {
         let maxData = Calendar.current.date(byAdding: .day, value: 0, to: Date())
         datePicker.maximumDate = maxData
     }
+
     @objc func dateChanged() {
         getDateFromPicker()
     }
@@ -87,54 +81,6 @@ class SignUpViewController: UIViewController {
     @objc func closeDataPicker() {
         view.endEditing(true)
     }
-//    private func createDatePicker() {
-//        datePicker.translatesAutoresizingMaskIntoConstraints = false
-//        birthdayTextField.inputView = datePicker
-//
-//        if #available(iOS 13.4, *) {
-//            datePicker.preferredDatePickerStyle = .wheels
-//            datePicker.datePickerMode = .date
-//        } else {
-//            datePicker.datePickerMode = .date
-//        }
-//
-//        let maxData = Calendar.current.date(byAdding: .day, value: 0, to: Date())
-//        datePicker.maximumDate = maxData
-//
-//        let toolbar = UIToolbar()
-//        toolbar.sizeToFit()
-//
-//        let doneButton = UIBarButtonItem(
-//            barButtonSystemItem: .done,
-//            target: nil,
-//            action: #selector (dateDoneBtnPressed)
-//        )
-//
-//        let cancelButton = UIBarButtonItem(
-//            barButtonSystemItem: .cancel,
-//            target: nil,
-//            action: #selector (dateCancelBtnPressed)
-//        )
-//
-//        let flexibleSpace = UIBarButtonItem(
-//            barButtonSystemItem: .flexibleSpace,
-//            target: nil, action: nil)
-//
-//        toolbar.setItems([cancelButton, flexibleSpace,doneButton], animated: true)
-//
-//        birthdayTextField.inputAccessoryView = toolbar
-//    }
-//
-//    @objc func dateDoneBtnPressed() {
-//        birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
-////        if birthdayTextField.text?.isEmpty == true {
-////            birthdayTextField.resignFirstResponder()
-//////            birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
-////        } else {
-////            birthdayTextField.text = DateFormatter.defaultFormatter.string(from: datePicker.date)
-////            birthdayTextField.resignFirstResponder()
-////        }
-//    }
 
     @objc func dateCancelBtnPressed() {
         birthdayTextField.text = .none
@@ -142,47 +88,17 @@ class SignUpViewController: UIViewController {
     }
 
     // MARK: IB Actions
-
     @IBAction func signInBtnPressed() {
         openSignInScene()
     }
     
     @IBAction func signUpBtnPressed() {
         self.validateTextFieldsAndProceed()
-        
-//        guard let userName = userNameTextField.text,
-//              let email = emailTextField.text,
-//              let password = oldPasswordTextField.text,
-//              let birthday = birthdayTextField.text,
-//              let confirmPassword = confirmPasswordTextField.text
-//        else { return }
-//
-//        if userName.isEmpty ||
-//            email.isEmpty ||
-//            password.isEmpty ||
-//            confirmPassword.isEmpty {
-//            showAlert(withTitle: R.string.scenes.error(), andMessage: R.string.scenes.emptyFieldsMessage())
-//        }
-//
-//
-//        let user = UserEntity(username: userName, email: email, pass: password, birthday: birthday)
-//
-//        if birthday.isEmpty {
-//            user.birthday = nil
-//        }
-//
-//        if password != confirmPassword {
-//            showAlert(withTitle: R.string.scenes.error(), andMessage: R.string.scenes.passwordsNotMatch())
-//        }
-//
-//        presenter?.registrateAndOpenMainGalleryScene(user: user)
     }
-
 
     // MARK: Setup Icons In Text Fields method
 
     private func setupIconsInTextFields() {
-
         guard let userIconImage = UIImage(resource: R.image.userIcon) else { return }
         userNameTextField.rightImage = userIconImage
 
@@ -227,52 +143,3 @@ class SignUpViewController: UIViewController {
     }
 }
 
-extension SignUpViewController: SignUpView {
-    //    func signUpAndopenMainGalleryScene() {
-    //        guard let userName = userNameTextField.text,
-    //              let email = emailTextField.text,
-    //              let password = oldPasswordTextField.text,
-    //              let birthday = birthdayTextField.text,
-    //              let confirmPassword = confirmPasswordTextField.text
-    //        else { return }
-    //
-    //
-    //
-    //        let user = UserEntity(username: userName, email: email, pass: password, birthday: birthday)
-    //
-    //        if birthday.isEmpty {
-    //            user.birthday = nil
-    //        }
-    //
-    //        if password == confirmPassword {
-    //
-    //            presenter?.registrateAndOpenMainGalleryScene(user: user)
-    //        }
-    //    }
-
-    func openSignInScene() {
-        presenter?.openSignInScene()
-    }
-}
-
-extension SignUpViewController {
-     func showAlert(withTitle: String, andMessage: String) {
-        let alertController = UIAlertController(title: title, message: andMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-}
-
-// MARK: - Work with keyboard
-
-extension SignUpViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.text = textField.text?.removingWhitespaces()
-    }
-}

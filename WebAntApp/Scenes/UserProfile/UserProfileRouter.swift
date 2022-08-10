@@ -27,12 +27,10 @@ class UserProfileRouter: BaseRouter {
                                        imageModel: imageEntity)
     }
 
-//    func openSettingsViewController(userEntity: UserEntityForGet) {
     func openSettingsViewController() {
         guard let navController = self.view?.navigationController else {
             return
         }
-
         SettingsConfigurator.open(navigationController: navController)
     }
 }

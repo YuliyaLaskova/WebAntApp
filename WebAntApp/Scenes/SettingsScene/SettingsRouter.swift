@@ -17,11 +17,9 @@ class SettingsRouter: BaseRouter {
     init(_ view: SettingsViewController) {
         self.view = view
     }
-    
-    func openSomeScene() {
-//        guard let navController = self.view?.navigationController else {
-//            return
-//        }
-        //  SomeSceneConfigurator.open(navigationController: navController)
+
+    func goToWelcomeScene() {
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        appDelegate?.openStartScreen(window: appDelegate?.window)
     }
 }

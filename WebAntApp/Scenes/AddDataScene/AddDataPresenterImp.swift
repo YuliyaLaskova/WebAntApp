@@ -38,68 +38,13 @@ class AddDataPresenterImp: AddDataPresenter {
         return self.photoForPost
     }
 
-    //    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
-    //        guard let data = image.jpegData(compressionQuality: 0.5) else {return}
-    //
-    //        let file = UploadFile("file", data, "image")
-    //        print(file)
-    //        postPhotoUseCase.postMediaObject(file)
-    //            .subscribe(onSuccess: { file in
-    //                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
-    //                self.postPhotoUseCase.postPhoto(newPhoto)
-    //                    .observe(on: MainScheduler.instance)
-    //                    .subscribe { photo in
-    //                        print("##SucceSS\(photo)")
-    //                    } onFailure: { _ in
-    //                        print("error")
-    //                    } onDisposed: {
-    //                        print("Disposed")
-    //                    }
-    //                    .disposed(by: self.disposeBag)
-    //        })
-    //            .disposed(by: self.disposeBag)
-    //}
-
-    //    func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
-    //        guard let data = image.jpegData(compressionQuality: 0.5) else {return}
-    //
-    //        let file = UploadFile("file", data, "image")
-    //        print(file)
-    //        postPhotoUseCase.postMediaObject(file)
-    //            .observe(on: MainScheduler.instance)
-    //            .subscribe(onSuccess: { file in
-    //                let newPhoto = PhotoEntityForPost(name: photo.name, description: photo.description, new: true, popular: true, image: file.id)
-    //                self.postPhotoUseCase.postPhoto(newPhoto)
-    //                    .observe(on: MainScheduler.instance)
-    //                    .subscribe(onSuccess: { [weak self] photo in
-    //                        guard let self = self else {
-    //                            return
-    //                        }
-    //                        print(photo)
-    //                        self.backToMainGallery()
-    //                                                self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.succsessMessage(),
-    //                                                                                 alertMessage: nil,
-    //                                                                                 buttonMessage: R.string.scenes.okAction(),
-    //                                                                                 completion: { [weak self ] in
-    //                                                    self?.backToMainGallery()                                                            })
-    //                    }, onFailure: { error in
-    //                        print(error.localizedDescription)
-    //                    }, onDisposed: {
-    //                        print("Disposed")
-    //                    })
-    //                    .disposed(by: self.disposeBag)
-    //            })
-    //            .disposed(by: self.disposeBag)
-    //    }
-
-
     func postPhoto(_ image: UIImage, _ photo: PhotoEntityForPost) {
         guard let data = image.jpegData(compressionQuality: 0.5) else { return }
         let file = UploadFile("file", data, "image")
         print(file)
         postPhotoUseCase.postMediaObject(file)
             .do(onSubscribe: { [weak self] in
-                self?.view?.actIndicatorStartAnimating()
+                self?.view?.startActivityIndicator()
             })
                 .flatMap ({ [weak self] file -> Single<PhotoEntityForGet> in
                     guard let strongSelf = self else {
@@ -120,7 +65,7 @@ class AddDataPresenterImp: AddDataPresenter {
                 })
                 .observe(on: MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] photo in
-                    self?.view?.actIndicatorStopAnimating()
+                    self?.view?.stopActivityIndicator()
                     self?.view?.showModalView {
                         self?.router.goBackToMainGallery()
                     }
@@ -130,9 +75,6 @@ class AddDataPresenterImp: AddDataPresenter {
                         alertMessage: error.localizedDescription,
                         buttonMessage:  R.string.scenes.okAction()
                     )
-                    print(error.localizedDescription)
-                }, onDisposed: {
-                    print("Disposed")
                 })
                 .disposed(by: self.disposeBag)
                 }

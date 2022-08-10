@@ -11,7 +11,6 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-
     var presenter: UserProfilePresenter?
 
     @IBOutlet var errorImage: UIImageView!
@@ -21,8 +20,7 @@ class UserProfileViewController: UIViewController {
     @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var userBirthdayLabel: UILabel!
     @IBOutlet var userImageCollection: UICollectionView!
-    private let refreshControl = UIRefreshControl()
-
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,13 +71,11 @@ class UserProfileViewController: UIViewController {
             layout.minimumLineSpacing = 5
             layout.sectionInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
             userImageCollection.collectionViewLayout = layout
-           // view.layoutIfNeeded()
             layout.invalidateLayout()
         }
 
         else if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()
-//            let width: CGFloat = ((view.frame.size.width / 4) - 108)
             let width: CGFloat = ((view.frame.size.width - 125) / 6)
             layout.itemSize = CGSize(width: width, height: width)
             layout.minimumInteritemSpacing = 5
@@ -87,7 +83,6 @@ class UserProfileViewController: UIViewController {
             layout.sectionInset = UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
             
             userImageCollection.collectionViewLayout = layout
-//            view.layoutIfNeeded()
             layout.invalidateLayout()
         }
     }
@@ -98,89 +93,5 @@ class UserProfileViewController: UIViewController {
 
     @objc func settingsBtnPressed() {
         openSettingsScene()
-    }
-}
-
-extension UserProfileViewController: UserProfileView {
-    func openSettingsScene() {
-        presenter?.goToSettingScene()
-    }
-    
-    func refreshPhotoCollection() {
-        userImageCollection.reloadData()
-    }
-
-    func endRefreshing() {
-        refreshControl.endRefreshing()
-    }
-
-    // TODO: add activity indic and animate it
-    func actIndicatorStartAnimating() {
-    }
-
-    func actIndicatorStopAnimating() {
-
-    }
-
-    func showErrorOnEmptyGallery(show: Bool) {
-        switch show {
-        case true:
-            errorImage.isHidden = false
-        default:
-            errorImage.isHidden = true
-        }
-    }
-
-
-    func setupUser(user: UserEntityForGet?) {
-        guard let user = presenter?.getCurrentUser() else {
-            return
-        }
-        print("user")
-        userNameLabel.text = user.username
-        userBirthdayLabel.text = user.birthday?.convertDateFormatFromISO8601()
-    }
-}
-
-extension UserProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let presenter = presenter else { return 0 }
-        if presenter.photoItems.count > 0 {
-            showErrorOnEmptyGallery(show: false)
-            return presenter.photoItems.count
-        } else {
-            showErrorOnEmptyGallery(show: true)
-            return 0
-        }
-//        guard let presenter = presenter else { return 0}
-//        return presenter.photoItems.count
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoViewCell", for: indexPath) as? PhotoCell {
-            guard let photo = presenter?.photoItems[indexPath.row].image?.name else {
-                return UICollectionViewCell()
-            }
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 10
-            cell.setupImage(photo)
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.openDetailedPhoto(photoIndex: indexPath.row)
-        print("you tapped item at index \(indexPath.row)")
-    }
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == self.presenter!.photoItems.count - 1 {
-                            self.presenter?.fetchUserPhotos()
-        }
     }
 }

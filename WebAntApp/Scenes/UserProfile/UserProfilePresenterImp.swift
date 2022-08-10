@@ -15,16 +15,14 @@ class UserProfilePresenterImp: UserProfilePresenter {
 
     private weak var view: UserProfileView?
     private let router: UserProfileRouter
-    var photoItems: [PhotoEntityForGet] = []
     private var getCurrentUserUseCase: GetCurrentUserUseCase
-    private var currentUser: UserEntityForGet?
-
     private let paginationUseCase: PaginationUseCase
-     var isPhotoLoadingInProgress: Bool {  return self.paginationUseCase.isLoadingInProcess }
-
+    private var currentUser: UserEntityForGet?
+    var photoItems: [PhotoEntityForGet] = []
     private var requestDisposeBag = DisposeBag()
     private var paginationDisposeBag = DisposeBag()
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
+    var isPhotoLoadingInProgress: Bool {  return self.paginationUseCase.isLoadingInProcess }
     
     init(
         view: UserProfileView,
@@ -46,7 +44,6 @@ class UserProfilePresenterImp: UserProfilePresenter {
         self.paginationDisposeBag = DisposeBag()
     }
 
-
     func getCurrentUserFromAPI() {
         getCurrentUserUseCase.getCurrentUser()
             .observe(on: MainScheduler.instance)
@@ -67,7 +64,7 @@ class UserProfilePresenterImp: UserProfilePresenter {
     func fetchUserPhotos() {
         guard self.paginationUseCase.hasMoreNewItems(),
               !isPhotoLoadingInProgress else { return }
-//        self.view?.refreshPhotoCollection()
+                self.view?.refreshPhotoCollection()
         guard let userId = currentUser?.id else { return }
         self.paginationUseCase.getMoreUserPhotos(userId: userId)
             .observe(on: MainScheduler.instance)
@@ -78,7 +75,6 @@ class UserProfilePresenterImp: UserProfilePresenter {
                 onDispose: {
                 [weak view = self.view] in view?.actIndicatorStopAnimating()
             })
-
                 .subscribe(onError: { [weak self] error in
                     guard let self = self else { return }
                     self.view?.refreshPhotoCollection()
@@ -108,11 +104,10 @@ class UserProfilePresenterImp: UserProfilePresenter {
 
     func openDetailedPhoto(photoIndex: Int) {
         let photo = photoItems[photoIndex]
-            router.openDetailedPhotoViewController(imageEntity: photo)
+        router.openDetailedPhotoViewController(imageEntity: photo)
     }
 
     func goToSettingScene() {
         router.openSettingsViewController()
     }
-
 }

@@ -10,6 +10,7 @@ import Foundation
 enum ValidatorEnum {
     case email
     case password
+    case userName
 }
 
 class Validator {
@@ -24,6 +25,9 @@ class Validator {
             break
         case .password:
             regEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+            break
+        case .userName:
+            regEx = "^[A-Z0-9a-z_]{5,24}$"
             break
         }
 
@@ -43,10 +47,4 @@ class Validator {
 
         return  returnValue
     }
-
-//    var isValidEmail: Bool {
-//        let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
-//        let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
-//        return emailTest.evaluate(with: self)
-//    }
 }

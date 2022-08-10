@@ -11,7 +11,6 @@
 import UIKit
 
 enum AddPhotoConfigurator {
-    
     static func configure(view: AddPhotoViewController) {
         let router = AddPhotoRouter(view)
         let presenter = AddPhotoPresenterImp(view, router)

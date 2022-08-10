@@ -12,14 +12,12 @@ import Foundation
 import RxSwift
 
 class DetailedPhotoPresenterImp: DetailedPhotoPresenter {
-    
     private weak var view: DetailedPhotoView?
     private let getUserUseCase: GetUserUseCase
     var userName: String?
     var settings: Settings
     let imageModel: PhotoEntityForGet
     private let disposeBag = DisposeBag()
-
     
     init(view: DetailedPhotoView, imageModel: PhotoEntityForGet, settings: Settings, getUserUseCase: GetUserUseCase) {
         self.view = view
@@ -42,7 +40,6 @@ class DetailedPhotoPresenterImp: DetailedPhotoPresenter {
     }
     
     func getUserInfo(_ iriId: String) {
-
         self.getUserUseCase.getUserInfo(iriId)
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] user in
@@ -50,5 +47,4 @@ class DetailedPhotoPresenterImp: DetailedPhotoPresenter {
             })
             .disposed(by: self.disposeBag)
     }
-
 }

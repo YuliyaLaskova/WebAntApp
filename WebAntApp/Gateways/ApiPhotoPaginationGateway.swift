@@ -15,7 +15,6 @@ protocol PaginationGateway {
 }
 
 class ApiPhotoPaginationGateway: ApiBaseGateway, PaginationGateway {
-
     func getPhotos(_ page: Int, _ limit: Int, _ isNew: Bool, _ name: String? = nil) -> Single<PaginationEntity<PhotoEntityForGet>> {
         self.apiClient.execute(request: ExtendedApiRequest.getPhotoPaginatedRequest(page, limit, isNew, name))
     }
