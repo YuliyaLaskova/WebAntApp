@@ -10,7 +10,7 @@
 
 import UIKit
 
-class AddDataViewController: ModuleAlertViewController {
+class AddDataViewController: ModelAlertViewController {
     var presenter: AddDataPresenter?
 
     @IBOutlet var photoToPost: UIImageView!
@@ -27,12 +27,6 @@ class AddDataViewController: ModuleAlertViewController {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.systemGray6.cgColor
         descriptionTextView.layer.cornerRadius = 5
-
-        //        activityIndicator.isHidden = true
-        //        activityIndicatorView.backgroundColor = .
-        //        activityIndicatorView.isHidden = true
-
-        //        descriptionTextView.adjastableForKeyboard()
 
         nameTextField.becomeFirstResponder()
         nameTextField.addDoneButtonOnKeyboard()
@@ -68,67 +62,6 @@ class AddDataViewController: ModuleAlertViewController {
     }
 
     @objc func addBtnPressed() {
-        addPressed()
-    }
-}
-
-// MARK: Extensions
-
-extension AddDataViewController: AddDataView {
-    
-    func showModalView(finished: @escaping (() -> Void)) {
-        showModal(finished: finished)
-    }
-    func startActivityIndicator() {
-        addActivityInd(isNeeded: true ,superView: self.view)
-    }
-
-    func stopActivityIndicator() {
-        addActivityInd(isNeeded: false ,superView: self.view)
-    }
-
-    //    func actIndicatorStartAnimating() {
-    ////        activityIndicatorView.animate()
-    ////        activityIndicatorView.isHidden = false
-    //    }
-    //
-    //    func actIndicatorStopAnimating() {
-    ////        activityIndicatorView.isHidden = true
-    ////        activityIndicatorView = nil
-    ////        activityIndicator.stopAnimating()
-    ////        activityIndicator.isHidden = true
-    //    }
-
-    func addPressed() {
-        guard let image = photoToPost.image else {
-            return
-        }
-
-        var descriptionText = ""
-        if descriptionTextView.text == "Description" {
-            descriptionText = ""
-        } else {
-            descriptionText = descriptionTextView.text
-        }
-
-        let photo = PhotoEntityForPost(name: nameTextField.text, description: descriptionText, new: true, popular: true, image: nil)
-
-        presenter?.postPhoto(image, photo)
-    }
-}
-
-extension AddDataViewController: UITextViewDelegate, UITextFieldDelegate{
-    // MARK: TextView placeholder
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
-            textView.text = ""
-            textView.textColor = .black
-        }
-    }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            textView.text = "Description"
-            textView.textColor = .lightGray
-        }
+        validateFieldsAndProceed()
     }
 }

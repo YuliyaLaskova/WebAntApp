@@ -14,12 +14,10 @@ import UIKit
 protocol MainGalleryPresenter {
     var isNewsLoadingInProgress: Bool { get }
 
-//    var photoItems: [PhotoEntityForGet] { get set }
     var newPhotoArray: [PhotoEntityForGet] { get set }
     var popularPhotoArray: [PhotoEntityForGet] { get set }
     var currentStateOfNewCollection: CGFloat { get set }
     var currentStateOfPopularCollection: CGFloat { get set }
-//    func fetchPhotos()
     func fetchNewPhotosWithPagination(imageName: String?)
     func fetchPopularPhotosWithPagination(imageName: String?)
     func subscribeOnNewPhotoUpdates()

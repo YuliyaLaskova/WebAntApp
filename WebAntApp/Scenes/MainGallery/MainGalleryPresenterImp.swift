@@ -38,9 +38,6 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
         self.subscribeOnPopularPhotoUpdates()
         self.fetchNewPhotosWithPagination()
     }
-    deinit {
-        self.paginationDisposeBag = DisposeBag()
-    }
 
     func subscribeOnNewPhotoUpdates() {
         paginationUseCase.sourceForNewPhotos
@@ -78,15 +75,21 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
                 view?.actIndicatorStartAnimating()
+                view?.startActivityIndicator()
             },
                 onDispose: { [weak view = self.view] in
                 view?.actIndicatorStopAnimating()
+                view?.stopActivityIndicator()
             })
             .subscribe(onCompleted: { [weak self] in
                 guard let self = self else { return }
                 self.view?.refreshPhotoCollection()
-            }, onError: { error in
-                print(error.localizedDescription)
+            }, onError: { [weak self] error in
+                self?.view?.addInfoModuleWithFunc(
+                    alertTitle: R.string.scenes.error(),
+                    alertMessage: error.localizedDescription,
+                    buttonMessage: R.string.scenes.okAction()
+                )
             })
             .disposed(by: self.requestDisposeBag)
     }
@@ -94,23 +97,31 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
     func fetchPopularPhotosWithPagination(imageName: String? = nil) {
         self.requestDisposeBag = DisposeBag()
         guard self.paginationUseCase.hasMorePopularItems(),
-              !isNewsLoadingInProgress else {
+              !isNewsLoadingInProgress
+
+        else {
             return
         }
         self.paginationUseCase.getMorePopularPhotos(imageName: imageName)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
                 view?.actIndicatorStartAnimating()
+                view?.startActivityIndicator()
             },
                 onDispose: { [weak view = self.view] in
                 view?.actIndicatorStopAnimating()
+                view?.stopActivityIndicator()
 
             })
                 .subscribe(onCompleted: { [weak self]  in
                     guard let self = self else { return }
                     self.view?.refreshPhotoCollection()
-                }, onError: { error in
-                    print(error.localizedDescription)
+                }, onError: { [weak self] error in
+                    self?.view?.addInfoModuleWithFunc(
+                        alertTitle: R.string.scenes.error(),
+                        alertMessage: error.localizedDescription,
+                        buttonMessage: R.string.scenes.okAction()
+                    )
                 })
                 .disposed(by: self.requestDisposeBag)
                 }
@@ -145,5 +156,8 @@ class MainGalleryPresenterImp: MainGalleryPresenter {
         }
         default: break
         }
+    }
+    deinit {
+        self.paginationDisposeBag = DisposeBag()
     }
 }

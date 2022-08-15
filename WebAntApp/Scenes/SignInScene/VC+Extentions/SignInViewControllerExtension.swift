@@ -10,7 +10,7 @@ import UIKit
 
 extension SignInViewController: UITextFieldDelegate {
     func setupTextFieldsDelegate() {
-        emailTextField.delegate = self
+        loginTextField.delegate = self
         passwordTextField.delegate = self
     }
     
@@ -20,7 +20,7 @@ extension SignInViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
+        if textField == loginTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
             passwordTextField.resignFirstResponder()
@@ -35,23 +35,16 @@ extension SignInViewController: UITextFieldDelegate {
 
 extension SignInViewController: SignInView {
     func startActivityIndicator() {
-        addActivityInd(isNeeded: true, superView: view)
+        setupActivityIndicator()
     }
 
     func stopActivityIndicator() {
-        addActivityInd(isNeeded: false, superView: view)
+        removeActivityIndicator()
     }
 
     func openSignUpScene() {
         presenter?.openSignUpScene()
     }
-
-    func signInAndOpenMainGallery() {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text
-
-        else { return }
-        presenter?.signInAndOpenMainGallery(username: email, password: password)
-    }
+    
 }
 

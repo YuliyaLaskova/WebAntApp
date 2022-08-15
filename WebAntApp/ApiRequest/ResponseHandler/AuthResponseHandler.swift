@@ -35,7 +35,7 @@ open class AuthResponseHandler: ResponseHandler {
     private weak var delegate: AuthResponseHandlerDelegate?
 
     // Вместо BaseApp вставить имя проекта
-    private let queue = DispatchQueue(label: "ru.WebAnt.BaseApp.Queue.AuthResponseHandler")
+    private let queue = DispatchQueue(label: "ru.WebAnt.WebAntApp.Queue.AuthResponseHandler")
     // swiftlint:disable line_length
     private let timerQueue = SerialDispatchQueueScheduler(internalSerialQueueName: "ru.WebAnt.BaseApp.Queue.AuthResponseHandler.RxTimer")
     // swiftlint:disable line_length

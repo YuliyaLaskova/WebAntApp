@@ -220,7 +220,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 20 images.
+  /// This `R.image` struct is generated, and contains static references to 21 images.
   struct image {
     /// Image `Bear`.
     static let bear = Rswift.ImageResource(bundle: R.hostingBundle, name: "Bear")
@@ -262,6 +262,8 @@ struct R: Rswift.Validatable {
     static let photoIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "photoIcon")
     /// Image `userIcon`.
     static let userIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "userIcon")
+    /// Image `userPhoto`.
+    static let userPhoto = Rswift.ImageResource(bundle: R.hostingBundle, name: "userPhoto")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Bear", bundle: ..., traitCollection: ...)`
@@ -400,6 +402,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "userIcon", bundle: ..., traitCollection: ...)`
     static func userIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.userIcon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "userPhoto", bundle: ..., traitCollection: ...)`
+    static func userPhoto(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.userPhoto, compatibleWith: traitCollection)
     }
     #endif
 
@@ -1419,7 +1428,7 @@ struct _R: Rswift.Validatable {
       let name = "SettingsStoryboard"
 
       static func validate() throws {
-        if UIKit.UIImage(named: "PhotoIcon-1", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'PhotoIcon-1' is used in storyboard 'SettingsStoryboard', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "userPhoto", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'userPhoto' is used in storyboard 'SettingsStoryboard', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }

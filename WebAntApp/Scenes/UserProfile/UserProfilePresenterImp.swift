@@ -51,8 +51,12 @@ class UserProfilePresenterImp: UserProfilePresenter {
                 self?.currentUser = returningUser
                 self?.view?.setupUser(user: returningUser)
                 self?.fetchUserPhotos()
-            }, onFailure: { error in
-                print("@@@ error\(error)")
+            }, onFailure: { [weak self] error in
+                self?.view?.addInfoModuleWithFunc(
+                    alertTitle: R.string.scenes.error(),
+                    alertMessage: error.localizedDescription,
+                    buttonMessage:  R.string.scenes.okAction()
+                )
             })
             .disposed(by: disposeBag)
     }
@@ -64,20 +68,22 @@ class UserProfilePresenterImp: UserProfilePresenter {
     func fetchUserPhotos() {
         guard self.paginationUseCase.hasMoreNewItems(),
               !isPhotoLoadingInProgress else { return }
-                self.view?.refreshPhotoCollection()
+        self.view?.refreshPhotoCollection()
         guard let userId = currentUser?.id else { return }
         self.paginationUseCase.getMoreUserPhotos(userId: userId)
             .observe(on: MainScheduler.instance)
             .do(onSubscribe: { [weak view = self.view] in
-                view?.actIndicatorStartAnimating()
+                view?.startActivityIndicator()
                 view?.refreshPhotoCollection()
             },
-                onDispose: {
-                [weak view = self.view] in view?.actIndicatorStopAnimating()
+                onDispose: { [weak view = self.view] in
+                view?.stopActivityIndicator()
             })
                 .subscribe(onError: { [weak self] error in
                     guard let self = self else { return }
-                    self.view?.refreshPhotoCollection()
+                    self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(),
+                                            alertMessage: error.localizedDescription,
+                                            buttonMessage: R.string.scenes.okAction())
                 })
                 .disposed(by: self.requestDisposeBag)
                 }

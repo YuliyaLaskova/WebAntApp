@@ -17,20 +17,18 @@ protocol Settings: AnyObject {
 
 
 class LocalSettings: Settings {
+    var userDefaults: UserDefaultsSettings?
 
-//    var account: UserEntityForGet?
     var token: Token? {
         get {
-            if
-                let accessToken = UserDefaults.standard.object(forKey: "accessToken") as? String,
-                let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") as? String
+            if let accessToken = UserDefaults.standard.object(forKey: "accessToken") as? String,
+               let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") as? String
             {
                 let token = Token(accessToken: accessToken, refreshToken: refreshToken)
                 return token
             } else {
                 return nil
             }
-            //  self.userDefaults.read(UserDefaultsKey.token)
         }
         set(value) {
             guard let newToken = value else {
@@ -41,14 +39,9 @@ class LocalSettings: Settings {
         }
     }
 
-    var userDefaults: UserDefaultsSettings?
-
     var account: UserEntityForGet? {
         get {
-        if
-            let acc = UserDefaults.standard.object(forKey: "id") as? Int
-//            let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") as? String
-        {
+        if let acc = UserDefaults.standard.object(forKey: "id") as? Int {
             let account = UserEntityForGet(username: "", email: "", id: acc, birthday: "")
             return account
         } else {
@@ -63,18 +56,10 @@ class LocalSettings: Settings {
         }
     }
 
-
     func clearUserData() {
         self.token = nil
         self.account = nil
         UserDefaults.standard.removeObject(forKey: "accessToken")
         UserDefaults.standard.removeObject(forKey: "refreshToken")
     }
-
-
-
-//    init(userDefaults: UserDefaultsSettings) {
-//        self.userDefaults = userDefaults
-//    }
-    
 }

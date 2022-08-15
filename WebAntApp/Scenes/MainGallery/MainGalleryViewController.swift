@@ -98,5 +98,4 @@ class MainGalleryViewController: UIViewController {
     @objc func pullToRefreshPhotos() {
         presenter?.refreshPhotos(photoIndex: newPopularSegCntrl.selectedIndex, needToLoadPhotos: true)
     }
-
 }

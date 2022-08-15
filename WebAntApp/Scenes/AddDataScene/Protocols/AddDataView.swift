@@ -11,10 +11,7 @@
 import UIKit
 
 protocol AddDataView: BaseView {
-    func addPressed()
-//    func actIndicatorStartAnimating()
-//    func actIndicatorStopAnimating()
-
+    func validateFieldsAndProceed()
     func startActivityIndicator()
     func stopActivityIndicator()
     func showModalView(finished: @escaping () -> Void)

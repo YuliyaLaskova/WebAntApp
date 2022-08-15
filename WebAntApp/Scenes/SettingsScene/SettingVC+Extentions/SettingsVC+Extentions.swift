@@ -10,11 +10,11 @@ import UIKit
 
 extension SettingsViewController: SettingsView {
     func startActivityIndicator() {
-        addActivityInd(isNeeded: true, superView: self.view)
+      setupActivityIndicator()
     }
 
     func stopActivityIndicator() {
-        addActivityInd(isNeeded: false, superView: self.view)
+       removeActivityIndicator()
     }
 
     func setupUser(user: UserEntityForGet?) {

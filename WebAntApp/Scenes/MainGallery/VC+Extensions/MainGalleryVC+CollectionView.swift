@@ -63,11 +63,11 @@ extension MainGalleryViewController: UICollectionViewDelegate, UICollectionViewD
         presenter?.openDetailedPhoto(photoIndex: indexPath.row, newPopularSegCntrlIndex: newPopularSegCntrl.selectedIndex)
     }
 
+    // TODO: switch case relied on segmented control state
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.presenter!.newPhotoArray.count - 1 {
             self.presenter?.fetchNewPhotosWithPagination(imageName: nil)
-        } else if
-            indexPath.row == self.presenter!.popularPhotoArray.count - 1 {
+        } else if indexPath.row == self.presenter!.popularPhotoArray.count - 1 {
             self.presenter?.fetchPopularPhotosWithPagination(imageName: nil)
 
         }

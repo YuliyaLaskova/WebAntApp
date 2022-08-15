@@ -10,20 +10,21 @@ import UIKit
 
 extension SignUpViewController: SignUpView {
     func startActivityIndicator() {
-        addActivityInd(isNeeded: true,superView: view)
+        setupActivityIndicator()
+        
     }
-
+    
     func stopActivityIndicator() {
-        addActivityInd(isNeeded: false,superView: view)
+        removeActivityIndicator()
     }
-
+    
     func openSignInScene() {
         presenter?.openSignInScene()
     }
 }
 
 extension SignUpViewController {
-     func showAlert(withTitle: String, andMessage: String) {
+    func showAlert(withTitle: String, andMessage: String) {
         let alertController = UIAlertController(title: title, message: andMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
         alertController.addAction(okAction)
@@ -38,7 +39,7 @@ extension SignUpViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == userNameTextField {
             birthdayTextField.becomeFirstResponder()

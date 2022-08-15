@@ -8,34 +8,34 @@
 import Foundation
 import UIKit
 
-class ModuleAlertViewController: UIViewController {
+class ModelAlertViewController: UIViewController {
 
-    private var modalSuperView = UIView()
+    private var modelSuperView = UIView()
 
-     func setupModal() {
+     func setupModel() {
 
          let iconView = UIView()
          var iconImage = UIImageView()
          let successLabel = UILabel()
 
-         view.addSubview(modalSuperView)
-         modalSuperView.addSubview(iconView)
+         view.addSubview(modelSuperView)
+         modelSuperView.addSubview(iconView)
          iconView.addSubview(iconImage)
 
-         modalSuperView.translatesAutoresizingMaskIntoConstraints = false
-         modalSuperView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-         modalSuperView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
-         modalSuperView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-         modalSuperView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-         modalSuperView.layer.cornerRadius = 5
-         modalSuperView.backgroundColor = .gray
+         modelSuperView.translatesAutoresizingMaskIntoConstraints = false
+         modelSuperView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+         modelSuperView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+         modelSuperView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+         modelSuperView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+         modelSuperView.layer.cornerRadius = 5
+         modelSuperView.backgroundColor = .gray
 
          iconView.translatesAutoresizingMaskIntoConstraints = false
          let width: CGFloat = 20
          iconView.heightAnchor.constraint(equalToConstant: 20).isActive = true
          iconView.widthAnchor.constraint(equalToConstant: width).isActive = true
-         iconView.leftAnchor.constraint(equalTo: modalSuperView.leftAnchor, constant: 17).isActive = true
-         iconView.topAnchor.constraint(equalTo: modalSuperView.topAnchor, constant: 14).isActive = true
+         iconView.leftAnchor.constraint(equalTo: modelSuperView.leftAnchor, constant: 17).isActive = true
+         iconView.topAnchor.constraint(equalTo: modelSuperView.topAnchor, constant: 14).isActive = true
          iconView.backgroundColor = .white
          iconView.layer.cornerRadius = width / 2
 
@@ -49,22 +49,22 @@ class ModuleAlertViewController: UIViewController {
          iconImage = UIImageView(image: img)
 
          iconView.addSubview(iconImage)
-         modalSuperView.addSubview(successLabel)
+         modelSuperView.addSubview(successLabel)
 
          successLabel.translatesAutoresizingMaskIntoConstraints = false
          successLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
          successLabel.widthAnchor.constraint(equalToConstant: 260).isActive = true
          successLabel.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: 13).isActive = true
-         successLabel.topAnchor.constraint(equalTo: modalSuperView.topAnchor, constant: 16).isActive = true
+         successLabel.topAnchor.constraint(equalTo: modelSuperView.topAnchor, constant: 16).isActive = true
          successLabel.textColor = .white
          successLabel.font = .systemFont(ofSize: 18)
          successLabel.text = R.string.scenes.successInPublicationMessage()
     }
 
-    func showModal(finished: @escaping (() -> Void) ) {
-        modalSuperView.isHidden = false
-        setupModal()
-       _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { [weak self] _ in self?.modalSuperView.isHidden = true
+    func showModel(finished: @escaping (() -> Void) ) {
+        modelSuperView.isHidden = false
+        setupModel()
+       _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { [weak self] _ in self?.modelSuperView.isHidden = true
            finished()
        })
     }

@@ -120,8 +120,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="JtE-7t-KAs" id="gzu-d1-sTz"/>
                         <outlet property="loginStackTopCnstr" destination="M1a-2z-0m0" id="Tzi-z6-bc0"/>
+                        <outlet property="loginTextField" destination="JtE-7t-KAs" id="gzu-d1-sTz"/>
                         <outlet property="passwordTextField" destination="Rqw-qS-OCl" id="XtS-cC-BmP"/>
                         <outlet property="signInBtn" destination="E60-SS-lGr" id="pO6-FL-BuI"/>
                         <outlet property="signInLabelTopCnstr" destination="9C4-bY-ejW" id="GLr-ww-GTu"/>

@@ -35,6 +35,15 @@ extension MainGalleryViewController: MainGalleryView {
     func endRefreshing() {
         refreshControl.endRefreshing()
     }
+
+    func startActivityIndicator() {
+        setupActivityIndicator()
+
+    }
+
+    func stopActivityIndicator() {
+        removeActivityIndicator()
+    }
 }
 
 extension MainGalleryViewController: CustomSegmentedControlDelegate  {

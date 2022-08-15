@@ -64,10 +64,6 @@ class DI {
             .as(SignUpGateway.self)
             .lifetime(.single)
 
-        //        self.container.register(GetPhotoGatewayImp.init)
-        //            .as(GetPhotoGateway.self)
-        //            .lifetime(.single)
-
         self.container.register(ApiPhotoPaginationGateway.init)
             .as(PaginationGateway.self)
             .lifetime(.single)

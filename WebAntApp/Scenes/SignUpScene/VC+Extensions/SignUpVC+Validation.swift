@@ -63,6 +63,7 @@ extension SignUpViewController {
             oldPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
+        
         do {
             confirmPassword = try self.validatePassword(self.confirmPasswordTextField) ?? ""
             confirmPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)

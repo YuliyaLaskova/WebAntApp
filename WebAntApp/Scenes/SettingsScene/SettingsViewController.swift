@@ -9,7 +9,6 @@
 //
 
 import UIKit
-//import MaterialTextField
 
 class SettingsViewController: UIViewController {
     
@@ -24,9 +23,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet var newPasswordTextField: DesignableUITextField!
     @IBOutlet var confirmPasswordTextField: DesignableUITextField!
 
+    @IBOutlet var userPhoto: UIImageView!
     @IBOutlet var deleteAccountButton: UIButton!
     @IBOutlet var signOutButton: UIButton!
     let datePicker = UIDatePicker()
+    let imagePicker = UIImagePickerController()
     public let passwordLength = 6
 
     override func viewDidLoad() {
@@ -39,11 +40,15 @@ class SettingsViewController: UIViewController {
         userPhotoView.layer.borderWidth = 1
         userPhotoView.layer.borderColor = UIColor.systemGray5.cgColor
         userPhotoView.layer.cornerRadius = 50
+        userPhoto.layer.cornerRadius = 50
+
 //        tabBarController?.tabBar.isHidden = true
         presenter?.viewDidLoad()
-
-        // TODO: кнопку return на клаве поменять на кнопку готово и затем скрывать клавиатуру
         dissmissKeyboardIfViewTapped()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = self
+        userPhoto.isUserInteractionEnabled = true
+        tapObserver()
     }
     
     func setDatePicker() {
@@ -74,6 +79,9 @@ class SettingsViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
+
+        self.setTabBarHidden(true)
+
         let saveRightBarButtonItem = UIBarButtonItem()
         saveRightBarButtonItem.title = "Save"
         saveRightBarButtonItem.tintColor = .systemPink
@@ -109,9 +117,12 @@ class SettingsViewController: UIViewController {
         oldPasswordTextField.isSecureTextEntry = true
         newPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
+
+        birthdayTextField.addDoneButtonOnKeyboard()
     }
 
     @objc func goBack() {
+        self.setTabBarHidden(false)
         navigationController?.popViewController(animated: true)
     }
     
@@ -139,25 +150,27 @@ class SettingsViewController: UIViewController {
         checkUserTextFieldsAndUpdateData()
 
     }
+    
+    private func tapObserver() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapImage)
+        )
+        userPhoto.addGestureRecognizer(tapGesture)
+    }
 
-//    private func checkPasswordTextFieldsAndUpdateData() {
-//        if (newPasswordTextField.text == confirmPasswordTextField.text) {
-//            guard let oldPassword = oldPasswordTextField.text,
-//                  let newPassword = newPasswordTextField.text else {
-//                return
-//            }
-//            presenter?.changeUserPassword(oldPassword: oldPassword, newPassword: newPassword)
-//        }
-//    }
+    @objc func didTapImage() {
+        let alert = UIAlertController(title: "Choose the source", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
 
-    // TODO: доделай сюда модалку об ошибке
-}
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallary()
+        }))
 
-extension SettingsViewController {
-     func showAlert(withTitle: String, andMessage: String) {
-        let alertController = UIAlertController(title: title, message: andMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: R.string.scenes.okAction(), style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
     }
 }

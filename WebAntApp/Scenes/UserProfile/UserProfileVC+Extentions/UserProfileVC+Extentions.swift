@@ -20,12 +20,13 @@ extension UserProfileViewController: UserProfileView {
     func endRefreshing() {
         refreshControl.endRefreshing()
     }
-    // TODO: add activity indic and animate it
-    func actIndicatorStartAnimating() {
+
+    func startActivityIndicator() {
+        setupActivityIndicator()
     }
 
-    func actIndicatorStopAnimating() {
-
+    func stopActivityIndicator() {
+        removeActivityIndicator()
     }
 
     func showErrorOnEmptyGallery(show: Bool) {

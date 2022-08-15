@@ -13,12 +13,11 @@ import UIKit
 protocol UserProfileView: BaseView {
 
     func setupUser(user: UserEntityForGet?)
-
     func refreshPhotoCollection()
     func endRefreshing()
-    func actIndicatorStartAnimating()
-    func actIndicatorStopAnimating()
+    func startActivityIndicator()
+    func stopActivityIndicator()
     func showErrorOnEmptyGallery(show: Bool)
-
     func openSettingsScene()
+
 }

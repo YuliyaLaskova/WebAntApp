@@ -11,13 +11,10 @@ import UIKit
 class CustomActivityIndicatorView: UIView {
 
     let spinningCircle = CAShapeLayer()
-//    let activityIndicatorView = CustomActivityIndicatorView()
-//    let superView = UIView()
 
     override init(frame:CGRect) {
         super.init(frame: frame)
     }
-    //progress hud control
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,7 +37,6 @@ class CustomActivityIndicatorView: UIView {
         spinningCircle.lineCap = .round
 
         self.layer.addSublayer(spinningCircle)
-
     }
 
     func animate() {
@@ -49,16 +45,13 @@ class CustomActivityIndicatorView: UIView {
         }) { (completed) in
             UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
                 self.transform = CGAffineTransform(rotationAngle: 0)
-            }) { (completed) in
-                self.animate()
-            }
+            }, completion: nil)
         }
     }
 
-    func resignActivityIndicator() {
-            self.isHidden = true
-        spinningCircle.removeFromSuperlayer()
-        spinningCircle.removeAllAnimations()
-        spinningCircle.isHidden = true
+    func stopAnimate() {
+                self.subviews.forEach({$0.layer.removeAllAnimations()})
+                self.layer.removeAllAnimations()
+                self.layoutIfNeeded()
     }
 }

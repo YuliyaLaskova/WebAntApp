@@ -42,6 +42,12 @@ class DetailedPhotoPresenterImp: DetailedPhotoPresenter {
     func getUserInfo(_ iriId: String) {
         self.getUserUseCase.getUserInfo(iriId)
             .observe(on: MainScheduler.instance)
+            .do(onSubscribe: { [weak view = self.view] in
+                view?.startActivityIndicator()
+            },
+                onDispose: { [weak view = self.view] in
+                view?.stopActivityIndicator()
+            })
             .subscribe(onSuccess: { [weak self] user in
                 self?.view?.getUsername(username: user.username)
             })

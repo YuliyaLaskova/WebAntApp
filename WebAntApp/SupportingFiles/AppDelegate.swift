@@ -18,17 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DI.initDependencies(appDelegate: self)
         DBDebugToolkit.setup()
-        
-//            LocalSettings().clearUserData()
-
-//        if UserDefaults.standard.object(forKey: UserDefaultsKey.token.rawValue) != nil {
-//            print("token")
-//            openMainGalleryScreen(window: self.window)
-//        } else {
-//            print("no token")
-//            openStartScreen(window: self.window)
-//        }
-        // Override point for customization after application launch.
         return true
     }
 
@@ -81,7 +70,6 @@ extension AppDelegate {
 extension AppDelegate: AuthResponseHandlerDelegate {
 
     func doLogout() {
-//        self.settings?.clearUserData()
         LocalSettings().clearUserData()
         // и открой стартовый экран --- TODO
 

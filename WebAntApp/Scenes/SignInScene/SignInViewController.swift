@@ -12,7 +12,7 @@ class SignInViewController: UIViewController {
     // MARK: IB Outlets
     @IBOutlet var signInBtn: UIButton!
     @IBOutlet var signUpBtn: UIButton!
-    @IBOutlet var emailTextField: DesignableUITextField!
+    @IBOutlet var loginTextField: DesignableUITextField!
     @IBOutlet var passwordTextField: DesignableUITextField!
     @IBOutlet var signInLabelTopCnstr: NSLayoutConstraint!
     @IBOutlet var loginStackTopCnstr: NSLayoutConstraint!
@@ -23,7 +23,6 @@ class SignInViewController: UIViewController {
         setupUI()
     }
     // MARK: Constraints
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if UIDevice.current.orientation.isPortrait {
@@ -41,7 +40,6 @@ class SignInViewController: UIViewController {
         }
     }
     // MARK: Setup UI method
-
     private func setupUI() {
         setupTextFieldsDelegate()
         signInBtn.layer.cornerRadius = 4
@@ -50,33 +48,16 @@ class SignInViewController: UIViewController {
 
         setupNavigationBarItem()
 
-        guard let emailIconImage = UIImage(resource: R.image.emailIcon) else { return }
-        emailTextField.rightImage = emailIconImage
+        guard let emailIconImage = R.image.emailIcon() else { return }
+        loginTextField.rightImage = emailIconImage
 
         passwordTextField.rightButton = UIButton()
     }
+
     // MARK: IB Actions
-
     @IBAction func signInBtnPressed() {
-        if isFieldEmpty() {
-            self.addInfoModuleWithFunc(
-                alertTitle: R.string.scenes.error(),
-                alertMessage: R.string.scenes.emptyFieldsMessage(),
-                buttonMessage: R.string.scenes.okAction(),
-                completion: nil
-            )
-        }
-        signInAndOpenMainGallery()
-    }
-
-    func isFieldEmpty() -> Bool {
-        var isEmailTTextEmpty: Bool {
-            emailTextField.text == ""
-        }
-        var isPasswordTitleEmpty: Bool {
-            passwordTextField.text == ""
-        }
-        return isEmailTTextEmpty || isPasswordTitleEmpty
+        view.endEditing(true)
+        self.validateTextFieldsAndProceed()
     }
 
     @IBAction func signUpBtnPressed() {

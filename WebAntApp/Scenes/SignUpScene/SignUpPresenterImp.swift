@@ -18,10 +18,11 @@ class SignUpPresenterImp: SignUpPresenter {
     private let signUpUseCase: SignUpUseCase
     private let signInUseCase: SignInUseCase
     private let disposeBag = DisposeBag()
-    private let disposeBag2 = DisposeBag()
     
     init(view: SignUpView,
-         router: SignUpRouter, signUpUseCase: SignUpUseCase, signInUseCase: SignInUseCase) {
+         router: SignUpRouter,
+         signUpUseCase: SignUpUseCase,
+         signInUseCase: SignInUseCase) {
         self.view = view
         self.router = router
         self.signUpUseCase = signUpUseCase
@@ -34,9 +35,6 @@ class SignUpPresenterImp: SignUpPresenter {
     }
     
     func registrateAndOpenMainGalleryScene(user: UserEntity) {
-
-        // TODO: отредактировать валидатор
-//        if Validator.isStringValid(stringValue: user.email, validationType: .email) && Validator.isStringValid(stringValue: user.password, validationType: .password) {
             signUpUseCase.signUp(user)
             .do(onSubscribe: {  [weak self] in
                 self?.view?.startActivityIndicator()

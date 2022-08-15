@@ -16,4 +16,6 @@ protocol MainGalleryView: BaseView {
     func actIndicatorStartAnimating()
     func actIndicatorStopAnimating()
     func showErrorOnEmptyGallery(show: Bool)
+    func startActivityIndicator()
+    func stopActivityIndicator()
 }

@@ -41,11 +41,21 @@ class SettingsPresenterImp: SettingsPresenter {
     func getCurrentUserFromAPI() {
         getCurrentUserUseCase.getCurrentUser()
             .observe(on: MainScheduler.instance)
+            .do(onSubscribe: { [weak view = self.view] in
+                view?.startActivityIndicator()
+            },
+                onDispose: { [weak view = self.view] in
+                view?.stopActivityIndicator()
+            })
             .subscribe(onSuccess: { [weak self] returningUser in
                 self?.currentUser = returningUser
                 self?.view?.setupUser(user: returningUser)
-            }, onFailure: { error in
-                print("@@@ error\(error)")
+            }, onFailure: { [weak self] error in
+                self?.view?.addInfoModuleWithFunc(
+                    alertTitle: R.string.scenes.failInPublicationMessage(),
+                    alertMessage: error.localizedDescription,
+                    buttonMessage:  R.string.scenes.okAction()
+                )
             })
             .disposed(by: disposeBag)
     }
@@ -58,6 +68,12 @@ class SettingsPresenterImp: SettingsPresenter {
         let userPass = ChangePasswordEntity(oldPassword: oldPassword, newPassword: oldPassword)
         changePasswordUseCase.updatePassword(currentUser?.id, userPass)
             .observe(on: MainScheduler.instance)
+            .do(onSubscribe: { [weak view = self.view] in
+                view?.startActivityIndicator()
+            },
+                onDispose: { [weak view = self.view] in
+                view?.stopActivityIndicator()
+            })
             .subscribe(onCompleted: { [weak self] in
                 self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
                                                   alertMessage: R.string.scenes.dataIsChanged(),
@@ -70,17 +86,16 @@ class SettingsPresenterImp: SettingsPresenter {
             .disposed(by: disposeBag)
     }
 
-    // TODO: вынести активити индикатор в отдельный класс, возможно в baseview, и закинуть его на все места где идет загрузка и показывать модалки на фэйл
+
     func changeUserInfo() {
-        //        let user = UserEntity()
         guard let user = currentUserEntity else { return }
         self.changeUserInfoUseCase.updateUserInfo(currentUser?.id, user)
             .subscribe(on: MainScheduler.instance)
-            .do(onSubscribe: { //[weak view = self.view] in
-                //                        view?.showActivityIndicator()
+            .do(onSubscribe: { [weak view = self.view] in
+                view?.startActivityIndicator()
             },
-                onDispose: { //[weak view = self.view] in
-                //                        view?.hideActivityIndicator()
+                onDispose: { [weak view = self.view] in
+                view?.stopActivityIndicator()
             })
             .subscribe(onCompleted: { [weak self] in
                 self?.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),
@@ -99,7 +114,10 @@ class SettingsPresenterImp: SettingsPresenter {
         deleteUserUseCase.deleteUser(userId: currentUser?.id ?? 0)
             .do(onSubscribe: {
                 self.view?.startActivityIndicator()},
-                onDispose: { self.view?.stopActivityIndicator()}   )
+                onDispose: {
+                self.view?.stopActivityIndicator()
+
+            }   )
             .observe(on: MainScheduler.instance)
                 .subscribe(onCompleted: {
                     self.view?.addInfoModuleWithFunc(alertTitle: R.string.scenes.successMessage(),

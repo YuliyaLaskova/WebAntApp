@@ -72,7 +72,6 @@ class PaginationUseCaseImp: PaginationUseCase {
                         for item in result.data {
                             if item.image?.name != nil {
                                 self.newItems.append(item)
-//                                print("item added to new")
                             } else {
                                 self.notNewPhotoTypeItem += 1
                             }
@@ -99,7 +98,6 @@ class PaginationUseCaseImp: PaginationUseCase {
                         for item in result.data {
                             if item.image?.name != nil {
                                 self.popularItems.append(item)
-//                                print("item added to popular")
                             } else {
                                 self.notPopularPhotoTypeItem += 1
                             }
@@ -120,14 +118,12 @@ class PaginationUseCaseImp: PaginationUseCase {
         .deferred {
             self.cancelLoading()
             self.isLoadingInProcess = true
-
             return self.gateway.getUserPhotos(userId: userId)
                 .observe(on: MainScheduler.instance)
                 .do(onSuccess: { (result: PaginationEntity<PhotoEntityForGet>) in
                     for item in result.data {
                         if item.image?.name != nil {
                             self.newItems.append(item)
-                            print("item added to user")
                         } else {
                             self.notNewPhotoTypeItem += 1
                         }

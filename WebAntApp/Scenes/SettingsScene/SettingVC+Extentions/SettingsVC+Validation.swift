@@ -13,7 +13,6 @@ extension SettingsViewController {
     func checkUserTextFieldsAndUpdateData() {
         var errors: [Error] = []
         var newPassword = "",
-            oldPassword = "",
             confirmPassword = ""
 
         guard let userName = userNameTextField.text,
@@ -26,20 +25,16 @@ extension SettingsViewController {
 
         do {
             entity.username = try self.validateName()
-            print("имя норм")
             userNameTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
             userNameTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
-            print("проблема в имени")
             errors.append(error)
         }
 
         do {
             entity.email = try self.validateEmail()
-            print("емейл норм")
             emailTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
-            print("проблема в емейле")
             emailTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
@@ -56,20 +51,16 @@ extension SettingsViewController {
         }
 
         do {
-            oldPassword = try self.validatePassword(self.oldPasswordTextField) ?? ""
-            print("пароль норм")
+            _ = try self.validatePassword(self.oldPasswordTextField) ?? ""
             oldPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
-            print("проблема в пароле")
             oldPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
         do {
             newPassword = try self.validatePassword(self.oldPasswordTextField) ?? ""
-            print("пароль норм")
             newPasswordTextField.addErrorLabelToTextField(needToShowLabel: false, withText: nil, superView: self.view)
         } catch let error {
-            print("проблема в пароле")
             newPasswordTextField.addErrorLabelToTextField(needToShowLabel: true, withText: error.localizedDescription, superView: self.view)
             errors.append(error)
         }
@@ -84,7 +75,7 @@ extension SettingsViewController {
 
         if newPassword != confirmPassword {
             let message = TextFieldsError.passwordsAreDifferent.localizedDescription
-            self.showAlert(withTitle: R.string.scenes.error(), andMessage: message)
+            self.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(), alertMessage: message, buttonMessage: R.string.scenes.okAction())
             return
         }
 
@@ -92,7 +83,7 @@ extension SettingsViewController {
 
         guard errors.isEmpty else {
             let message = R.string.scenes.pleaseCheckYourData()
-            self.showAlert(withTitle: R.string.scenes.error(), andMessage: message)
+            self.addInfoModuleWithFunc(alertTitle: R.string.scenes.error(), alertMessage: message, buttonMessage: R.string.scenes.okAction())
             return
         }
 

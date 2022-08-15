@@ -16,8 +16,4 @@ class DetailedPhotoRouter: BaseRouter {
     init(_ view: DetailedPhotoViewController) {
         self.view = view
     }
-    
-    func openSomeScene() {
-
-    }
 }

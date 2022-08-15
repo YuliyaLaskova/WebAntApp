@@ -48,10 +48,7 @@ class AddDataPresenterImp: AddDataPresenter {
             })
                 .flatMap ({ [weak self] file -> Single<PhotoEntityForGet> in
                     guard let strongSelf = self else {
-                        return Single.create { observer in
-                            observer(.failure(RequestError.selfIsNil))
-                            return Disposables.create()
-                        }
+                        return .error(RequestError.selfIsNil)
                     }
                     let newPhoto = PhotoEntityForPost(
                         name: photo.name,
@@ -69,8 +66,8 @@ class AddDataPresenterImp: AddDataPresenter {
                     self?.view?.showModalView {
                         self?.router.goBackToMainGallery()
                     }
-                }, onFailure: { error in
-                    self.view?.addInfoModuleWithFunc(
+                }, onFailure: { [weak self] error in
+                    self?.view?.addInfoModuleWithFunc(
                         alertTitle: R.string.scenes.failInPublicationMessage(),
                         alertMessage: error.localizedDescription,
                         buttonMessage:  R.string.scenes.okAction()

@@ -8,9 +8,8 @@
 import UIKit
 
 class WelcomeController: UIViewController {
-    internal var presenter: WelcomePresenter?
+    var presenter: WelcomePresenter?
     // MARK: IB Outlets
-
     @IBOutlet var createAccountBtn: UIButton!
     @IBOutlet var haveAccountBtn: UIButton!
     @IBOutlet var logoView: UIImageView!
@@ -23,8 +22,8 @@ class WelcomeController: UIViewController {
         WelcomeConfigurator.configure(view: self)
         setupUI()
     }
-    // MARK: Constraints
 
+    // MARK: Constraints
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if UIDevice.current.orientation.isPortrait {
@@ -51,7 +50,6 @@ class WelcomeController: UIViewController {
     }
 
     // MARK: IB Actions
-
     @IBAction func createAccountBtnPressed(_ sender: Any) {
         openSignUpScene()
     }
@@ -61,11 +59,3 @@ class WelcomeController: UIViewController {
     }
 }
 
-extension WelcomeController: WelcomeView {
-    func openSignInScene() {
-        presenter?.openSignInScene()
-    }
-    func openSignUpScene() {
-        presenter?.openSignUpScene()
-    }
-}

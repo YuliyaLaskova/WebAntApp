@@ -43,7 +43,6 @@ class SignInUseCaseImp: SignInUseCase {
         self.signInGateway = signInGateway
         self.settings = settings
         self.currentUserGateway = currentUserGateway
-        //        self.tokenState = tokenState
         self.tokenState = settings.token == nil ? .none : .active
     }
 
@@ -86,6 +85,5 @@ class SignInUseCaseImp: SignInUseCase {
 }
 
 extension Notification.Name {
-
     static let onUserSignedIn = Notification.Name("onUserSignedIn")
 }

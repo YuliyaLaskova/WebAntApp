@@ -19,10 +19,6 @@ class AddDataRouter: BaseRouter {
     }
 
     func goBackToMainGallery() {
-//        guard let navController = self.view?.navigationController else {
-//            return
-//        }
-//          MainGalleryConfigurator.open(navigationController: navController)
         let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
          appDelegate?.openMainGalleryScreen(window: appDelegate?.window)
     }

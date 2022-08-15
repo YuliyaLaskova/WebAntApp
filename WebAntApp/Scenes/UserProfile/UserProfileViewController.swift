@@ -35,6 +35,11 @@ class UserProfileViewController: UIViewController {
         settingsBarButtonItem.action = #selector(settingsBtnPressed)
 
         navigationItem.rightBarButtonItem = settingsBarButtonItem
+
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .gray
+
         
         let layout = UICollectionViewFlowLayout()
 

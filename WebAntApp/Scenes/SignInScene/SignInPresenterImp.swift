@@ -26,35 +26,24 @@ class SignInPresenterImp: SignInPresenter {
     }
 
     func signInAndOpenMainGallery(username: String, password: String) {
-        if Validator.isStringValid(
-            stringValue: username,
-            validationType: .userName
-        )
-            || Validator.isStringValid(
-                stringValue: username,
-                validationType: .email
-            )
-            && Validator.isStringValid(
-                stringValue: password,
-                validationType: .password
-            ) {
-            // если данные введены не правильно то показывать на диспоз показывать ошибку
             signInUseCase.signIn(username, password)
-                .do(onSubscribe: {  [weak self] in
-                    self?.view?.startActivityIndicator()
-                })
                     .observe(on: MainScheduler.instance)
+                    .do(onSubscribe: { [weak view = self.view] in
+                        view?.startActivityIndicator()
+                    },
+                        onDispose: { [weak view = self.view] in
+                        view?.stopActivityIndicator()
+                    })
                     .subscribe(onCompleted: { [weak self] in
                         self?.router.openMainGallery()
-                    }, onError: { error in
-                        self.view?.addInfoModuleWithFunc(
+                    }, onError: { [weak self] error in
+                        self?.view?.addInfoModuleWithFunc(
                             alertTitle: R.string.scenes.error(),
                             alertMessage: error.localizedDescription,
                             buttonMessage: R.string.scenes.okAction()
                         )
                     })
                     .disposed(by: disposeBag)
-                    }
     }
     
     func openSignUpScene() {

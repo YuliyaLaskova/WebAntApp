@@ -18,4 +18,6 @@ protocol DetailedPhotoView: BaseView {
                  dateCreation: String?)
 
     func getUsername(username: String?)
+    func startActivityIndicator()
+    func stopActivityIndicator()
 }
