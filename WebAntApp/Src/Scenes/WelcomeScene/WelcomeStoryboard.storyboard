@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="yjj-YG-Lec">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome Controller-->
+        <scene sceneID="7sa-jl-l5c">
+            <objects>
+                <viewController storyboardIdentifier="welcomeId" id="nGB-7V-dL7" customClass="WelcomeController" customModule="WebAntApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fqo-Ki-6DN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvT-gm-Q1X">
+                                <rect key="frame" x="57" y="442" width="300" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Sv5-7x-oGs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Zzb-8I-bSI"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create an account">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="14"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createAccountBtnPressed:" destination="nGB-7V-dL7" eventType="touchUpInside" id="EpS-jS-XOh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fp9-Wq-36D">
+                                <rect key="frame" x="57" y="488" width="300" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="eSR-hF-EWn"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="pgx-jm-Txc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="I already have an account">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="14"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="haveAccountBtnPressed" destination="nGB-7V-dL7" eventType="touchUpInside" id="sAp-ZP-2TS"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q06-f9-ec6">
+                                <rect key="frame" x="139" y="194" width="136" height="208"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="jOG-gs-LR2"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WUm-3i-EcW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q06-f9-ec6" firstAttribute="top" secondItem="WUm-3i-EcW" secondAttribute="top" constant="150" id="6Hu-MX-SFG"/>
+                            <constraint firstItem="uvT-gm-Q1X" firstAttribute="top" secondItem="Q06-f9-ec6" secondAttribute="bottom" constant="40" id="72E-N5-oYm"/>
+                            <constraint firstItem="uvT-gm-Q1X" firstAttribute="centerX" secondItem="Fqo-Ki-6DN" secondAttribute="centerX" id="7W1-d1-JuA"/>
+                            <constraint firstItem="Q06-f9-ec6" firstAttribute="centerX" secondItem="Fqo-Ki-6DN" secondAttribute="centerX" id="F5M-l9-n2S"/>
+                            <constraint firstItem="Fp9-Wq-36D" firstAttribute="centerX" secondItem="Fqo-Ki-6DN" secondAttribute="centerX" id="Nag-00-DtG"/>
+                            <constraint firstItem="Fp9-Wq-36D" firstAttribute="top" secondItem="uvT-gm-Q1X" secondAttribute="bottom" constant="10" id="SkA-Sa-HSj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="h4D-nf-TH2"/>
+                    <connections>
+                        <outlet property="createAccountBtnTopCnstr" destination="72E-N5-oYm" id="JZW-EL-Y0Y"/>
+                        <outlet property="createAccountButton" destination="uvT-gm-Q1X" id="pKx-jM-bBa"/>
+                        <outlet property="haveAccountBtnTopCnstr" destination="SkA-Sa-HSj" id="Gu9-06-PRA"/>
+                        <outlet property="haveAccountButton" destination="Fp9-Wq-36D" id="gZ6-9d-bbT"/>
+                        <outlet property="logoTopConstraint" destination="6Hu-MX-SFG" id="KLe-i9-ytJ"/>
+                        <outlet property="logoView" destination="Q06-f9-ec6" id="mya-Qq-6cv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZ0-jp-EKV" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="371" y="78"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wTq-uC-o7H">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yjj-YG-Lec" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vFp-id-NXk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nGB-7V-dL7" kind="relationship" relationship="rootViewController" id="gvW-Qj-Xov"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kE2-92-yDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-465" y="78"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Logo" width="136" height="208"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

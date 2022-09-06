@@ -89,7 +89,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 11 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 12 storyboards.
   struct storyboard {
     /// Storyboard `AddDataStoryboard`.
     static let addDataStoryboard = _R.storyboard.addDataStoryboard()
@@ -109,6 +109,8 @@ struct R: Rswift.Validatable {
     static let signInStoryboard = _R.storyboard.signInStoryboard()
     /// Storyboard `SignUp`.
     static let signUp = _R.storyboard.signUp()
+    /// Storyboard `TableStoryboard`.
+    static let tableStoryboard = _R.storyboard.tableStoryboard()
     /// Storyboard `UserProfileStoryboard`.
     static let userProfileStoryboard = _R.storyboard.userProfileStoryboard()
     /// Storyboard `WelcomeStoryboard`.
@@ -178,6 +180,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "TableStoryboard", bundle: ...)`
+    static func tableStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.tableStoryboard)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "UserProfileStoryboard", bundle: ...)`
     static func userProfileStoryboard(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.userProfileStoryboard)
@@ -195,10 +204,12 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 1 colors.
+  /// This `R.color` struct is generated, and contains static references to 2 colors.
   struct color {
     /// Color `AccentColor`.
     static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `appPink`.
+    static let appPink = Rswift.ColorResource(bundle: R.hostingBundle, name: "appPink")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
@@ -209,6 +220,15 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "appPink", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func appPink(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.appPink, compatibleWith: traitCollection)
+    }
+    #endif
+
     #if os(watchOS)
     /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
@@ -216,6 +236,28 @@ struct R: Rswift.Validatable {
       return UIKit.UIColor(named: R.color.accentColor.name)
     }
     #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "appPink", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func appPink(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.appPink.name)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `Protocols`.
+    static let protocols = Rswift.FileResource(bundle: R.hostingBundle, name: "Protocols", pathExtension: "")
+
+    /// `bundle.url(forResource: "Protocols", withExtension: "")`
+    static func protocols(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.protocols
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     fileprivate init() {}
   }
@@ -445,10 +487,32 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  struct nib {
+    /// Nib `OrderViewCell`.
+    static let orderViewCell = _R.nib._OrderViewCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "OrderViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.orderViewCell) instead")
+    static func orderViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.orderViewCell)
+    }
+    #endif
+
+    static func orderViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OrderViewCell? {
+      return R.nib.orderViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OrderViewCell
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `ImageCell`.
     static let imageCell: Rswift.ReuseIdentifier<GalleryPhotoCell> = Rswift.ReuseIdentifier(identifier: "ImageCell")
+    /// Reuse identifier `OrderCell`.
+    static let orderCell: Rswift.ReuseIdentifier<OrderViewCell> = Rswift.ReuseIdentifier(identifier: "OrderCell")
     /// Reuse identifier `PhotoViewCell`.
     static let photoViewCell: Rswift.ReuseIdentifier<PhotoCell> = Rswift.ReuseIdentifier(identifier: "PhotoViewCell")
 
@@ -598,7 +662,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.scenes` struct is generated, and contains static references to 42 localization keys.
+    /// This `R.string.scenes` struct is generated, and contains static references to 44 localization keys.
     struct scenes {
       /// Value: %@ can contain only latin letters, numbers, punctuation marks
       static let forbiddenSymbolsForPasswordEng = Rswift.StringResource(key: "forbiddenSymbolsForPasswordEng", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -624,6 +688,8 @@ struct R: Rswift.Validatable {
       static let accountIsDeleted = Rswift.StringResource(key: "accountIsDeleted", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Birthday
       static let dateOfBirth = Rswift.StringResource(key: "dateOfBirth", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Cancel
+      static let cancel = Rswift.StringResource(key: "cancel", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Confirm password
       static let confirmPassword = Rswift.StringResource(key: "confirmPassword", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: E-mail
@@ -646,6 +712,8 @@ struct R: Rswift.Validatable {
       static let pleaseCheckYourData = Rswift.StringResource(key: "pleaseCheckYourData", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Publication has been moderated
       static let successInPublicationMessage = Rswift.StringResource(key: "successInPublicationMessage", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Request error
+      static let selfIsNil = Rswift.StringResource(key: "selfIsNil", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Save
       static let save = Rswift.StringResource(key: "save", tableName: "Scenes", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Search
@@ -861,6 +929,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("dateOfBirth", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
+      /// Value: Cancel
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("cancel", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "cancel"
+        }
+
+        return NSLocalizedString("cancel", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
       /// Value: Confirm password
       static func confirmPassword(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1002,6 +1083,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("successInPublicationMessage", tableName: "Scenes", bundle: bundle, comment: "")
+      }
+
+      /// Value: Request error
+      static func selfIsNil(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("selfIsNil", tableName: "Scenes", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Scenes", preferredLanguages: preferredLanguages) else {
+          return "selfIsNil"
+        }
+
+        return NSLocalizedString("selfIsNil", tableName: "Scenes", bundle: bundle, comment: "")
       }
 
       /// Value: Save
@@ -1278,6 +1372,26 @@ struct _R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
+  struct nib {
+    struct _OrderViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = OrderViewCell
+
+      let bundle = R.hostingBundle
+      let identifier = "OrderCell"
+      let name = "OrderViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> OrderViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? OrderViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
+
+  #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       #if os(iOS) || os(tvOS)
@@ -1306,6 +1420,9 @@ struct _R: Rswift.Validatable {
       #endif
       #if os(iOS) || os(tvOS)
       try signUp.validate()
+      #endif
+      #if os(iOS) || os(tvOS)
+      try tableStoryboard.validate()
       #endif
       #if os(iOS) || os(tvOS)
       try userProfileStoryboard.validate()
@@ -1446,6 +1563,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "appPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'appPink' is used in storyboard 'SignInStoryboard', but couldn't be loaded.") }
         }
       }
 
@@ -1459,6 +1577,23 @@ struct _R: Rswift.Validatable {
 
       let bundle = R.hostingBundle
       let name = "SignUp"
+
+      static func validate() throws {
+        if #available(iOS 11.0, tvOS 11.0, *) {
+          if UIKit.UIColor(named: "appPink", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Color named 'appPink' is used in storyboard 'SignUp', but couldn't be loaded.") }
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    struct tableStoryboard: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = TableViewController
+
+      let bundle = R.hostingBundle
+      let name = "TableStoryboard"
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {

@@ -1,0 +1,61 @@
+/* 
+  Scenes.strings
+  WebAntApp
+
+  Created by Yuliya Laskova on 07.07.2022.
+  
+*/
+"username" = "User Name";
+"name" = "Name";
+"surname" = "Surname";
+"dateOfBirth" = "Birthday";
+"email" = "E-mail";
+"phoneNumber" = "Phone number";
+"password" = "Password";
+"save" = "Save";
+"confirmPassword" = "Confirm password";
+"error" = "Error";
+"emptyFieldsMessage" = "You didn't fill all required fields";
+"okAction" = "OK";
+"passwordsNotMatch" = "Passwords aren't identical";
+"searchCase" = "Search";
+"SuccessMessage" = "Success";
+"successInPublicationMessage" = "Publication has been moderated";
+"failInPublicationMessage" = "Sorry. Something went wrong";
+"remoteUserIdIsNil" = "Не удалось получить ID пользователя";
+"localUserIdIsNil" = "Не удалось найти идентификатор пользователя. Обновите профиль";
+"emptyFieldsMessage" = "You didn't fill all required fields";
+"accountIsDeleted" = "Account is deleted";
+"dataIsChanged" = "Your data is successfully changed";
+"cancel" = "Cancel";
+
+
+// MARK: - TextFieldError
+"passwordsAreDifferent" = "Пароли не совпадают";
+"passwordsAreDifferentEng" = "Passwords are different";
+"equalPhoneNumber" = "Номер совпадает с текущим"; // при смене номера
+// ValidationUseCase
+"fieldIsEmpty" = "'%@' не может быть пустым";
+"fieldIsEmptyEng" ="%@ cannot be empty";
+"forbiddenSymbolsForText" = "'%@' может содержать только буквы, пробел, дефис";
+"forbiddenSymbolsForPassword" = "'%@' может содержать только латинские буквы, цифры, знаки препинания";
+"forbiddenSymbolsForPasswordEng" = "%@ can contain only latin letters, numbers, punctuation marks";
+"forbiddenSymbolsForEmailOrUsername" = "'%@' может содержать только латинские буквы, цифры, знак подчёркивания, точку и минус";
+"incorrect" = "Неверный формат";
+"incorrectEng" = "Wrong format";
+"fieldIsTooShort" = "%@ не может быть менее %@ символов";
+"fieldIsTooLong" = "%@ не может быть более %@ символов";
+"fieldIsTooShortEng" = "%@ couldn't be less than %@ symbols";
+"fieldIsNoEqual" = "'%@' должно содержать %@ символов";
+"dateAlreadyPast" = "Дата уже прошла";
+"dateStillToCome" = "Дата еще не наступила";
+"lessThanRequiredTimeInterval" = "Меньше необходимого временного интервала";
+"pleaseCheckYourData" = "Please, check your data";
+// MARK: - UserUseCaseError
+"selfIsNil" = "Request error";
+"remoteUserIdIsNil" = "Не удалось получить ID пользователя";
+"localUserIdIsNil" = "Не удалось найти идентификатор пользователя. Обновите профиль";
+// MARK: - ViolationEntity
+"violationEntityEmail" = "Почта";
+"violationEntityName" = "Название";
+
